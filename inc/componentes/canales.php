@@ -47,7 +47,7 @@ if (isset($_GET['p']) && $_GET['p'] == "tv") {
     // Canales Deportivos - Home
     $query = "SELECT * FROM canales
     INNER JOIN categorias ON canales.canalCategoria = categorias.categoriaId
-    WHERE canalCategoria = 11 AND canalTipo IN ('6','9','11','12')
+    WHERE canalCategoria = 11 AND canalTipo IN ('6','9','11')
     ORDER BY RAND() DESC LIMIT 18";
     mostrarCanales($query);
 }
