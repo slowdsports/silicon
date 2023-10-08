@@ -95,7 +95,7 @@
                             card.innerHTML = `
                     <article class="card h-100 border-0 shadow-sm card-hover">
                         <div class="position-relative">
-                            <a href="?p=tv&evento&ifr=${eventoUrl}" class="d-block position-absolute w-100 h-100 top-0 start-0"
+                            <a href="?p=tv&evento&ifr=${eventoUrl}&title=${evento.title}" class="d-block position-absolute w-100 h-100 top-0 start-0"
                                 aria-label="Course link"></a>
                             ${contenidoExtra}
                             <a href="#" class="btn btn-icon btn-light bg-white border-white btn-sm rounded-circle position-absolute top-0 end-0 zindex-2 me-3 mt-3"
@@ -107,7 +107,7 @@
                         </div>
                         <div class="card-body pb-3">
                             <h3 class="h5 mb-2">
-                                <a href="?p=tv&evento&ifr=${eventoUrl}">${evento.title}</a>
+                                <a href="?p=tv&evento&ifr=${eventoUrl}&title=${evento.title}">${evento.title}</a>
                             </h3>
                             <p class="fs-sm mb-2">${evento.league}</p>
                         </div>
