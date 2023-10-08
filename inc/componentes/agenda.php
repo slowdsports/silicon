@@ -192,7 +192,7 @@
                             var hh = '<?= $hh_1 ?>';
                             var m = '<?= $m_1 ?>';
 
-                            var textLive = "<p style='position: absolute;' class='live-text'>En Vivo <ion-icon class='faa-flash animated' name='ellipse'></ion-icon></p>";
+                            var textLive = "<p style='margin: 10px auto' class='live-text'><i class='bx bxs-circle bx-flashing fs-xl me-1'></i> En Vivo</p>";
                             var textEnd = "Finalizó";
 
 
