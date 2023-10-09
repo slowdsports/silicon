@@ -22,13 +22,22 @@
 </style>
 <div id="player"></div>
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', '1');
+// error_reporting(E_ALL);
+// ini_set('display_errors', '1');
 include('../conn.php');
-$canal = ($_GET['c']);
-$canales = mysqli_query($conn, "SELECT * FROM canales WHERE canalId = '$canal'");
-$result = mysqli_fetch_array($canales);
-$source = base64_encode($result['canalUrl']);
+
+// Fuente Alterna
+if (isset($_GET['f']) && $_GET['f'] !== null) {
+    $canal = ($_GET['f']);
+    $canales = mysqli_query($conn, "SELECT * FROM fuentes WHERE fuenteId = '$canal'");
+    $result = mysqli_fetch_array($canales);
+    $source = base64_encode($result['canalUrl']);
+} elseif (isset($_GET['c']) && $_GET['c'] !== null) {
+    $canal = ($_GET['c']);
+    $canales = mysqli_query($conn, "SELECT * FROM canales WHERE canalId = '$canal'");
+    $result = mysqli_fetch_array($canales);
+    $source = base64_encode($result['canalUrl']);
+}
 echo '
     <script>
     var player = new Clappr.Player({

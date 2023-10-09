@@ -1,6 +1,6 @@
 <?php
-// error_reporting(E_ALL);
-// ini_set('display_errors', '1');
+error_reporting(E_ALL);
+ini_set('display_errors', '1');
 $canal = $_GET['c'];
 if ($canal) {
     $channels = mysqli_query($conn, "SELECT * FROM canales
@@ -14,6 +14,22 @@ if ($canal) {
     $canalUrl = $result['canalUrl'];
     $canalPais = $result['canalPais'];
     $canalTipo = $result['canalTipo'];
+    // Fuentes Alternas
+    if (isset($_GET['f'])) {
+        $canalAlt = $_GET['f'];
+        $channels = mysqli_query($conn, "SELECT * FROM fuentes
+        INNER JOIN canales ON fuentes.canal = canales.canalId
+        INNER JOIN categorias ON canales.canalCategoria = categorias.categoriaId
+        WHERE fuenteId = $canalAlt");
+        $result = mysqli_fetch_assoc($channels);
+        $canalId = $result['canal'];
+        $canalImg = $result['canalImg'];
+        $canalNombre = $result['canalNombre'];
+        $canalCategoria = $result['categoriaNombre'];
+        $canalUrl = $result['canalUrl'];
+        $canalPais = $result['canalPais'];
+        $canalTipo = $result['tipo'];
+    }
 }
 // iframes
 if (isset($_GET['title'])) {
@@ -23,11 +39,13 @@ if (isset($_GET['title'])) {
 <section class="container mt-4 mb-5 pt-2 pb-lg-5">
     <div class="row gy-4">
         <div class="col-lg-8 col-md-7">
-            <h1 class="display-5 pb-md-3">Ver
-                <?= $canalNombre ?> En Vivo
+            <h1 class="display-5 pb-md-3">
+                Ver <?= $canalNombre ?> En Vivo
             </h1>
             <!-- Reproductor -->
             <section class="container text-center pb-5 mt-n2 mt-md-0 mb-md-2 mb-lg-4">
+                <!-- Fuentes alternativas -->
+                <?php include('inc/componentes/fuentes.php'); ?>
                 <div class="embed-responsive embed-responsive-16by9" id="playerContainer">
                     <?php if (isset($_GET['r'])) { ?>
                         <iframe class="embed-responsive-item" width="100%" height="100%"
@@ -42,19 +60,19 @@ if (isset($_GET['title'])) {
                             frameborder="0" scrolling="no" allowfullscreen allow-encrypted-media></iframe>
                     <?php } elseif ($canalTipo == 11) { ?>
                         <iframe class="embed-responsive-item" width="100%" height="100%"
-                            src="inc/reproductor/ckm.php?c=<?= $canal ?>" frameborder="0" scrolling="no" allowfullscreen
+                            src="inc/reproductor/ckm.php?c=<?= $canal . (isset($canalAlt) ? "&f=" . $canalAlt : ""); ?>" frameborder="0" scrolling="no" allowfullscreen
                             allow-encrypted-media></iframe>
                     <?php } elseif ($canalTipo == 12) { ?>
                         <iframe class="embed-responsive-item" width="100%" height="100%"
-                            src="inc/reproductor/mplus.php?c=<?= $canal ?>" frameborder="0" scrolling="no" allowfullscreen
+                            src="inc/reproductor/mplus.php?c=<?= $canal . (isset($canalAlt) ? "&f=" . $canalAlt : ""); ?>" frameborder="0" scrolling="no" allowfullscreen
                             allow-encrypted-media></iframe>
                     <?php } elseif ($canalTipo == 6) { ?>
                         <iframe class="embed-responsive-item" width="100%" height="100%"
-                            src="inc/reproductor/bm.php?c=<?= $canal ?>" frameborder="0" scrolling="no" allowfullscreen
+                            src="inc/reproductor/bm.php?c=<?= $canal . (isset($canalAlt) ? "&f=" . $canalAlt : ""); ?>" frameborder="0" scrolling="no" allowfullscreen
                             allow-encrypted-media></iframe>
                     <?php } elseif ($canalTipo == 1) { ?>
                         <iframe class="embed-responsive-item" width="100%" height="100%"
-                            src="inc/reproductor/hls.php?c=<?= $canal ?>" frameborder="0" scrolling="no" allowfullscreen
+                            src="inc/reproductor/hls.php?c=<?= $canal . (isset($canalAlt) ? "&f=" . $canalAlt : ""); ?>" frameborder="0" scrolling="no" allowfullscreen
                             allow-encrypted-media></iframe>
                     <?php } elseif (isset($_GET['hls'])) { ?>
                         <iframe class="embed-responsive-item" width="100%" height="100%"
@@ -70,7 +88,7 @@ if (isset($_GET['title'])) {
                             frameborder="0" scrolling="no" allowfullscreen allow-encrypted-media></iframe>
                     <?php } else { ?>
                         <iframe class="embed-responsive-item" width="100%" height="100%"
-                            src="inc/reproductor/ck.php?c=<?= $canal ?>&plyr=<?= $_GET['plyr'] ?>" frameborder="0"
+                            src="inc/reproductor/ck.php?c=<?= $canal . (isset($canalAlt) ? "&f=" . $canalAlt : ""); ?>" frameborder="0"
                             scrolling="no" allowfullscreen allow-encrypted-media></iframe>
                     <?php } ?>
                 </div>
