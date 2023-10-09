@@ -65,12 +65,24 @@
 <?php
 $canal = $_GET['c'];
 include('../../inc/conn.php');
-if (isset($canal)) {
-    $query = mysqli_query($conn, "SELECT * FROM canales
-    INNER JOIN tipos ON canales.canalTipo = tipos.tipoId
-    INNER JOIN categorias ON canales.canalCategoria = categorias.categoriaId
-    WHERE canalId='" . $canal . "'");
-    $result = mysqli_fetch_assoc($query);
+// Fuente Alterna
+if (isset($_GET['f']) && $_GET['f'] !== null) {
+    $canal = ($_GET['f']);
+    $canales = mysqli_query($conn, "SELECT * FROM fuentes WHERE fuenteId = '$canal'");
+    $result = mysqli_fetch_array($canales);
+    $canalId = $result['canalId'];
+    $canalNombre = $result['canalNombre'];
+    $canalUrl = $result['canalUrl'];
+    $key1 = $result['key'];
+    $key2 = $result['key2'];
+    $canalImg = $result['canalImg'];
+    $canalCategoria = $result['canalCategoria'];
+    $canalPais = $result['canalPais'];
+    $canalTipo = $result['tipo'];
+} elseif (isset($_GET['c']) && $_GET['c'] !== null) {
+    $canal = ($_GET['c']);
+    $canales = mysqli_query($conn, "SELECT * FROM canales WHERE canalId = '$canal'");
+    $result = mysqli_fetch_array($canales);
     $canalId = $result['canalId'];
     $canalNombre = $result['canalNombre'];
     $canalUrl = $result['canalUrl'];
@@ -89,7 +101,7 @@ if ($canalTipo == 9) {
         if (strpos($canalUrl, "-vos") !== false || $canalId == 59) {
             $ext = "gg";
         } else {
-            $ext = "bit";
+            $ext = "gg";
         }
         // Encriptamos la URL
         $base = "";
