@@ -1,8 +1,8 @@
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
-$canal = $_GET['c'];
-if ($canal) {
+if (isset($_GET['c'])) {
+    $canal = $_GET['c'];
     $channels = mysqli_query($conn, "SELECT * FROM canales
     INNER JOIN categorias ON canales.canalCategoria = categorias.categoriaId
     WHERE canalId = $canal");
@@ -35,6 +35,10 @@ if ($canal) {
 if (isset($_GET['title'])) {
     $canalNombre = $_GET['title'];
 }
+// No hay nombre
+if ($canalNombre === null || $canalNombre == "") {
+    $canalNombre = "";
+}
 ?>
 <section class="container mt-4 mb-5 pt-2 pb-lg-5">
     <div class="row gy-4">
@@ -45,7 +49,7 @@ if (isset($_GET['title'])) {
             <!-- Reproductor -->
             <section class="container text-center pb-5 mt-n2 mt-md-0 mb-md-2 mb-lg-4">
                 <!-- Fuentes alternativas -->
-                <?php include('inc/componentes/fuentes.php'); ?>
+                <?php //include('inc/componentes/fuentes.php'); ?>
                 <div class="embed-responsive embed-responsive-16by9" id="playerContainer">
                     <?php if (isset($_GET['r'])) { ?>
                         <iframe class="embed-responsive-item" width="100%" height="100%"
