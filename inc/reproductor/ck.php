@@ -122,7 +122,7 @@ if ($canalTipo == 9) {
         <?php
     } else {
         // Requieren JW
-        if (strpos($canalUrl, "dazn-cdn") ||strpos($canalUrl, "livewwdazn") || strpos($canalUrl, "director.streaming") || strpos($canalUrl, "izzigo.") || strpos($canalUrl, "vidgo.com")) {
+        if (strpos($canalUrl, "dazn-cdn") ||strpos($canalUrl, "livewwdazn") || strpos($canalUrl, "director.streaming") || strpos($canalUrl, "izzigo.") || strpos($canalUrl, "vidgo.com") || strpos($canalUrl, "upcbroadband")) {
             // Vidgo Requiere Proxy
             if (strpos($canalUrl, "vidgo.com")) {
                 $canalUrl = "https://slowdus.herokuapp.com/" . $canalUrl;
