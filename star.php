@@ -119,6 +119,7 @@
                                 contenidoIcon = "bx bxs-time";
                             }
                             // Verificar si el evento tiene una hora específica
+                            var $remaining = '';
                             if (evento.status.includes(':')) {
                                 // Calcular la diferencia de tiempo entre ahora y el evento
                                 var eventTime = new Date();
