@@ -208,7 +208,7 @@
                             <li class="nav-item">
                                 <a href="?p=eventos&tipo=american-football"
                                 class="nav-link
-                                <?=($_GET['tipo'] == 'american-football') ? 'active' : ''; ?>">Fútbol Americano</a>
+                                <?=($_GET['tipo'] == 'american-football') ? 'active' : ''; ?>">NFL</a>
                             </li>
                             <li class="nav-item">
                                 <a href="?p=eventos&tipo=baseball"
