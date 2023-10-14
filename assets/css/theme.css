@@ -110,6 +110,7 @@ body {
   padding: 0;
   overflow: hidden;
   border-radius: 10px;
+  border: solid 1px #6366f1;
 }
 
 .embed-responsive .embed-responsive-item,
@@ -144,6 +145,10 @@ body {
 
 .embed-responsive-1by1:before{
   padding-top: 100%;
+}
+
+#twitch-chat-embed {
+  border: solid 1px #6366f1;
 }
 
 hr {
