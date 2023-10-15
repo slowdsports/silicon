@@ -38,13 +38,14 @@ if (isset($_COOKIE['usuario_id'])) {
     <meta name="msapplication-TileColor" content="#080032">
     <meta name="msapplication-config" content="assets/favicon/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
-    <!-- Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-174658361-1"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-L0M9BFKRR9"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'UA-174658361-1');
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-L0M9BFKRR9');
     </script>
 
     <!-- Vendor Styles -->
