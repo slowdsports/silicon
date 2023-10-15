@@ -1,3 +1,16 @@
+<?php
+session_start();
+// Verificar cookie guardada
+if (isset($_COOKIE['usuario_id'])) {
+    // Verificar cookie = sesión
+    if ($_COOKIE['usuario_id'] == $_SESSION['usuario_id']) {
+        $_SESSION['usuario_id'] = $_COOKIE['usuario_id'];
+        $_SESSION['usuario_rol'] = $_COOKIE['usuario_rol'];
+    } else {
+        header ("Location: ?p=404");
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -6,7 +19,8 @@
     <title>iRaffle TV | Televisión Gratis por Internet</title>
 
     <!-- SEO Meta Tags -->
-    <meta name="description" content="iRaffle TV - Eventos deportivos y canales de televisión en vivo completamente gratis">
+    <meta name="description"
+        content="iRaffle TV - Eventos deportivos y canales de televisión en vivo completamente gratis">
     <meta name="keywords"
         content="Canales de TV gratis, ver tele gratis, television gratis, partidos gratis, iRaffle TV.">
     <meta name="author" content="iRaffle TV">
@@ -160,6 +174,7 @@
 
 
 <!-- Body -->
+<?php session_start(); ?>
 
 <body>
 
@@ -191,53 +206,43 @@
                     <div class="offcanvas-body">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                                <a href="?p=home"
-                                class="nav-link
-                                <?=($_GET['p'] == 'home') ? 'active' : ''; ?>">Inicio</a>
+                                <a href="?p=home" class="nav-link
+                                <?= ($_GET['p'] == 'home') ? 'active' : ''; ?>">Inicio</a>
                             </li>
                             <li class="nav-item">
-                                <a href="?p=eventos&tipo=football"
-                                class="nav-link
-                                <?=($_GET['tipo'] == 'football') ? 'active' : ''; ?>">Fútbol</a>
+                                <a href="?p=eventos&tipo=football" class="nav-link
+                                <?= ($_GET['tipo'] == 'football') ? 'active' : ''; ?>">Fútbol</a>
                             </li>
                             <li class="nav-item">
-                                <a href="?p=eventos&tipo=basketball"
-                                class="nav-link
-                                <?=($_GET['tipo'] == 'basketball') ? 'active' : ''; ?>">Basketball</a>
+                                <a href="?p=eventos&tipo=basketball" class="nav-link
+                                <?= ($_GET['tipo'] == 'basketball') ? 'active' : ''; ?>">Basketball</a>
                             </li>
                             <li class="nav-item">
-                                <a href="?p=eventos&tipo=american-football"
-                                class="nav-link
-                                <?=($_GET['tipo'] == 'american-football') ? 'active' : ''; ?>">NFL</a>
+                                <a href="?p=eventos&tipo=american-football" class="nav-link
+                                <?= ($_GET['tipo'] == 'american-football') ? 'active' : ''; ?>">NFL</a>
                             </li>
                             <li class="nav-item">
-                                <a href="?p=eventos&tipo=baseball"
-                                class="nav-link
-                                <?=($_GET['tipo'] == 'baseball') ? 'active' : ''; ?>">Baseball</a>
+                                <a href="?p=eventos&tipo=baseball" class="nav-link
+                                <?= ($_GET['tipo'] == 'baseball') ? 'active' : ''; ?>">Baseball</a>
                             </li>
                             <li class="nav-item">
-                                <a href="?p=eventos&tipo=tennis"
-                                class="nav-link
-                                <?=($_GET['tipo'] == 'tennis') ? 'active' : ''; ?>">Tenis</a>
+                                <a href="?p=eventos&tipo=tennis" class="nav-link
+                                <?= ($_GET['tipo'] == 'tennis') ? 'active' : ''; ?>">Tenis</a>
                             </li>
                             <li class="nav-item">
-                                <a href="?p=tv"
-                                class="nav-link
-                                <?=($_GET['p'] == 'tv') ? 'active' : ''; ?>">TV</a>
+                                <a href="?p=tv" class="nav-link
+                                <?= ($_GET['p'] == 'tv') ? 'active' : ''; ?>">TV</a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a href="#"
-                                class="nav-link dropdown-toggle
-                                <?=($_GET['p'] == 'star') ? 'active' : ''; ?>
-                                <?=($_GET['p'] == 'vix') ? 'active' : ''; ?>" data-bs-toggle="dropdown"
+                                <a href="#" class="nav-link dropdown-toggle
+                                <?= ($_GET['p'] == 'star') ? 'active' : ''; ?>
+                                <?= ($_GET['p'] == 'vix') ? 'active' : ''; ?>" data-bs-toggle="dropdown"
                                     aria-current="page">Exclusivos</a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="?p=star"
-                                    class="dropdown-item
-                                    <?=($_GET['p'] == 'star') ? 'active' : ''; ?>">Star+</a></li>
-                                    <li><a href="?p=vix"
-                                    class="dropdown-item
-                                    <?=($_GET['p'] == 'vix') ? 'active' : ''; ?>">Vix+</a></li>
+                                    <li><a href="?p=star" class="dropdown-item
+                                    <?= ($_GET['p'] == 'star') ? 'active' : ''; ?>">Star+</a></li>
+                                    <li><a href="?p=vix" class="dropdown-item
+                                    <?= ($_GET['p'] == 'vix') ? 'active' : ''; ?>">Vix+</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -250,6 +255,12 @@
                     <label class="form-check-label d-none d-sm-block" for="theme-mode"><i
                             class="bx bx-moon fs-5 lh-1 me-1"></i></label>
                 </div>
+                <a href="<?= (isset($_SESSION['usuario_id'])) ? '?p=cuenta' : '?p=login'; ?>"
+                    class="btn btn-primary btn-sm fs-sm rounded d-none d-lg-inline-flex" rel="noopener">
+                    <i class="bx bx-user fs-5 lh-1 me-1"></i>
+                    &nbsp;
+                    <?= (isset($_SESSION['usuario_id'])) ? explode(" ", $_SESSION['usuario_nombre'])[0] : 'Login'; ?>
+                </a>
                 <button type="button" class="navbar-toggler" data-bs-toggle="offcanvas" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>

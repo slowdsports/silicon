@@ -40,7 +40,8 @@ if (isset($_GET['title'])) {
     $canalNombre = $_GET['title'];
 }
 ?>
-
+<div id="toast-container" class="position-fixed bottom-0 end-0 p-3">
+</div>
 
 <section class="container mb-5 pt-4 pb-2 py-mg-4">
     <div class="row gy-4">
@@ -119,47 +120,73 @@ if (isset($_GET['title'])) {
             <hr class="mb-4">
         </div>
 
-        <!-- Chat -->
+        <!-- Votos -->
         <div class="col-lg-3 position-relative">
             <div class="sticky-top " style="top: 105px !important;">
-                <span class="d-block mb-3">
-                    <svg class="me-2 mt-n1" xmlns="http://www.w3.org/2000/svg" width="24" height="25" fill="none">
-                        <path
-                            d="M20 12.5003v-1.707c0-4.44199-3.479-8.16099-7.755-8.28999-2.204-.051-4.251.736-5.816 2.256S4 8.31831 4 10.5003v2c-1.103 0-2 .897-2 2v4c0 1.103.897 2 2 2h2v-10c0-1.63699.646-3.16599 1.821-4.30599s2.735-1.739 4.363-1.691c3.208.096 5.816 2.918 5.816 6.28999v9.707h2c1.103 0 2-.897 2-2v-4c0-1.103-.897-2-2-2z"
-                            fill="url(#A)"></path>
-                        <path d="M7 12.5003h2v8H7v-8zm8 0h2v8h-2v-8z" fill="url(#A)"></path>
-                        <defs>
-                            <linearGradient id="A" x1="2" y1="11.5437" x2="22" y2="11.5437"
-                                gradientUnits="userSpaceOnUse">
-                                <stop offset="0" stop-color="#6366f1"></stop>
-                                <stop offset=".5" stop-color="#8b5cf6"></stop>
-                                <stop offset="1" stop-color="#d946ef"></stop>
-                            </linearGradient>
-                        </defs>
-                    </svg>
-                    Chat
-                </span>
+                <?php if (isset($_SESSION['usuario_id']) && isset($_GET['c'])): ?>
+                <div class="row text-center">
+                    <div class="col-6">
+                        <?php                        
+                        // Consulta SQL para obtener el recuento de votos para cada canal
+                        $sql = "SELECT canal_id, 
+                        SUM(CASE WHEN voto = 'like' THEN 1 ELSE 0 END) as like_count,
+                        SUM(CASE WHEN voto = 'dislike' THEN 1 ELSE 0 END) as dislike_count
+                        FROM votos WHERE canal_id = $canalId
+                        GROUP BY canal_id";
+
+                        $result = $conn->query($sql);
+                        $row = $result->fetch_assoc();
+                        if ($result->num_rows > 0) {
+                            $likeCount = $row['like_count'];
+                            $dislikeCount = $row['dislike_count'];
+                        } else {
+                            $likeCount = 0;
+                            $dislikeCount = 0;
+                        }
+                        // Verificar si el usuario ha dado "like" para este canal
+                        $sqlCheckLike = "SELECT * FROM votos WHERE usuario_id = $_SESSION[usuario_id] AND canal_id = $canalId AND voto = 'like'";
+                        $resultCheckLike = $conn->query($sqlCheckLike);
+                        $userHasLiked = ($resultCheckLike->num_rows > 0);
+                        // Verificar si el usuario ya ha dado like
+                        $likeClass = ($userHasLiked) ? 'active' : '';
+                        // Verificar si el usuario ha dado "dislike" para este canal
+                        $sqlCheckDislike = "SELECT * FROM votos WHERE usuario_id = $_SESSION[usuario_id] AND canal_id = $canalId AND voto = 'dislike'";
+                        $resultCheckDislike = $conn->query($sqlCheckDislike);
+                        $userHasDisliked = ($resultCheckDislike->num_rows > 0);
+                        // Verificar si el usuario ya ha dado dislike
+                        $dislikeClass = ($userHasDisliked) ? 'active' : '';
+                        ?>
+                        <button data-canal-id="<?= $canalId ?>" type="button"
+                            class="btn btn-sm btn-outline-secondary like-btn <?= $likeClass ?>">
+                            <i class="bx bx-like me-2 lead"></i>
+                            Like
+                            <span id="like-count-<?= $canalId ?>" class="badge bg-primary shadow-primary mt-n1 ms-3">
+                                <?= $likeCount ?>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="col-6">
+                        <button data-canal-id="<?= $canalId ?>" type="button"
+                            class="btn btn-sm btn-outline-secondary dislike-btn <?= $dislikeClass ?>">
+                            <i class="bx bx-dislike me-2 lead"></i>
+                            Dislike
+                            <span id="dislike-count-<?= $canalId ?>" class="badge bg-danger shadow-primary mt-n1 ms-3">
+                                <?= $dislikeCount ?>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+                <!-- AJAX -->
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                <script src="inc/componentes/like.js"></script>
+                <?php endif ?>
+                <br>
+                <!-- Chat -->
                 <div class="rounded-3">
                     <iframe id="twitch-chat-embed" class="rounded-3"
                         src="https://www.twitch.tv/embed/iraffletv/chat?parent=127.0.0.1&parent=irtvhn.info&darkpopout"
                         height="560" width="100%">
                     </iframe>
-                </div>
-                <div class="row gy-4">
-                    <div class="col-6">
-                        <button disabled type="button" class="btn btn-sm btn-outline-secondary">
-                            <i class="bx bx-like me-2 lead"></i>
-                            Like
-                            <span class="badge bg-primary shadow-primary mt-n1 ms-3">8</span>
-                        </button>
-                    </div>
-                    <div class="col-6">
-                        <button disabled type="button" class="btn btn-sm btn-outline-secondary">
-                            <i class="bx bx-dislike me-2 lead"></i>
-                            Dislike
-                            <span class="badge bg-danger shadow-primary mt-n1 ms-3">4</span>
-                        </button>
-                    </div>
                 </div>
             </div>
         </div>

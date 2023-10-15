@@ -13,8 +13,9 @@
             <!-- Text -->
             <div class="col-md-5 offset-xl-1 order-md-1">
                 <h1 class="display-1 mb-sm-4 mt-n4 mt-sm-n5">Error 404</h1>
-                <p class="mb-md-5 mb-4 mx-md-0 mx-auto pb-2 lead">La página que estás buscando se ha movido o quizás nunca existió.</p>
-                <a href="index.html" id="regresarBtn" class="btn btn-lg btn-primary shadow-primary w-sm-auto w-100">
+                <p class="mb-md-5 mb-4 mx-md-0 mx-auto pb-2 lead">La página que estás buscando se ha movido o quizás
+                    nunca existió.</p>
+                <a href="javascript:history.back()" id="regresarBtn" class="btn btn-lg btn-primary shadow-primary w-sm-auto w-100">
                     <i class="bx bx-arrow-back me-2 ms-n1 lead"></i>
                     Regresar (<span id="count-back">10</span>s)
                 </a>
@@ -34,8 +35,8 @@
         document.getElementById('count-back').textContent = segundos;
         if (segundos <= 0) {
             clearInterval(interval);
-            // Cuando el temporizador llega a cero, redirige al usuario
-            window.location.href = document.getElementById('regresarBtn').getAttribute('href');
+            // Cuando el temporizador llega a cero, redirige al usuario a la página anterior
+            window.location.href = document.referrer;
         }
     }, 1000);
 </script>
