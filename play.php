@@ -33,7 +33,6 @@ if (isset($_GET['c'])) {
         $canalUrl = $result['canalUrl'];
         $canalPais = $result['canalPais'];
         $canalTipo = $result['tipo'];
-        $type = $canalTipo;
     }
 }
 // Verificar tipo
@@ -83,28 +82,7 @@ if (isset($_GET['title'])) {
                         '2' => ["", []] // For $canalTipo == 2, handle $canalUrl separately
                     ];
 
-                    // Obtener el tipo de configuración según el caso
-                    if (isset($configurations)) {
-                        $type = $canalTipo;
-                        echo "Nuevo Type: " . $type;
-                    }
-
-                    // Construir el iframe según el tipo de configuración
-                    if ($type == '2' && isset($canalUrl)) {
-                        $src = "class='embed-responsive-item' width='100%' height='100%' frameborder='0' scrolling='no' allowfullscreen allow-encrypted-media src='{$canalUrl}'";
-                    } elseif ($type != null) {
-                        $config = $configurations[$type];
-                        $params = implode("&", array_map(function ($param) use ($config) {
-                            return isset($_GET[$param]) ? "{$param}={$_GET[$param]}" : "";
-                        }, $config[1]));
-
-                        $src = "class='embed-responsive-item' width='100%' height='100%' frameborder='0' scrolling='no' allowfullscreen allow-encrypted-media src='inc/reproductor/{$config[0]}?{$params}'";
-                    } else {
-                        // Handle default case
-                        $canalUrl = base64_decode($canalUrl);
-                        $src = "class='embed-responsive-item' width='100%' height='100%' frameborder='0' scrolling='no' allowfullscreen allow-encrypted-media src='inc/reproductor/ck.php?c={$canal}" . (isset($canalAlt) ? "&f={$canalAlt}'" : "'");
-                    }
-                    // Manejar caso especial cuando se recibe el parámetro "ifr"
+                    // Obtener el tipo de configuración
                     if (isset($_GET['ifr'])) {
                         $decodedIfr = base64_decode($_GET['ifr']);
                         // Validar la URL antes de mostrarla en el iframe
@@ -115,6 +93,20 @@ if (isset($_GET['title'])) {
                             // Si la URL no es válida, mostrar un mensaje de error o redirigir a una página de error
                             $src = "class='embed-responsive-item' width='100%' height='100%' frameborder='0' scrolling='no' allowfullscreen allow-encrypted-media src='ruta/a/pagina/de/error'";
                         }
+                    } elseif (isset($canalTipo) && isset($configurations[$canalTipo])) {
+                        // Obtener el tipo de canal de la base de datos y verificar si existe en las configuraciones
+                        $config = $configurations[$canalTipo];
+                        
+                        // Construir los parámetros para la URL del iframe
+                        $params = implode("&", array_map(function ($param) {
+                            return isset($_GET[$param]) ? "{$param}={$_GET[$param]}" : "";
+                        }, $config[1]));
+
+                        // Construir la URL del iframe con la configuración correspondiente
+                        $src = "class='embed-responsive-item' width='100%' height='100%' frameborder='0' scrolling='no' allowfullscreen allow-encrypted-media src='inc/reproductor/{$config[0]}?{$params}'";
+                    } else {
+                        // Manejar el caso por defecto o mostrar un error si el tipo de canal no es válido
+                        $src = "class='embed-responsive-item' width='100%' height='100%' frameborder='0' scrolling='no' allowfullscreen allow-encrypted-media src='inc/reproductor/ck.php'";
                     }
 
                     // Imprimir el iframe
