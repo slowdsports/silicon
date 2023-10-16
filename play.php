@@ -188,9 +188,6 @@ if (isset($_GET['title'])) {
                         height="560" width="100%">
                     </iframe>
                 </div>
-                <hr class="mb-4">
-                <!-- Ads -->
-                <?php include('inc/ads/banner.php'); ?>
             </div>
         </div>
     </div>
