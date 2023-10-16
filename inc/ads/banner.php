@@ -6,5 +6,5 @@
         'width': 300,
         'params': {}
     };
-    document.write('<scr' + 'ipt type="text/javascript" src="//www.profitablecreativeformat.com/dc80d23b92278479e0b004998256c629/invoke.js"></scr' + 'ipt>');
+    document.write('<scr' + 'ipt type="text/javascript" src="//www.profit'+'ablecreat'+'iveformat.com/dc80d23b92278479e0b004998256c629/invoke.js"></scr' + 'ipt>');
 </script>
