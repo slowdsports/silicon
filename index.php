@@ -3,8 +3,6 @@
 include('inc/conn.php');
 // Header
 include('inc/header.php');
-// Anuncio Push
-include('inc/ads/push.php');
 // Navegación
 // Parámetro "p" del método GET
 if(isset($_GET['p'])) {
