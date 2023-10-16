@@ -12,6 +12,17 @@
         height: 100%!important;
         width: 100%!important;
     }
+    .media-control.live[data-media-control] .media-control-layer[data-controls] .bar-container[data-seekbar] .bar-background[data-seekbar] .bar-fill-2[data-seekbar] , .spinner-three-bounce[data-spinner]>div {
+    background-color: #6366f1!important;
+    }
+    .media-control-center-panel , .level_selector[data-level-selector] button , .dvr-controls[data-dvr-controls] {
+        color: #6366f1!important;
+        cursor: pointer;
+    }
+    .media-control[data-media-control] .media-control-layer[data-controls] .drawer-container[data-volume] .drawer-icon-container[data-volume] .drawer-icon[data-volume] svg path {
+        fill: #6366f1!important;
+    }
+
 </style>
 <script src="//cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"></script>
 <script src="//cdn.jsdelivr.net/npm/level-selector@latest/dist/level-selector.min.js"></script>
@@ -41,8 +52,12 @@ echo '
         plugins: [LevelSelector, ClapprPip.PipButton, ClapprPip.PipPlugin, DashShakaPlayback, ChromecastPlugin, ClapprPip.PipButton, ClapprPip.PipPlugin],
         events: {
             onReady: function () {
+                console.log("El evento onReady se ha disparado.");
                 var plugin = this.getPlugin("click_to_pause");
                 plugin && plugin.disable();
+            },
+            onPlay: function () {
+                console.log("El evento onPlay se ha disparado.");
             },
         },
         chromecast: {
@@ -53,7 +68,7 @@ echo '
         gaTrackerName: "MyPlayerInstance",
         height: "100%",
         width: "100%",
-        autoPlay: true,
+        autoPlay: false,
         muted: false,
         shakaConfiguration: {
             preferredAudioLanguage: "es-MX",
@@ -62,5 +77,10 @@ echo '
             },
         },
     });
+    player.play();
+    // Pausar después de 2 segundos (2000 milisegundos)
+    setTimeout(() => {
+        player.pause();
+    }, 2000);
     </script>
     ';

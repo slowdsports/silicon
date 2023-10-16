@@ -33,7 +33,12 @@ if (isset($_GET['c'])) {
         $canalUrl = $result['canalUrl'];
         $canalPais = $result['canalPais'];
         $canalTipo = $result['tipo'];
+        $type = $canalTipo;
     }
+}
+// Verificar tipo
+if (empty($canalTipo)) {
+    $canalTipo = 'default';
 }
 // iframes
 if (isset($_GET['title'])) {
@@ -79,12 +84,9 @@ if (isset($_GET['title'])) {
                     ];
 
                     // Obtener el tipo de configuración según el caso
-                    $type = null;
-                    foreach ($_GET as $key => $value) {
-                        if (isset($configurations[$key])) {
-                            $type = $key;
-                            break;
-                        }
+                    if (isset($configurations)) {
+                        $type = $canalTipo;
+                        echo "Nuevo Type: " . $type;
                     }
 
                     // Construir el iframe según el tipo de configuración

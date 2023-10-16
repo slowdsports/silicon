@@ -66,5 +66,6 @@ if (getTYPE == 1) {
     });
 }
 // Preview Hack
+jwplayer().play();
 jwplayer().setMute(false);
 jwplayer().setControls(true);
