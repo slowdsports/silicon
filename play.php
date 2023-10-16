@@ -118,6 +118,7 @@ if (isset($_GET['title'])) {
                 </div>
             </div>
             <hr class="mb-4">
+            <?php include('inc/ads/related-ad.php'); ?>
         </div>
 
         <!-- Votos -->
