@@ -99,6 +99,43 @@ body {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+.hidden {
+  visibility: hidden;
+}
+
+#playerFake {
+  background-color: #000;
+  box-shadow: 2px 2px 8px 2px #6366f1;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#playerFake:hover {
+  box-shadow: 0 0 20px 0 rgba(99, 102, 241, 0.8);
+}
+
+#playerFake img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+
+#playerContainer {
+  width: 100%;
+  margin: auto;
+  box-shadow: 2px 2px 8px 2px #6366f1;
+  transition: all 0.3s ease;
+}
+
+#playerContainer:hover {
+  box-shadow: 0 0 20px 0 rgba(99, 102, 241, 0.8);
+}
+
 .bx-flashing , .bxs-circle {
   color: red;
 }
@@ -110,7 +147,7 @@ body {
   padding: 0;
   overflow: hidden;
   border-radius: 10px;
-  border: solid 1px #6366f1;
+  box-shadow: 2px 2px 8px 2px #6366f1;
 }
 
 .embed-responsive .embed-responsive-item,
@@ -148,7 +185,12 @@ body {
 }
 
 #twitch-chat-embed {
-  border: solid 1px #6366f1;
+  box-shadow: 2px 2px 8px 2px #6366f1;
+  transition: all 0.3s ease;
+}
+
+#twitch-chat-embed:hover {
+  box-shadow: 0 0 20px 0 rgba(99, 102, 241, 0.8);
 }
 
 hr {

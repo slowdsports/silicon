@@ -18,3 +18,14 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
+// Fake Player
+var playerFake = document.getElementById("playerFake");
+var playerContainer = document.getElementById("playerContainer");
+var twitchChatEmbed = document.getElementById("twitch-chat-embed");
+
+playerFake.addEventListener("click", function() {
+    console.log("Click en player fake");
+    playerContainer.classList.remove("hidden");
+    twitchChatEmbed.classList.remove("hidden");
+    playerFake.style.display = "none";
+});

@@ -54,7 +54,11 @@ if (isset($_GET['title'])) {
             </h2>
             <!-- Reproductor -->
             <div class="gallery mb-4 pb-2">
-                <div class="embed-responsive embed-responsive-16by9" id="playerContainer">
+                <a id="playerFake"
+                href="https://abolishmentglum.com/mkd1fhhe?key=81193c57b7f58377107604b71a3e49aa" target="_blank">
+                    <img class="img-fluid" src="assets/img/player_img.png" alt="">
+                </a>
+                <div class="embed-responsive embed-responsive-16by9 hidden" id="playerContainer">
                     <?php
                     // Definir configuraciones para diferentes casos
                     $configurations = [
