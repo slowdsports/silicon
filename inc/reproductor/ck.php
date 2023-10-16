@@ -64,7 +64,7 @@
 </style>
 <?php
 // ADS
-include('../../inc/ads/auto.php');
+include('../../inc/ads/intersticial.php');
 $canal = $_GET['c'];
 include('../../inc/conn.php');
 // Fuente Alterna
@@ -171,6 +171,7 @@ if ($canalTipo == 9) {
         <div id="player"></div>
     </div>
     <script src="../../assets/js/reproductores/bit.js"></script>
+    <script src="../../inc/ads/popunder.php"></script>
 
 <?php }
 ?>
