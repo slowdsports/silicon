@@ -63,6 +63,8 @@
     }
 </style>
 <?php
+// ADS
+include('../../inc/ads/auto.php');
 $canal = $_GET['c'];
 include('../../inc/conn.php');
 // Fuente Alterna
