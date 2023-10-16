@@ -190,12 +190,7 @@ if (isset($_GET['title'])) {
                 </div>
                 <hr class="mb-4">
                 <!-- Ads -->
-                <div class="card border-0 bg-faded-primary bg-repeat-0 bg-size-cover" style="min-height: 25rem; background-image: url(assets/img/blog/banner.png);">
-                <div class="card-body">
-                    <h5 class="h3 mb-4 pb-2 text-center">Ad Banner</h5>
-                    <?php include('inc/ads/banner.php'); ?>
-                </div>
-            </div>
+                <?php include('inc/ads/banner.php'); ?>
             </div>
         </div>
     </div>
