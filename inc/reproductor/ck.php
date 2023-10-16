@@ -44,22 +44,28 @@
     }
 
     .bmpui-ui-watermark {
-        display: none;
+        background-image: url("https://eduveel1.github.io/baleada/img/iRTVW_PLAYER.png");
+        top: 0;
+        left: 0;
+        min-width: 5em;
     }
 
     .bmpui-ui-volumeslider .bmpui-seekbar .bmpui-seekbar-playbackposition-marker {
-        background-color: #1487fa;
+        background-color: #6366f1;
     }
 
     .bmpui-ui-seekbar .bmpui-seekbar .bmpui-seekbar-playbackposition,
     .bmpui-ui-volumeslider .bmpui-seekbar .bmpui-seekbar-playbackposition {
-        background-color: #1487fa;
+        background-color: #6366f1;
     }
 
     .bmpui-ui-seekbar .bmpui-seekbar .bmpui-seekbar-playbackposition-marker,
     .bmpui-ui-volumeslider .bmpui-seekbar .bmpui-seekbar-playbackposition-marker {
-        border-color: #1487fa;
-        background-color: #1487fa;
+        border-color: #6366f1;
+        background-color: #6366f1;
+    }
+    .bmpui-ui-selectbox, .bmpui-on {
+        color: #6366f1;
     }
 </style>
 <?php

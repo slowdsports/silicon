@@ -21,6 +21,11 @@ if (getTYPE == 1) {
         mute: false,
         autostart: false,
         language: "es",
+        logo: {
+            file: "https://eduveel1.github.io/baleada/img/iRTVW_PLAYER.png",
+            hide: "false",
+            position: "top-left"
+        }
     });
 } else if (getTYPE == 9 || getTYPE == 12) {
     var playlistItem = {
@@ -53,6 +58,11 @@ if (getTYPE == 1) {
         mute: false,
         autostart: false,
         language: "es",
+        logo: {
+            file: "https://eduveel1.github.io/baleada/img/iRTVW_PLAYER.png",
+            hide: "false",
+            position: "top-left"
+        }
     });
 }
 // Preview Hack
