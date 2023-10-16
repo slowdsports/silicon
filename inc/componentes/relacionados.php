@@ -1,6 +1,6 @@
 <?php
 // Verificar si canalTipo está definido y no es nulo
-if (isset($canalTipo) && $canalTipo) {
+if (isset($_GET['c'])) {
     ?>
     <section class="container mb-5 pt-md-4">
         <div class="d-flex flex-sm-row flex-column align-items-center justify-content-between mb-4 pb-1 pb-md-3">
