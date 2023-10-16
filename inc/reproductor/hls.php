@@ -19,6 +19,17 @@
         height: 100%!important;
         width: 100%!important;
     }
+    .media-control.live[data-media-control] .media-control-layer[data-controls] .bar-container[data-seekbar] .bar-background[data-seekbar] .bar-fill-2[data-seekbar] , .spinner-three-bounce[data-spinner]>div {
+    background-color: #6366f1!important;
+    }
+    .media-control-center-panel , .level_selector[data-level-selector] button , .dvr-controls[data-dvr-controls] {
+        color: #6366f1!important;
+        cursor: pointer;
+    }
+    .media-control[data-media-control] .media-control-layer[data-controls] .drawer-container[data-volume] .drawer-icon-container[data-volume] .drawer-icon[data-volume] svg path {
+        fill: #6366f1!important;
+    }
+
 </style>
 <div id="player"></div>
 <?php
