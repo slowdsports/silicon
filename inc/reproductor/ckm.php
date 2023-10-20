@@ -36,8 +36,8 @@
 </div>
 <?php
 include('../../inc/conn.php');
-$canal = $_GET['c'];
-$query = mysqli_query($conn, "SELECT * FROM canales WHERE canalId='" . $canal . "'");
+$canal = $_GET['f'];
+$query = mysqli_query($conn, "SELECT * FROM fuentes WHERE fuenteId='" . $canal . "'");
 $result = mysqli_fetch_assoc($query);
 $source = base64_encode($result['canalUrl']);
 $key = $result['key'];
