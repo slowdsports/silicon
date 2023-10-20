@@ -47,7 +47,7 @@
                                         <option
                                         value="<?= $equipo['equipoId'] ?>"
                                         <?= ($equipo['equipoId'] == $result['id_visitante']) ? "selected" : "" ?>>
-                                            <?= $equipo['equipoNombre'] ?>
+                                            <?= $equipo['equipoNombre'] ?> (<?= $result['id_visitante'] ?>)
                                         </option>
                                     <?php endwhile; ?>
                                 </select>
@@ -59,14 +59,15 @@
                                 <label for="partidoLiga" class="form-label">Liga</label>
                                 <select class="form-control select2" data-toggle="select2" id="partidoLiga" name="partidoLiga">
                                     <?php
-                                    $ligas_query = "SELECT ligaId, ligaNombre FROM ligas";
+                                    $ligas_query = "SELECT * FROM ligas
+                                    INNER JOIN paises ON ligas.ligaPais=paises.paisCodigo";
                                     $resultado_ligas = mysqli_query($conn, $ligas_query);
                                     while ($liga = mysqli_fetch_assoc($resultado_ligas)):
                                         ?>
                                         <option
                                         value="<?= $liga['ligaId'] ?>"
                                         <?= ($liga['ligaId'] == $result['liga']) ? "selected" : "" ?>>
-                                            <?= $liga['ligaNombre'] ?>
+                                            <?= $liga['ligaNombre'] ?> (<?= $liga['paisNombre'] ?>)
                                         </option>
                                     <?php endwhile; ?>
                                 </select>
@@ -125,14 +126,15 @@
                                 <select class="form-control select2" data-toggle="select2" id="partidoCanal1" name="partidoCanal1">
                                     <option value="NULL">Ninguno</option>
                                     <?php
-                                    $fuentes_query = "SELECT fuenteId, fuenteNombre FROM fuentes";
+                                    $fuentes_query = "SELECT * FROM fuentes
+                                    INNER JOIN paises ON fuentes.pais=paises.paisId";
                                     $resultado_fuentes = mysqli_query($conn, $fuentes_query);
                                     while ($fuente = mysqli_fetch_assoc($resultado_fuentes)):
                                         ?>
                                         <option
                                         value="<?= $fuente['fuenteId'] ?>"
                                         <?= ($fuente['fuenteId'] == $result['id_canal1']) ? "selected" : "" ?>>
-                                            <?= $fuente['fuenteNombre'] ?>
+                                            <?= $fuente['fuenteNombre'] ?> (<?= $fuente['paisNombre'] ?>)
                                         </option>
                                     <?php endwhile; ?>
                                 </select>
@@ -151,7 +153,7 @@
                                         <option
                                         value="<?= $fuente['fuenteId'] ?>"
                                         <?= ($fuente['fuenteId'] == $result['id_canal2']) ? "selected" : "" ?>>
-                                            <?= $fuente['fuenteNombre'] ?>
+                                            <?= $fuente['fuenteNombre'] ?> (<?= $fuente['paisNombre'] ?>)
                                         </option>
                                     <?php endwhile; ?>
                                 </select>
@@ -170,7 +172,7 @@
                                         <option
                                         value="<?= $fuente['fuenteId'] ?>"
                                         <?= ($fuente['fuenteId'] == $result['id_canal3']) ? "selected" : "" ?>>
-                                            <?= $fuente['fuenteNombre'] ?>
+                                            <?= $fuente['fuenteNombre'] ?> (<?= $fuente['paisNombre'] ?>)
                                         </option>
                                     <?php endwhile; ?>
                                 </select>
@@ -189,7 +191,7 @@
                                         <option
                                         value="<?= $fuente['fuenteId'] ?>"
                                         <?= ($fuente['fuenteId'] == $result['id_canal4']) ? "selected" : "" ?>>
-                                            <?= $fuente['fuenteNombre'] ?>
+                                            <?= $fuente['fuenteNombre'] ?> (<?= $fuente['paisNombre'] ?>)
                                         </option>
                                     <?php endwhile; ?>
                                 </select>
@@ -208,7 +210,7 @@
                                         <option
                                         value="<?= $fuente['fuenteId'] ?>"
                                         <?= ($fuente['fuenteId'] == $result['id_canal5']) ? "selected" : "" ?>>
-                                            <?= $fuente['fuenteNombre'] ?>
+                                            <?= $fuente['fuenteNombre'] ?> (<?= $fuente['paisNombre'] ?>)
                                         </option>
                                     <?php endwhile; ?>
                                 </select>
@@ -227,7 +229,7 @@
                                         <option
                                         value="<?= $fuente['fuenteId'] ?>"
                                         <?= ($fuente['fuenteId'] == $result['id_canal6']) ? "selected" : "" ?>>
-                                            <?= $fuente['fuenteNombre'] ?>
+                                            <?= $fuente['fuenteNombre'] ?> (<?= $fuente['paisNombre'] ?>)
                                         </option>
                                     <?php endwhile; ?>
                                 </select>
@@ -246,7 +248,7 @@
                                         <option
                                         value="<?= $fuente['fuenteId'] ?>"
                                         <?= ($fuente['fuenteId'] == $result['id_canal7']) ? "selected" : "" ?>>
-                                            <?= $fuente['fuenteNombre'] ?>
+                                            <?= $fuente['fuenteNombre'] ?> (<?= $fuente['paisNombre'] ?>)
                                         </option>
                                     <?php endwhile; ?>
                                 </select>
@@ -265,7 +267,7 @@
                                         <option
                                         value="<?= $fuente['fuenteId'] ?>"
                                         <?= ($fuente['fuenteId'] == $result['id_canal8']) ? "selected" : "" ?>>
-                                            <?= $fuente['fuenteNombre'] ?>
+                                            <?= $fuente['fuenteNombre'] ?> (<?= $fuente['paisNombre'] ?>)
                                         </option>
                                     <?php endwhile; ?>
                                 </select>
@@ -284,7 +286,7 @@
                                         <option
                                         value="<?= $fuente['fuenteId'] ?>"
                                         <?= ($fuente['fuenteId'] == $result['id_canal9']) ? "selected" : "" ?>>
-                                            <?= $fuente['fuenteNombre'] ?>
+                                            <?= $fuente['fuenteNombre'] ?> (<?= $fuente['paisNombre'] ?>)
                                         </option>
                                     <?php endwhile; ?>
                                 </select>
@@ -303,7 +305,7 @@
                                         <option
                                         value="<?= $fuente['fuenteId'] ?>"
                                         <?= ($fuente['fuenteId'] == $result['id_canal10']) ? "selected" : "" ?>>
-                                            <?= $fuente['fuenteNombre'] ?>
+                                            <?= $fuente['fuenteNombre'] ?> (<?= $fuente['paisNombre'] ?>)
                                         </option>
                                     <?php endwhile; ?>
                                 </select>
