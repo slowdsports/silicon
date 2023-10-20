@@ -5,12 +5,13 @@ function mostrarCanales($query)
     $channels = mysqli_query($conn, $query);
     while ($result = mysqli_fetch_assoc($channels)) {
         $canalId = $result['canalId'];
+        $fuenteId = $result['fuenteId'];
         $canalImg = $result['canalImg'];
-        $canalNombre = $result['canalNombre'];
+        $canalNombre = $result['fuenteNombre'];
         $canalCategoria = $result['categoriaNombre'];
         ?>
         <div class="canal mycard col-xs-6 col-sm-6 col-md-4 col-lg-3 col-xl-2">
-            <a href="?p=tv&c=<?= $canalId ?>">
+            <a href="?p=tv&c=<?= $canalId ?>&f=<?= $fuenteId ?>">
                 <div class="card border-0 shadow-sm card-hover card-hover-primary">
                     <div class="card-header">
                         <img class="card-img-canal" src="assets/img/canales/<?= $canalImg ?>.png" alt="Card image">
@@ -31,24 +32,19 @@ function mostrarCanales($query)
 
 // Sección de Canales
 if (isset($_GET['p']) && $_GET['p'] == "tv") {
-    $query = "SELECT * FROM canales
-    INNER JOIN categorias ON canales.canalCategoria = categorias.categoriaId
-    WHERE canalTipo != 12
-    ORDER BY RAND()";
+    $query = "SELECT canales.canalId, canales.canalNombre, canales.epg, canales.canalImg, canales.canalCategoria, fuentes.fuenteId, fuentes.fuenteNombre, fuentes.canalUrl, fuentes.key, fuentes.key2, fuentes.pais, fuentes.tipo, categorias.categoriaNombre
+    FROM canales
+    INNER JOIN fuentes ON canales.canalId = fuentes.canal
+    INNER JOIN categorias ON canales.canalCategoria = categorias.categoriaId";
     mostrarCanales($query);
-} elseif ($canalTipo) {
-    $channels = mysqli_query($conn, "SELECT * FROM canales
-    INNER JOIN categorias ON canales.canalCategoria = categorias.categoriaId
-    INNER JOIN paises ON canales.canalPais = paises.paisId
-    WHERE canalTipo = '$canalTipo' and canalCategoria='$canalCategoria'
-    ORDER BY RAND()
-    DESC LIMIT 18");
 } else {
-    // Canales Deportivos - Home
-    $query = "SELECT * FROM canales
+    $query = "SELECT canales.canalId, canales.canalNombre, canales.epg, canales.canalImg, canales.canalCategoria, fuentes.fuenteId, fuentes.fuenteNombre, fuentes.canalUrl, fuentes.key, fuentes.key2, fuentes.pais, fuentes.tipo, categorias.categoriaNombre
+    FROM canales
+    INNER JOIN fuentes ON canales.canalId = fuentes.canal
     INNER JOIN categorias ON canales.canalCategoria = categorias.categoriaId
-    WHERE canalCategoria = 11 AND canalTipo IN ('6','9','11')
-    ORDER BY RAND() DESC LIMIT 18";
+    WHERE canales.canalCategoria = 11
+    ORDER BY RAND()
+    LIMIT 18";
     mostrarCanales($query);
 }
 ?>
