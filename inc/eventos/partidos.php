@@ -16,54 +16,52 @@ $ligaNombre = $result['ligaNombre'];
             e1.equipoId AS id_local, e1.equipoNombre AS equipo_local,
             e2.equipoId AS id_visitante, e2.equipoNombre AS equipo_visitante,
             e3.ligaNombre AS partido_liga,
-            c1.canalId AS id_canal1, c1.canalNombre AS nombre_canal1,
+            f1.fuenteId AS id_canal1, f1.fuenteNombre AS nombre_canal1, f1.canal AS canal_canal1,
             p1.paisNombre AS pais_canal1,
-            c2.canalId AS id_canal2, c2.canalNombre AS nombre_canal2,
+            f2.fuenteId AS id_canal2, f2.fuenteNombre AS nombre_canal2, f2.canal AS canal_canal2,
             p2.paisNombre AS pais_canal2,
-            c3.canalId AS id_canal3, c3.canalNombre AS nombre_canal3,
+            f3.fuenteId AS id_canal3, f3.fuenteNombre AS nombre_canal3, f3.canal AS canal_canal3,
             p3.paisNombre AS pais_canal3,
-            c4.canalId AS id_canal4, c4.canalNombre AS nombre_canal4,
+            f4.fuenteId AS id_canal4, f4.fuenteNombre AS nombre_canal4, f4.canal AS canal_canal4,
             p4.paisNombre AS pais_canal4,
-            c5.canalId AS id_canal5, c5.canalNombre AS nombre_canal5,
+            f5.fuenteId AS id_canal5, f5.fuenteNombre AS nombre_canal5, f5.canal AS canal_canal5,
             p5.paisNombre AS pais_canal5,
-            c6.canalId AS id_canal6, c6.canalNombre AS nombre_canal6,
+            f6.fuenteId AS id_canal6, f6.fuenteNombre AS nombre_canal6, f6.canal AS canal_canal6,
             p6.paisNombre AS pais_canal6,
-            c7.canalId AS id_canal7, c7.canalNombre AS nombre_canal7,
+            f7.fuenteId AS id_canal7, f7.fuenteNombre AS nombre_canal7, f7.canal AS canal_canal7,
             p7.paisNombre AS pais_canal7,
-            c8.canalId AS id_canal8, c8.canalNombre AS nombre_canal8,
+            f8.fuenteId AS id_canal8, f8.fuenteNombre AS nombre_canal8, f8.canal AS canal_canal8,
             p8.paisNombre AS pais_canal8,
-            c9.canalId AS id_canal9, c9.canalNombre AS nombre_canal9,
+            f9.fuenteId AS id_canal9, f9.fuenteNombre AS nombre_canal9, f9.canal AS canal_canal9,
             p9.paisNombre AS pais_canal9,
-            c10.canalId AS id_canal10, c10.canalNombre AS nombre_canal10,
+            f10.fuenteId AS id_canal10, f10.fuenteNombre AS nombre_canal10, f10.canal AS canal_canal10,
             p10.paisNombre AS pais_canal10
             FROM partidos p
             JOIN equipos e1 ON p.local = e1.equipoId
             JOIN equipos e2 ON p.visitante = e2.equipoId
             JOIN ligas e3 ON p.liga = e3.ligaId
-            LEFT JOIN canales c1 ON p.canal1 = c1.canalId
-            LEFT JOIN paises p1 ON c1.canalPais = p1.paisId
-            LEFT JOIN canales c2 ON p.canal2 = c2.canalId
-            LEFT JOIN paises p2 ON c1.canalPais = p2.paisId
-            LEFT JOIN canales c3 ON p.canal3 = c3.canalId
-            LEFT JOIN paises p3 ON c1.canalPais = p3.paisId
-            LEFT JOIN canales c4 ON p.canal4 = c4.canalId
-            LEFT JOIN paises p4 ON c1.canalPais = p4.paisId
-            LEFT JOIN canales c5 ON p.canal5 = c5.canalId
-            LEFT JOIN paises p5 ON c1.canalPais = p5.paisId
-            LEFT JOIN canales c6 ON p.canal6 = c6.canalId
-            LEFT JOIN paises p6 ON c1.canalPais = p6.paisId
-            LEFT JOIN canales c7 ON p.canal7 = c7.canalId
-            LEFT JOIN paises p7 ON c1.canalPais = p7.paisId
-            LEFT JOIN canales c8 ON p.canal8 = c8.canalId
-            LEFT JOIN paises p8 ON c1.canalPais = p8.paisId
-            LEFT JOIN canales c9 ON p.canal9 = c9.canalId
-            LEFT JOIN paises p9 ON c1.canalPais = p9.paisId
-            LEFT JOIN canales c10 ON p.canal10 = c10.canalId
-            LEFT JOIN paises p10 ON c1.canalPais = p10.paisId
+            LEFT JOIN fuentes f1 ON p.canal1 = f1.fuenteId
+            LEFT JOIN paises p1 ON f1.pais = p1.paisId
+            LEFT JOIN fuentes f2 ON p.canal2 = f2.fuenteId
+            LEFT JOIN paises p2 ON f2.pais = p2.paisId
+            LEFT JOIN fuentes f3 ON p.canal3 = f3.fuenteId
+            LEFT JOIN paises p3 ON f3.pais = p3.paisId
+            LEFT JOIN fuentes f4 ON p.canal4 = f4.fuenteId
+            LEFT JOIN paises p4 ON f4.pais = p4.paisId
+            LEFT JOIN fuentes f5 ON p.canal5 = f5.fuenteId
+            LEFT JOIN paises p5 ON f5.pais = p5.paisId
+            LEFT JOIN fuentes f6 ON p.canal6 = f6.fuenteId
+            LEFT JOIN paises p6 ON f6.pais = p6.paisId
+            LEFT JOIN fuentes f7 ON p.canal7 = f7.fuenteId
+            LEFT JOIN paises p7 ON f7.pais = p7.paisId
+            LEFT JOIN fuentes f8 ON p.canal8 = f8.fuenteId
+            LEFT JOIN paises p8 ON f8.pais = p8.paisId
+            LEFT JOIN fuentes f9 ON p.canal9 = f9.fuenteId
+            LEFT JOIN paises p9 ON f9.pais = p9.paisId
+            LEFT JOIN fuentes f10 ON p.canal10 = f10.fuenteId
+            LEFT JOIN paises p10 ON f10.pais = p10.paisId
             WHERE liga='$getLiga'
-            ORDER BY
-            fecha_hora asc
-            ");
+            ORDER BY fecha_hora ASC");
             while ($result = mysqli_fetch_array($partidos)) {
                 // Teams
                 $local = $result['equipo_local'];
@@ -74,8 +72,6 @@ $ligaNombre = $result['ligaNombre'];
                 $tipo = $result['tipo'];
                 $starp = $result['starp'];
                 $vix = $result['vix'];
-                $i++;
-                $numero = $i;
                 // Channels Image
                 $ciSearch = $result['id_canal1'];
                 if ($ciSearch == null || $ciSearch == "") {
@@ -93,8 +89,7 @@ $ligaNombre = $result['ligaNombre'];
                         $ciSearch = $result['id_canal6'];
                     }
                 }
-                $ciQuery = mysqli_query($conn, "SELECT * FROM canales
-                WHERE canalId = '$ciSearch'");
+                $ciQuery = mysqli_query($conn, "SELECT canalImg FROM canales WHERE canalId IN (SELECT canal FROM fuentes WHERE fuenteId = '$ciSearch')");
                 $ciResult = mysqli_fetch_array($ciQuery);
                 $canalImg = $ciResult['canalImg'];
                 // Star o Vix
@@ -131,10 +126,10 @@ $ligaNombre = $result['ligaNombre'];
                                             <?= ucfirst($local) ?>
                                         </h4>
                                     </div>
-                                    <div <?= $isEventoHidden ?> class="vs">
+                                    <div class="vs">
                                         <h6>vs</h6>
                                     </div>
-                                    <div <?= $isEventoHidden ?> class="team">
+                                    <div class="team">
                                         <img width="60px"
                                             src="https://api.sofascore.app/api/v1/team/<?= $visitante_id ?>/image" alt="" />
                                         <h4>
@@ -159,7 +154,7 @@ $ligaNombre = $result['ligaNombre'];
                                     ?>
 
                                     <a class="justify-content-center list-group-item list-group-item-action"
-                                        href="?p=tv&<?= $tipo ?>&id=<?= $index ?>&c=<?= $result['id_canal1'] ?>">
+                                        href="?p=tv<?= $tipo ?>&id=<?= $index ?>&c=<?= $result['canal_canal1'] ?>&f=<?= $result['id_canal1'] ?>">
                                         <i class="flag <?= $result['pais_canal1'] ?>"></i>
                                         <?= $result['nombre_canal1'] ?>
                                     </a>
@@ -173,7 +168,7 @@ $ligaNombre = $result['ligaNombre'];
                                     ?>
 
                                     <a class="justify-content-center list-group-item list-group-item-action"
-                                        href="?p=tv&<?= $tipo ?>&id=<?= $index ?>&c=<?= $result['id_canal2'] ?>">
+                                        href="?p=tv<?= $tipo ?>&id=<?= $index ?>&c=<?= $result['canal_canal2'] ?>&f=<?= $result['id_canal2'] ?>">
                                         <i class="flag <?= $result['pais_canal2'] ?>"></i>
                                         <?= $result['nombre_canal2'] ?>
                                     </a>
@@ -187,7 +182,7 @@ $ligaNombre = $result['ligaNombre'];
                                     ?>
 
                                     <a class="justify-content-center list-group-item list-group-item-action"
-                                        href="?p=tv&<?= $tipo ?>&id=<?= $index ?>&c=<?= $result['id_canal3'] ?>">
+                                        href="?p=tv<?= $tipo ?>&id=<?= $index ?>&c=<?= $result['canal_canal3'] ?>&f=<?= $result['id_canal3'] ?>">
                                         <i class="flag <?= $result['pais_canal3'] ?>"></i>
                                         <?= $result['nombre_canal3'] ?>
                                     </a>
@@ -201,7 +196,7 @@ $ligaNombre = $result['ligaNombre'];
                                     ?>
 
                                     <a class="justify-content-center list-group-item list-group-item-action"
-                                        href="?p=tv&<?= $tipo ?>&id=<?= $index ?>&c=<?= $result['id_canal4'] ?>">
+                                        href="?p=tv<?= $tipo ?>&id=<?= $index ?>&c=<?= $result['canal_canal4'] ?>&f=<?= $result['id_canal4'] ?>">
                                         <i class="flag <?= $result['pais_canal4'] ?>"></i>
                                         <?= $result['nombre_canal4'] ?>
                                     </a>
@@ -215,7 +210,7 @@ $ligaNombre = $result['ligaNombre'];
                                     ?>
 
                                     <a class="justify-content-center list-group-item list-group-item-action"
-                                        href="?p=tv&<?= $tipo ?>&id=<?= $index ?>&c=<?= $result['id_canal5'] ?>">
+                                        href="?p=tv<?= $tipo ?>&id=<?= $index ?>&c=<?= $result['canal_canal5'] ?>&f=<?= $result['id_canal5'] ?>">
                                         <i class="flag <?= $result['pais_canal5'] ?>"></i>
                                         <?= $result['nombre_canal5'] ?>
                                     </a>
@@ -229,7 +224,7 @@ $ligaNombre = $result['ligaNombre'];
                                     ?>
 
                                     <a class="justify-content-center list-group-item list-group-item-action"
-                                        href="?p=tv&<?= $tipo ?>&id=<?= $index ?>&c=<?= $result['id_canal6'] ?>">
+                                        href="?p=tv<?= $tipo ?>&id=<?= $index ?>&c=<?= $result['canal_canal6'] ?>&f=<?= $result['id_canal6'] ?>">
                                         <i class="flag <?= $result['pais_canal6'] ?>"></i>
                                         <?= $result['nombre_canal6'] ?>
                                     </a>
@@ -243,7 +238,7 @@ $ligaNombre = $result['ligaNombre'];
                                     ?>
 
                                     <a class="justify-content-center list-group-item list-group-item-action"
-                                        href="?p=tv&<?= $tipo ?>&id=<?= $index ?>&c=<?= $result['id_canal7'] ?>">
+                                        href="?p=tv<?= $tipo ?>&id=<?= $index ?>&c=<?= $result['canal_canal7'] ?>&f=<?= $result['id_canal7'] ?>">
                                         <i class="flag <?= $result['pais_canal7'] ?>"></i>
                                         <?= $result['nombre_canal7'] ?>
                                     </a>
@@ -257,7 +252,7 @@ $ligaNombre = $result['ligaNombre'];
                                     ?>
 
                                     <a class="justify-content-center list-group-item list-group-item-action"
-                                        href="?p=tv&<?= $tipo ?>&id=<?= $index ?>&c=<?= $result['id_canal8'] ?>">
+                                        href="?p=tv<?= $tipo ?>&id=<?= $index ?>&c=<?= $result['canal_canal8'] ?>&f=<?= $result['id_canal8'] ?>">
                                         <i class="flag <?= $result['pais_canal8'] ?>"></i>
                                         <?= $result['nombre_canal8'] ?>
                                     </a>
@@ -271,7 +266,7 @@ $ligaNombre = $result['ligaNombre'];
                                     ?>
 
                                     <a class="justify-content-center list-group-item list-group-item-action"
-                                        href="?p=tv&<?= $tipo ?>&id=<?= $index ?>&c=<?= $result['id_canal9'] ?>">
+                                        href="?p=tv<?= $tipo ?>&id=<?= $index ?>&c=<?= $result['canal_canal9'] ?>&f=<?= $result['id_canal9'] ?>">
                                         <i class="flag <?= $result['pais_canal9'] ?>"></i>
                                         <?= $result['nombre_canal9'] ?>
                                     </a>
@@ -285,7 +280,7 @@ $ligaNombre = $result['ligaNombre'];
                                     ?>
 
                                     <a class="justify-content-center list-group-item list-group-item-action"
-                                        href="?p=tv&<?= $tipo ?>&id=<?= $index ?>&c=<?= $result['id_canal10'] ?>">
+                                        href="?p=tv<?= $tipo ?>&id=<?= $index ?>&c=<?= $result['canal_canal10'] ?>&f=<?= $result['id_canal10'] ?>">
                                         <i class="flag <?= $result['pais_canal10'] ?>"></i>
                                         <?= $result['nombre_canal10'] ?>
                                     </a>
