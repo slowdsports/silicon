@@ -154,7 +154,7 @@ $ligaNombre = $result['ligaNombre'];
                                     ?>
 
                                     <a class="justify-content-center list-group-item list-group-item-action"
-                                        href="?p=tv<?= $tipo ?>&id=<?= $index ?>&c=<?= $result['canal_canal1'] ?>&f=<?= $result['id_canal1'] ?>">
+                                        href="?p=tv&<?= $tipo ?>&id=<?= $index ?>&c=<?= $result['canal_canal1'] ?>&f=<?= $result['id_canal1'] ?>">
                                         <i class="flag <?= $result['pais_canal1'] ?>"></i>
                                         <?= $result['nombre_canal1'] ?>
                                     </a>
@@ -168,7 +168,7 @@ $ligaNombre = $result['ligaNombre'];
                                     ?>
 
                                     <a class="justify-content-center list-group-item list-group-item-action"
-                                        href="?p=tv<?= $tipo ?>&id=<?= $index ?>&c=<?= $result['canal_canal2'] ?>&f=<?= $result['id_canal2'] ?>">
+                                        href="?p=tv&<?= $tipo ?>&id=<?= $index ?>&c=<?= $result['canal_canal2'] ?>&f=<?= $result['id_canal2'] ?>">
                                         <i class="flag <?= $result['pais_canal2'] ?>"></i>
                                         <?= $result['nombre_canal2'] ?>
                                     </a>
@@ -182,7 +182,7 @@ $ligaNombre = $result['ligaNombre'];
                                     ?>
 
                                     <a class="justify-content-center list-group-item list-group-item-action"
-                                        href="?p=tv<?= $tipo ?>&id=<?= $index ?>&c=<?= $result['canal_canal3'] ?>&f=<?= $result['id_canal3'] ?>">
+                                        href="?p=tv&<?= $tipo ?>&id=<?= $index ?>&c=<?= $result['canal_canal3'] ?>&f=<?= $result['id_canal3'] ?>">
                                         <i class="flag <?= $result['pais_canal3'] ?>"></i>
                                         <?= $result['nombre_canal3'] ?>
                                     </a>
@@ -196,7 +196,7 @@ $ligaNombre = $result['ligaNombre'];
                                     ?>
 
                                     <a class="justify-content-center list-group-item list-group-item-action"
-                                        href="?p=tv<?= $tipo ?>&id=<?= $index ?>&c=<?= $result['canal_canal4'] ?>&f=<?= $result['id_canal4'] ?>">
+                                        href="?p=tv&<?= $tipo ?>&id=<?= $index ?>&c=<?= $result['canal_canal4'] ?>&f=<?= $result['id_canal4'] ?>">
                                         <i class="flag <?= $result['pais_canal4'] ?>"></i>
                                         <?= $result['nombre_canal4'] ?>
                                     </a>
@@ -210,7 +210,7 @@ $ligaNombre = $result['ligaNombre'];
                                     ?>
 
                                     <a class="justify-content-center list-group-item list-group-item-action"
-                                        href="?p=tv<?= $tipo ?>&id=<?= $index ?>&c=<?= $result['canal_canal5'] ?>&f=<?= $result['id_canal5'] ?>">
+                                        href="?p=tv&<?= $tipo ?>&id=<?= $index ?>&c=<?= $result['canal_canal5'] ?>&f=<?= $result['id_canal5'] ?>">
                                         <i class="flag <?= $result['pais_canal5'] ?>"></i>
                                         <?= $result['nombre_canal5'] ?>
                                     </a>
@@ -224,7 +224,7 @@ $ligaNombre = $result['ligaNombre'];
                                     ?>
 
                                     <a class="justify-content-center list-group-item list-group-item-action"
-                                        href="?p=tv<?= $tipo ?>&id=<?= $index ?>&c=<?= $result['canal_canal6'] ?>&f=<?= $result['id_canal6'] ?>">
+                                        href="?p=tv&<?= $tipo ?>&id=<?= $index ?>&c=<?= $result['canal_canal6'] ?>&f=<?= $result['id_canal6'] ?>">
                                         <i class="flag <?= $result['pais_canal6'] ?>"></i>
                                         <?= $result['nombre_canal6'] ?>
                                     </a>
@@ -238,7 +238,7 @@ $ligaNombre = $result['ligaNombre'];
                                     ?>
 
                                     <a class="justify-content-center list-group-item list-group-item-action"
-                                        href="?p=tv<?= $tipo ?>&id=<?= $index ?>&c=<?= $result['canal_canal7'] ?>&f=<?= $result['id_canal7'] ?>">
+                                        href="?p=tv&<?= $tipo ?>&id=<?= $index ?>&c=<?= $result['canal_canal7'] ?>&f=<?= $result['id_canal7'] ?>">
                                         <i class="flag <?= $result['pais_canal7'] ?>"></i>
                                         <?= $result['nombre_canal7'] ?>
                                     </a>
@@ -252,7 +252,7 @@ $ligaNombre = $result['ligaNombre'];
                                     ?>
 
                                     <a class="justify-content-center list-group-item list-group-item-action"
-                                        href="?p=tv<?= $tipo ?>&id=<?= $index ?>&c=<?= $result['canal_canal8'] ?>&f=<?= $result['id_canal8'] ?>">
+                                        href="?p=tv&<?= $tipo ?>&id=<?= $index ?>&c=<?= $result['canal_canal8'] ?>&f=<?= $result['id_canal8'] ?>">
                                         <i class="flag <?= $result['pais_canal8'] ?>"></i>
                                         <?= $result['nombre_canal8'] ?>
                                     </a>
@@ -266,7 +266,7 @@ $ligaNombre = $result['ligaNombre'];
                                     ?>
 
                                     <a class="justify-content-center list-group-item list-group-item-action"
-                                        href="?p=tv<?= $tipo ?>&id=<?= $index ?>&c=<?= $result['canal_canal9'] ?>&f=<?= $result['id_canal9'] ?>">
+                                        href="?p=tv&<?= $tipo ?>&id=<?= $index ?>&c=<?= $result['canal_canal9'] ?>&f=<?= $result['id_canal9'] ?>">
                                         <i class="flag <?= $result['pais_canal9'] ?>"></i>
                                         <?= $result['nombre_canal9'] ?>
                                     </a>
@@ -280,7 +280,7 @@ $ligaNombre = $result['ligaNombre'];
                                     ?>
 
                                     <a class="justify-content-center list-group-item list-group-item-action"
-                                        href="?p=tv<?= $tipo ?>&id=<?= $index ?>&c=<?= $result['canal_canal10'] ?>&f=<?= $result['id_canal10'] ?>">
+                                        href="?p=tv&<?= $tipo ?>&id=<?= $index ?>&c=<?= $result['canal_canal10'] ?>&f=<?= $result['id_canal10'] ?>">
                                         <i class="flag <?= $result['pais_canal10'] ?>"></i>
                                         <?= $result['nombre_canal10'] ?>
                                     </a>
