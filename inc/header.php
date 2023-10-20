@@ -210,26 +210,52 @@ if (isset($_COOKIE['usuario_id'])) {
                                 <a href="?p=home" class="nav-link
                                 <?= ($_GET['p'] == 'home') ? 'active' : ''; ?>">Inicio</a>
                             </li>
+                            <?php
+                            $queryFutbol = mysqli_query($conn,"SELECT id FROM partidos WHERE tipo='football'");
+                            $countFutbol = mysqli_num_rows($queryFutbol);
+                            if ($countFutbol > 0):
+                            ?>
                             <li class="nav-item">
                                 <a href="?p=eventos&tipo=football" class="nav-link
                                 <?= ($_GET['tipo'] == 'football') ? 'active' : ''; ?>">Fútbol</a>
                             </li>
+                            <?php endif;
+                            $queryBasket = mysqli_query($conn,"SELECT id FROM partidos WHERE tipo='basketball'");
+                            $countBasket = mysqli_num_rows($queryBasket);
+                            if ($countBasket > 0):
+                            ?>
                             <li class="nav-item">
                                 <a href="?p=eventos&tipo=basketball" class="nav-link
                                 <?= ($_GET['tipo'] == 'basketball') ? 'active' : ''; ?>">Basketball</a>
                             </li>
+                            <?php endif;
+                            $queryNFL = mysqli_query($conn,"SELECT id FROM partidos WHERE tipo='american-football'");
+                            $countNFL = mysqli_num_rows($queryNFL);
+                            if ($countNFL > 0):
+                            ?>
                             <li class="nav-item">
                                 <a href="?p=eventos&tipo=american-football" class="nav-link
                                 <?= ($_GET['tipo'] == 'american-football') ? 'active' : ''; ?>">NFL</a>
                             </li>
+                            <?php endif;
+                            $queryMLB = mysqli_query($conn,"SELECT id FROM partidos WHERE tipo='baseball'");
+                            $countMLB = mysqli_num_rows($queryMLB);
+                            if ($countMLB > 0):
+                            ?>
                             <li class="nav-item">
                                 <a href="?p=eventos&tipo=baseball" class="nav-link
                                 <?= ($_GET['tipo'] == 'baseball') ? 'active' : ''; ?>">Baseball</a>
                             </li>
+                            <?php endif;
+                            $queryTenis = mysqli_query($conn,"SELECT id FROM partidos WHERE tipo='tennis'");
+                            $countTenis = mysqli_num_rows($queryTenis);
+                            if ($countTenis > 0):
+                            ?>
                             <li class="nav-item">
                                 <a href="?p=eventos&tipo=tennis" class="nav-link
                                 <?= ($_GET['tipo'] == 'tennis') ? 'active' : ''; ?>">Tenis</a>
                             </li>
+                            <?php endif; ?>
                             <li class="nav-item">
                                 <a href="?p=tv" class="nav-link
                                 <?= ($_GET['p'] == 'tv') ? 'active' : ''; ?>">TV</a>
