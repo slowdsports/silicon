@@ -35,49 +35,29 @@
                 e2.equipoId AS id_visitante, e2.equipoNombre AS equipo_visitante,
                 e3.ligaNombre AS partido_liga,
                 c1.canalId AS id_canal1, c1.canalNombre AS nombre_canal1,
-                p1.paisNombre AS pais_canal1,
                 c2.canalId AS id_canal2, c2.canalNombre AS nombre_canal2,
-                p2.paisNombre AS pais_canal2,
                 c3.canalId AS id_canal3, c3.canalNombre AS nombre_canal3,
-                p3.paisNombre AS pais_canal3,
                 c4.canalId AS id_canal4, c4.canalNombre AS nombre_canal4,
-                p4.paisNombre AS pais_canal4,
                 c5.canalId AS id_canal5, c5.canalNombre AS nombre_canal5,
-                p5.paisNombre AS pais_canal5,
                 c6.canalId AS id_canal6, c6.canalNombre AS nombre_canal6,
-                p6.paisNombre AS pais_canal6,
                 c7.canalId AS id_canal7, c7.canalNombre AS nombre_canal7,
-                p7.paisNombre AS pais_canal7,
                 c8.canalId AS id_canal8, c8.canalNombre AS nombre_canal8,
-                p8.paisNombre AS pais_canal8,
                 c9.canalId AS id_canal9, c9.canalNombre AS nombre_canal9,
-                p9.paisNombre AS pais_canal9,
-                c10.canalId AS id_canal10, c10.canalNombre AS nombre_canal10,
-                p10.paisNombre AS pais_canal10
+                c10.canalId AS id_canal10, c10.canalNombre AS nombre_canal10
                 FROM partidos p
                 JOIN equipos e1 ON p.local = e1.equipoId
                 JOIN equipos e2 ON p.visitante = e2.equipoId
                 JOIN ligas e3 ON p.liga = e3.ligaId
                 LEFT JOIN canales c1 ON p.canal1 = c1.canalId
-                LEFT JOIN paises p1 ON c1.canalPais = p1.paisId
                 LEFT JOIN canales c2 ON p.canal2 = c2.canalId
-                LEFT JOIN paises p2 ON c1.canalPais = p2.paisId
                 LEFT JOIN canales c3 ON p.canal3 = c3.canalId
-                LEFT JOIN paises p3 ON c1.canalPais = p3.paisId
                 LEFT JOIN canales c4 ON p.canal4 = c4.canalId
-                LEFT JOIN paises p4 ON c1.canalPais = p4.paisId
                 LEFT JOIN canales c5 ON p.canal5 = c5.canalId
-                LEFT JOIN paises p5 ON c1.canalPais = p5.paisId
                 LEFT JOIN canales c6 ON p.canal6 = c6.canalId
-                LEFT JOIN paises p6 ON c1.canalPais = p6.paisId
                 LEFT JOIN canales c7 ON p.canal7 = c7.canalId
-                LEFT JOIN paises p7 ON c1.canalPais = p7.paisId
                 LEFT JOIN canales c8 ON p.canal8 = c8.canalId
-                LEFT JOIN paises p8 ON c1.canalPais = p8.paisId
                 LEFT JOIN canales c9 ON p.canal9 = c9.canalId
-                LEFT JOIN paises p9 ON c1.canalPais = p9.paisId
                 LEFT JOIN canales c10 ON p.canal10 = c10.canalId
-                LEFT JOIN paises p10 ON c1.canalPais = p10.paisId
                 ORDER BY
                 fecha_hora ASC
                 ");
@@ -103,47 +83,36 @@
                 // Calculamos que los juegos sean para hoy y los mostramos
                 if ($mm_0 === $mm_1):
                     if ($dd_0 === $dd_1):
-                        $pais = $result['partido_pais'];
                         // Canales
                         $canal1_id = $result['id_canal1'];
                         $canal1_nombre = $result['nombre_canal1'];
-                        $canal1_pais = $result['pais_canal1'];
 
                         $canal2_id = $result['id_canal2'];
                         $canal2_nombre = $result['nombre_canal2'];
-                        $canal2_pais = $result['pais_canal2'];
 
                         $canal3_id = $result['id_canal3'];
                         $canal3_nombre = $result['nombre_canal3'];
-                        $canal3_pais = $result['pais_canal3'];
 
                         $canal4_id = $result['id_canal4'];
                         $canal4_nombre = $result['nombre_canal4'];
-                        $canal4_pais = $result['pais_canal4'];
 
                         $canal5_id = $result['id_canal5'];
                         $canal5_nombre = $result['nombre_canal5'];
-                        $canal5_pais = $result['pais_canal5'];
 
                         $canal6_id = $result['id_canal6'];
                         $canal6_nombre = $result['nombre_canal6'];
-                        $canal6_pais = $result['pais_canal6'];
 
                         $canal7_id = $result['id_canal7'];
                         $canal7_nombre = $result['nombre_canal7'];
-                        $canal7_pais = $result['pais_canal7'];
 
                         $canal8_id = $result['id_canal8'];
                         $canal8_nombre = $result['nombre_canal8'];
-                        $canal8_pais = $result['pais_canal8'];
 
                         $canal9_id = $result['id_canal9'];
                         $canal9_nombre = $result['nombre_canal9'];
-                        $canal9_pais = $result['pais_canal9'];
 
                         $canal10_id = $result['id_canal10'];
                         $canal10_nombre = $result['nombre_canal10'];
-                        $canal10_pais = $result['pais_canal10'];
                         ?>
                         <!-- Item -->
                         <div class="swiper-slide h-auto py-3" data-id="<?= $index ?>">
@@ -173,8 +142,8 @@
                                                     class="image" alt="image">
                                                 <!-- <h4><?= ucfirst($local) ?></h4> -->
                                             </div>
-                                            <h5 <?= $isMotor ?> class="vs">vs</h5>
-                                            <div <?= $isMotor ?> class="team">
+                                            <h5 class="vs">vs</h5>
+                                            <div class="team">
                                                 <img src="https://api.sofascore.app/api/v1/team/<?= $visitante_id ?>/image"
                                                     class="image" alt="image">
                                                 <!-- <h4><?= ucfirst($visitante) ?></h4> -->
