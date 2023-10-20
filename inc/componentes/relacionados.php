@@ -44,8 +44,9 @@ if (isset($_GET['c'])) {
                     $channels = mysqli_query($conn, $query);
                     while ($result = mysqli_fetch_assoc($channels)) {
                         $canalId = $result['canalId'];
+                        $fuenteId = $result['fuenteId'];
                         $canalImg = $result['canalImg'];
-                        $canalNombre = $result['canalNombre'];
+                        $canalNombre = $result['fuenteNombre'];
                         $canalCategoria = $result['categoriaNombre'];
                         ?>
                         <!-- Item -->
@@ -56,7 +57,7 @@ if (isset($_GET['c'])) {
                                     <span class="badge bg-dark position-absolute bottom-0 end-0 zindex-2 mb-3 me-3">
                                         <?= $canalCategoria ?>
                                     </span>
-                                    <a href="?p=tv&c=<?= $canalId ?>"
+                                    <a href="?p=tv&c=<?= $canalId ?>&f=<?= $fuenteId ?>"
                                         class="position-absolute top-0 start-0 w-100 h-100 bg-primary opacity-35 rounded-3"
                                         aria-label="Listen podcast"></a>
                                     <img style="height: 50px!important" src="assets/img/canales/<?= $canalImg ?>.png"
@@ -64,13 +65,13 @@ if (isset($_GET['c'])) {
                                     <br><br><br><br>
                                 </div>
                                 <h3 class="h5">
-                                    <a href="?p=tv&c=<?= $canalId ?>">
+                                    <a href="?p=tv&c=<?= $canalId ?>&f=<?= $fuenteId ?>">
                                         <?= $canalNombre ?>
                                     </a>
                                 </h3>
                                 <div class="d-flex align-items-center text-muted">
                                 </div>
-                                <a href="?p=tv&c=<?= $canalId ?>" class="btn btn-link px-0 mt-3">
+                                <a href="?p=tv&c=<?= $canalId ?>&f=<?= $fuenteId ?>" class="btn btn-link px-0 mt-3">
                                     <i class="bx bx-play-circle fs-lg me-2"></i>
                                     Ver ahora
                                 </a>
@@ -79,7 +80,9 @@ if (isset($_GET['c'])) {
                     <?php }
                 }
                 // Sección de Canales
-                $query = "SELECT * FROM canales
+                $query = "SELECT canales.canalId, canales.canalNombre, canales.epg, canales.canalImg, canales.canalCategoria, fuentes.fuenteId, fuentes.fuenteNombre, fuentes.canalUrl, fuentes.key, fuentes.key2, fuentes.pais, fuentes.tipo, categorias.categoriaNombre
+                FROM canales
+                INNER JOIN fuentes ON canales.canalId = fuentes.canal
                 INNER JOIN categorias ON canales.canalCategoria = categorias.categoriaId
                 WHERE canalCategoria='$categoria'
                 ORDER BY RAND()
