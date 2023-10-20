@@ -7,13 +7,11 @@
             Fuente
         </button>
         <div class="dropdown-menu mx-1">
-            <a href="?p=tv&c=<?=$canalId?>" class="dropdown-item <?= (!isset($_GET['f'])) ? "active" : ""; ?>">
-                Principal
+            <a href="javascript:void(0)" class="dropdown-item">
+                Fuentes: <?=$canalNombre?>
             </a>
             <hr class="dropdown-divider">
             <?php
-            // error_reporting(E_ALL);
-            // ini_set('display_errors', '1');
             $fuentes = mysqli_query($conn, "SELECT * FROM fuentes
             WHERE canal = $canal");
             while ($result = mysqli_fetch_assoc($fuentes)):
