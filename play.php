@@ -14,9 +14,6 @@ if (isset($_GET['c'])) {
     $canalNombre = $result['canalNombre'];
     $canalCategoria = $result['categoriaNombre'];
     $categoria = $result['categoriaId'];
-    $canalUrl = $result['canalUrl'];
-    $canalPais = $result['canalPais'];
-    $canalTipo = $result['canalTipo'];
     // Fuentes Alternas
     if (isset($_GET['f'])) {
         $canalAlt = $_GET['f'];
@@ -31,8 +28,12 @@ if (isset($_GET['c'])) {
         $canalCategoria = $result['categoriaNombre'];
         $categoria = $result['categoriaId'];
         $canalUrl = $result['canalUrl'];
-        $canalPais = $result['canalPais'];
+        $canalPais = $result['pais'];
         $canalTipo = $result['tipo'];
+        // Verificar que "c" coincida en BD
+        if ($canal !== $result['canal']) {
+            $canal = $result['canal'];
+        }
     }
 }
 // Verificar tipo
@@ -93,6 +94,14 @@ if (isset($_GET['title'])) {
                             // Si la URL no es válida, mostrar un mensaje de error o redirigir a una página de error
                             $src = "class='embed-responsive-item' width='100%' height='100%' frameborder='0' scrolling='no' allowfullscreen allow-encrypted-media src='ruta/a/pagina/de/error'";
                         }
+                    } elseif (isset($_GET['r']) && isset($_GET['img']) ) {
+                        $config = $configurations['r'];
+                        // Construir los parámetros para la URL del iframe
+                        $params = implode("&", array_map(function ($param) {
+                            return isset($_GET[$param]) ? "{$param}={$_GET[$param]}" : "";
+                        }, $config[1]));
+                        // Construir la URL del iframe con la configuración correspondiente
+                        $src = "class='embed-responsive-item' width='100%' height='100%' frameborder='0' scrolling='no' allowfullscreen allow-encrypted-media src='inc/reproductor/{$config[0]}?{$params}'";
                     } elseif (isset($canalTipo) && isset($configurations[$canalTipo])) {
                         // Obtener el tipo de canal de la base de datos y verificar si existe en las configuraciones
                         $config = $configurations[$canalTipo];
@@ -116,7 +125,7 @@ if (isset($_GET['title'])) {
                 </div>
             </div>
             <hr class="mb-4">
-            <?php include('inc/ads/related-ad.php'); ?>
+            <?php (isset($_GET['c']) ? include('inc/componentes/fuentes.php') : '' );  include('inc/ads/related-ad.php'); ?>
         </div>
 
         <!-- Votos -->
@@ -183,9 +192,37 @@ if (isset($_GET['title'])) {
                 <!-- Chat -->
                 <div class="rounded-3">
                     <iframe id="twitch-chat-embed" class="rounded-3"
-                        src="https://www.twitch.tv/embed/iraffletv/chat?parent=127.0.0.1&parent=irtvhn.info&darkpopout"
+                        src
                         height="560" width="100%">
                     </iframe>
+                    <script>
+                    const twitchChat = document.getElementById('twitch-chat-embed');
+                    const themeSwitch = document.querySelector('[data-bs-toggle="mode"]');
+                    const checkbox = themeSwitch.querySelector('.form-check-input');
+
+                    // Función para cambiar el modo del chat de Twitch
+                    function toggleChatMode() {
+                        const isDarkMode = checkbox.checked;
+                        const chatMode = isDarkMode ? 'darkpopout' : '';
+                        twitchChat.src = `https://www.twitch.tv/embed/iraffletv/chat?parent=127.0.0.1&parent=irtvhn.info&${chatMode}`;
+
+                        // Guardar la preferencia del usuario en localStorage
+                        window.localStorage.setItem('chatMode', chatMode);
+                    }
+
+                    // Configurar el evento clic para cambiar el modo del chat de Twitch
+                    themeSwitch.addEventListener('click', toggleChatMode);
+
+                    // Cargar el chat con la preferencia del usuario desde localStorage
+                    const savedChatMode = window.localStorage.getItem('chatMode');
+                    if (savedChatMode) {
+                        twitchChat.src = `https://www.twitch.tv/embed/iraffletv/chat?parent=127.0.0.1&parent=irtvhn.info&${savedChatMode}`;
+                        checkbox.checked = savedChatMode === 'darkpopout';
+                    } else {
+                        // Si no hay preferencia guardada, cargar el chat con el modo predeterminado
+                        toggleChatMode();
+                    }
+                </script>
                 </div>
             </div>
         </div>
