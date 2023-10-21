@@ -102,7 +102,7 @@ var textEnd = "Finalizó";
         }
     } else if (hours<?=$index?> == 0 && minutes<?=$index?> == 0){
         for (const ele of document.getElementsByClassName("cntdwn-<?=$index?>")){
-            ele.innerHTML = (seconds<?=$index?> + "s")
+            ele.innerHTML = (minutes<?=$index?> + "m " + seconds<?=$index?> + "s")
         }
     } else {
         for (const ele of document.getElementsByClassName("cntdwn-<?=$index?>")){
