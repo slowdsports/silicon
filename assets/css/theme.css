@@ -103,6 +103,11 @@ body {
   visibility: hidden;
 }
 
+/* Asegúrate de agregar esta regla CSS para las columnas */
+.col-lg-9, .col-lg-12, .col-lg-3 {
+  transition: all 0.3s ease;
+}
+
 #playerFake {
   background-color: #000;
   box-shadow: 2px 2px 8px 2px #6366f1;

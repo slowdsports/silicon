@@ -52,7 +52,7 @@ if (isset($_GET['title'])) {
     <div class="row gy-4">
 
         <!-- Content -->
-        <div class="col-lg-9">
+        <div id="playerCol" class="col-lg-9">
             <h2 class="h4">
                 Ver
                 <?= ucwords($canalNombre) ?> En Vivo
@@ -106,7 +106,7 @@ if (isset($_GET['title'])) {
                         $src = "id='embed-player' class='embed-responsive-item' width='100%' height='100%' frameborder='0' scrolling='no' allowfullscreen allow-encrypted-media src='inc/reproductor/{$config[0]}?{$params}'";
                     }
                     // Configurar los claro
-                    if (strpos($canalUrl, "claro" )) {
+                    if (strpos($canalUrl, "claro")) {
                         $canalUrl = base64_encode($result['canalUrl']);
                         $key = $result['key'];
                         $key2 = $result['key2'];
@@ -134,12 +134,23 @@ if (isset($_GET['title'])) {
                 </div>
             </div>
             <hr class="mb-4">
-            <?php (isset($_GET['c']) ? include('inc/componentes/fuentes.php') : '');
-            include('inc/ads/related-ad.php'); ?>
+            <div class="row">
+                <?php (isset($_GET['c']) ? include('inc/componentes/fuentes.php') : ''); ?>
+                <div class="col-6">
+                    <!-- Toggle Size Player -->
+                    <div class="d-flex justify-content-end">
+                        <div class="form-check form-switch mode-switch pe-lg-1 ms-auto me-4" >
+                            <input type="checkbox" class="form-check-input" id="expandirBtn" data-bs-toggle="tooltip" data-bs-placement="top" title="Cambiar modo teatro">
+                            <label class="form-check-label d-none d-sm-block" for="expandirBtn">Normal</label>
+                            <label class="form-check-label d-none d-sm-block" for="expandirBtn">Teatro</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- Votos -->
-        <div class="col-lg-3 position-relative">
+        <div id="chatCol" class="col-lg-3 position-relative">
             <div class="sticky-top " style="top: 105px !important;">
                 <?php if (isset($_SESSION['usuario_id']) && isset($_GET['c'])): ?>
                     <div class="row text-center">
@@ -203,33 +214,9 @@ if (isset($_GET['title'])) {
                 <div class="rounded-3">
                     <iframe id="twitch-chat-embed" class="rounded-3" src height="560" width="100%">
                     </iframe>
+                    <script src="assets/js/playconfig.js"></script>
                     <script>
-                        const twitchChat = document.getElementById('twitch-chat-embed');
-                        const themeSwitch = document.querySelector('[data-bs-toggle="mode"]');
-                        const checkbox = themeSwitch.querySelector('.form-check-input');
 
-                        // Función para cambiar el modo del chat de Twitch
-                        function toggleChatMode() {
-                            const isDarkMode = checkbox.checked;
-                            const chatMode = isDarkMode ? 'darkpopout' : '';
-                            twitchChat.src = `https://www.twitch.tv/embed/iraffletv/chat?parent=127.0.0.1&parent=irtvhn.info&${chatMode}`;
-
-                            // Guardar la preferencia del usuario en localStorage
-                            window.localStorage.setItem('chatMode', chatMode);
-                        }
-
-                        // Configurar el evento clic para cambiar el modo del chat de Twitch
-                        themeSwitch.addEventListener('click', toggleChatMode);
-
-                        // Cargar el chat con la preferencia del usuario desde localStorage
-                        const savedChatMode = window.localStorage.getItem('chatMode');
-                        if (savedChatMode) {
-                            twitchChat.src = `https://www.twitch.tv/embed/iraffletv/chat?parent=127.0.0.1&parent=irtvhn.info&${savedChatMode}`;
-                            checkbox.checked = savedChatMode === 'darkpopout';
-                        } else {
-                            // Si no hay preferencia guardada, cargar el chat con el modo predeterminado
-                            toggleChatMode();
-                        }
                     </script>
                 </div>
             </div>
