@@ -236,8 +236,7 @@ if (isset($_GET['title'])) {
                         <!-- Chat -->
                         <div class="rounded-3">
                             <!-- <iframe id="twitch-chat-embed" class="rounded-3" src height="560" width="100%"></iframe> -->
-                            <span id="twitch-chat-embed"></span>
-                            <script async src="https://comments.app/js/widget.js?3" data-comments-app-website="c5_L7xYi" data-limit="25" data-height="560" data-color="F646A4" data-dislikes="1" data-colorful="1" data-dark="1"></script>
+                            <iframe id="twitch-chat-embed" class="rounded-3" src height="560" width="100%"></iframe>
                         </div>
                     </div>
                 </div>
