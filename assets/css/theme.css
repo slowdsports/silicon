@@ -99,6 +99,22 @@ body {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+#logo {
+  width: 65px;
+  height: 65px;
+  background-size: cover;
+  background-image: url('../img/logob.png');
+  margin-right: 5px;
+}
+
+.dark-mode #logo {
+  width: 65px;
+  height: 65px;
+  background-size: cover;
+  background-image: url('../img/logow.png');
+  margin-right: 5px;
+}
+
 .hidden {
   visibility: hidden;
 }

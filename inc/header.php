@@ -196,7 +196,7 @@ if (isset($_COOKIE['usuario_id'])) {
         <header class="header navbar navbar-expand-lg bg-light navbar-sticky">
             <div class="container px-3">
                 <a href="?p=home" class="navbar-brand pe-3">
-                    <img src="assets/img/logo.png" width="47" alt="iRaffle TV">
+                    <div id="logo" alt="iRaffle TV"></div>
                     iRaffle TV
                 </a>
                 <div id="navbarNav" class="offcanvas offcanvas-end">
