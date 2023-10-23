@@ -235,8 +235,8 @@ if (isset($_GET['title'])) {
                     <div class="tab-pane fade" id="chat-tab-pane" role="tabpanel" aria-labelledby="chat-tab" tabindex="0">
                         <!-- Chat -->
                         <div class="rounded-3">
-                            <iframe id="twitch-chat-embed" class="rounded-3" src height="560" width="100%">
-                            </iframe>
+                            <!-- <iframe id="twitch-chat-embed" class="rounded-3" src height="560" width="100%"></iframe> -->
+                            <script async src="//comments.app/js/widget.js?3" data-comments-app-website="c5_L7xYi" data-limit="5"></script>
                         </div>
                     </div>
                 </div>
