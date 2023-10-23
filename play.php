@@ -111,7 +111,7 @@ if (isset($_GET['title'])) {
                         // Configurar los claro
                         if (strpos($canalUrl, "clarovideo")) {
                             $canalUrl = base64_encode($result['canalUrl']);
-                            $key = $result['key1'];
+                            $key = $result['key'];
                             $key2 = $result['key2'];
                             $src = "id='embed-player' class='embed-responsive-item' width='100%' height='100%' frameborder='0' scrolling='no' allowfullscreen allow-encrypted-media src='//clarovideo.irtvhn.info?get='.$canalUrl.'&key=' . $key .'&key2=' .$key2 ";
                         }
