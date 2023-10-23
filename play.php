@@ -139,7 +139,7 @@ if (isset($_GET['title'])) {
                 <div class="col-6">
                     <!-- Toggle Size Player -->
                     <div class="d-flex justify-content-end">
-                        <div class="form-check form-switch mode-switch pe-lg-1 ms-auto me-4" >
+                        <div class="form-check form-switch mode-switch pe-lg-1 ms-auto me-4">
                             <input type="checkbox" class="form-check-input" id="expandirBtn" data-bs-toggle="tooltip" data-bs-placement="top" title="Cambiar modo teatro">
                             <label class="form-check-label d-none d-sm-block" for="expandirBtn">Normal</label>
                             <label class="form-check-label d-none d-sm-block" for="expandirBtn">Teatro</label>

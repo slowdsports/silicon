@@ -1,47 +1,41 @@
 // TEATRO //
-const expandirBtn = document.getElementById("expandirBtn");
+const expandirCheckbox = document.getElementById("expandirBtn");
 const reproductorColumna = document.getElementById("playerCol");
 const chatColumna = document.getElementById("chatCol");
 
-// Función para expandir las columnas
+// Función para expandir o retraer las columnas según el estado del checkbox
 function expandirColumnas() {
-    // Verificar si las columnas ya están expandidas
-    const estanExpandidas = reproductorColumna.classList.contains("col-lg-12");
+    const estaExpandido = expandirCheckbox.checked;
 
-    // Cambiar las clases de las columnas según el estado actual
-    if (!estanExpandidas) {
+    // Cambiar las clases de las columnas según el estado del checkbox
+    if (estaExpandido) {
         // Expandir las columnas
         reproductorColumna.classList.remove("col-lg-9");
         reproductorColumna.classList.add("col-lg-12");
         chatColumna.classList.remove("col-lg-3");
         chatColumna.classList.add("col-lg-12");
-
-        // Cambiar el contenido del botón a "retractar"
-        expandirBtn.innerHTML = '<i class="fas fa-compress"></i><span>Retractar</span>';
     } else {
         // Retraer las columnas
         reproductorColumna.classList.remove("col-lg-12");
         reproductorColumna.classList.add("col-lg-9");
         chatColumna.classList.remove("col-lg-12");
         chatColumna.classList.add("col-lg-3");
-
-        // Cambiar el contenido del botón a "expandir"
-        expandirBtn.innerHTML = '<i class="fas fa-expand"></i><span>Expandir</span>';
     }
 
-    // Guardar la elección del usuario en LocalStorage
-    localStorage.setItem("columnasExpandidas", !estanExpandidas);
+    // Guardar el estado del checkbox en LocalStorage
+    localStorage.setItem("columnasExpandidas", estaExpandido);
 }
 
 // Verificar si el usuario ya ha hecho una elección anteriormente
-const columnasExpandidas = JSON.parse(localStorage.getItem("columnasExpandidas"));
-if (columnasExpandidas) {
-    // Si las columnas estaban expandidas, expandirlas nuevamente
+const estaExpandido = JSON.parse(localStorage.getItem("columnasExpandidas"));
+if (estaExpandido) {
+    // Si las columnas estaban expandidas, marcar el checkbox como seleccionado y expandir las columnas
+    expandirCheckbox.checked = true;
     expandirColumnas();
 }
 
-// Agrega un evento de clic al botón para llamar a la función cuando se hace clic
-expandirBtn.addEventListener("click", expandirColumnas);
+// Agrega un evento de cambio al checkbox para llamar a la función cuando se cambia su estado
+expandirCheckbox.addEventListener("change", expandirColumnas);
 
 
 // CHAT //
