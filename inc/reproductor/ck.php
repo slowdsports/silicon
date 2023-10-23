@@ -133,6 +133,7 @@ if ($canalTipo == 9) {
         // Clarovideo
     } elseif (strpos($canalUrl, "clarovideo")) {
         $base = "//clarovideo.irtvhn.info?get=";
+        $canalUrl = base64_encode($canalUrl);
         $canalUrl = $base . $canalUrl . "&key=" . $key1 . "&key2=" . $key2;
         ?>
         <iframe src="<?=$canalUrl?>" frameborder="0"></iframe>
