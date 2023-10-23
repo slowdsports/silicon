@@ -18,6 +18,8 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script src="//ssl.p.jwpcdn.com/player/v/8.24.0/jwplayer.js"></script>
 <script>jwplayer.key = 'XSuP4qMl+9tK17QNb+4+th2Pm9AWgMO/cYH8CI0HGGr7bdjo';</script>
+<script src="//cdn.jsdelivr.net/npm/console-ban@5.0.0/dist/console-ban.min.js"></script>
+<!-- <script> ConsoleBan.init({ redirect: '../../?p=404'}); </script> -->
 
 <style>
     body {
@@ -128,9 +130,16 @@ if ($canalTipo == 9) {
         </div>
         <script src="../../assets/js/reproductores/dtv.js"></script>
         <?php
+        // Clarovideo
+    } elseif (strpos($canalUrl, "clarovideo")) {
+        $canalUrl = "//clarovideo.irtvhn.info?get=";
+        $canalUrl .= $canalUrl . "&key=" . $key1 . "&key2=" . $key2;
+        ?>
+        <iframe src="<?=$canalUrl?>" frameborder="0"></iframe>
+    <?php
     } else {
         // Requieren JW
-        if (strpos($canalUrl, "dazn-cdn") ||strpos($canalUrl, "livewwdazn") || strpos($canalUrl, "director.streaming") || strpos($canalUrl, "izzigo.") || strpos($canalUrl, "vidgo.com")  || strpos($canalUrl, "tglmp") || strpos($canalUrl, "live-nl-") || strpos($canalUrl, "upcbroadband") || strpos($canalUrl, "ssc-") || strpos($canalUrl, "latamvosliveclarovideo")) {
+        if (strpos($canalUrl, "dazn-cdn") ||strpos($canalUrl, "livewwdazn") || strpos($canalUrl, "director.streaming") || strpos($canalUrl, "izzigo.") || strpos($canalUrl, "vidgo.com")  || strpos($canalUrl, "tglmp") || strpos($canalUrl, "live-nl-") || strpos($canalUrl, "upcbroadband") || strpos($canalUrl, "ssc-")) {
             // Vidgo Requiere Proxy
             if (strpos($canalUrl, "vidgo.com")) {
                 $canalUrl = "https://slowdus.herokuapp.com/" . $canalUrl;
