@@ -60,7 +60,8 @@ if (isset($_GET['title'])) {
             <!-- Reproductor -->
             <div class="gallery mb-4 pb-2">
                 <a id="playerFake"
-                href="https://www.highcpmrevenuegate.com/mkd1fhhe?key=81193c57b7f58377107604b71a3e49aa" target="_blank">
+                    href="https://www.highcpmrevenuegate.com/mkd1fhhe?key=81193c57b7f58377107604b71a3e49aa"
+                    target="_blank">
                     <img class="img-fluid" src="assets/img/player_img.png" alt="">
                 </a>
                 <div class="embed-responsive embed-responsive-16by9 hidden" id="playerContainer">
@@ -75,6 +76,7 @@ if (isset($_GET['title'])) {
                         'mlb' => ["", ['ifr']],
                         'evento' => ["", ['ifr']],
                         'hls' => ["hls.php", ['c']],
+                        '10' => ["twitch.php", ['c', 'f']],
                         '11' => ["ckm.php", ['c', 'f']],
                         '12' => ["mplus.php", ['c', 'f']],
                         '9' => ["ck.php", ['c', 'f']],
@@ -89,33 +91,42 @@ if (isset($_GET['title'])) {
                         // Validar la URL antes de mostrarla en el iframe
                         if (filter_var($decodedIfr, FILTER_VALIDATE_URL)) {
                             // Si la URL es válida, mostrarla en el iframe
-                            $src = "class='embed-responsive-item' width='100%' height='100%' frameborder='0' scrolling='no' allowfullscreen allow-encrypted-media src='{$decodedIfr}'";
+                            $src = "id='embed-player' class='embed-responsive-item' width='100%' height='100%' frameborder='0' scrolling='no' allowfullscreen allow-encrypted-media src='{$decodedIfr}'";
                         } else {
                             // Si la URL no es válida, mostrar un mensaje de error o redirigir a una página de error
-                            $src = "class='embed-responsive-item' width='100%' height='100%' frameborder='0' scrolling='no' allowfullscreen allow-encrypted-media src='ruta/a/pagina/de/error'";
+                            $src = "id='embed-player' class='embed-responsive-item' width='100%' height='100%' frameborder='0' scrolling='no' allowfullscreen allow-encrypted-media src='ruta/a/pagina/de/error'";
                         }
-                    } elseif (isset($_GET['r']) && isset($_GET['img']) ) {
+                    } elseif (isset($_GET['r']) && isset($_GET['img'])) {
                         $config = $configurations['r'];
                         // Construir los parámetros para la URL del iframe
                         $params = implode("&", array_map(function ($param) {
                             return isset($_GET[$param]) ? "{$param}={$_GET[$param]}" : "";
                         }, $config[1]));
                         // Construir la URL del iframe con la configuración correspondiente
-                        $src = "class='embed-responsive-item' width='100%' height='100%' frameborder='0' scrolling='no' allowfullscreen allow-encrypted-media src='inc/reproductor/{$config[0]}?{$params}'";
+                        $src = "id='embed-player' class='embed-responsive-item' width='100%' height='100%' frameborder='0' scrolling='no' allowfullscreen allow-encrypted-media src='inc/reproductor/{$config[0]}?{$params}'";
                     } elseif (isset($canalTipo) && isset($configurations[$canalTipo])) {
                         // Obtener el tipo de canal de la base de datos y verificar si existe en las configuraciones
                         $config = $configurations[$canalTipo];
+
+                        // Configurar los claro
+                        if (strpos($canalUrl, "clarovideo")) {
+                            $canalUrl = base64_encode($result['canalUrl']);
+                            $key = $result['key1'];
+                            $key2 = $result['key2'];
+                            $src = "id='embed-player' class='embed-responsive-item' width='100%' height='100%' frameborder='0' scrolling='no' allowfullscreen allow-encrypted-media src='//clarovideo.irtvhn.info?get='.$canalUrl.'&key=' . $key .'&key2=' .$key2 ";
+                        }
                         
+
                         // Construir los parámetros para la URL del iframe
                         $params = implode("&", array_map(function ($param) {
                             return isset($_GET[$param]) ? "{$param}={$_GET[$param]}" : "";
                         }, $config[1]));
 
                         // Construir la URL del iframe con la configuración correspondiente
-                        $src = "class='embed-responsive-item' width='100%' height='100%' frameborder='0' scrolling='no' allowfullscreen allow-encrypted-media src='inc/reproductor/{$config[0]}?{$params}'";
+                        $src = "id='embed-player' class='embed-responsive-item' width='100%' height='100%' frameborder='0' scrolling='no' allowfullscreen allow-encrypted-media src='inc/reproductor/{$config[0]}?{$params}'";
                     } else {
                         // Manejar el caso por defecto o mostrar un error si el tipo de canal no es válido
-                        $src = "class='embed-responsive-item' width='100%' height='100%' frameborder='0' scrolling='no' allowfullscreen allow-encrypted-media src='inc/reproductor/ck.php'";
+                        $src = "id='embed-player' class='embed-responsive-item' width='100%' height='100%' frameborder='0' scrolling='no' allowfullscreen allow-encrypted-media src='inc/reproductor/ck.php'";
                     }
 
                     // Imprimir el iframe
@@ -125,104 +136,103 @@ if (isset($_GET['title'])) {
                 </div>
             </div>
             <hr class="mb-4">
-            <?php (isset($_GET['c']) ? include('inc/componentes/fuentes.php') : '' );  include('inc/ads/related-ad.php'); ?>
+            <?php (isset($_GET['c']) ? include('inc/componentes/fuentes.php') : '');
+            include('inc/ads/related-ad.php'); ?>
         </div>
 
         <!-- Votos -->
         <div class="col-lg-3 position-relative">
             <div class="sticky-top " style="top: 105px !important;">
                 <?php if (isset($_SESSION['usuario_id']) && isset($_GET['c'])): ?>
-                <div class="row text-center">
-                    <div class="col-6">
-                        <?php                        
-                        // Consulta SQL para obtener el recuento de votos para cada canal
-                        $sql = "SELECT canal_id, 
+                    <div class="row text-center">
+                        <div class="col-6">
+                            <?php
+                            // Consulta SQL para obtener el recuento de votos para cada canal
+                            $sql = "SELECT canal_id, 
                         SUM(CASE WHEN voto = 'like' THEN 1 ELSE 0 END) as like_count,
                         SUM(CASE WHEN voto = 'dislike' THEN 1 ELSE 0 END) as dislike_count
                         FROM votos WHERE canal_id = $canalId
                         GROUP BY canal_id";
 
-                        $result = $conn->query($sql);
-                        $row = $result->fetch_assoc();
-                        if ($result->num_rows > 0) {
-                            $likeCount = $row['like_count'];
-                            $dislikeCount = $row['dislike_count'];
-                        } else {
-                            $likeCount = 0;
-                            $dislikeCount = 0;
-                        }
-                        // Verificar si el usuario ha dado "like" para este canal
-                        $sqlCheckLike = "SELECT * FROM votos WHERE usuario_id = $_SESSION[usuario_id] AND canal_id = $canalId AND voto = 'like'";
-                        $resultCheckLike = $conn->query($sqlCheckLike);
-                        $userHasLiked = ($resultCheckLike->num_rows > 0);
-                        // Verificar si el usuario ya ha dado like
-                        $likeClass = ($userHasLiked) ? 'active' : '';
-                        // Verificar si el usuario ha dado "dislike" para este canal
-                        $sqlCheckDislike = "SELECT * FROM votos WHERE usuario_id = $_SESSION[usuario_id] AND canal_id = $canalId AND voto = 'dislike'";
-                        $resultCheckDislike = $conn->query($sqlCheckDislike);
-                        $userHasDisliked = ($resultCheckDislike->num_rows > 0);
-                        // Verificar si el usuario ya ha dado dislike
-                        $dislikeClass = ($userHasDisliked) ? 'active' : '';
-                        ?>
-                        <button data-canal-id="<?= $canalId ?>" type="button"
-                            class="btn btn-sm btn-outline-secondary like-btn <?= $likeClass ?>">
-                            <i class="bx bx-like me-2 lead"></i>
-                            Like
-                            <span id="like-count-<?= $canalId ?>" class="badge bg-primary shadow-primary mt-n1 ms-3">
-                                <?= $likeCount ?>
-                            </span>
-                        </button>
+                            $result = $conn->query($sql);
+                            $row = $result->fetch_assoc();
+                            if ($result->num_rows > 0) {
+                                $likeCount = $row['like_count'];
+                                $dislikeCount = $row['dislike_count'];
+                            } else {
+                                $likeCount = 0;
+                                $dislikeCount = 0;
+                            }
+                            // Verificar si el usuario ha dado "like" para este canal
+                            $sqlCheckLike = "SELECT * FROM votos WHERE usuario_id = $_SESSION[usuario_id] AND canal_id = $canalId AND voto = 'like'";
+                            $resultCheckLike = $conn->query($sqlCheckLike);
+                            $userHasLiked = ($resultCheckLike->num_rows > 0);
+                            // Verificar si el usuario ya ha dado like
+                            $likeClass = ($userHasLiked) ? 'active' : '';
+                            // Verificar si el usuario ha dado "dislike" para este canal
+                            $sqlCheckDislike = "SELECT * FROM votos WHERE usuario_id = $_SESSION[usuario_id] AND canal_id = $canalId AND voto = 'dislike'";
+                            $resultCheckDislike = $conn->query($sqlCheckDislike);
+                            $userHasDisliked = ($resultCheckDislike->num_rows > 0);
+                            // Verificar si el usuario ya ha dado dislike
+                            $dislikeClass = ($userHasDisliked) ? 'active' : '';
+                            ?>
+                            <button data-canal-id="<?= $canalId ?>" type="button"
+                                class="btn btn-sm btn-outline-secondary like-btn <?= $likeClass ?>">
+                                <i class="bx bx-like me-2 lead"></i>
+                                Like
+                                <span id="like-count-<?= $canalId ?>" class="badge bg-primary shadow-primary mt-n1 ms-3">
+                                    <?= $likeCount ?>
+                                </span>
+                            </button>
+                        </div>
+                        <div class="col-6">
+                            <button data-canal-id="<?= $canalId ?>" type="button"
+                                class="btn btn-sm btn-outline-secondary dislike-btn <?= $dislikeClass ?>">
+                                <i class="bx bx-dislike me-2 lead"></i>
+                                Dislike
+                                <span id="dislike-count-<?= $canalId ?>" class="badge bg-danger shadow-primary mt-n1 ms-3">
+                                    <?= $dislikeCount ?>
+                                </span>
+                            </button>
+                        </div>
                     </div>
-                    <div class="col-6">
-                        <button data-canal-id="<?= $canalId ?>" type="button"
-                            class="btn btn-sm btn-outline-secondary dislike-btn <?= $dislikeClass ?>">
-                            <i class="bx bx-dislike me-2 lead"></i>
-                            Dislike
-                            <span id="dislike-count-<?= $canalId ?>" class="badge bg-danger shadow-primary mt-n1 ms-3">
-                                <?= $dislikeCount ?>
-                            </span>
-                        </button>
-                    </div>
-                </div>
-                <!-- AJAX -->
-                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-                <script src="inc/componentes/like.js"></script>
+                    <!-- AJAX -->
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                    <script src="inc/componentes/like.js"></script>
                 <?php endif ?>
                 <br>
                 <!-- Chat -->
                 <div class="rounded-3">
-                    <iframe id="twitch-chat-embed" class="rounded-3"
-                        src
-                        height="560" width="100%">
+                    <iframe id="twitch-chat-embed" class="rounded-3" src height="560" width="100%">
                     </iframe>
                     <script>
-                    const twitchChat = document.getElementById('twitch-chat-embed');
-                    const themeSwitch = document.querySelector('[data-bs-toggle="mode"]');
-                    const checkbox = themeSwitch.querySelector('.form-check-input');
+                        const twitchChat = document.getElementById('twitch-chat-embed');
+                        const themeSwitch = document.querySelector('[data-bs-toggle="mode"]');
+                        const checkbox = themeSwitch.querySelector('.form-check-input');
 
-                    // Función para cambiar el modo del chat de Twitch
-                    function toggleChatMode() {
-                        const isDarkMode = checkbox.checked;
-                        const chatMode = isDarkMode ? 'darkpopout' : '';
-                        twitchChat.src = `https://www.twitch.tv/embed/iraffletv/chat?parent=127.0.0.1&parent=irtvhn.info&${chatMode}`;
+                        // Función para cambiar el modo del chat de Twitch
+                        function toggleChatMode() {
+                            const isDarkMode = checkbox.checked;
+                            const chatMode = isDarkMode ? 'darkpopout' : '';
+                            twitchChat.src = `https://www.twitch.tv/embed/iraffletv/chat?parent=127.0.0.1&parent=irtvhn.info&${chatMode}`;
 
-                        // Guardar la preferencia del usuario en localStorage
-                        window.localStorage.setItem('chatMode', chatMode);
-                    }
+                            // Guardar la preferencia del usuario en localStorage
+                            window.localStorage.setItem('chatMode', chatMode);
+                        }
 
-                    // Configurar el evento clic para cambiar el modo del chat de Twitch
-                    themeSwitch.addEventListener('click', toggleChatMode);
+                        // Configurar el evento clic para cambiar el modo del chat de Twitch
+                        themeSwitch.addEventListener('click', toggleChatMode);
 
-                    // Cargar el chat con la preferencia del usuario desde localStorage
-                    const savedChatMode = window.localStorage.getItem('chatMode');
-                    if (savedChatMode) {
-                        twitchChat.src = `https://www.twitch.tv/embed/iraffletv/chat?parent=127.0.0.1&parent=irtvhn.info&${savedChatMode}`;
-                        checkbox.checked = savedChatMode === 'darkpopout';
-                    } else {
-                        // Si no hay preferencia guardada, cargar el chat con el modo predeterminado
-                        toggleChatMode();
-                    }
-                </script>
+                        // Cargar el chat con la preferencia del usuario desde localStorage
+                        const savedChatMode = window.localStorage.getItem('chatMode');
+                        if (savedChatMode) {
+                            twitchChat.src = `https://www.twitch.tv/embed/iraffletv/chat?parent=127.0.0.1&parent=irtvhn.info&${savedChatMode}`;
+                            checkbox.checked = savedChatMode === 'darkpopout';
+                        } else {
+                            // Si no hay preferencia guardada, cargar el chat con el modo predeterminado
+                            toggleChatMode();
+                        }
+                    </script>
                 </div>
             </div>
         </div>
