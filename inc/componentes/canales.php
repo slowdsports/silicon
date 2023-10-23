@@ -10,9 +10,9 @@ function mostrarCanales($query)
         $canalNombre = $result['fuenteNombre'];
         $canalCategoria = $result['categoriaNombre'];
         ?>
-        <div class="canal mycard col-xs-6 col-sm-6 col-md-4 col-lg-3 col-xl-2">
+        <div class="canal mycard col-6 col-md-4 col-lg-3 col-xl-2">
             <a href="?p=tv&c=<?= $canalId ?>&f=<?= $fuenteId ?>">
-                <div class="card border-0 shadow-sm card-hover card-hover-primary" aria-hidden="true">
+                <div class="card border-primary shadow-sm card-hover card-hover-gradient" aria-hidden="true">
                     <div class="position-relative placeholder-wave">
                         <div class="card-header">
                             <img class="card-img-canal placeholder-wave" src="assets/img/canales/<?= $canalImg ?>.png" alt="Card image">

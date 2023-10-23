@@ -116,7 +116,7 @@
                         ?>
                         <!-- Item -->
                         <div class="swiper-slide h-auto py-3" data-id="<?= $index ?>">
-                            <article class="card p-md-3 p-2 border-0 shadow-sm card-hover-primary h-100 mx-2">
+                            <article class="card border-primary card-hover p-md-3 p-2 hadow-sm card-hover-primary h-100 mx-2">
                                 <div class="d-flex align-items-center justify-content-between mb-3">
                                     <a href="?p=eventos&tipo=<?= $tipo ?>"
                                         class="badge fs-sm text-nav bg-secondary text-decoration-none position-relative zindex-2">

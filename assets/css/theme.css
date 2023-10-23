@@ -119,8 +119,11 @@ body {
   visibility: hidden;
 }
 
-/* Asegúrate de agregar esta regla CSS para las columnas */
 .col-lg-9, .col-lg-12, .col-lg-3 {
+  transition: all 0.3s ease;
+}
+
+.card, .mycard {
   transition: all 0.3s ease;
 }
 
