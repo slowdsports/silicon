@@ -12,16 +12,18 @@ function mostrarCanales($query)
         ?>
         <div class="canal mycard col-xs-6 col-sm-6 col-md-4 col-lg-3 col-xl-2">
             <a href="?p=tv&c=<?= $canalId ?>&f=<?= $fuenteId ?>">
-                <div class="card border-0 shadow-sm card-hover card-hover-primary">
-                    <div class="card-header">
-                        <img class="card-img-canal" src="assets/img/canales/<?= $canalImg ?>.png" alt="Card image">
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            <?= $canalNombre ?>
-                        </h5>
-                        <div class="card-footer fs-sm text-muted">
-                            <?= $canalCategoria ?>
+                <div class="card border-0 shadow-sm card-hover card-hover-primary" aria-hidden="true">
+                    <div class="position-relative placeholder-wave">
+                        <div class="card-header">
+                            <img class="card-img-canal placeholder-wave" src="assets/img/canales/<?= $canalImg ?>.png" alt="Card image">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title placeholder-glow">
+                                <?= $canalNombre ?>
+                            </h5>
+                            <div class="card-footer fs-sm text-muted placeholder-glow">
+                                <?= $canalCategoria ?>
+                            </div>
                         </div>
                     </div>
                 </div>
