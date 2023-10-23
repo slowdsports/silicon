@@ -66,7 +66,9 @@
         border-color: #6366f1;
         background-color: #6366f1;
     }
-    .bmpui-ui-selectbox, .bmpui-on {
+
+    .bmpui-ui-selectbox,
+    .bmpui-on {
         color: #6366f1;
     }
 </style>
@@ -130,17 +132,9 @@ if ($canalTipo == 9) {
         </div>
         <script src="../../assets/js/reproductores/dtv.js"></script>
         <?php
-        // Clarovideo
-    } elseif (strpos($canalUrl, "clarovideo")) {
-        $base = "//clarovideo.irtvhn.info?get=";
-        $canalUrl = base64_encode($canalUrl);
-        $canalUrl = $base . $canalUrl . "&key=" . $key1 . "&key2=" . $key2;
-        ?>
-        <iframe src="<?=$canalUrl?>" frameborder="0"></iframe>
-    <?php
     } else {
         // Requieren JW
-        if (strpos($canalUrl, "dazn-cdn") ||strpos($canalUrl, "livewwdazn") || strpos($canalUrl, "director.streaming") || strpos($canalUrl, "izzigo.") || strpos($canalUrl, "vidgo.com")  || strpos($canalUrl, "tglmp") || strpos($canalUrl, "live-nl-") || strpos($canalUrl, "upcbroadband") || strpos($canalUrl, "ssc-")) {
+        if (strpos($canalUrl, "dazn-cdn") || strpos($canalUrl, "livewwdazn") || strpos($canalUrl, "director.streaming") || strpos($canalUrl, "izzigo.") || strpos($canalUrl, "vidgo.com") || strpos($canalUrl, "tglmp") || strpos($canalUrl, "live-nl-") || strpos($canalUrl, "upcbroadband") || strpos($canalUrl, "ssc-")) {
             // Vidgo Requiere Proxy
             if (strpos($canalUrl, "vidgo.com")) {
                 $canalUrl = "https://slowdus.herokuapp.com/" . $canalUrl;
