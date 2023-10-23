@@ -132,8 +132,8 @@ if ($canalTipo == 9) {
         <?php
         // Clarovideo
     } elseif (strpos($canalUrl, "clarovideo")) {
-        $canalUrl = "//clarovideo.irtvhn.info?get=";
-        $canalUrl .= $canalUrl . "&key=" . $key1 . "&key2=" . $key2;
+        $base = "//clarovideo.irtvhn.info?get=";
+        $canalUrl = $base . $canalUrl . "&key=" . $key1 . "&key2=" . $key2;
         ?>
         <iframe src="<?=$canalUrl?>" frameborder="0"></iframe>
     <?php
