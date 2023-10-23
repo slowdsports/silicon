@@ -210,16 +210,38 @@ if (isset($_GET['title'])) {
                     <script src="inc/componentes/like.js"></script>
                 <?php endif ?>
                 <br>
-                <!-- Chat -->
-                <div class="rounded-3">
-                    <iframe id="twitch-chat-embed" class="rounded-3" src height="560" width="100%">
-                    </iframe>
-                    <script src="assets/js/playconfig.js"></script>
-                    <script>
-
-                    </script>
+                <!-- Chat & Post -->
+                <ul class="nav nav-pills mb-4" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="post-tab" data-bs-toggle="pill" data-bs-target="#post-tab-pane" type="button" role="tab" aria-controls="post-tab-pane" aria-selected="true">
+                            <i class='bx bxl-telegram me-2' style='color:#ffffff'></i>
+                            TG
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="chat-tab" data-bs-toggle="pill" data-bs-target="#chat-tab-pane" type="button" role="tab" aria-controls="chat-tab-pane" aria-selected="false">
+                            <i class='bx bx-chat me-2' style='color:#ffffff' ></i>
+                            Chat
+                        </button>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="post-tab-pane" role="tabpanel" aria-labelledby="post-tab" tabindex="0">
+                        <!-- Post -->
+                        <div class="rounded-3">
+                            <iframe id="telegram-post" width="100%" frameborder="0" scrolling="no" style="overflow: hidden; height: 1165px;"></iframe>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="chat-tab-pane" role="tabpanel" aria-labelledby="chat-tab" tabindex="0">
+                        <!-- Chat -->
+                        <div class="rounded-3">
+                            <iframe id="twitch-chat-embed" class="rounded-3" src height="560" width="100%">
+                            </iframe>
+                        </div>
+                    </div>
                 </div>
             </div>
+            <script src="assets/js/playconfig.js"></script>
         </div>
     </div>
 </section>

@@ -40,6 +40,7 @@ expandirCheckbox.addEventListener("change", expandirColumnas);
 
 // CHAT //
 const twitchChat = document.getElementById('twitch-chat-embed');
+const telegramPost = document.getElementById('telegram-post');
 const themeSwitch = document.querySelector('[data-bs-toggle="mode"]');
 const checkbox = themeSwitch.querySelector('.form-check-input');
 
@@ -47,7 +48,7 @@ const checkbox = themeSwitch.querySelector('.form-check-input');
 function toggleChatMode() {
     const isDarkMode = checkbox.checked;
     const chatMode = isDarkMode ? 'darkpopout' : '';
-    twitchChat.src = `https://www.twitch.tv/embed/iraffletv/chat?parent=127.0.0.1&parent=irtvhn.info&${chatMode}`;
+    twitchChat.src = `https://www.twitch.tv/embed/iraffletv/chat?parent=127.0.0.1&parent=irtvhn.info&parent=localhost&${chatMode}`;
 
     // Guardar la preferencia del usuario en localStorage
     window.localStorage.setItem('chatMode', chatMode);
@@ -64,4 +65,26 @@ if (savedChatMode) {
 } else {
     // Si no hay preferencia guardada, cargar el chat con el modo predeterminado
     toggleChatMode();
+}
+
+
+// Función para cambiar el modo del post de Telegram
+function togglePostMode() {
+    const isDarkMode = checkbox.checked;
+    const postMode = isDarkMode ? 'dark=1' : '';
+    telegramPost.src = `https://t.me/iraffle_tv/3?embed=1&color=6366F1&${postMode}`;
+
+    // Guardar la preferencia del usuario en localStorage
+    window.localStorage.setItem('postMode', postMode);
+}
+themeSwitch.addEventListener('click', togglePostMode);
+
+// Cargar el post con la preferencia del usuario desde localStorage
+const savedPostMode = window.localStorage.getItem('postMode');
+if (savedPostMode) {
+    telegramPost.src = `https://t.me/iraffle_tv/3?embed=1&color=6366F1&${savedPostMode}`;
+    checkbox.checked = savedPostMode === 'dark=1';
+} else {
+    // Si no hay preferencia guardada, cargar el chat con el modo predeterminado
+    togglePostMode();
 }
