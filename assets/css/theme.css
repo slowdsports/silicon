@@ -211,7 +211,7 @@ body {
 #twitch-chat-embed {
   box-shadow: 2px 2px 8px 2px #6366f1;
   transition: all 0.3s ease;
-  width: 105%;
+  width: 110%;
 }
 
 #twitch-chat-embed:hover {
