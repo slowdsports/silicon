@@ -234,7 +234,7 @@ if (isset($_COOKIE['usuario_id'])) {
                             if ($countNFL > 0):
                             ?>
                             <li class="nav-item">
-                                <a href="?p=eventos&tipo=american-football" class="nav-link
+                                <a href="?p=eventos&tipo=american-football&liga=9464" class="nav-link
                                 <?= ($_GET['tipo'] == 'american-football') ? 'active' : ''; ?>">NFL</a>
                             </li>
                             <?php endif;
@@ -243,7 +243,7 @@ if (isset($_COOKIE['usuario_id'])) {
                             if ($countMLB > 0):
                             ?>
                             <li class="nav-item">
-                                <a href="?p=eventos&tipo=baseball" class="nav-link
+                                <a href="?p=eventos&tipo=baseball&liga=11205" class="nav-link
                                 <?= ($_GET['tipo'] == 'baseball') ? 'active' : ''; ?>">Baseball</a>
                             </li>
                             <?php endif;
