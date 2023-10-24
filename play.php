@@ -108,7 +108,7 @@ if (isset($_GET['title'])) {
                     // Configurar los claro
                     if (strpos($canalUrl, "claro")) {
                         // Exclusivo FS2_AR
-                        if ($canalAlt == 202) {
+                        if ($canalAlt == 201) {
                             $src = "id='embed-player' class='embed-responsive-item' width='100%' height='100%' frameborder='0' scrolling='no' allowfullscreen allow='encrypted-media' src='//clarovideo.irtvhn.info/fs2_ar.php";
                         }
                         $src = "id='embed-player' class='embed-responsive-item' width='100%' height='100%' frameborder='0' scrolling='no' allowfullscreen allow='encrypted-media' src='//clarovideo.irtvhn.info?c=$canalAlt'";
