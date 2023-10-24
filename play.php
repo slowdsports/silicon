@@ -107,10 +107,7 @@ if (isset($_GET['title'])) {
                     }
                     // Configurar los claro
                     if (strpos($canalUrl, "claro")) {
-                        $canalUrl = base64_encode($result['canalUrl']);
-                        $key = $result['key'];
-                        $key2 = $result['key2'];
-                        $src = "id='embed-player' class='embed-responsive-item' width='100%' height='100%' frameborder='0' scrolling='no' allowfullscreen allow='encrypted-media' src='//clarovideo.irtvhn.info?get=$canalUrl&key=$key&key2=$key2'";
+                        $src = "id='embed-player' class='embed-responsive-item' width='100%' height='100%' frameborder='0' scrolling='no' allowfullscreen allow='encrypted-media' src='//clarovideo.irtvhn.info?c=$canalId'";
                     } elseif (isset($canalTipo) && isset($configurations[$canalTipo])) {
                         // Obtener el tipo de canal de la base de datos y verificar si existe en las configuraciones
                         $config = $configurations[$canalTipo];
