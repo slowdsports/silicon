@@ -1,26 +1,41 @@
 <!-- Page content -->
-<section class="container mt-4 pt-lg-2 pb-4">
+<section class="position-relative px-xl-5">
+    <!-- Slider prev/next buttons -->
+    <button type="button" id="prev-news"
+        class="btn btn-prev btn-icon btn-sm position-absolute top-50 start-0 translate-middle-y d-none d-xl-inline-flex"
+        aria-label="Anterior">
+        <i class="bx bx-chevron-left"></i>
+    </button>
+    <button type="button" id="next-news"
+        class="btn btn-next btn-icon btn-sm position-absolute top-50 end-0 translate-middle-y d-none d-xl-inline-flex"
+        aria-label="Siguiente">
+        <i class="bx bx-chevron-right"></i>
+    </button>
 
-    <!-- Blog posts slider -->
+    <!-- Slider -->
     <div class="swiper swiper-nav-onhover mx-n2" data-swiper-options='{
-  "slidesPerView": 1,
-  "spaceBetween": 8,
-  "pagination": {
-    "el": ".swiper-pagination",
-    "clickable": true
-  },
-  "breakpoints": {
-    "0": {
-      "slidesPerView": 1
+    "slidesPerView": 1,
+    "spaceBetween": 8,
+    "pagination": {
+        "el": ".swiper-pagination",
+        "clickable": true
     },
-    "560": {
-      "slidesPerView": 1
+    "navigation": {
+        "prevEl": "#prev-news",
+        "nextEl": "#next-news"
     },
-    "992": {
-      "slidesPerView": 3
+    "breakpoints": {
+        "0": {
+        "slidesPerView": 1
+        },
+        "560": {
+        "slidesPerView": 2
+        },
+        "992": {
+        "slidesPerView": 3
+        }
     }
-  }
-}'>
+    }'>
         <div class="swiper-wrapper">
             <?php
             // Obtener y tratar fecha
@@ -128,7 +143,7 @@
                                 </div>
                                 <a href="?p=eventos&tipo=<?= $tipo ?>&liga=<?= $liga_id ?>&juego=<?= $index ?>">
                                     <div class="mini-league">
-                                        <img width="45px"
+                                        <img width="50px"
                                             src="https://api.sofascore.app/api/v1/unique-tournament/<?= $liga_id ?>/image/dark"
                                             alt="">
                                         <h5>
@@ -140,13 +155,13 @@
                                             <div class="team">
                                                 <img src="https://api.sofascore.app/api/v1/team/<?= $local_id ?>/image"
                                                     class="image" alt="image">
-                                                <!-- <h4><?= ucfirst($local) ?></h4> -->
+                                                <h4><?= ucfirst($local) ?></h4>
                                             </div>
                                             <h5 class="vs">vs</h5>
                                             <div class="team">
                                                 <img src="https://api.sofascore.app/api/v1/team/<?= $visitante_id ?>/image"
                                                     class="image" alt="image">
-                                                <!-- <h4><?= ucfirst($visitante) ?></h4> -->
+                                                <h4><?= ucfirst($visitante) ?></h4>
                                             </div>
                                         </div>
                                     </div>
