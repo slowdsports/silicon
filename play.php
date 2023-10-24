@@ -108,10 +108,11 @@ if (isset($_GET['title'])) {
                     // Configurar los claro
                     if (strpos($canalUrl, "claro")) {
                         // Exclusivo FS2_AR
-                        if ($canalAlt == 201) {
+                        if ($canalAlt === 201) {
                             $src = "id='embed-player' class='embed-responsive-item' width='100%' height='100%' frameborder='0' scrolling='no' allowfullscreen allow='encrypted-media' src='//clarovideo.irtvhn.info/fs2_ar.php";
+                        } else {
+                            $src = "id='embed-player' class='embed-responsive-item' width='100%' height='100%' frameborder='0' scrolling='no' allowfullscreen allow='encrypted-media' src='//clarovideo.irtvhn.info?c=$canalAlt'";
                         }
-                        $src = "id='embed-player' class='embed-responsive-item' width='100%' height='100%' frameborder='0' scrolling='no' allowfullscreen allow='encrypted-media' src='//clarovideo.irtvhn.info?c=$canalAlt'";
                     } elseif (isset($canalTipo) && isset($configurations[$canalTipo])) {
                         // Obtener el tipo de canal de la base de datos y verificar si existe en las configuraciones
                         $config = $configurations[$canalTipo];
