@@ -160,6 +160,9 @@ article a {
         min-width: 3%;
         max-width: 48px;
     }
+    .team h4 {
+      display: none;
+    }
   }
   @media screen and (max-width: 340px) {
     .team {
