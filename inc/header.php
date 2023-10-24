@@ -257,6 +257,13 @@ if (isset($_COOKIE['usuario_id'])) {
                             </li>
                             <?php endif; ?>
                             <li class="nav-item">
+                                <a href="?p=iptv" class="nav-link
+                                <?= ($_GET['p'] == 'iptv') ? 'active' : ''; ?>">
+                                    IPTV
+                                    <span class="badge rounded-pill bg-danger ms-2">Beta</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
                                 <a href="?p=tv" class="nav-link
                                 <?= ($_GET['p'] == 'tv') ? 'active' : ''; ?>">TV</a>
                             </li>
