@@ -98,18 +98,19 @@ if (isset($_GET['nbalp'])) {
                             $src = "id='embed-player' class='embed-responsive-item' width='100%' height='100%' frameborder='0' scrolling='no' allowfullscreen allow-encrypted-media src='$src'";
                                 echo "<iframe {$src}></iframe>";
                             
-                        }
-                        $decodedIfr = base64_decode($_GET['ifr']);
-                        $canalUrl = $decodedIfr;
-                        // Validar la URL antes de mostrarla en el iframe
-                        if (filter_var($decodedIfr, FILTER_VALIDATE_URL)) {
-                            // Si la URL es válida, mostrarla en el iframe
-                            $src = "id='embed-player' class='embed-responsive-item' width='100%' height='100%' frameborder='0' scrolling='no' allowfullscreen allow-encrypted-media src='{$decodedIfr}'";
-                            echo "<iframe {$src}></iframe>";
                         } else {
-                            // Si la URL no es válida, mostrar un mensaje de error o redirigir a una página de error
-                            $src = "id='embed-player' class='embed-responsive-item' width='100%' height='100%' frameborder='0' scrolling='no' allowfullscreen allow-encrypted-media src='ruta/a/pagina/de/error'";
-                            echo "<iframe {$src}></iframe>";
+                            $decodedIfr = base64_decode($_GET['ifr']);
+                            $canalUrl = $decodedIfr;
+                            // Validar la URL antes de mostrarla en el iframe
+                            if (filter_var($decodedIfr, FILTER_VALIDATE_URL)) {
+                                // Si la URL es válida, mostrarla en el iframe
+                                $src = "id='embed-player' class='embed-responsive-item' width='100%' height='100%' frameborder='0' scrolling='no' allowfullscreen allow-encrypted-media src='{$decodedIfr}'";
+                                echo "<iframe {$src}></iframe>";
+                            } else {
+                                // Si la URL no es válida, mostrar un mensaje de error o redirigir a una página de error
+                                $src = "id='embed-player' class='embed-responsive-item' width='100%' height='100%' frameborder='0' scrolling='no' allowfullscreen allow-encrypted-media src='ruta/a/pagina/de/error'";
+                                echo "<iframe {$src}></iframe>";
+                            }
                         }
                     } elseif (isset($_GET['r']) && isset($_GET['img'])) {
                         $config = $configurations['r'];
