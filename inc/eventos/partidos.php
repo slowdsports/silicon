@@ -147,6 +147,9 @@ $ligaNombre = $result['ligaNombre'];
                         <div class="card card-body">
                             <div class="list-group text-center">
                                 <?php
+                                // CUSTOM
+                                include('custom.php');
+                                echo $custom;
                                 // Canal 1
                                 if ($result['id_canal1'] === null || $result['id_canal1'] === "") {
                                     // No mostramos nada

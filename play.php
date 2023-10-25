@@ -44,6 +44,10 @@ if (empty($canalTipo)) {
 if (isset($_GET['title'])) {
     $canalNombre = $_GET['title'];
 }
+// NBA LP
+if (isset($_GET['nbalp'])) {
+    $canalNombre = "NBA League Pass";
+}
 ?>
 <div id="toast-container" class="position-fixed bottom-0 end-0 p-3">
 </div>
@@ -87,6 +91,14 @@ if (isset($_GET['title'])) {
 
                     // Obtener el tipo de configuración
                     if (isset($_GET['ifr']) || isset($_GET['evento']) ) {
+                        // NBA LP
+                        if (isset($_GET["nbalp"])) {
+                            $idFrame = $_GET["nbalp"];
+                            $src = "//irtvhn.info/nba.php?id=" .$idFrame;
+                            $src = "id='embed-player' class='embed-responsive-item' width='100%' height='100%' frameborder='0' scrolling='no' allowfullscreen allow-encrypted-media src='$src'";
+                                echo "<iframe {$src}></iframe>";
+                            
+                        }
                         $decodedIfr = base64_decode($_GET['ifr']);
                         $canalUrl = $decodedIfr;
                         // Validar la URL antes de mostrarla en el iframe
