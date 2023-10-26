@@ -149,7 +149,11 @@ $ligaNombre = $result['ligaNombre'];
                                 <?php
                                 // CUSTOM
                                 include('custom.php');
-                                echo $custom;
+                                if ($custId) {
+                                    echo $custom;
+                                } else {
+
+                                }
                                 // Canal 1
                                 if ($result['id_canal1'] === null || $result['id_canal1'] === "") {
                                     // No mostramos nada
