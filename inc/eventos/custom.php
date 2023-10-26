@@ -4,6 +4,9 @@ switch ($index) {
         $custId = 11; break;
     case 11548606:
         $custId = 12; break;
+
+        default:
+        $custId;; break;
 }
 $custom = '<a class="justify-content-center list-group-item list-group-item-action"
         href="?p=tv&evento&nbalp='.$custId.'">
