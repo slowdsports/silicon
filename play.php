@@ -57,10 +57,23 @@ if (isset($_GET['nbalp'])) {
 
         <!-- Content -->
         <div id="playerCol" class="col-lg-9">
-            <h2 class="h4">
-                Ver
-                <?= ucwords($canalNombre) ?> En Vivo
-            </h2>
+            <div class="row">
+                <div class="col-9">
+                    <h2 class="h4"> Ver <?= ucwords($canalNombre) ?> En Vivo
+                    </h2>
+                </div>
+                <div class="col-3">
+                    <!-- Toggle Size Player -->
+                    <div class="d-flex justify-content-end">
+                        <div class="form-check form-switch mode-switch pe-lg-1 ms-auto me-4">
+                            <input type="checkbox" class="form-check-input" id="expandirBtn" data-bs-toggle="tooltip"
+                                data-bs-placement="top" title="Cambiar modo teatro">
+                            <label class="form-check-label d-none d-sm-block" for="expandirBtn">Normal</label>
+                            <label class="form-check-label d-none d-sm-block" for="expandirBtn">Teatro</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <!-- Reproductor -->
             <div class="gallery mb-4 pb-2">
                 <a id="playerFake"
@@ -151,17 +164,6 @@ if (isset($_GET['nbalp'])) {
             <hr class="mb-4">
             <div class="row">
                 <?php (isset($_GET['c']) ? include('inc/componentes/fuentes.php') : ''); ?>
-                <div class="col-6">
-                    <!-- Toggle Size Player -->
-                    <div class="d-flex justify-content-end">
-                        <div class="form-check form-switch mode-switch pe-lg-1 ms-auto me-4">
-                            <input type="checkbox" class="form-check-input" id="expandirBtn" data-bs-toggle="tooltip"
-                                data-bs-placement="top" title="Cambiar modo teatro">
-                            <label class="form-check-label d-none d-sm-block" for="expandirBtn">Normal</label>
-                            <label class="form-check-label d-none d-sm-block" for="expandirBtn">Teatro</label>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
 
@@ -229,7 +231,6 @@ if (isset($_GET['nbalp'])) {
                 <!-- Chat & Post -->
                 <!-- Chat -->
                 <div class="rounded-3">
-                    <!-- <iframe id="twitch-chat-embed" class="rounded-3" src height="560" width="100%"></iframe> -->
                     <iframe id="twitch-chat-embed" class="rounded-3" src height="560" width="100%"></iframe>
                 </div>
             </div>
