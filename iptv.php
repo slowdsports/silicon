@@ -33,13 +33,6 @@
                 </div>
             </div>
             <hr class="mb-4">
-            <!-- Warning alert -->
-            <div class="alert d-flex alert-warning" role="alert">
-            <i class="bx bx-error lead me-3"></i>
-            <div>
-                Estás viendo una versión Beta de esta página. Puedes <a href='https://t.me/+oi-QsjZMJqFhMTFh' target="_blank" class='alert-link'>enviarnos comentarios</a> si detectas algo que no anda bien
-            </div>
-            </div>
         </div>
 
         <!-- Canales -->
