@@ -1,12 +1,14 @@
 <?php
 error_reporting(E_ALL);
-ini_set('display_errors', '1');
+ini_set('display_errors', '0');
 session_start();
 // Código para cerrar sesión
 if ($_GET['do'] == "logout") {
+    $_SESSION['message'] = "Has cerrado sesión satisfactoriamente. Esperamos verte pronto nuevamente";
+    $_SESSION['messageColor'] = "#4044ee";
     // Destruir todas las variables de sesión
     session_destroy();
-    header("Location: ?p=home");
+    header("Location: ?p=home&login=success");
     // Eliminar las cookies de usuario
     setcookie("usuario_id", "", time() - 3600, "/");
     setcookie("usuario_rol", "", time() - 3600, "/");
@@ -26,11 +28,19 @@ if (isset($_SESSION['usuario_id'])) {
             <div class="w-100 align-self-end pt-1 pt-md-4 pb-4" style="max-width: 526px;">
                 <h1 class="text-center text-xl-start">Crear Cuenta</h1>
                 <?php if (isset($_SESSION['message'])) { ?>
-                    <h5 class="text-center">
-                        <span class="badge bg-faded-danger text-danger">
-                            <?= $_SESSION['message']; ?>
-                        </span>
-                    </h5>
+                    <script>
+                    document.addEventListener("DOMContentLoaded", function() {
+                        Toastify({
+                            text: "<?= $_SESSION['message']; ?>",
+                            duration: 9000,
+                            close: true,
+                            gravity: "bottom",
+                            position: "left",
+                            backgroundColor: "<?= $_SESSION['messageColor']; ?>",
+                            stopOnFocus: true
+                        }).showToast();
+                    });
+                    </script>
                 <?php }
                 unset($_SESSION['message']); ?>
                 <p class="text-center text-xl-start pb-3 mb-3">¿Ya tienes una? <a href="?p=login">Iniciar
@@ -95,11 +105,19 @@ if (isset($_SESSION['usuario_id'])) {
             <div class="w-100 align-self-end pt-1 pt-md-4 pb-4" style="max-width: 526px;">
                 <h1 class="text-center text-xl-start">Bienvenido de nuevo</h1>
                 <?php if (isset($_SESSION['message'])) { ?>
-                    <h5 class="text-center">
-                        <span class="badge bg-faded-danger text-danger">
-                            <?= $_SESSION['message']; ?>
-                        </span>
-                    </h5>
+                    <script>
+                    document.addEventListener("DOMContentLoaded", function() {
+                        Toastify({
+                            text: "<?= $_SESSION['message']; ?>",
+                            duration: 9000,
+                            close: true,
+                            gravity: "bottom",
+                            position: "left",
+                            backgroundColor: "<?= $_SESSION['messageColor']; ?>",
+                            stopOnFocus: true
+                        }).showToast();
+                    });
+                    </script>
                 <?php }
                 unset($_SESSION['message']); ?>
                 <p class="text-center text-xl-start pb-3 mb-3">¿Todavía no tienes cuenta? <a
@@ -139,5 +157,5 @@ if (isset($_SESSION['usuario_id'])) {
 
     <!-- Background -->
     <div class="position-absolute top-0 end-0 w-50 h-100 bg-position-center bg-repeat-0 bg-size-cover d-none d-xl-block"
-        style="background-image: url(assets/img/account/signin-bg.jpg);"></div>
+        style="background-image: url(assets/img/account/brady.jpg);"></div>
 </section>

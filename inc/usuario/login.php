@@ -28,23 +28,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 setcookie("usuario_rol", $usuario['rol_id'], time() + (86400 * 7), "/");
 
                 // Redirigir al usuario a otra página después del inicio de sesión
-                header("Location: ../../?p=home");
+                //header("Location: ../../?p=home&login=success");
+                $redirect_url = isset($_SESSION['redirect_url']) ? $_SESSION['redirect_url'] : "../../?p=home";
+                header("Location: " . $redirect_url . "&login=success");
+                $_SESSION['message'] = "¡Hola,". $usuario['nombre'] . " es un gusto tenerte verte de nuevo.";
+                $_SESSION['messageColor'] = "#4044ee";
                 exit();
             } else {
                 // Contraseña incorrecta
                 $_SESSION['message'] = "Contraseña incorrecta. Por favor, intenta de nuevo.";
+                $_SESSION['messageColor'] = "#ef4444";
                 header("Location: ../../?p=login");
                 exit();
             }
         } else {
             // Usuario no encontrado por correo electrónico
             $_SESSION['message'] = "Usuario no encontrado. Por favor, verifica tu correo electrónico.";
+            $_SESSION['messageColor'] = "#ef4444";
             header("Location: ../../?p=login");
             exit();
         }
     } else {
         // Datos del formulario no recibidos correctamente
         $_SESSION['message'] = "Error al recibir datos del formulario. Por favor contacte con el administrador " . $conn->error;
+        $_SESSION['messageColor'] = "#ef4444";
         header("Location: ../../?p=login");
         exit();
     }
