@@ -1,8 +1,11 @@
 <?php
+// error_reporting(E_ALL);
+// ini_set('display_errors', '1');
 // BD
 include('inc/conn.php');
 // Header
 include('inc/header.php');
+echo '<div id="notificacion"></div>';
 // Navegación
 // Parámetro "p" del método GET
 if(isset($_GET['p'])) {
@@ -16,6 +19,7 @@ if(isset($_GET['p'])) {
         include($rutaDirectorio . $paginaSolicitada . ".php");
     } else {
         // Si no existe, 404.php
+        //echo "No existe";
         include("404.php");
     }
 } else {
