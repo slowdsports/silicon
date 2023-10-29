@@ -1,7 +1,7 @@
 <div class="col-6">
     <div class="d-flex justify-content-start">
         <!-- Dropend -->
-        <div class="btn-group dropend">
+        <div class="btn-group dropup">
             <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
                 <i class="bx bx-loader-circle fs-5 lh-1 me-1"></i>
