@@ -62,6 +62,7 @@ $ligaNombre = $result['ligaNombre'];
             LEFT JOIN paises p10 ON f10.pais = p10.paisId
             WHERE liga='$getLiga'
             ORDER BY fecha_hora ASC");
+            include('custom.php');
             while ($result = mysqli_fetch_array($partidos)) {
                 // Teams
                 $local = $result['equipo_local'];
@@ -148,12 +149,15 @@ $ligaNombre = $result['ligaNombre'];
                             <div class="list-group text-center">
                                 <?php
                                 // CUSTOM
-                                include('custom.php');
-                                if ($custId) {
+                                $custId = getCustomLink($index);
+                                if ($custId !== null) {
+                                    $custom = '<a class="justify-content-center list-group-item list-group-item-action"
+                                        href="?p=tv&evento&nbalp=' . $custId . '">
+                                        <i class="flag us"></i>
+                                        ' . $ligaNombre . ' League Pass
+                                    </a>';
                                     echo $custom;
-                                } else {
-
-                                }
+                                } else {}
                                 // Canal 1
                                 if ($result['id_canal1'] === null || $result['id_canal1'] === "") {
                                     // No mostramos nada

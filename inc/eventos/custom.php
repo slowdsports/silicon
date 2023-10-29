@@ -1,34 +1,56 @@
 <?php
-switch ($index) {
-    case 11548601:
-        $custId = 19; break;
-    case 11548605:
-        $custId = 18; break;
-    case 11548613:
-        $custId = 22; break;
-    case 11548619:
-        $custId = 21; break;
-    case 11548621:
-        $custId = 20; break;
-    case 11548620:
-        $custId = 23; break;
-    case 11548623:
-        $custId = 24; break;
-    case 11548622:
-        $custId = 25; break;
-    case 11548624:
-        $custId = 26; break;
-    case 11548626:
-        $custId = 27; break;
-    case 11548627:
-        $custId = 28; break;
-    
+function getCustomLink($index) {
+    switch ($index) {
+        // NFL
+        case 11275153:
+            return 20;
+
+        case 11275158:
+            return 17;
+
+        case 11275160:
+            return 15;
+
+        case 11275161:
+            return 16;
+
+        case 11275162:
+            return 21;
+
+        case 11275164:
+            return 13;
+
+        case 11275166:
+            return 19;
+
+        case 11275170:
+            return 14;
+
+        case 11275171:
+            return 18;
+
+        case 11275165:
+            return 22;
+
+        case 11275167:
+            return 25;
+
+        case 11275169:
+            return 24;
+
+        case 11275175:
+            return 23;
+
+        case 11275180:
+            return 26;
+
+        // NBA
+        case 11548607:
+            return 26;
+
 
         default:
-        $custId; break;
+            return null;
+
+    }
 }
-$custom = '<a class="justify-content-center list-group-item list-group-item-action"
-        href="?p=tv&evento&nbalp='.$custId.'">
-        <i class="flag us"></i>
-        NBA League Pass
-    </a>';
