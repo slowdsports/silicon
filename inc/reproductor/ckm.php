@@ -31,6 +31,8 @@
 <script src='//cdn.jsdelivr.net/npm/clappr-chromecast-plugin@latest/dist/clappr-chromecast-plugin.min.js'></script>
 <script src='//cdn.jsdelivr.net/npm/clappr-pip@latest/dist/clappr-pip.min.js'></script>
 <script src="//ewwink.github.io/clappr-youtube-plugin/clappr-youtube-plugin.js"></script>
+<script src="//cdn.jsdelivr.net/npm/console-ban@5.0.0/dist/console-ban.min.js"></script>
+<script> ConsoleBan.init({ redirect: '../../?p=404'}); </script>
 <div class="container">
     <div id="player"></div>
 </div>
