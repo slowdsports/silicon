@@ -73,6 +73,7 @@ $ligaNombre = $result['ligaNombre'];
                 $tipo = $result['tipo'];
                 $starp = $result['starp'];
                 $vix = $result['vix'];
+                $custId = getCustomLink($index);
                 // Channels Image
                 $ciSearch = $result['id_canal1'];
                 if ($ciSearch == null || $ciSearch == "") {
@@ -99,6 +100,12 @@ $ligaNombre = $result['ligaNombre'];
                         $canalImg = "starplus";
                     } elseif ($result['vix'] == 1) {
                         $canalImg = "vix";
+                    } elseif ($custId != null) {
+                        if ($tipo == "american-football") {
+                            $canalImg = "nfl";
+                        } else {
+                            $canalImg = "nbalp";
+                        }
                     }
                 }
                 // Default
@@ -149,7 +156,6 @@ $ligaNombre = $result['ligaNombre'];
                             <div class="list-group text-center">
                                 <?php
                                 // CUSTOM
-                                $custId = getCustomLink($index);
                                 if ($custId !== null) {
                                     $custom = '<a class="justify-content-center list-group-item list-group-item-action"
                                         href="?p=tv&evento&nbalp=' . $custId . '">
