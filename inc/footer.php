@@ -21,6 +21,8 @@
 <script src="assets/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
 <script src="assets/vendor/@lottiefiles/lottie-player/dist/lottie-player.js"></script>
 <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="assets/vendor/console-ban/console-ban.min.js"></script>
+<script src="assets/vendor/toastify/toastify.min.js"></script>
 
 <!-- Main Theme Script -->
 <script src="assets/js/theme.min.js"></script>
