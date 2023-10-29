@@ -46,7 +46,7 @@ if (isset($_GET['title'])) {
 }
 // NBA LP
 if (isset($_GET['nbalp'])) {
-    $canalNombre = strtoupper($tipo) . " League Pass";
+    $canalNombre = " League Pass";
 }
 ?>
 <div id="toast-container" class="position-fixed bottom-0 end-0 p-3">
