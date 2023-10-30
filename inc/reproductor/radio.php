@@ -2,7 +2,7 @@
 <section class="container mt-4 mb-5 pt-2 pb-lg-5">
     <div class="row gy-4">
         <div class="col-lg-7 col-md-6">
-            <div class="card p-lg-4 p-md-2 mb-4 mb-lg-5">
+            <div class="card border-primary card-hover p-lg-4 p-md-2 mb-4 mb-lg-5">
                 <div class="text-center">
                     <img width="180px" src="<?= base64_decode($_GET['img']) ?>"
                         alt="<?= base64_decode($_GET['title']) ?>" class="rounded-3 text-center">
@@ -12,7 +12,7 @@
                     <audio src="<?= base64_decode($_GET['source']) ?>" preload="auto"></audio>
                     <button type="button" class="ap-play-button btn btn-icon btn-primary shadow-primary"></button>
                     <span class="ap-current-time flex-shr fw-medium mx-3 mx-lg-4">Directo</span>
-                    <input type="range" class="ap-seek-slider" max="100" value="0">
+                    <input type="range" class="ap-seek-slider">
                     <div class="dropup">
                         <button type="button" class="ap-volume-button btn btn-icon btn-secondary"
                             data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-haspopup="true"

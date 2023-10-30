@@ -28,7 +28,7 @@ $now = time();
     <!-- Slider -->
     <div class="px-xl-2">
         <div class="swiper mx-n2" data-swiper-options='{
-            "slidesPerView": 1,
+            "slidesPerView": 2,
             "loop": true,
             "pagination": {
                 "el": ".swiper-pagination",
@@ -40,10 +40,10 @@ $now = time();
             },
             "breakpoints": {
                 "500": {
-                "slidesPerView": 2
+                "slidesPerView": 3
                 },
                 "1000": {
-                "slidesPerView": 3
+                "slidesPerView": 4
                 }
             }
         }'>
