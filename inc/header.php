@@ -320,8 +320,6 @@ if (isset($_GET['login']) && $_GET['login'] == "success") { ?>
                 <a href="<?= (isset($_SESSION['usuario_id'])) ? '?p=cuenta' : '?p=login'; ?>"
                     class="btn btn-primary btn-sm fs-sm rounded d-none d-lg-inline-flex" rel="noopener">
                     <i class="bx bx-user fs-5 lh-1 me-1"></i>
-                    &nbsp;
-                    <?= (isset($_SESSION['usuario_id'])) ? explode(" ", $_SESSION['usuario_nombre'])[0] : 'Login'; ?>
                 </a>
                 <button type="button" class="navbar-toggler" data-bs-toggle="offcanvas" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
