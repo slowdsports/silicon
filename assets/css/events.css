@@ -2,6 +2,10 @@ article a {
   text-decoration: none;
 }
 
+.programa-img {
+  width: 80%;
+}
+
 .live-text {
     margin-top: 2%;
   }
