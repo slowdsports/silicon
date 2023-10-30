@@ -28,7 +28,12 @@
 <script src="assets/js/theme.min.js"></script>
 
 <!-- Filtro de tarjetas -->
+<?php if (isset($_GET['p']) && $_GET['p'] == "iptv") {
+    // No mostramos
+} else {
+?>
 <script src="assets/js/filter.js"></script>
+<?php } ?>
 </body>
 
 </html>
