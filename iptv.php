@@ -38,8 +38,6 @@
 <script src="//ssl.p.jwpcdn.com/player/v/8.24.0/jwplayer.js"></script>
 <script>jwplayer.key = 'XSuP4qMl+9tK17QNb+4+th2Pm9AWgMO/cYH8CI0HGGr7bdjo';</script>
 <div class="container mt-5">
-    <div id="playerContainer"></div>
-    <div id="playerFake"></div>
     <div class="row">
         <div id="channels-container" class="col-md-4">
             <h3>Canales</h3>
@@ -81,4 +79,6 @@
         </div>
     </div>
 </div>
+<span class="hidden" id="playerContainer"></span>
+<span class="hidden" id="playerFake"></span>
 <script src="assets/js/iptv.js"></script>
