@@ -1,6 +1,13 @@
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
+
+// RADIO
+if (isset($_GET['source'])) {
+    include('inc/reproductor/radio.php');
+    exit();
+}
+
 if (isset($_GET['c'])) {
     $canal = $_GET['c'];
     $canalTipo;

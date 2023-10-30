@@ -291,6 +291,10 @@ if (isset($_GET['login']) && $_GET['login'] == "success") { ?>
                                 <a href="?p=tv" class="nav-link
                                 <?= ($_GET['p'] == 'tv') ? 'active' : ''; ?>">TV</a>
                             </li>
+                            <li class="nav-item">
+                                <a href="?p=radio" class="nav-link
+                                <?= ($_GET['p'] == 'radio') ? 'active' : ''; ?>">Radio</a>
+                            </li>
                             <li class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle
                                 <?= ($_GET['p'] == 'star') ? 'active' : ''; ?>
