@@ -280,7 +280,7 @@ if (isset($_GET['login']) && $_GET['login'] == "success") { ?>
                                 <?= ($_GET['tipo'] == 'tennis') ? 'active' : ''; ?>">Tenis</a>
                                 </li>
                             <?php endif;
-                            $queryNHL = mysqli_query($conn, "SELECT id FROM partidos WHERE tipo='tennis'");
+                            $queryNHL = mysqli_query($conn, "SELECT id FROM partidos WHERE tipo='ice-hockey'");
                             $countNHL = mysqli_num_rows($queryNHL);
                             if ($countNHL > 0):
                                 ?>
