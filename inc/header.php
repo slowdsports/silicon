@@ -230,10 +230,6 @@ if (isset($_GET['login']) && $_GET['login'] == "success") { ?>
                     </div>
                     <div class="offcanvas-body">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <a href="?p=home" class="nav-link
-                                <?= ($_GET['p'] == 'home') ? 'active' : ''; ?>">Inicio</a>
-                            </li>
                             <?php
                             $queryFutbol = mysqli_query($conn, "SELECT id FROM partidos WHERE tipo='football'");
                             $countFutbol = mysqli_num_rows($queryFutbol);
@@ -289,7 +285,7 @@ if (isset($_GET['login']) && $_GET['login'] == "success") { ?>
                                 <?= ($_GET['tipo'] == 'ice-hockey') ? 'active' : ''; ?>">NHL</a>
                                 </li>
                             <?php endif; ?>
-                            <li class="nav-item">
+                            <li class="hidden nav-item">
                                 <a href="?p=iptv" class="nav-link
                                 <?= ($_GET['p'] == 'iptv') ? 'active' : ''; ?>">
                                     IPTV
