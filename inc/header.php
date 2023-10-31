@@ -285,13 +285,6 @@ if (isset($_GET['login']) && $_GET['login'] == "success") { ?>
                                 <?= ($_GET['tipo'] == 'ice-hockey') ? 'active' : ''; ?>">NHL</a>
                                 </li>
                             <?php endif; ?>
-                            <li class="hidden nav-item">
-                                <a href="?p=iptv" class="nav-link
-                                <?= ($_GET['p'] == 'iptv') ? 'active' : ''; ?>">
-                                    IPTV
-                                    <span class="badge rounded-pill bg-danger ms-2">Beta</span>
-                                </a>
-                            </li>
                             <li class="nav-item">
                                 <a href="?p=tv" class="nav-link
                                 <?= ($_GET['p'] == 'tv') ? 'active' : ''; ?>">TV</a>
