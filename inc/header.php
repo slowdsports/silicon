@@ -279,6 +279,15 @@ if (isset($_GET['login']) && $_GET['login'] == "success") { ?>
                                     <a href="?p=eventos&tipo=tennis" class="nav-link
                                 <?= ($_GET['tipo'] == 'tennis') ? 'active' : ''; ?>">Tenis</a>
                                 </li>
+                            <?php endif;
+                            $queryNHL = mysqli_query($conn, "SELECT id FROM partidos WHERE tipo='tennis'");
+                            $countNHL = mysqli_num_rows($queryNHL);
+                            if ($countNHL > 0):
+                                ?>
+                                <li class="nav-item">
+                                    <a href="?p=eventos&tipo=ice-hockey&liga=234" class="nav-link
+                                <?= ($_GET['tipo'] == 'ice-hockey') ? 'active' : ''; ?>">NHL</a>
+                                </li>
                             <?php endif; ?>
                             <li class="nav-item">
                                 <a href="?p=iptv" class="nav-link
