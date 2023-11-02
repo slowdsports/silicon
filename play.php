@@ -174,7 +174,12 @@ if (isset($_GET['nbalp'])) {
             </div>
             <hr class="mb-4">
             <div class="row">
+                <div class="col-4">
                 <?php (isset($_GET['c']) ? include('inc/componentes/fuentes.php') : ''); ?>
+                </div>
+                <div class="col-8">
+                    <script src="inc/ads/related-ad.php"></script>
+                </div>
             </div>
         </div>
 

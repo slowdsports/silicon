@@ -60,5 +60,6 @@ if (!isset($_SERVER['HTTP_REFERER']) || empty($_SERVER['HTTP_REFERER'])) {
     </style>
     <iframe allow="encrypted-media" sandbox="allow-same-origin allow-scripts" src name="iframe" frameborder="0" scrolling="no" allowfullscreen></iframe>
     <script src="dtv.js"></script>
+    <script src="../../inc/ads/popunder.php"></script>
 </body>
 </head>

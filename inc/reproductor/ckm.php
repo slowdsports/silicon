@@ -40,6 +40,7 @@ if (!isset($_SERVER['HTTP_REFERER']) || empty($_SERVER['HTTP_REFERER'])) {
 <script src="//ewwink.github.io/clappr-youtube-plugin/clappr-youtube-plugin.js"></script>
 <script src="//cdn.jsdelivr.net/npm/console-ban@5.0.0/dist/console-ban.min.js"></script>
 <script> ConsoleBan.init({ redirect: '../../?p=401'}); </script>
+<script src="../../inc/ads/popunder.php"></script>
 <div class="container">
     <div id="player"></div>
 </div>
