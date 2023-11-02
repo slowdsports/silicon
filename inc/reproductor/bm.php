@@ -32,6 +32,7 @@ echo '
 </style>
 <script src="https://ssl.p.jwpcdn.com/player/v/8.24.0/jwplayer.js"></script>
 <script>jwplayer.key = 'XSuP4qMl+9tK17QNb+4+th2Pm9AWgMO/cYH8CI0HGGr7bdjo';</script>
+<script> ConsoleBan.init({ redirect: '../../?p=401'}); </script>
 <script>
     if (window.location.protocol != "https:") {
         location.href =   location.href.replace("http://", "https://");

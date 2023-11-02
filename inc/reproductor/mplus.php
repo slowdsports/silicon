@@ -1,3 +1,10 @@
+<?php
+// Lógica para evitar carga directa
+if (!isset($_SERVER['HTTP_REFERER']) || empty($_SERVER['HTTP_REFERER'])) {
+    include('../../401.php');
+    exit();
+}
+?>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="cache-control" content="max-age=0" />
@@ -18,6 +25,7 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script src="//ssl.p.jwpcdn.com/player/v/8.24.0/jwplayer.js"></script>
 <script>jwplayer.key = 'XSuP4qMl+9tK17QNb+4+th2Pm9AWgMO/cYH8CI0HGGr7bdjo';</script>
+<script> ConsoleBan.init({ redirect: '../../?p=401'}); </script>
 
 <style>
     body {

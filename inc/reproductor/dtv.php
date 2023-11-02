@@ -1,3 +1,10 @@
+<?php
+// Lógica para evitar carga directa
+if (!isset($_SERVER['HTTP_REFERER']) || empty($_SERVER['HTTP_REFERER'])) {
+    include('../../401.php');
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html>
 
@@ -11,6 +18,7 @@
     <meta name="robots" content="noindex">
     <script src="/cdn-cgi/apps/head/bdXKEs2GnhJP7BcpCR28GDM77_w.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script> ConsoleBan.init({ redirect: '../../?p=401'}); </script>
     <script>
         if (window.location.protocol != "https:") {
             //location.href = location.href.replace("http://", "https://");

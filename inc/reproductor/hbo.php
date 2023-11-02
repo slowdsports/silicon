@@ -1,3 +1,10 @@
+<?php
+// Lógica para evitar carga directa
+if (!isset($_SERVER['HTTP_REFERER']) || empty($_SERVER['HTTP_REFERER'])) {
+    include('../../401.php');
+    exit();
+}
+?>
 <style>
     body {
         background: #000;
@@ -14,6 +21,7 @@
     }
 </style>
 <script src="https://ssl.p.jwpcdn.com/player/v/8.24.0/jwplayer.js"></script>
+<script> ConsoleBan.init({ redirect: '../../?p=401'}); </script>
 <?php
 echo '
 <script>

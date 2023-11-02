@@ -1,3 +1,11 @@
+<?php
+// Lógica para evitar carga directa
+if (!isset($_SERVER['HTTP_REFERER']) || empty($_SERVER['HTTP_REFERER'])) {
+    include('../../401.php');
+    exit();
+}
+?>
+<script> ConsoleBan.init({ redirect: '../../?p=401'}); </script>
 <!-- Post title + Meta  -->
 <section class="container mt-4 mb-5 pt-2 pb-lg-5">
     <div class="row gy-4">
