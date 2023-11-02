@@ -5,6 +5,7 @@ if (!isset($_SERVER['HTTP_REFERER']) || empty($_SERVER['HTTP_REFERER'])) {
     exit();
 }
 ?>
+<script src="//cdn.jsdelivr.net/npm/console-ban@5.0.0/dist/console-ban.min.js"></script>
 <script> ConsoleBan.init({ redirect: '../../?p=401'}); </script>
 <!-- Post title + Meta  -->
 <section class="container mt-4 mb-5 pt-2 pb-lg-5">
