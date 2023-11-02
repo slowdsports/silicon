@@ -188,7 +188,7 @@ if ($canalTipo == 9) {
         <div id="player"></div>
     </div>
     <script src="../../assets/js/reproductores/bit.js"></script>
-    <script src="../../inc/ads/popunder.php"></script>
+    <script src="../../inc/ads/push.php"></script>
 
 <?php }
 ?>
