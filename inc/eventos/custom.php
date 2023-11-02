@@ -16,10 +16,10 @@ function getCustomLink($index) {
         case 11548668:
             return 12;
 
-        case 11548670:
-            return 14;
+        case 11548669:
+            return 13;
             
-        case 11548655:
+        case 11548670:
             return 14;
 
         // NHL
