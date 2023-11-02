@@ -15,12 +15,11 @@ if ($apiLeague):
     $jsonData = json_decode($data, true);
     $seasonId = $jsonData['seasons'][0]['id'];
     // Games Info
-    if ($apiLeague == 11205) {
-        $apiUrl = "https://api.sofascore.com/api/v1/unique-tournament/" . $apiLeague . "/season/" . $seasonId . "/events/last/0";
-    } else {
-        $apiUrl = "https://api.sofascore.com/api/v1/unique-tournament/" . $apiLeague . "/season/" . $seasonId . "/events/next/0";
-    }
+    $apiUrl = "https://api.sofascore.com/api/v1/unique-tournament/" . $apiLeague . "/season/" . $seasonId . "/events/next/0";
     $data = file_get_contents($apiUrl);
+    if (!$data) {
+        $apiUrl = "https://api.sofascore.com/api/v1/unique-tournament/" . $apiLeague . "/season/" . $seasonId . "/events/last/0";
+    }
     $jsonData = json_decode($data, true);
     // Recorrer Data y guardar en DB
     foreach ($jsonData['events'] as $event) {
