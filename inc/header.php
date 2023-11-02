@@ -278,7 +278,7 @@ if (isset($_GET['login']) && $_GET['login'] == "success") { ?>
                                 ?>
                                 <li class="nav-item">
                                     <a href="?p=eventos&tipo=baseball&liga=11205" class="nav-link
-                                <?= ($_GET['tipo'] == 'baseball') ? 'active' : ''; ?>">Baseball</a>
+                                <?= ($_GET['tipo'] == 'baseball') ? 'active' : ''; ?>">MLB</a>
                                 </li>
                             <?php endif;
                             $queryTenis = mysqli_query($conn, "SELECT id FROM partidos WHERE tipo='tennis'");
