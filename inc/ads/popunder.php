@@ -1,4 +1,5 @@
 <?php
+
 function getAdsGeneratingJs($zoneId, $zoneType)
 {
     $ch = curl_init("https://youradexchange.com/ad/s2sadblock.php?zone_id={$zoneId}&zone_type={$zoneType}&v=2");
@@ -14,4 +15,4 @@ function getAdsGeneratingJs($zoneId, $zoneType)
     return $javascriptCode;
 }
 
-echo getAdsGeneratingJs("7598010", "suv4");
+echo getAdsGeneratingJs("7676470", "suv4");
