@@ -95,6 +95,10 @@ if (isset($_COOKIE['usuario_id'])) {
         width: 10px;
         }
 
+        ::-webkit-scrollbar:horizontal {
+        height: 10px;
+        }
+
         ::-webkit-scrollbar-thumb {
         background-color: #6366f1;
         border-radius: 6px;
