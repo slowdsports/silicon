@@ -74,7 +74,7 @@ $liga1Content = file_get_contents($url);
 preg_match('/source:\s*"(.*?)"/', $liga1Content, $matches);
 if (isset($matches[1])) {
     $sourceUrl = $matches[1];
-    str_replace('81.91.178.190',$_SERVER['REMOTE_ADDR'], $sourceUrl);
+    str_replace('81.91.178.190',$_SERVER['HTTP_X_FORWARDED_FOR'], $sourceUrl);
 } else {
     echo "<h1>No se ha podido encontrar el canal.</h1>";
 }
