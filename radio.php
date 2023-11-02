@@ -22,6 +22,9 @@ if (isset($_GET['source'])) {
                     <i class="bx bx-search"></i>
                 </a>
             </form>
+            <p class="mb-4">
+                El contenido de esta sección ha sido posible gracias al extraordinario trabajo de Marc LaQuay y su proyecto <a href="https://github.com/LaQuay/TDTChannels/tree/master" target="_blank">TDT Channels</a>.
+            </p>
             <?php include('inc/componentes/radio.php');  ?>
         </div>
     </section>
