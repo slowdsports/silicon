@@ -20,8 +20,8 @@ if(isset($_GET['p'])) {
         include($rutaDirectorio . $paginaSolicitada . ".php");
     } else {
         // Si no existe, 404.php
-        echo "No existe";
-        //include("404.php");
+        //echo "No existe";
+        include("404.php");
     }
 } else {
     // Si no se proporciona ningún parámetro, carga la página predeterminada (index.php)
