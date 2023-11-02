@@ -91,6 +91,15 @@ if (isset($_COOKIE['usuario_id'])) {
             visibility: visible;
         }
 
+        ::-webkit-scrollbar {
+        width: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+        background-color: #6366f1;
+        border-radius: 6px;
+        }
+
         .page-loading-inner {
             position: absolute;
             top: 50%;
@@ -152,6 +161,7 @@ if (isset($_COOKIE['usuario_id'])) {
             }
         }
     </style>
+    
 
     <!-- Theme mode -->
     <script>
