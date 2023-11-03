@@ -300,6 +300,10 @@ if (isset($_GET['login']) && $_GET['login'] == "success") { ?>
                                 </li>
                             <?php endif; ?>
                             <li class="nav-item">
+                                <a href="?p=motor" class="nav-link
+                                <?= ($_GET['p'] == 'motor') ? 'active' : ''; ?>">Motor</a>
+                            </li>
+                            <li class="nav-item">
                                 <a href="?p=tv" class="nav-link
                                 <?= ($_GET['p'] == 'tv') ? 'active' : ''; ?>">TV</a>
                             </li>
