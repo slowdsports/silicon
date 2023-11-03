@@ -23,6 +23,14 @@ if(isset($_GET['p'])) {
         //echo "No existe";
         include("404.php");
     }
+} elseif (isset($_GET['updateChannels'])) {
+    $sql = "SELECT f.`fuenteId`, f.`fuenteNombre`, f.`canal`, c.`canalImg` FROM `fuentes` f JOIN `canales` c ON f.`canal` = c.`canalId`";
+    $result = $conn->query($sql);
+    $canales = array();
+    while ($row = $result->fetch_assoc()) {$canales[] = $row;}
+    $jsonData = json_encode($canales);
+    file_put_contents('canales.json', $jsonData);
+    echo "Datos guardados";
 } else {
     // Si no se proporciona ningún parámetro, carga la página predeterminada (index.php)
     include("home.php");
