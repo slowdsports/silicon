@@ -56,15 +56,33 @@ if ($apiLeague):
         $date = date('Y-m-d H:i:s', $event['startTimestamp']);
         // Canales por defecto por liga
         // Liga PRO [Ecuador]
-        if ($tournament_id == 240) {
-            $canal1 = 60;
-            $game_insert = "INSERT INTO `partidos`(`id`, `local`, `visitante`, `liga`, `fecha_hora`, `tipo`, `canal1`) VALUES ($game_id, $home_id, $away_id, $tournament_id, '$date', '$sport', '$canal1')";
-            // Primera A [Colombia]
-        } elseif ($tournament_id == 11539) {
-            $canal1 = 59;
-            $game_insert = "INSERT INTO `partidos`(`id`, `local`, `visitante`, `liga`, `fecha_hora`, `tipo`, `canal1`) VALUES ($game_id, $home_id, $away_id, $tournament_id, '$date', '$sport', '$canal1')";
+        switch ($tournament_id) {
+            // Liga Costa Rica (FUTV)
+            case 11535:
+                $game_insert = "INSERT INTO `partidos`(`id`, `local`, `visitante`, `liga`, `fecha_hora`, `tipo`, `canal1`) VALUES ($game_id, $home_id, $away_id, $tournament_id, '$date', '$sport', '248')";
+            break;
+            // Liga Guate (Canal 7)
+            case 11619:
+                $game_insert = "INSERT INTO `partidos`(`id`, `local`, `visitante`, `liga`, `fecha_hora`, `tipo`, `canal1`) VALUES ($game_id, $home_id, $away_id, $tournament_id, '$date', '$sport', '178')";
+            break;
+            // UCL + UEL (Star + Vix)
+            case 7: case 679:
+                $game_insert = "INSERT INTO `partidos`(`id`, `local`, `visitante`, `liga`, `fecha_hora`, `tipo`, `starp`, `vix`) VALUES ($game_id, $home_id, $away_id, $tournament_id, '$date', '$sport', '1', '1')";
+            break;
+            // Conference + Premier + Serie A + Bundesliga (Star)
+            case 17015: case 17: case 23: case 35: 
+                $game_insert = "INSERT INTO `partidos`(`id`, `local`, `visitante`, `liga`, `fecha_hora`, `tipo`, `starp`) VALUES ($game_id, $home_id, $away_id, $tournament_id, '$date', '$sport', '1')";
+            break;
+            // Liga MX + Brasileirao (Vix)
+            case 11621: case 325:
+                $game_insert = "INSERT INTO `partidos`(`id`, `local`, `visitante`, `liga`, `fecha_hora`, `tipo`, `vix`) VALUES ($game_id, $home_id, $away_id, $tournament_id, '$date', '$sport', '1')";
+            break;
+            default:
+                $game_insert = "INSERT INTO `partidos`(`id`, `local`, `visitante`, `liga`, `fecha_hora`, `tipo`) VALUES ($game_id, $home_id, $away_id, $tournament_id, '$date', '$sport')";
+            break;
+
         }
-        $game_insert = "INSERT INTO `partidos`(`id`, `local`, `visitante`, `liga`, `fecha_hora`, `tipo`) VALUES ($game_id, $home_id, $away_id, $tournament_id, '$date', '$sport')";
+        //$game_insert = "INSERT INTO `partidos`(`id`, `local`, `visitante`, `liga`, `fecha_hora`, `tipo`) VALUES ($game_id, $home_id, $away_id, $tournament_id, '$date', '$sport')";
         mysqli_query($conn, $game_insert);
     }
     if ($game_insert) {
