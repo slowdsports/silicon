@@ -15,17 +15,20 @@
                 <hr class="dropdown-divider">
                 <?php
                 $fuentes = mysqli_query($conn, "SELECT * FROM fuentes
-            WHERE canal = $canal");
+                INNER JOIN paises ON fuentes.pais = paises.paisId
+                WHERE canal = $canal");
                 while ($result = mysqli_fetch_assoc($fuentes)):
                     $fuenteId = $result['fuenteId'];
                     $fuenteNombre = $result['fuenteNombre'];
                     $canalId = $result['canal'];
+                    $paisNombre = $result['paisNombre'];
                     // Conteo
                     $totalFuentes = mysqli_num_rows($fuentes);
                     if ($totalFuentes > 0):
                         ?>
                         <a href="?p=tv&c=<?= $canalId ?>&f=<?= $fuenteId ?>"
                             class="dropdown-item <?= (isset($_GET['f']) && $_GET['f'] == $fuenteId) ? "active" : ""; ?>">
+                            <i class="flag <?=$paisNombre?>"></i>
                             <?= $fuenteNombre ?>
                         </a>
                     <?php endif; endwhile; ?>
