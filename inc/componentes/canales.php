@@ -13,7 +13,7 @@ function mostrarCanalesFromJson($jsonData, $categoriaFiltro = null, $limit = nul
             break;
         }
 
-        $canalId = $canal['canalId'];
+        $canalId = $canal['canal'];
         $fuenteId = $canal['fuenteId'];
         $canalImg = $canal['canalImg'];
         $canalNombre = $canal['fuenteNombre'];
