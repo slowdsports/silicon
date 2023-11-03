@@ -24,8 +24,9 @@ function mostrarCanalesFromJson($jsonData, $categoriaFiltro = null, $limit = nul
                 <div class="card border-primary shadow-sm card-hover card-hover-gradient" aria-hidden="true">
                     <div class="position-relative placeholder-wave">
                         <div class="card-header">
-                            <img class="card-img-canal placeholder-wave" src="assets/img/canales/<?= $canalImg ?>.png"
-                                alt="Card image">
+                            <img class="card-img-canal placeholder-wave" src="https://i.ibb.co/w0qg9JF/trans.png"
+                            alt="Card image"
+                            style="background-image: url('assets/img/canales/<?= $canalImg ?>.png'); background-size: contain; background-repeat: no-repeat;">
                         </div>
                         <div class="card-body">
                             <h5 class="card-title placeholder-glow">
