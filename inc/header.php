@@ -4,16 +4,6 @@ session_start();
 if ($_GET['p'] !== "login") {
     $_SESSION['redirect_url'] = $_SERVER['REQUEST_URI'];
 }
-// Verificar cookie guardada
-if (isset($_COOKIE['usuario_id'])) {
-    // Verificar cookie = sesión
-    if ($_COOKIE['usuario_id'] == $_SESSION['usuario_id']) {
-        $_SESSION['usuario_id'] = $_COOKIE['usuario_id'];
-        $_SESSION['usuario_rol'] = $_COOKIE['usuario_rol'];
-    } else {
-        header("Location: ?p=404");
-    }
-}
 ?>
 <!DOCTYPE html>
 <html lang="es">
