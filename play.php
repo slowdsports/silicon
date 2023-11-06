@@ -27,6 +27,7 @@ if (isset($_GET['c'])) {
         $channels = mysqli_query($conn, "SELECT * FROM fuentes
         INNER JOIN canales ON fuentes.canal = canales.canalId
         INNER JOIN categorias ON canales.canalCategoria = categorias.categoriaId
+        INNER JOIN paises ON fuentes.pais = paises.paisId
         WHERE fuenteId = $canalAlt");
         $result = mysqli_fetch_assoc($channels);
         $canalId = $result['canal'];
@@ -79,7 +80,8 @@ elseif (isset($_GET['id'])) {
         <div id="playerCol" class="col-lg-9">
             <div class="row">
                 <div class="col-9">
-                    <h2 class="h4"> Ver <?= ucwords($canalNombre) ?> En Vivo
+                    <h2 class="h4"> Ver
+                        <?= ucwords($canalNombre) ?> En Vivo
                     </h2>
                 </div>
                 <div class="col-3">
@@ -93,6 +95,19 @@ elseif (isset($_GET['id'])) {
                         </div>
                     </div>
                 </div>
+                <?php
+                if (!isset($_GET['c']) && $_GET['c'] == 337) {
+                ?>
+                <div class="col-12">
+                    <div id="alertaPlayerVip" class="alert d-flex alert-secondary" role="alert">
+                        <i class="bx bx-bug lead me-3"></i>
+                        <div>
+                            <i class="flag <?=$result['paisNombre']?>"></i>
+                            ¿El canal no funciona? <a href="#" class="alert-link">Contáctanos</a> para obtener acceso sin VPN y convertirte en VIP.
+                        </div>
+                    </div>
+                </div>
+                <?php }?>
             </div>
             <!-- Reproductor -->
             <div class="gallery mb-4 pb-2">
@@ -123,14 +138,14 @@ elseif (isset($_GET['id'])) {
                     ];
 
                     // Obtener el tipo de configuración
-                    if (isset($_GET['ifr']) || isset($_GET['evento']) ) {
+                    if (isset($_GET['ifr']) || isset($_GET['evento'])) {
                         // NBA LP
                         if (isset($_GET["nbalp"])) {
                             $idFrame = $_GET["nbalp"];
-                            $src = "//irtvhn.info/nba.php?id=" .$idFrame;
+                            $src = "//irtvhn.info/nba.php?id=" . $idFrame;
                             $src = "id='embed-player' class='embed-responsive-item' width='100%' height='100%' frameborder='0' scrolling='no' allowfullscreen allow-encrypted-media src='$src'";
-                                echo "<iframe {$src}></iframe>";
-                            
+                            echo "<iframe {$src}></iframe>";
+
                         } else {
                             $decodedIfr = base64_decode($_GET['ifr']);
                             $canalUrl = $decodedIfr;
@@ -197,7 +212,7 @@ elseif (isset($_GET['id'])) {
             <hr class="mb-4">
             <div class="row">
                 <div class="col-4">
-                <?php (isset($_GET['c']) ? include('inc/componentes/fuentes.php') : ''); ?>
+                    <?php (isset($_GET['c']) ? include('inc/componentes/fuentes.php') : ''); ?>
                 </div>
                 <div class="col-8">
                     <script src="inc/ads/related-ad.php"></script>
