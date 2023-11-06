@@ -8,7 +8,7 @@ if (!isset($_SERVER['HTTP_REFERER']) || empty($_SERVER['HTTP_REFERER'])) {
 <script src="//ssl.p.jwpcdn.com/player/v/8.24.0/jwplayer.js"></script>
 <script>jwplayer.key = 'XSuP4qMl+9tK17QNb+4+th2Pm9AWgMO/cYH8CI0HGGr7bdjo';</script>
 <script src="//cdn.jsdelivr.net/npm/console-ban@5.0.0/dist/console-ban.min.js"></script>
-<script> ConsoleBan.init({ redirect: '../../?p=401'}); </script>
+<script> ConsoleBan.init({ redirect: '../../?p=401' }); </script>
 <script src="../../inc/ads/popunder.php"></script>
 <style>
     body {
@@ -35,12 +35,30 @@ if (!isset($_SERVER['HTTP_REFERER']) || empty($_SERVER['HTTP_REFERER'])) {
     }
 </style>
 <?php
-// include('../../inc/ads/popunder.php');
+$getUrl = base64_decode($_GET['s']);
+$params = explode("&", $getUrl);
+$s = "";
+$key = "";
+$key2 = "";
+foreach ($params as $param) {
+    list($nombre, $val) = explode("=", $param);
+    // Asignar los valores a las variables correspondientes según el nombre del parámetro
+    if ($nombre === "key") {
+        $key = $val;
+    } elseif ($nombre === "key2") {
+        $key2 = $val;
+    } else {
+        // Si el nombre del parámetro no es "key" ni "key2", se asume que es la primera parte de la URL
+        $s = $nombre . "=" . $val;
+    }
+}
+
+//echo $getUrl;
 echo '
 <script>
-var getURL = "' . $_GET['s'] . '";
-var getKEY = "' . $_GET['key'] . '";
-var getKEY2 = "' . $_GET['key2'] . '";
+var getURL = "' . $s . '";
+var getKEY = "' . $key . '";
+var getKEY2 = "' . $key2 . '";
 var getTYPE = 9;
 </script>'; ?>
 <div class="container">
