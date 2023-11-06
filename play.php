@@ -52,8 +52,21 @@ if (isset($_GET['title'])) {
     $canalNombre = $_GET['title'];
 }
 // NBA LP
-if (isset($_GET['nbalp'])) {
+elseif (isset($_GET['nbalp'])) {
     $canalNombre = " League Pass";
+}
+// DB
+elseif (isset($_GET['id'])) {
+    $partidoID = $_GET['id'];
+    $partido = mysqli_query($conn, "SELECT p.id, p.local, p.visitante,
+    e1.equipoId AS id_local, e1.equipoNombre AS equipo_local,
+    e2.equipoId AS id_visitante, e2.equipoNombre AS equipo_visitante
+    FROM partidos p
+    JOIN equipos e1 ON p.local = e1.equipoId
+    JOIN equipos e2 ON p.visitante = e2.equipoId
+    WHERE p.id='$partidoID'");
+    $ross = mysqli_fetch_assoc($partido);
+    $canalNombre = $ross['equipo_local'] . " vs " . $ross['equipo_visitante'];
 }
 ?>
 <div id="toast-container" class="position-fixed bottom-0 end-0 p-3">
@@ -134,6 +147,15 @@ if (isset($_GET['nbalp'])) {
                         }
                     } elseif (isset($_GET['r']) && isset($_GET['img'])) {
                         $config = $configurations['r'];
+                        // Construir los parámetros para la URL del iframe
+                        $params = implode("&", array_map(function ($param) {
+                            return isset($_GET[$param]) ? "{$param}={$_GET[$param]}" : "";
+                        }, $config[1]));
+                        // Construir la URL del iframe con la configuración correspondiente
+                        $src = "id='embed-player' class='embed-responsive-item' width='100%' height='100%' frameborder='0' scrolling='no' allowfullscreen allow='encrypted-media *; autoplay' src='inc/reproductor/{$config[0]}?{$params}'";
+                        echo "<iframe {$src}></iframe>";
+                    } elseif (isset($_GET['s'])) {
+                        $config = $configurations['s'];
                         // Construir los parámetros para la URL del iframe
                         $params = implode("&", array_map(function ($param) {
                             return isset($_GET[$param]) ? "{$param}={$_GET[$param]}" : "";

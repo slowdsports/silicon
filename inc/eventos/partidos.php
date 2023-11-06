@@ -12,7 +12,8 @@ $ligaNombre = $result['ligaNombre'];
     <div class="container">
         <div class="row">
             <?php
-            $partidos = mysqli_query($conn, "SELECT p.id, p.local, p.visitante, p.liga, p.fecha_hora, p.tipo, p.starp, p.vix, 
+            $partidos = mysqli_query($conn, "SELECT p.id, p.local, p.visitante, p.liga, p.fecha_hora, p.tipo, p.starp, p.vix,
+            h.hboId AS hbo, h.url AS hbo_url,
             e1.equipoId AS id_local, e1.equipoNombre AS equipo_local,
             e2.equipoId AS id_visitante, e2.equipoNombre AS equipo_visitante,
             e3.ligaNombre AS partido_liga,
@@ -40,6 +41,7 @@ $ligaNombre = $result['ligaNombre'];
             JOIN equipos e1 ON p.local = e1.equipoId
             JOIN equipos e2 ON p.visitante = e2.equipoId
             JOIN ligas e3 ON p.liga = e3.ligaId
+            LEFT JOIN hbom h ON p.id = h.partido
             LEFT JOIN fuentes f1 ON p.canal1 = f1.fuenteId
             LEFT JOIN paises p1 ON f1.pais = p1.paisId
             LEFT JOIN fuentes f2 ON p.canal2 = f2.fuenteId
@@ -156,6 +158,18 @@ $ligaNombre = $result['ligaNombre'];
                     <div class="collapse <?= $collapse ?>" id="juego<?= $index ?>">
                         <div class="card card-body">
                             <div class="list-group text-center">
+                                <?php
+                                // HBO M
+                                if ($result['hbo'] === null || $result['hbo'] === "") {
+                                    // No mostramos nada
+                                } else {
+                                    ?>
+                                    <a class="justify-content-center list-group-item list-group-item-action"
+                                        href="?p=tv&<?= $tipo ?>&id=<?= $index ?>&s=<?= $result['hbo_url'] ?>">
+                                        <i class="flag mx"></i>
+                                        HBO Max
+                                    </a>
+                                <?php } ?>
                                 <?php
                                 // CUSTOM
                                 if ($custId !== null) {
