@@ -12,38 +12,28 @@ function getCustomLink($index) {
         // NBA
         case 11550629:
             return 7;
-        case 11550630:
-            return 9;
-        case 11550631:
-            return 12;
-        case 11550632:
-            return 3;
-        case 11550626:
-            return 8;
-        case 11550627:
-            return 13;
-        case 11550628:
-            return 14;
-        case 11550622:
-            return 18;
-        case 11550623:
-            return 15;
-        case 11550624:
-            return 16;
-        case 11550625:
-            return 17;
-        case 11550621:
-            return 19;
 
         // NHL
-        case 11386129:
-            return 21;
-        case 11386130:
+        case 11386126:
+            return 12;
+        case 11386125:
+            return 11;
+        case 11386124:
+            return 14;
+        case 11386122:
+            return 13;
+        case 11386123:
+            return 15;
+        case 11386121:
+            return 17;
+        case 11386120:
+            return 16;
+        case 11386119:
+            return 19;
+        case 11386118:
+            return 18;
+        case 11386117:
             return 20;
-        case 11386128:
-            return 22;
-        case 11386127:
-            return 23;
 
 
         default:
