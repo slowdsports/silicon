@@ -17,7 +17,7 @@
             </path>
         </svg>
     </h2>
-    <?php include('inc/componentes/guia/es.php'); ?>
+    <?php //include('inc/componentes/guia/es.php'); ?>
 </section>
 <section class="container text-center pt-5 mt-2 mt-md-4 mt-lg-5">
     <!-- Tarjetas de canales -->
