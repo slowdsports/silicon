@@ -4,8 +4,8 @@
     <div class="container">
         <div class="row">
             <?php
-            error_reporting(E_ALL);
-            ini_set('display_errors', '1');
+            //error_reporting(E_ALL);
+            //ini_set('display_errors', '1');
             date_default_timezone_set('Europe/Madrid');
             // Season Info
             $apiSeason = "https://api.sofascore.com/api/v1/stage/sport/motorsport/featured";
