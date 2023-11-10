@@ -7,7 +7,7 @@
 </section>
 <section class="container text-center pt-5 mt-2 mt-md-4 mt-lg-5">
     <!-- Tarjetas de programas -->
-    <h2 class="h1 d-md-inline-block position-relative mb-md-5 mb-sm-4 text-sm-start text-center">
+    <h2 class="hidden h1 d-md-inline-block position-relative mb-md-5 mb-sm-4 text-sm-start text-center">
         Programas de TV
         <!-- Arrow shape -->
         <svg class="d-md-block d-none position-absolute top-0 ms-4 ps-1" style="left: 100%;"
@@ -18,6 +18,7 @@
         </svg>
     </h2>
     <?php //include('inc/componentes/guia/es.php'); ?>
+    <iframe width="100%" height="450" src="https://www.youtube.com/embed/ZS9GKsXvBAU?si=rXZxWC5CrO3DY5qP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="border-radius: 5px"></iframe>
 </section>
 <section class="container text-center pt-5 mt-2 mt-md-4 mt-lg-5">
     <!-- Tarjetas de canales -->
