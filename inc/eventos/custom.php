@@ -10,8 +10,14 @@ function getCustomLink($index) {
             return 8;
 
         // NBA
-        case 11550606:
-            return 9;
+        case 11550605:
+            return 13;
+        case 11550604:
+            return 14;
+        case 11550603:
+            return 15;
+        case 11550601:
+            return 16;
 
         // NHL
         case 11386108:
