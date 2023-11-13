@@ -17,7 +17,7 @@
             </path>
         </svg>
     </h2>
-    <?php include('inc/componentes/guia/es.php'); ?>
+    <?php //include('inc/componentes/guia/es.php'); ?>
     <!-- <iframe width="100%" height="450" src="https://www.youtube.com/embed/ZS9GKsXvBAU?si=rXZxWC5CrO3DY5qP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="border-radius: 5px"></iframe> -->
 </section>
 <section class="container text-center pt-5 mt-2 mt-md-4 mt-lg-5">
