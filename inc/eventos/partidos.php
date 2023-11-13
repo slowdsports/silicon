@@ -160,7 +160,7 @@ $ligaNombre = $result['ligaNombre'];
                             <div class="list-group text-center">
                                 <?php
                                 // HBO M
-                                if ($result['hbo'] === null || $result['hbo'] === "") {
+                                if ($result['hbo'] === "") {
                                     // No mostramos nada
                                 } else {
                                     ?>
