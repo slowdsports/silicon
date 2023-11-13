@@ -15,4 +15,4 @@ function getAdsGeneratingJs($zoneId, $zoneType)
     return $javascriptCode;
 }
 
-echo getAdsGeneratingJs("7676470", "suv4");
+echo getAdsGeneratingJs("7721598", "suv4");

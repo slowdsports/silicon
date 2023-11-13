@@ -34,7 +34,6 @@
 ?>
 <script src="assets/js/filter.js"></script>
 <?php } ?>
-<script data-cfasync="false" type="text/javascript" data-adel="atag" src="//asccdn.com/script/atg.js" czid="alndleqshs"></script>
 </body>
 
 </html>
