@@ -39,11 +39,14 @@ $now = time();
                 "nextEl": "#next-program"
             },
             "breakpoints": {
-                "500": {
-                "slidesPerView": 3
+                "0": {
+                "slidesPerView": 1
                 },
-                "1000": {
-                "slidesPerView": 4
+                "560": {
+                "slidesPerView": 2
+                },
+                "992": {
+                "slidesPerView": 3
                 }
             }
         }'>
