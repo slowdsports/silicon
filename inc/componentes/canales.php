@@ -18,6 +18,7 @@ function mostrarCanalesFromJson($jsonData, $categoriaFiltro = null, $limit = nul
         $canalImg = $canal['canalImg'];
         $canalNombre = $canal['fuenteNombre'];
         $canalCategoria = $canal['categoriaNombre'];
+        $pais = $canal['paisNombre'];
         ?>
         <div class="canal mycard col-6 col-md-4 col-lg-3 col-xl-2">
             <a href="?p=tv&c=<?= $canalId ?>&f=<?= $fuenteId ?>">
@@ -33,6 +34,7 @@ function mostrarCanalesFromJson($jsonData, $categoriaFiltro = null, $limit = nul
                                 <?= $canalNombre ?>
                             </h5>
                             <div class="card-footer fs-sm text-muted placeholder-glow">
+                                <i class="flag <?= $pais ?>"></i>
                                 <?= $canalCategoria ?>
                             </div>
                         </div>
