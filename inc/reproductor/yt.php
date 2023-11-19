@@ -56,6 +56,13 @@ if (!empty($video_id)) {
     parse_str($video_info, $video_details);
 }
 ?>
+<script src="//cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/level-selector@latest/dist/level-selector.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/clappr-pip@latest/dist/clappr-pip.min.js"></script>
+<script src="//cdn.jsdelivr.net/gh/clappr/dash-shaka-playback@latest/dist/dash-shaka-playback.min.js"></script>
+<script src='//cdn.jsdelivr.net/npm/clappr-chromecast-plugin@latest/dist/clappr-chromecast-plugin.min.js'></script>
+<script src='//cdn.jsdelivr.net/npm/clappr-pip@latest/dist/clappr-pip.min.js'></script>
+<script src="//ewwink.github.io/clappr-youtube-plugin/clappr-youtube-plugin.js"></script>
 <style>
     body {
         background: #000;
@@ -73,14 +80,53 @@ if (!empty($video_id)) {
         width: 100% !important;
     }
 </style>
+
 <body>
     <div class="container">
         <div id="player"></div>
     </div>
 
-    <script src="https://www.youtube.com/iframe_api"></script>
     <script>
-        var videoId = "<?= $video_id; ?>";
+        let source = "<?= $video_id ?>";
+        var player = new Clappr.Player({
+            source: atob(source),
+            poster: 'https://i.ytimg.com/vi/'+source+'/hqdefault.jpg',
+            parentId: "#player",
+            watermark: "https://eduveel1.github.io/baleada/img/iRTVW_PLAYER.png",
+            position: "top-left",
+            plugins: [LevelSelector, ClapprPip.PipButton, ClapprPip.PipPlugin, DashShakaPlayback, ChromecastPlugin, ClapprPip.PipButton, ClapprPip.PipPlugin, YoutubePlugin],
+            YoutubeVars : {"languageCode":"en"},
+            events: {
+                onReady: function () {
+                    console.log("El evento onReady se ha disparado.");
+                    var plugin = this.getPlugin("click_to_pause");
+                    plugin && plugin.disable();
+                },
+                onPlay: function () {
+                    console.log("El evento onPlay se ha disparado.");
+                },
+            },
+            chromecast: {
+                appId: "9DFB77C0",
+                contentType: "video/mp4",
+            },
+            gaAccount: "G-Z7958KV9CY",
+            gaTrackerName: "MyPlayerInstance",
+            height: "100%",
+            width: "100%",
+            autoPlay: false,
+            muted: false,
+        });
+        player.play();
+        // Pausar después de 2 segundos (2000 milisegundos)
+        setTimeout(() => {
+            player.pause();
+        }, 2000);
+    </script>
+
+    <!-- <script src="https://www.youtube.com/iframe_api"></script>
+    <script>
+        var videoId = "";
         var player;
 
         function onYouTubeIframeAPIReady() {
@@ -101,6 +147,7 @@ if (!empty($video_id)) {
 
         function onPlayerStateChange(event) {
         }
-    </script>
+    </script> -->
 </body>
+
 </html>
