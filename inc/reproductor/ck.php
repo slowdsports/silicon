@@ -118,9 +118,9 @@ if ($canalTipo == 9) {
     if (strpos($canalUrl, "//dtvott-") !== false || strpos($canalUrl, ".dtvott") !== false) {
         // JW o Bit
         if (strpos($canalUrl, "-vos") !== false || $canalId == 59) {
-            $ext = "jw";
+            $ext = "irjw";
         } else {
-            $ext = "jw";
+            $ext = "irjw";
         }
         // Encriptamos la URL
         $base = "";
