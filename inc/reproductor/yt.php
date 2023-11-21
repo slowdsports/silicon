@@ -89,12 +89,12 @@ if (!empty($video_id)) {
     <script>
         let source = "<?= $video_id ?>";
         var player = new Clappr.Player({
-            source: atob(source),
+            source: source,
             poster: 'https://i.ytimg.com/vi/'+source+'/hqdefault.jpg',
             parentId: "#player",
             watermark: "https://eduveel1.github.io/baleada/img/iRTVW_PLAYER.png",
             position: "top-left",
-            plugins: [LevelSelector, ClapprPip.PipButton, ClapprPip.PipPlugin, DashShakaPlayback, ChromecastPlugin, ClapprPip.PipButton, ClapprPip.PipPlugin, YoutubePlugin],
+            plugins: [LevelSelector, ClapprPip.PipButton, ClapprPip.PipPlugin, DashShakaPlayback, ChromecastPlugin, ClapprPip.PipButton, ClapprPip.PipPlugin, YoutubePlugin, YoutubePluginControl],
             YoutubeVars : {"languageCode":"en"},
             events: {
                 onReady: function () {
@@ -120,34 +120,8 @@ if (!empty($video_id)) {
         player.play();
         // Pausar después de 2 segundos (2000 milisegundos)
         setTimeout(() => {
-            player.pause();
+            //player.pause();
         }, 2000);
     </script>
-
-    <!-- <script src="https://www.youtube.com/iframe_api"></script>
-    <script>
-        var videoId = "";
-        var player;
-
-        function onYouTubeIframeAPIReady() {
-            player = new YT.Player('player', {
-                height: '360',
-                width: '640',
-                videoId: videoId,
-                events: {
-                    'onReady': onPlayerReady,
-                    'onStateChange': onPlayerStateChange
-                }
-            });
-        }
-
-        function onPlayerReady(event) {
-            event.target.playVideo();
-        }
-
-        function onPlayerStateChange(event) {
-        }
-    </script> -->
 </body>
-
 </html>
