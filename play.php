@@ -180,8 +180,8 @@ elseif (isset($_GET['id'])) {
                         $src = "id='embed-player' class='embed-responsive-item' width='100%' height='100%' frameborder='0' scrolling='no' allowfullscreen allow='encrypted-media *; autoplay' src='inc/reproductor/{$config[0]}?{$params}'";
                         echo "<iframe {$src}></iframe>";
                     } else {
-                        // Configurar los claro
-                        if (strpos($canalUrl, "claro")) {
+                        // Configurar los claro && Flow
+                        if (strpos($canalUrl, "claro") || strpos($canalUrl, "edge-")) {
                             $src = "id='embed-player' class='embed-responsive-item' width='100%' height='100%' frameborder='0' scrolling='no' allowfullscreen allow='encrypted-media' src='//clarovideo.irtvhn.info?c=$canalAlt'";
                         }
                         // Configurar los IZZI
