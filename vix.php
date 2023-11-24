@@ -10,8 +10,8 @@
         </div>
     </div>
     <!-- Events grid -->
+    <p><em>Los eventos pueden tardar unos segundos en cargar, por favor espera un poco.</em></p>
     <div id="eventos" class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 gx-3 gx-md-4 mt-n2 mt-sm-0">
-
-        <script src="inc/eventos/vix.js"></script>
     </div>
+    <script src="inc/eventos/vix.js"></script>
 </section>
