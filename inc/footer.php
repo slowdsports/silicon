@@ -17,6 +17,8 @@
 
 
 <!-- Vendor Scripts -->
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 <script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="assets/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
 <script src="assets/vendor/@lottiefiles/lottie-player/dist/lottie-player.js"></script>
