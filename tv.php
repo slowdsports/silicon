@@ -1,7 +1,9 @@
 <?php
 // Reproductor
-if (isset($_GET['c']) || isset($_GET['r'] )|| isset($_GET['s'] )|| isset($_GET['v'] )|| isset($_GET['key'] )|| isset($_GET['evento'] )|| isset($_GET['ifr'] )|| isset($_GET['m3u'] )) {
+if (isset($_GET['c']) || isset($_GET['r'] )|| isset($_GET['s'] )|| isset($_GET['v'] )|| isset($_GET['key'] )|| isset($_GET['evento'] )|| isset($_GET['ifr'] ) || isset($_GET['m3u'] )) {
     include('play.php');
+} elseif (isset($_GET['adultos'])) {
+    include('inc/reproductor/adultos.php');
 } else { ?>
     <section class="container text-center pt-5 mt-2 mt-md-4 mt-lg-5">
         <h2 class="h1 d-md-inline-block position-relative mb-md-5 mb-sm-4 text-sm-start text-center">
@@ -18,9 +20,40 @@ if (isset($_GET['c']) || isset($_GET['r'] )|| isset($_GET['s'] )|| isset($_GET['
             <!-- Filtro de Canales -->
             <form class="input-group">
                 <input type="text" placeholder="Buscar un canal..." class="form-control form-control-lg rounded-3">
-                <a class="btn btn-icon btn-lg btn-primary rounded-3 ms-3">
+                <!-- <a class="btn btn-icon btn-lg btn-primary rounded-3 ms-3">
                     <i class="bx bx-search"></i>
-                </a>
+                </a> -->
+                <!-- Dropdown -->
+                <button type="button" class="btn btn-lg btn-primary rounded-3 ms-3 " data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <ion-icon name="funnel-outline"></ion-icon>
+                </button>
+                <div class="dropdown-menu my-1">
+                    <a class="dropdown-item" href="#" data-category="all">Todo</a>
+                    <div class="dropdown-divider"></div>
+                    <?php
+                    $ccf = mysqli_query($conn, "SELECT categoriaId, categoriaNombre FROM categorias");
+                    while ($rrf = mysqli_fetch_array($ccf)):
+                    $catId = $rrf['categoriaId']; $catNombre = $rrf['categoriaNombre'];
+                    $ccfn = mysqli_query($conn, "SELECT canalId, canalCategoria FROM canales WHERE canalCategoria = $catId");
+                    $ttc = mysqli_num_rows($ccfn);
+                    if ($ttc > 0):
+                    ?>
+                    <a class="dropdown-item" href="#" data-category="<?=$catId?>">
+                        <?=$catNombre?>
+                    </a>
+                    <?php endif; endwhile; ?>
+                    <a href="#" class="dropdown-item">
+                        <div class="input-group mb-4">
+                            <div class="input-group-text">
+                                <input name="adultos" id="adultos" class="form-check-input" type="checkbox">
+                                <label class="form-check-label" for="adultos">
+                                    <ion-icon name=""></ion-icon>
+                                    Canales +18
+                                </label>
+                            </div>
+                        </div>
+                    </a>
+                </div>
             </form>
             <?php
             include('inc/componentes/canales.php');
