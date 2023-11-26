@@ -1,23 +1,36 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Obtén la entrada de texto y la lista de tarjetas de canales
     var input = document.querySelector('.form-control');
+    var dropdown = document.querySelectorAll('.dropdown-item');
     var canales = document.querySelectorAll('.canal');
-
-    // Agrega un evento de entrada a la entrada de texto
+    // Filtro de búsqueda
     input.addEventListener('input', function () {
-        var searchTerm = input.value.toLowerCase(); // Obtén el término de búsqueda en minúsculas
-
-        // Itera sobre las tarjetas de canales y muestra/oculta según el término de búsqueda
+        var searchTerm = input.value.toLowerCase();
+        // Ciclo para determinar mostrar/ocultar
         canales.forEach(function (card) {
-            var channelName = card.querySelector('.card .card-title').textContent.toLowerCase(); // Obtén el nombre del canal en minúsculas
+            var channelName = card.querySelector('.card .card-title').textContent.toLowerCase();
             if (channelName.includes(searchTerm)) {
-                card.style.display = 'block'; // Muestra la tarjeta si el término de búsqueda está presente en el nombre del canal
+                card.style.display = 'block';
             } else {
-                card.style.display = 'none'; // Oculta la tarjeta si el término de búsqueda no está presente en el nombre del canal
+                card.style.display = 'none';
             }
         });
     });
+    // Filtro de Categorías
+    dropdown.forEach(function (item) {
+        item.addEventListener('click', function () {
+            var category = item.getAttribute('data-category').toLowerCase();
+            canales.forEach(function (card) {
+                var cardCategory = card.getAttribute('data-category').toLowerCase();
+                if (category === 'all' || cardCategory === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    });
 });
+
 // Fake Player
 var playerFake = document.getElementById("playerFake");
 var playerContainer = document.getElementById("playerContainer");
