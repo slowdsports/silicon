@@ -5,7 +5,7 @@
     </h2>
     <?php include('inc/componentes/agenda.php'); ?>
 </section>
-<section class="container text-center pt-5 mt-2 mt-md-4 mt-lg-5">
+<section class="hidden container text-center pt-5 mt-2 mt-md-4 mt-lg-5">
     <!-- Tarjetas de programas -->
     <h2 class="h1 d-md-inline-block position-relative mb-md-5 mb-sm-4 text-sm-start text-center">
         Programas de TV
