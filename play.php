@@ -31,7 +31,6 @@ if (isset($_GET['c'])) {
         WHERE fuenteId = $canalAlt");
         $result = mysqli_fetch_assoc($channels);
         $canalId = $result['canal'];
-        echo "canalid: " . $canalId;
         $canalImg = $result['canalImg'];
         $canalNombre = $result['canalNombre'];
         $canalCategoria = $result['categoriaNombre'];
