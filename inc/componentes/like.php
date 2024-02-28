@@ -7,11 +7,11 @@ include('../conn.php');
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["canal_id"]) && isset($_POST["voto"]) && isset($_SESSION["usuario_id"])) {
     // Obtener datos de la solicitud AJAX
     $usuarioId = $_SESSION['usuario_id'];
-    $canalId = $_POST['canal_id'];
+    $canalAlt = $_POST['canal_id'];
     $voto = $_POST['voto'];
 
     // Verificar si el usuario ha votado para este canal antes
-    $sqlCheckVote = "SELECT voto FROM votos WHERE usuario_id = $usuarioId AND canal_id = $canalId";
+    $sqlCheckVote = "SELECT voto FROM votos WHERE usuario_id = $usuarioId AND canal_id = $canalAlt";
     $resultCheckVote = $conn->query($sqlCheckVote);
 
     if ($resultCheckVote->num_rows > 0) {
@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["canal_id"]) && isset($
 
         if ($voto == $votoAnterior) {
             // El usuario quiere deshacer su voto, eliminar el voto de la base de datos
-            $sqlDeleteVote = "DELETE FROM votos WHERE usuario_id = $usuarioId AND canal_id = $canalId";
+            $sqlDeleteVote = "DELETE FROM votos WHERE usuario_id = $usuarioId AND canal_id = $canalAlt";
             if ($conn->query($sqlDeleteVote) === TRUE) {
                 // Voto eliminado OK
             } else {
@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["canal_id"]) && isset($
             }
         } else {
             // El usuario quiere cambiar su voto, actualizar el voto en la base de datos
-            $sqlUpdateVote = "UPDATE votos SET voto = '$voto' WHERE usuario_id = $usuarioId AND canal_id = $canalId";
+            $sqlUpdateVote = "UPDATE votos SET voto = '$voto' WHERE usuario_id = $usuarioId AND canal_id = $canalAlt";
             if ($conn->query($sqlUpdateVote) === TRUE) {
                 // Voto actualizado OK
             } else {
@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["canal_id"]) && isset($
         }
     } else {
         // El usuario no ha votado antes para este canal, insertar el voto en la base de datos
-        $sqlInsertVote = "INSERT INTO votos (usuario_id, canal_id, voto) VALUES ($usuarioId, $canalId, '$voto')";
+        $sqlInsertVote = "INSERT INTO votos (usuario_id, canal_id, voto) VALUES ($usuarioId, $canalAlt, '$voto')";
         if ($conn->query($sqlInsertVote) === TRUE) {
             // Voto insertado OK
         } else {

@@ -31,6 +31,7 @@ if (isset($_GET['c'])) {
         WHERE fuenteId = $canalAlt");
         $result = mysqli_fetch_assoc($channels);
         $canalId = $result['canal'];
+        echo "canalid: " . $canalId;
         $canalImg = $result['canalImg'];
         $canalNombre = $result['canalNombre'];
         $canalCategoria = $result['categoriaNombre'];
@@ -232,7 +233,7 @@ elseif (isset($_GET['id'])) {
                             $sql = "SELECT canal_id, 
                         SUM(CASE WHEN voto = 'like' THEN 1 ELSE 0 END) as like_count,
                         SUM(CASE WHEN voto = 'dislike' THEN 1 ELSE 0 END) as dislike_count
-                        FROM votos WHERE canal_id = $canalId
+                        FROM votos WHERE canal_id = $canalAlt
                         GROUP BY canal_id";
 
                             $result = $conn->query($sql);
@@ -245,33 +246,33 @@ elseif (isset($_GET['id'])) {
                                 $dislikeCount = 0;
                             }
                             // Verificar si el usuario ha dado "like" para este canal
-                            $sqlCheckLike = "SELECT * FROM votos WHERE usuario_id = $_SESSION[usuario_id] AND canal_id = $canalId AND voto = 'like'";
+                            $sqlCheckLike = "SELECT * FROM votos WHERE usuario_id = $_SESSION[usuario_id] AND canal_id = $canalAlt AND voto = 'like'";
                             $resultCheckLike = $conn->query($sqlCheckLike);
                             $userHasLiked = ($resultCheckLike->num_rows > 0);
                             // Verificar si el usuario ya ha dado like
                             $likeClass = ($userHasLiked) ? 'active' : '';
                             // Verificar si el usuario ha dado "dislike" para este canal
-                            $sqlCheckDislike = "SELECT * FROM votos WHERE usuario_id = $_SESSION[usuario_id] AND canal_id = $canalId AND voto = 'dislike'";
+                            $sqlCheckDislike = "SELECT * FROM votos WHERE usuario_id = $_SESSION[usuario_id] AND canal_id = $canalAlt AND voto = 'dislike'";
                             $resultCheckDislike = $conn->query($sqlCheckDislike);
                             $userHasDisliked = ($resultCheckDislike->num_rows > 0);
                             // Verificar si el usuario ya ha dado dislike
                             $dislikeClass = ($userHasDisliked) ? 'active' : '';
                             ?>
-                            <button data-canal-id="<?= $canalId ?>" type="button"
+                            <button data-canal-id="<?= $canalAlt ?>" type="button"
                                 class="btn btn-sm btn-outline-secondary like-btn <?= $likeClass ?>">
                                 <i class="bx bx-like me-2 lead"></i>
                                 Like
-                                <span id="like-count-<?= $canalId ?>" class="badge bg-primary shadow-primary mt-n1 ms-3">
+                                <span id="like-count-<?= $canalAlt ?>" class="badge bg-primary shadow-primary mt-n1 ms-3">
                                     <?= $likeCount ?>
                                 </span>
                             </button>
                         </div>
                         <div class="col-6">
-                            <button data-canal-id="<?= $canalId ?>" type="button"
+                            <button data-canal-id="<?= $canalAlt ?>" type="button"
                                 class="btn btn-sm btn-outline-secondary dislike-btn <?= $dislikeClass ?>">
                                 <i class="bx bx-dislike me-2 lead"></i>
                                 Dislike
-                                <span id="dislike-count-<?= $canalId ?>" class="badge bg-danger shadow-primary mt-n1 ms-3">
+                                <span id="dislike-count-<?= $canalAlt ?>" class="badge bg-danger shadow-primary mt-n1 ms-3">
                                     <?= $dislikeCount ?>
                                 </span>
                             </button>
