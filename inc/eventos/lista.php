@@ -16,7 +16,7 @@
                 <div class="col col-sm-6 col-md-3 py-4 my-2 my-sm-3">
                     <div
                         class="card flex-column flex-sm-row flex-md-column flex-xxl-row align-items-center card-hover border-primary h-100">
-                        <img src="https://api.codetabs.com/v1/proxy/?quest=https://api.sofascore.app/api/v1/unique-tournament/<?= $ligaId ?>/image/dark" width="80"
+                        <img src="assets/img/ligas/sf/<?= $ligaId ?>.png" width="80"
                             alt="<?= $ligaNombre ?>">
                         <div
                             class="card-body text-center text-sm-start text-md-center text-xxl-start pb-3 pb-sm-2 pb-md-3 pb-xxl-2">
