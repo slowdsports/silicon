@@ -87,7 +87,7 @@ elseif (isset($_GET['id'])) {
                 <div class="col-3">
                     <!-- Toggle Size Player -->
                     <div class="d-flex justify-content-end">
-                        <div class="form-check form-switch mode-switch pe-lg-1 ms-auto me-4">
+                        <div id="mode-switch" class="form-check form-switch mode-switch pe-lg-1 ms-auto me-4">
                             <input type="checkbox" class="form-check-input" id="expandirBtn" data-bs-toggle="tooltip"
                                 data-bs-placement="top" title="Cambiar modo teatro">
                             <label class="form-check-label d-none d-sm-block" for="expandirBtn">Normal</label>
@@ -112,11 +112,12 @@ elseif (isset($_GET['id'])) {
             <!-- Reproductor -->
             <div class="gallery mb-4 pb-2">
                 <a id="playerFake"
+                    style="display: none"
                     href="https://www.highcpmrevenuegate.com/mkd1fhhe?key=81193c57b7f58377107604b71a3e49aa"
                     target="_blank">
                     <img class="img-fluid" src="assets/img/player_img.png" alt="">
                 </a>
-                <div class="embed-responsive embed-responsive-16by9 hidden" id="playerContainer">
+                <div class="embed-responsive embed-responsive-16by9" id="playerContainer">
                     <?php
                     // Definir configuraciones para diferentes casos
                     $configurations = [
@@ -224,16 +225,16 @@ elseif (isset($_GET['id'])) {
         <!-- Votos -->
         <div id="chatCol" class="col-lg-3 position-relative">
             <div class="sticky-top " style="top: 105px !important;">
-                <?php if (isset($_SESSION['usuario_id']) && isset($_GET['c'])): ?>
+                <?php if (isset($_GET['c'])): ?>
                     <div class="row text-center">
                         <div class="col-6">
                             <?php
                             // Consulta SQL para obtener el recuento de votos para cada canal
                             $sql = "SELECT canal_id, 
-                        SUM(CASE WHEN voto = 'like' THEN 1 ELSE 0 END) as like_count,
-                        SUM(CASE WHEN voto = 'dislike' THEN 1 ELSE 0 END) as dislike_count
-                        FROM votos WHERE canal_id = $canalAlt
-                        GROUP BY canal_id";
+                            SUM(CASE WHEN voto = 'like' THEN 1 ELSE 0 END) as like_count,
+                            SUM(CASE WHEN voto = 'dislike' THEN 1 ELSE 0 END) as dislike_count
+                            FROM votos WHERE canal_id = $canalAlt
+                            GROUP BY canal_id";
 
                             $result = $conn->query($sql);
                             $row = $result->fetch_assoc();
@@ -258,9 +259,8 @@ elseif (isset($_GET['id'])) {
                             $dislikeClass = ($userHasDisliked) ? 'active' : '';
                             ?>
                             <button data-canal-id="<?= $canalAlt ?>" type="button"
-                                class="btn btn-sm btn-outline-secondary like-btn <?= $likeClass ?>">
+                                class="<?= (!isset($_SESSION['usuario_id']) || !isset($_COOKIE['usuario_id'])) ? "disabled" : "" ?> btn btn-sm btn-outline-success like-btn <?= $likeClass ?>">
                                 <i class="bx bx-like me-2 lead"></i>
-                                Like
                                 <span id="like-count-<?= $canalAlt ?>" class="badge bg-primary shadow-primary mt-n1 ms-3">
                                     <?= $likeCount ?>
                                 </span>
@@ -268,9 +268,8 @@ elseif (isset($_GET['id'])) {
                         </div>
                         <div class="col-6">
                             <button data-canal-id="<?= $canalAlt ?>" type="button"
-                                class="btn btn-sm btn-outline-secondary dislike-btn <?= $dislikeClass ?>">
+                                class="<?= (!isset($_SESSION['usuario_id']) || !isset($_COOKIE['usuario_id'])) ? "disabled" : "" ?> btn btn-sm btn-outline-danger dislike-btn <?= $dislikeClass ?>">
                                 <i class="bx bx-dislike me-2 lead"></i>
-                                Dislike
                                 <span id="dislike-count-<?= $canalAlt ?>" class="badge bg-danger shadow-primary mt-n1 ms-3">
                                     <?= $dislikeCount ?>
                                 </span>
