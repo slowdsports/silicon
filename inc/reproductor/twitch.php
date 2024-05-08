@@ -76,7 +76,7 @@ $channel_id = $canalUrl;
             height: '100%',
             channel: "<?= $channel_id ?>",
             // Only needed if this page is going to be embedded on other websites
-            parent: ["127.0.0.1", "<?= $_SERVER['REMOTE_HOST'] ?>"]
+            parent: ["127.0.0.1", "<?= $_SERVER['SERVER_NAME'] ?>"]
         };
         var player = new Twitch.Player("player", options);
         player.setVolume(0.5);
