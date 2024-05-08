@@ -49,7 +49,7 @@ const hostName = window.location.hostname;
 function toggleChatMode() {
     const isDarkMode = checkbox.checked;
     const chatMode = isDarkMode ? 'darkpopout' : '';
-    twitchChat.src = `https://www.twitch.tv/embed/iraffletv/chat?parent=127.0.0.1&parent=irtvhn.info&irtvhn.online&parent=localhost&${chatMode}`;
+    twitchChat.src = `https://www.twitch.tv/embed/iraffletv/chat?parent=127.0.0.1&parent=${hostName}&parent=localhost&${chatMode}`;
 
     // Guardar la preferencia del usuario en localStorage
     window.localStorage.setItem('chatMode', chatMode);
