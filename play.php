@@ -288,7 +288,7 @@ elseif (isset($_GET['id'])) {
                 </div>
             </div>
         </div>
-        <script src="assets/js/playconfig.js"></script>
+        <script src="assets/js/playconfig2.js"></script>
     </div>
     </div>
 </section>
