@@ -111,6 +111,7 @@ if (isset($_GET['f']) && $_GET['f'] !== null) {
     $canalCategoria = $result['canalCategoria'];
     $canalPais = $result['canalPais'];
     $canalTipo = $result['canalTipo'];
+    (strpos($canalUrl, "masmediatv") !== false) ? ($key1 = $key2 = "01010101010101010101010101010101") : "";
 }
 // Si el tipo es CK
 if ($canalTipo == 9) {
