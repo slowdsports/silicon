@@ -164,7 +164,7 @@ $ligaNombre = $result['ligaNombre'];
                                     // No mostramos nada
                                 } else {
                                     ?>
-                                    <a class="justify-content-center list-group-item list-group-item-action"
+                                    <a style="display: none" class="justify-content-center list-group-item list-group-item-action"
                                         href="?p=tv&<?= $tipo ?>&id=<?= $index ?>&s=<?= $result['hbo_url'] ?>">
                                         <i class="flag mx"></i>
                                         HBO Max
