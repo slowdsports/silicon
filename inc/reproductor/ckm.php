@@ -49,7 +49,14 @@ include('../../inc/conn.php');
 $canal = $_GET['f'];
 $query = mysqli_query($conn, "SELECT * FROM fuentes WHERE fuenteId='" . $canal . "'");
 $result = mysqli_fetch_assoc($query);
-$source = base64_encode($result['canalUrl']);
+$source =$result['canalUrl'];
+// Vidgo Requiere Proxy
+if (strpos($source, "vidgo.com")) {
+    //$source = "https://slowdus.herokuapp.com/" . $source;
+    $source = "https://cors-proxy.elfsight.com/" . $source;
+}
+//$source = base64_encode($result['canalUrl']);
+$source = base64_encode($source);
 $key = $result['key'];
 echo '
     <script>
