@@ -145,7 +145,8 @@ if ($canalTipo == 9) {
         if (strpos($canalUrl, "dazn-cdn") || strpos($canalUrl, "livedazn") || strpos($canalUrl, "livewwdazn") || strpos($canalUrl, "daznedge") || strpos($canalUrl, "director.streaming") || strpos($canalUrl, "stvacdn") || strpos($canalUrl, "izzigo.") || strpos($canalUrl, "vidgo.com")  || strpos($canalUrl, "tglmp") || strpos($canalUrl, "liveusp") || strpos($canalUrl, "live-nl-") || strpos($canalUrl, "upcbroadband") || strpos($canalUrl, "ssc-") || strpos($canalUrl, "cvatt") || strpos($canalUrl, "latamvosliveclarovideo") || strpos($canalUrl, "aiv-cdn") || strpos($canalUrl, "peacocktv") || strpos($canalUrl, "zapitv") ||strpos($canalUrl, "vodafone") || strpos($canalUrl, "skycdp") || strpos($canalUrl, "ssc") || strpos($canalUrl, "9c9media") || strpos($canalUrl, "dmdsdp")) {
             // Vidgo Requiere Proxy
             if (strpos($canalUrl, "vidgo.com")) {
-                $canalUrl = "https://slowdus.herokuapp.com/" . $canalUrl;
+                //$canalUrl = "https://slowdus.herokuapp.com/" . $canalUrl;
+                $canalUrl = "https://cors-proxy.elfsight.com/" . $canalUrl;
             }
             // Encriptamos la URL
             $canalUrl = base64_encode($canalUrl); ?>
