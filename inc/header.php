@@ -42,6 +42,9 @@ if ($_GET['p'] !== "login") {
         gtag('config', 'G-L0M9BFKRR9');
     </script>
 
+    <!-- ADS -->
+    <meta name="monetag" content="5c244da740fc640e73b25803496381db">
+
     <!-- Vendor Styles -->
     <link rel="stylesheet" media="screen" href="assets/vendor/boxicons/css/boxicons.min.css" />
     <link rel="stylesheet" media="screen" href="assets/vendor/swiper/swiper-bundle.min.css">
