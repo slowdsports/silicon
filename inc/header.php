@@ -41,6 +41,10 @@ if ($_GET['p'] !== "login") {
 
         gtag('config', 'G-L0M9BFKRR9');
     </script>
+    <?php if (isset($_GET['p']) && $_GET["p"] == "star" || $_GET["p"] == "starn" || $_GET["p"] == "vix" || $_GET["p"] == "nbalp"): ?>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="assets/js/huso.js"></script>
+    <?php endif; ?>
 
     <!-- ADS -->
     <meta name="monetag" content="5c244da740fc640e73b25803496381db">

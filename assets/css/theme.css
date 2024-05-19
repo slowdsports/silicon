@@ -99,6 +99,10 @@ body {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+.hidden {
+  display: none!important;
+}
+
 #logo {
   width: 65px;
   height: 65px;

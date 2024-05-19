@@ -30,7 +30,7 @@
 <script src="assets/js/theme.min.js"></script>
 
 <!-- Filtro de tarjetas -->
-<?php if (isset($_GET['p']) && $_GET['p'] == "iptv") {
+<?php if (isset($_GET['p']) && $_GET['p'] == "iptv" || $_GET['p'] == "star") {
     // No mostramos
 } else {
 ?>

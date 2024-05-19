@@ -1,4 +1,3 @@
-<?php include ('componentes/cntdwn.php'); ?>
 <section class="container pb-sm-1 pb-md-3">
     <!-- Row 1 -->
     <div class="row align-items-lg-center pb-5 mb-2 mb-lg-4 mb-xl-5">
