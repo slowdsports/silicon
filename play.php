@@ -216,7 +216,7 @@ elseif (isset($_GET['id'])) {
                 <div class="col-4">
                     <?php (isset($_GET['c']) ? include('inc/componentes/fuentes.php') : ''); ?>
                 </div>
-                <div class="col-8">
+                <div style="text-align: end;" class="col-8">
                     <?php include('inc/componentes/app.php'); ?>
                     <script src="inc/ads/related-ad.php"></script>
                 </div>
