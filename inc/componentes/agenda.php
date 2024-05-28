@@ -143,7 +143,7 @@
                                 </div>
                                 <a href="?p=eventos&tipo=<?= $tipo ?>&liga=<?= $liga_id ?>&juego=<?= $index ?>">
                                     <div class="mini-league">
-                                        <img width="50px"
+                                        <img class="league-img" width="50px"
                                             src="assets/img/ligas/sf/<?= $liga_id ?>.png"
                                             alt="">
                                         <h5>
