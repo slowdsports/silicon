@@ -1,1 +1,3 @@
-<script data-cfasync="false" type="text/javascript" src="//predictiondisplay.com/a/display.php?r=7721618"></script>
+<?php
+// POPUNDER TEMPORAL
+<script type='text/javascript' src='//pl23429035.highcpmgate.com/a5/97/86/a597865b8f7dea74a0e3d18eb7f0daec.js'></script>
