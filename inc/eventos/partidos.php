@@ -125,7 +125,7 @@ $ligaNombre = $result['ligaNombre'];
                         <div class="card product-card">
                             <div class="main-event">
                                 <div class="league">
-                                    <img src="assets/img/ligas/sf/<?= $getLiga ?>.png"
+                                    <img class="league-img" src="assets/img/ligas/sf/<?= $getLiga ?>.png"
                                         alt="League" />
                                     <!-- <p class="<?= $index ?>"><?= ucfirst($dia) ?></p> -->
                                     <p class="fs-sm text-body mb-0 cntdwn-<?= $index ?>"></p>
