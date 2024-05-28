@@ -29,7 +29,7 @@
 <!-- Main Theme Script -->
 <script src="assets/js/theme.min.js"></script>
 <!-- Image Theme Switch -->
-<script src="assets/js/img-mode-switch.js"></script>
+<script type="module" src="assets/js/img-mode-switch.js"></script>
 
 <!-- Filtro de tarjetas -->
 <?php if (isset($_GET['p']) && $_GET['p'] == "iptv" || $_GET['p'] == "star") {
