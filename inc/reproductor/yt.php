@@ -8,6 +8,8 @@ if (!isset($_SERVER['HTTP_REFERER']) || empty($_SERVER['HTTP_REFERER'])) {
     exit();
 }
 $canal = $_GET['c'];
+// ADS
+include('../../inc/ads/intersticial.php');
 include('../../inc/conn.php');
 // Fuente Alterna
 if (isset($_GET['f']) && $_GET['f'] !== null) {
