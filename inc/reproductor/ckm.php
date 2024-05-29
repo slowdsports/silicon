@@ -47,6 +47,8 @@ if (!isset($_SERVER['HTTP_REFERER']) || empty($_SERVER['HTTP_REFERER'])) {
 <?php
 // ADS
 include('../../inc/ads/intersticial.php');
+// Share
+include('share.php');
 include('../../inc/conn.php');
 $canal = $_GET['f'];
 $query = mysqli_query($conn, "SELECT * FROM fuentes WHERE fuenteId='" . $canal . "'");
