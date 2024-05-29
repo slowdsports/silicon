@@ -13,4 +13,4 @@ if (strpos($dispositivo, "iOS") || strpos($dispositivo, "iPhone")) {
   <img src="assets/img/market/googleplay-light.svg" class="light-mode-img" width="139" alt="Google Play">
   <img src="assets/img/market/googleplay-dark.svg" class="dark-mode-img" width="139" alt="Google Play">
 </a>
-<?php } >
+<?php } ?>
