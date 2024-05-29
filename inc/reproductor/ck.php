@@ -1,8 +1,13 @@
 <?php
+//Detección de Dispositivo
+include('../componentes/detect.php');
 // Lógica para evitar carga directa
 if (!isset($_SERVER['HTTP_REFERER']) || empty($_SERVER['HTTP_REFERER'])) {
     include('../../401.php');
     exit();
+} elseif (strpos($dispositivo, "iOS") || strpos($dispositivo, "iPhone")) {
+    include('../../401.php');
+    echo "El tipo de canal al que intentas acceder no funciona en dispositivos iOS, por favor usa otra opción o cambia de dispositivo.";
 }
 ?>
 <meta charset="utf-8">
