@@ -6,7 +6,7 @@ if (!isset($_SERVER['HTTP_REFERER']) || empty($_SERVER['HTTP_REFERER'])) {
     include('../../401.php');
     exit();
 } elseif (strpos($dispositivo, "iOS") || strpos($dispositivo, "iPhone")) {
-    echo "<style> .* { background-color: #000; color: #fff; } </style>";
+    echo "<style> body { background-color: #000; color: #fff; } </style>";
     echo "<p>El tipo de canal al que intentas acceder no funciona en dispositivos iOS, por favor usa otra opción o cambia de dispositivo.</p>";
     exit();
 }
