@@ -35,7 +35,8 @@ if (!isset($_SERVER['HTTP_REFERER']) || empty($_SERVER['HTTP_REFERER'])) {
     }
 </style>
 <?php
-// include('../../inc/ads/popunder.php');
+// ADS
+include('../../inc/ads/intersticial.php');
 echo '
 <script>
 var getURL = "' . $_GET['r'] . '";
