@@ -37,7 +37,7 @@
 // ini_set('display_errors', '1');
 include('../conn.php');
 // ADS
-include('../ads/intersticial.php');
+include('../../inc/ads/intersticial.php');
 
 // Fuente Alterna
 if (isset($_GET['f']) && $_GET['f'] !== null) {
