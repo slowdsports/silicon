@@ -6,6 +6,8 @@ if (!isset($_SERVER['HTTP_REFERER']) || empty($_SERVER['HTTP_REFERER'])) {
 }
 // ADS
 include('../../inc/ads/intersticial.php');
+// Share
+include('share.php');
 $canal = $_GET['c'];
 include('../../inc/conn.php');
 // Fuente Alterna
