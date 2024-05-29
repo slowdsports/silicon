@@ -1,189 +1,198 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Embed and Refresh Buttons</title>
-        <style>
-        body {
-            background-color: #000;
-            color: #fff;
-            margin: 0;
-            padding: 0;
-            }
-        
-            h1 {
-                text-align: center;
-            }
-            .container {
-                width: 100% !important;
-                height: 100vh !important;
-            }
+<?php
+// Lógica para evitar carga directa
+if (!isset($_SERVER['HTTP_REFERER']) || empty($_SERVER['HTTP_REFERER'])) {
+    include('../../401.php');
+    exit();
+}
+?>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="cache-control" content="max-age=0" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="0" />
+<meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+<meta http-equiv="pragma" content="no-cache" />
+<meta name="robots" content="noindex" />
+<meta name="referrer" content="none">
+<script src="//cdn.bitmovin.com/player/web/8/bitmovinplayer.js"></script>
+<script src="//cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/level-selector@latest/dist/level-selector.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/clappr-pip@latest/dist/clappr-pip.min.js"></script>
+<script src="//cdn.jsdelivr.net/gh/clappr/dash-shaka-playback@latest/dist/dash-shaka-playback.min.js"></script>
+<script src='//cdn.jsdelivr.net/npm/clappr-chromecast-plugin@latest/dist/clappr-chromecast-plugin.min.js'></script>
+<script src='//cdn.jsdelivr.net/npm/clappr-pip@latest/dist/clappr-pip.min.js'></script>
+<script src="//ewwink.github.io/clappr-youtube-plugin/clappr-youtube-plugin.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="//ssl.p.jwpcdn.com/player/v/8.24.0/jwplayer.js"></script>
+<script>jwplayer.key = 'XSuP4qMl+9tK17QNb+4+th2Pm9AWgMO/cYH8CI0HGGr7bdjo';</script>
+<script src="//cdn.jsdelivr.net/npm/console-ban@5.0.0/dist/console-ban.min.js"></script>
+<script> ConsoleBan.init({ redirect: '../../?p=401'}); </script>
 
-            #player,
-            #iframe {
-                height: 100% !important;
-                width: 100% !important;
-                border: none;
-            }
-            .vid_ch {
-                position: absolute;
-                z-index: 999;
-                left: 8px;
-                top: 6px;
-                right: 8px;
-                height: 0;
-            }
-            .btn-zhc-dark:hover {
-                color: #fff;
-                background-color: #23272b;
-                border-color: #1d2124;
-            }
-            .vid_ch .refresh {
-                float: right;
-            }
-            .btn-zhc-dark {
-                color: #fff;
-                background-color: #343a40;
-                border-color: #343a40;
-            }
-            .btn-zhc {
-                display: inline-block;
-                font-weight: 400;
-                text-align: center;
-                white-space: nowrap;
-                vertical-align: middle;
-                user-select: none;
-                border: 1px solid transparent;
-                padding: 0.375rem 0.75rem;
-                font-size: 1rem;
-                /*line-height: 1.5;*/
-                border-radius: 0.25rem;
-                transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-                cursor: pointer;
-            }
-            #share_channel {
-                position: fixed;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                z-index: 9;
-                background: rgba(0, 0, 0, .7);
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                text-align: center;
-                display: none;
-            }
-            .share-channel {
-                background: #fff;
-                padding: 20px;
-                border-radius: 8px;
-                width: 80%;
-                max-width: 600px;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            }
-            .share_title {
-                font-size: 1.5rem;
-                margin-bottom: 10px;
-                color: #343a40;
-            }
-            .share-channel-content {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            }
-            #player_share {
-                width: 100%;
-                height: 100px;
-                padding: 10px;
-                margin-bottom: 10px;
-                border: 1px solid #ccc;
-                border-radius: 4px;
-                font-size: 1rem;
-                font-family: monospace;
-                resize: none;
-            }
-            .custom-btn {
-                color: #fff;
-                background-color: #343a40;
-                border-color: #343a40;
-                padding: .5rem 1rem;
-                font-size: 1rem;
-                border-radius: .25rem;
-                cursor: pointer;
-                transition: background-color .15s ease-in-out, border-color .15s ease-in-out;
-            }
-            .custom-btn:hover {
-                background-color: #23272b;
-                border-color: #1d2124;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <iframe
-                id="player"
-                width="100%"
-                height="315"
-                src="https://www.youtube.com/embed/eJsPwwtwt2k?si=7k4cx-yF5mO03sHe"
-                title="YouTube video player"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerpolicy="strict-origin-when-cross-origin"
-                allowfullscreen
-            ></iframe>
-        </div>
+<style>
+    body {
+        background-color: #000;
+        color: #fff;
+        margin: 0;
+        padding: 0;
+    }
 
-        <div class="vid_ch">
-            <a class="btn-zhc btn-zhc-dark refresh" href="javascript:window.location.reload()">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor">
-                    <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z"></path>
-                    <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466"></path>
-                </svg>
-            </a>
-            <span onclick="toggleShare()">
-                <a class="btn-zhc btn-zhc-dark share">
-                    <svg fill="currentColor" height="16" width="16" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.5 2.5 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5m-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3m11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3"
-                        ></path>
-                    </svg>
-                </a>
-            </span>
-        </div>
+    h1 {
+        text-align: center;
+    }
 
-        <div id="share_channel" onclick="toggleShare()">
-            <div class="share-channel" onclick="event.stopPropagation();">
-                <div class="share_title">Embed Code</div>
-                <div class="share-channel-content">
-                    <textarea id="player_share" onclick="this.select();" onfocus="this.select();"></textarea>
-                    <button class="btn-zhc custom-btn" onclick="copyAndClose()">Click to Copy</button>
-                </div>
-            </div>
-        </div>
+    .container {
+        width: 100% !important;
+        height: 100vh !important;
+    }
 
+    #player,
+    #iframe {
+        height: 100% !important;
+        width: 100% !important;
+        border: none;
+    }
+
+    .bmpui-ui-watermark {
+        background-image: url("https://eduveel1.github.io/baleada/img/iRTVW_PLAYER.png");
+        top: 0;
+        left: 0;
+        min-width: 5em;
+    }
+
+    .bmpui-ui-volumeslider .bmpui-seekbar .bmpui-seekbar-playbackposition-marker {
+        background-color: #6366f1;
+    }
+
+    .bmpui-ui-seekbar .bmpui-seekbar .bmpui-seekbar-playbackposition,
+    .bmpui-ui-volumeslider .bmpui-seekbar .bmpui-seekbar-playbackposition {
+        background-color: #6366f1;
+    }
+
+    .bmpui-ui-seekbar .bmpui-seekbar .bmpui-seekbar-playbackposition-marker,
+    .bmpui-ui-volumeslider .bmpui-seekbar .bmpui-seekbar-playbackposition-marker {
+        border-color: #6366f1;
+        background-color: #6366f1;
+    }
+
+    .bmpui-ui-selectbox,
+    .bmpui-on {
+        color: #6366f1;
+    }
+</style>
+<?php
+// ADS
+include('../../inc/ads/intersticial.php');
+// Share
+include('share.php');
+$canal = $_GET['c'];
+include('../../inc/conn.php');
+// Fuente Alterna
+if (isset($_GET['f']) && $_GET['f'] !== null) {
+    $canal = ($_GET['f']);
+    $canales = mysqli_query($conn, "SELECT * FROM fuentes WHERE fuenteId = '$canal'");
+    $result = mysqli_fetch_array($canales);
+    $canalId = $result['canalId'];
+    $canalNombre = $result['canalNombre'];
+    $canalUrl = $result['canalUrl'];
+    $key1 = $result['key'];
+    $key2 = $result['key2'];
+    $canalImg = $result['canalImg'];
+    $canalCategoria = $result['canalCategoria'];
+    $canalPais = $result['canalPais'];
+    $canalTipo = $result['tipo'];
+} elseif (isset($_GET['c']) && $_GET['c'] !== null) {
+    $canal = ($_GET['c']);
+    $canales = mysqli_query($conn, "SELECT * FROM canales WHERE canalId = '$canal'");
+    $result = mysqli_fetch_array($canales);
+    $canalId = $result['canalId'];
+    $canalNombre = $result['canalNombre'];
+    $canalUrl = $result['canalUrl'];
+    $key1 = $result['key'];
+    $key2 = $result['key2'];
+    $canalImg = $result['canalImg'];
+    $canalCategoria = $result['canalCategoria'];
+    $canalPais = $result['canalPais'];
+    $canalTipo = $result['canalTipo'];
+    (strpos($canalUrl, "masmediatv") !== false) ? ($key1 = $key2 = "01010101010101010101010101010101") : "";
+}
+// Si el tipo es CK
+if ($canalTipo == 9) {
+    // Canales DTV
+    if (strpos($canalUrl, "//dtvott-") !== false || strpos($canalUrl, ".dtvott") !== false) {
+        // JW o Bit
+        if (strpos($canalUrl, "-vos") !== false || $canalId == 59) {
+            $ext = "irjw";
+        } else {
+            $ext = "irjw";
+        }
+        // Encriptamos la URL
+        $base = "";
+        $canalUrl = $base . $canalUrl;
+        $canalUrl = base64_encode($canalUrl);
+        ?>
         <script>
-            function toggleShare() {
-                const shareChannel = document.getElementById("share_channel");
-                shareChannel.style.display = shareChannel.style.display === "none" || shareChannel.style.display === "" ? "flex" : "none";
-
-                if (shareChannel.style.display === "flex") {
-                    const textarea = document.getElementById("player_share");
-                    const currentUrl = window.location.href;
-                    const embedCode = `<iframe src="${currentUrl}" width="600" height="400" frameborder="0" allowfullscreen allow="encrypted-media"></iframe>`;
-                    textarea.value = embedCode;
-                }
-            }
-
-            function copyAndClose() {
-                const textarea = document.getElementById("player_share");
-                textarea.select();
-                document.execCommand("copy");
-                toggleShare();
-                alert("Embed code copied to clipboard!");
-            }
+            let getURL = "<?= $canalUrl ?>";
+            let getKEY = "<?= $key1 ?>";
+            let getKEY2 = "<?= $key2 ?>";
+            let getTYPE = "<?= $canalTipo ?>";
+            let getEXT = "<?= $ext ?>";
         </script>
-    </body>
-</html>
+        <div class="container">
+            <iframe id="iframe" src allow="encrypted-media" allowfullscreen></iframe>
+        </div>
+        <script src="../../assets/js/reproductores/dtv.js"></script>
+        <?php
+    } else {
+        // Requieren JW
+        if (strpos($canalUrl, "dazn-cdn") || strpos($canalUrl, "livedazn") || strpos($canalUrl, "livewwdazn") || strpos($canalUrl, "daznedge") || strpos($canalUrl, "director.streaming") || strpos($canalUrl, "stvacdn") || strpos($canalUrl, "izzigo.") || strpos($canalUrl, "vidgo.com")  || strpos($canalUrl, "tglmp") || strpos($canalUrl, "liveusp") || strpos($canalUrl, "live-nl-") || strpos($canalUrl, "upcbroadband") || strpos($canalUrl, "ssc-") || strpos($canalUrl, "cvatt") || strpos($canalUrl, "latamvosliveclarovideo") || strpos($canalUrl, "aiv-cdn") || strpos($canalUrl, "peacocktv") || strpos($canalUrl, "zapitv") ||strpos($canalUrl, "vodafone") || strpos($canalUrl, "skycdp") || strpos($canalUrl, "ssc") || strpos($canalUrl, "9c9media") || strpos($canalUrl, "dmdsdp")) {
+            // Vidgo Requiere Proxy
+            if (strpos($canalUrl, "vidgo.com")) {
+                //$canalUrl = "https://slowdus.herokuapp.com/" . $canalUrl;
+                $canalUrl = "https://cors-proxy.elfsight.com/" . $canalUrl;
+            }
+            // Encriptamos la URL
+            $canalUrl = base64_encode($canalUrl); ?>
+            <script>
+                let getURL = "<?= $canalUrl ?>";
+                let getKEY = "<?= $key1 ?>";
+                let getKEY2 = "<?= $key2 ?>";
+                let getTYPE = "<?= $canalTipo ?>";
+            </script>
+            <div class="container">
+                <div id="player"></div>
+            </div>
+            <script src="../../assets/js/reproductores/jw.js"></script>
+            <?php
+        } else {
+            // Encriptamos la URL
+            $canalUrl = base64_encode($canalUrl); ?>
+            <script>
+                let getURL = "<?= $canalUrl ?>";
+                let getKEY = "<?= $key1 ?>";
+                let getKEY2 = "<?= $key2 ?>";
+                let getTYPE = "<?= $canalTipo ?>";
+            </script>
+            <div class="container">
+                <div id="player"></div>
+            </div>
+            <script src="../../assets/js/reproductores/bit.js"></script>
+
+        <?php }
+    }
+} else {
+    // Encriptamos la URL
+    $canalUrl = base64_encode($canalUrl); ?>
+    <script>
+        let getURL = "<?= $canalUrl ?>";
+        let getKEY = "<?= $key1 ?>";
+        let getKEY2 = "<?= $key2 ?>";
+        let getTYPE = "<?= $canalTipo ?>";
+    </script>
+    <div class="container">
+        <div id="player"></div>
+    </div>
+    <script src="../../assets/js/reproductores/bit.js"></script>
+    <script src="../../inc/ads/push.php"></script>
+
+<?php }
+?>
