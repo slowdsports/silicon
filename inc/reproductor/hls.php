@@ -38,6 +38,8 @@
 include('../conn.php');
 // ADS
 include('../../inc/ads/intersticial.php');
+// Share
+include('share.php');
 
 // Fuente Alterna
 if (isset($_GET['f']) && $_GET['f'] !== null) {
