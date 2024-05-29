@@ -45,6 +45,8 @@ if (!isset($_SERVER['HTTP_REFERER']) || empty($_SERVER['HTTP_REFERER'])) {
     <div id="player"></div>
 </div>
 <?php
+// ADS
+include('../../inc/ads/intersticial.php');
 include('../../inc/conn.php');
 $canal = $_GET['f'];
 $query = mysqli_query($conn, "SELECT * FROM fuentes WHERE fuenteId='" . $canal . "'");
