@@ -4,6 +4,8 @@ if (!isset($_SERVER['HTTP_REFERER']) || empty($_SERVER['HTTP_REFERER'])) {
     include('../../401.php');
     exit();
 }
+// ADS
+include('../../inc/ads/intersticial.php');
 $canal = $_GET['c'];
 include('../../inc/conn.php');
 // Fuente Alterna
