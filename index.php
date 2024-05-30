@@ -1,7 +1,7 @@
 <?php
 if(isset($_GET['p']) && $_GET['p'] == 401){ require_once('401.php'); exit();}
-error_reporting(E_ALL);
-ini_set('display_errors', '1');
+// error_reporting(E_ALL);
+// ini_set('display_errors', '1');
 // BD
 include('inc/conn.php');
 // Header
