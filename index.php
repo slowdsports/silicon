@@ -24,7 +24,7 @@ if(isset($_GET['p'])) {
         include("404.php");
     }
 } elseif (isset($_GET['updateChannels'])) {
-    $sql = "SELECT f.`fuenteId`, f.`fuenteNombre`, f.`canal`, f.`pais`, f.`status`,  c.`canalImg`, c.`canalCategoria`, c2.`categoriaNombre`, p.`paisNombre`
+    $sql = "SELECT f.`fuenteId`, f.`fuenteNombre`, f.`canal`, f.`pais`, f.`status`,  c.`canalImg`, c.`canalCategoria`, c.`tipo`, c2.`categoriaNombre`, p.`paisNombre`
     FROM `fuentes` f
     JOIN `canales` c ON f.`canal` = c.`canalId`
     JOIN `categorias` c2 ON c.`canalCategoria` = c2.`categoriaId`
@@ -32,9 +32,18 @@ if(isset($_GET['p'])) {
     WHERE f.`status` = 1";
     $result = $conn->query($sql);
     $canales = array();
-    while ($row = $result->fetch_assoc()) {$canales[] = $row;}
-    $jsonData = json_encode($canales);
+    while ($row = $result->fetch_assoc()) {
+        $canales[] = $row;
+        if ($row['tipo'] != 9) {
+            $canales_ios[] = $row;
+        }
+    }
+    //$jsonData = json_encode($canales);
+    $jsonData = json_encode($canales, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
     file_put_contents('canales.json', $jsonData);
+    $jsonData_ios = json_encode($canales_ios, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+    file_put_contents('canales_ios.json', $jsonData_ios);
+
     echo "Datos guardados";
 } else {
     // Si no se proporciona ningún parámetro, carga la página predeterminada (index.php)
