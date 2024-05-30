@@ -34,7 +34,7 @@ if(isset($_GET['p'])) {
     $canales = array();
     while ($row = $result->fetch_assoc()) {
         $canales[] = $row;
-        if ($row['tipo'] != 9) {
+        if ($row['tipo'] != 9 && $row['tipo'] != 11) {
             $canales_ios[] = $row;
         }
     }
