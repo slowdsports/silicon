@@ -10,7 +10,7 @@ if ($_GET['p'] !== "login") {
 
 <head>
     <meta charset="utf-8">
-    <title>iRaffle TV | Televisión Gratis por Internet</title>
+    <title>iRaffle TV | <?= isset($_SESSION['tituloPagina']) ? $_SESSION['tituloPagina'] : "Televisión Gratis por Internet"; ?></title>
 
     <!-- SEO Meta Tags -->
     <meta name="description"
