@@ -33,6 +33,8 @@ if (isset($_GET['c'])) {
         $canalId = $result['canal'];
         $canalImg = $result['canalImg'];
         $canalNombre = $result['canalNombre'];
+        $titulo = "Ver " . $canalNombre . " En Vivo";
+        $descripcion = "Ver " . $canalNombre . " completamente gratis y en alta definición por iRaffle TV.";
         $canalCategoria = $result['categoriaNombre'];
         $categoria = $result['categoriaId'];
         $canalUrl = $result['canalUrl'];
@@ -68,6 +70,8 @@ elseif (isset($_GET['id'])) {
     WHERE p.id='$partidoID'");
     $ross = mysqli_fetch_assoc($partido);
     $canalNombre = $ross['equipo_local'] . " vs " . $ross['equipo_visitante'];
+    $titulo = "Ver " . $canalNombre . " En Vivo";
+    $descripcion = "Ver el partido " . $canalNombre . " completamente gratis y en alta definición por iRaffle TV.";
 }
 ?>
 <div id="toast-container" class="position-fixed bottom-0 end-0 p-3">
