@@ -166,14 +166,41 @@ if ($_GET['p'] !== "login") {
 
     <!-- Theme mode -->
     <script>
-        let mode = window.localStorage.getItem('mode'),
-            root = document.getElementsByTagName('html')[0];
-        if (mode !== null && mode === 'dark') {
-            root.classList.add('dark-mode');
-        } else {
-            root.classList.remove('dark-mode');
+        // Función para aplicar el modo
+        function applyMode(mode) {
+            let leagueImages = document.querySelectorAll('.league-img');
+            let root = document.getElementsByTagName('html')[0];
+    
+            if (mode === 'dark') {
+                root.classList.add('dark-mode');
+                leagueImages.forEach(img => {
+                    let currentSrc = img.src;
+                    img.src = currentSrc.replace('assets/img/ligas/sf/', 'assets/img/ligas/sf/dark/');
+                });
+            } else {
+                root.classList.remove('dark-mode');
+                leagueImages.forEach(img => {
+                    let currentSrc = img.src;
+                    img.src = currentSrc.replace('assets/img/ligas/sf/dark/', 'assets/img/ligas/sf/');
+                });
+            }
         }
+    
+        // Cargar el modo desde localStorage
+        let mode = window.localStorage.getItem('mode');
+        if (mode !== null) {
+            applyMode(mode);
+            document.getElementById('theme-mode').checked = (mode === 'dark');
+        }
+    
+        // Event listener para el cambio de tema
+        document.getElementById('theme-mode').addEventListener('change', function() {
+            let newMode = this.checked ? 'dark' : 'light';
+            window.localStorage.setItem('mode', newMode);
+            applyMode(newMode);
+        });
     </script>
+
 
     <!-- Page loading scripts -->
     <script>
@@ -236,7 +263,7 @@ if (isset($_GET['login']) && $_GET['login'] == "success") { ?>
                 </a>
                 <div id="navbarNav" class="offcanvas offcanvas-end">
                     <div class="offcanvas-header border-bottom">
-                        <h5 class="offcanvas-title">Menu</h5>
+                        <h5 class="offcanvas-title">Menú</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
                     <div class="offcanvas-body">
