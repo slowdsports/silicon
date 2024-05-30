@@ -38,10 +38,11 @@ if(isset($_GET['p'])) {
             $canales_ios[] = $row;
         }
     }
-    //$jsonData = json_encode($canales);
-    $jsonData = json_encode($canales, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+    $jsonData = json_encode($canales);
+    //$jsonData = json_encode($canales, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
     file_put_contents('canales.json', $jsonData);
-    $jsonData_ios = json_encode($canales_ios, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+    $jsonData_ios = json_encode($canales_ios);
+    //$jsonData_ios = json_encode($canales_ios, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
     file_put_contents('canales_ios.json', $jsonData_ios);
 
     echo "Datos guardados";
