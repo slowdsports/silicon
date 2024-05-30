@@ -4,6 +4,8 @@ session_start();
 if ($_GET['p'] !== "login") {
     $_SESSION['redirect_url'] = $_SERVER['REQUEST_URI'];
 }
+$titulo = "Televisión y Partidos de Fútbol Gratis por Internet";
+$descripcion = "En iRaffle TV puedes mirar el deporte con la mejor calidad y estabilidad. Todo el Fútbol está disponible acá, con canales como DAZN, ESPN, Movistar y muchos más"
 ?>
 <!DOCTYPE html>
 <html lang="es">
