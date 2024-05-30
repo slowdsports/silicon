@@ -90,6 +90,7 @@ function mostrarCanalesFromJson($jsonData, $categoriaFiltro = null, $limit = nul
 // Leer datos desde el archivo JSON
 include('detect.php');
 if (strpos($dispositivo, "iOS") || strpos($dispositivo, "iPhone")) {
+    echo "Dispositivo: iOS";
     $jsonData = file_get_contents('canales_ios.json');
 } else {
     $jsonData = file_get_contents('canales.json');
