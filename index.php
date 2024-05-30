@@ -24,7 +24,7 @@ if(isset($_GET['p'])) {
         include("404.php");
     }
 } elseif (isset($_GET['updateChannels'])) {
-    $sql = "SELECT f.`fuenteId`, f.`fuenteNombre`, f.`canal`, f.`pais`, f.`status`,  c.`canalImg`, c.`canalCategoria`, c.`tipo`, c2.`categoriaNombre`, p.`paisNombre`
+    $sql = "SELECT f.`fuenteId`, f.`fuenteNombre`, f.`canal`, f.`pais`, f.`status`, f.`tipo`, c.`canalImg`, c.`canalCategoria`, c2.`categoriaNombre`, p.`paisNombre`
     FROM `fuentes` f
     JOIN `canales` c ON f.`canal` = c.`canalId`
     JOIN `categorias` c2 ON c.`canalCategoria` = c2.`categoriaId`
