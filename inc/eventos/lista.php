@@ -1,3 +1,8 @@
+<?php
+($tipo == "football" ? $ntipo = "Fútbol" : $ntipo = ucfirst($tipo));
+$titulo = "Eventos de " . $ntipo . " En Vivo";
+$descripcion = "Ver en vivo partidos de " . $ntipo . " completamente gratis y en alta definición por iRaffle TV.";
+?>
 <section class="container pb-2 pb-md-4 pb-lg-5 mb-3">
     <h1 class="pb-4">Eventos de
         <?= ucfirst($tipo) ?> en Vivo
