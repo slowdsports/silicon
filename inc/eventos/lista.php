@@ -5,7 +5,7 @@ $descripcion = "Ver en vivo partidos de " . $ntipo . " completamente gratis y en
 ?>
 <section class="container pb-2 pb-md-4 pb-lg-5 mb-3">
     <h1 class="pb-4">Eventos de
-        <?= ucfirst($tipo) ?> en Vivo
+        <?= ucfirst($ntipo) ?> en Vivo
     </h1>
     <div class="row row-cols-1 row-cols-md-2">
         <?php
