@@ -3,7 +3,7 @@
     <div class="container pt-lg-4">
         <p class="nav d-block fs-xs text-center text-md-start pb-2 pb-lg-0 mb-0">
             <span class="text-light opacity-50">&copy; Todos los Derechos Reservados. Creado por </span>
-            <a class="nav-link d-inline-block p-0" href="https://irtvhn.info/" target="_blank" rel="noopener">iRaffle TV</a>
+            <a class="nav-link d-inline-block p-0" href="<?= $_SERVER['SERVER_NAME']; ?>" target="_blank" rel="noopener">iRaffle TV</a>
         </p>
     </div>
 </footer>
