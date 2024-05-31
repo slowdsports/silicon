@@ -168,39 +168,22 @@ $descripcion = "En iRaffle TV puedes mirar el deporte con la mejor calidad y est
 
     <!-- Theme mode -->
     <script>
-        // Función para aplicar el modo
-        function applyMode(mode) {
-            let leagueImages = document.querySelectorAll('.league-img');
-            let root = document.getElementsByTagName('html')[0];
-    
-            if (mode === 'dark') {
-                root.classList.add('dark-mode');
-                leagueImages.forEach(img => {
-                    let currentSrc = img.src;
-                    img.src = currentSrc.replace('assets/img/ligas/sf/', 'assets/img/ligas/sf/dark/');
-                });
-            } else {
-                root.classList.remove('dark-mode');
-                leagueImages.forEach(img => {
-                    let currentSrc = img.src;
-                    img.src = currentSrc.replace('assets/img/ligas/sf/dark/', 'assets/img/ligas/sf/');
-                });
-            }
-        }
-    
-        // Cargar el modo desde localStorage
-        let mode = window.localStorage.getItem('mode');
-        if (mode !== null) {
-            applyMode(mode);
-            document.getElementById('theme-mode').checked = (mode === 'dark');
-        }
-    
-        // Event listener para el cambio de tema
-        document.getElementById('theme-mode').addEventListener('change', function() {
-            let newMode = this.checked ? 'dark' : 'light';
-            window.localStorage.setItem('mode', newMode);
-            applyMode(newMode);
+    let leagueImages = document.querySelectorAll('.league-img');
+    let mode = window.localStorage.getItem('mode'),
+    root = document.getElementsByTagName('html')[0];
+    if (mode !== null && mode === 'dark') {
+        root.classList.add('dark-mode');
+        leagueImages.forEach(img => {
+            let currentSrc = img.src;
+            img.src = currentSrc.replace('assets/img/ligas/sf/', 'assets/img/ligas/sf/dark/');
         });
+    } else {
+        root.classList.remove('dark-mode');
+        leagueImages.forEach(img => {
+            let currentSrc = img.src;
+            img.src = currentSrc.replace('assets/img/ligas/sf/dark/', 'assets/img/ligas/sf/');
+        });
+    }
     </script>
 
 
