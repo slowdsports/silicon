@@ -19,37 +19,33 @@
                 <h2 class="h1 mb-3 mb-sm-4">Final de UEFA Champions League</h2>
                 <p class="mb-4 mb-lg-5">Borussia Dortmund y Real Madrid se enfrentan para disputar la final de la Liga de Campeones. Míralo en vivo y completamente gratis en iRaffle TV.</p>
                 <script>
-                                        <script>
                     var yyyy = 2024;
-                    var mm = '5';
-                    var dd = '01';
-                    var hh = '21';
-                    var m = '00';
+                    var mm = "5";
+                    var dd = "01";
+                    var hh = "21";
+                    var m = "00";
 
                     var textLive = "<p style='position: absolute;' class='live-text'><div class='d-flex align-items-center me-4'><i class='bx bxs-circle bx-flashing fs-xl me-1'></i> EN VIVO</div></p>";
                     var textEnd = "Finalizó";
 
+                    // Set the date we're counting down to
+                    // Year, Month ( 0 for January ), Day, Hour, Minute, Second, , Milliseconds
+                    //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+                    //::::::::::::                                       ::::::::::::
+                    //::::::::::::              12:00 AM                  ::::::::::::
+                    //::::::::::::                                       ::::::::::::
+                    //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+                    //                                              (AAAA, MM, DD, HH, MM, SS));
+                    var countDownDate12173509 = new Date(Date.UTC(yyyy, mm, dd, hh, m, 00));
 
-
-                        // Set the date we're counting down to
-                        // Year, Month ( 0 for January ), Day, Hour, Minute, Second, , Milliseconds
-                        //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-                        //::::::::::::                                       ::::::::::::
-                        //::::::::::::              12:00 AM                  ::::::::::::
-                        //::::::::::::                                       ::::::::::::
-                        //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-                        //                                              (AAAA, MM, DD, HH, MM, SS));
-                        var countDownDate12173509 = new Date(Date.UTC(yyyy, mm, dd, hh, m, 00));
-
-                        // Update the count down every 1 second
-                        var x12173509 = setInterval(function () {
-
+                    // Update the count down every 1 second
+                    var x12173509 = setInterval(function () {
                         // Get todays date and time
                         var now12173509 = new Date().getTime();
 
                         // Find the distance between now an the count down date
                         // GMT/UTC Adjustment at the end of the function. 0 = GMT/UTC+0; 1 = GMT/UTC+1.
-                        var distance12173509 = countDownDate12173509 - now12173509 - (3600000 * 2);
+                        var distance12173509 = countDownDate12173509 - now12173509 - 3600000 * 2;
 
                         // Time calculations for days, hours, minutes and seconds
                         var days12173509 = Math.floor(distance12173509 / (1000 * 60 * 60 * 24));
@@ -58,54 +54,53 @@
                         var seconds12173509 = Math.floor((distance12173509 % (1000 * 60)) / 1000);
 
                         // Output the result in an element with id="demo"
-                        if (days12173509 == 1){
-                            for (const ele of document.getElementsByClassName("cntdwn-12173509")){
-                                ele.innerHTML = ("Mañana")
+                        if (days12173509 == 1) {
+                            for (const ele of document.getElementsByClassName("cntdwn-12173509")) {
+                                ele.innerHTML = "Mañana";
                             }
-                        } else if (days12173509 > 0 && days12173509 < 7){
-                            for (const ele of document.getElementsByClassName("cntdwn-12173509")){
-                                ele.innerHTML = (days12173509 + "d " + hours12173509 + "h ")
+                        } else if (days12173509 > 0 && days12173509 < 7) {
+                            for (const ele of document.getElementsByClassName("cntdwn-12173509")) {
+                                ele.innerHTML = days12173509 + "d " + hours12173509 + "h ";
                             }
-                        } else if (days12173509 > 6 && days12173509 < 14){
-                            for (const ele of document.getElementsByClassName("cntdwn-12173509")){
-                                ele.innerHTML = ("Próx. Semana")
+                        } else if (days12173509 > 6 && days12173509 < 14) {
+                            for (const ele of document.getElementsByClassName("cntdwn-12173509")) {
+                                ele.innerHTML = "Próx. Semana";
                             }
-                        } else if (days12173509 > 13 && days12173509 < 21){
-                            for (const ele of document.getElementsByClassName("cntdwn-12173509")){
-                                ele.innerHTML = ("2 Semanas")
+                        } else if (days12173509 > 13 && days12173509 < 21) {
+                            for (const ele of document.getElementsByClassName("cntdwn-12173509")) {
+                                ele.innerHTML = "2 Semanas";
                             }
-                        } else if (days12173509 > 20 && days12173509 < 28){
-                            for (const ele of document.getElementsByClassName("cntdwn-12173509")){
-                                ele.innerHTML = ("3 Semanas")
+                        } else if (days12173509 > 20 && days12173509 < 28) {
+                            for (const ele of document.getElementsByClassName("cntdwn-12173509")) {
+                                ele.innerHTML = "3 Semanas";
                             }
-                        } else if (days12173509 > 27 && days12173509 < 60){
-                            for (const ele of document.getElementsByClassName("cntdwn-12173509")){
-                                ele.innerHTML = ("Próx. Mes")
+                        } else if (days12173509 > 27 && days12173509 < 60) {
+                            for (const ele of document.getElementsByClassName("cntdwn-12173509")) {
+                                ele.innerHTML = "Próx. Mes";
                             }
-                        } else if (days12173509 > 59 && days12173509 < 90){
-                            for (const ele of document.getElementsByClassName("cntdwn-12173509")){
-                                ele.innerHTML = ("2 Meses")
+                        } else if (days12173509 > 59 && days12173509 < 90) {
+                            for (const ele of document.getElementsByClassName("cntdwn-12173509")) {
+                                ele.innerHTML = "2 Meses";
                             }
-                        } else if (days12173509 > 89 && days12173509 < 120){
-                            for (const ele of document.getElementsByClassName("cntdwn-12173509")){
-                                ele.innerHTML = ("3 Meses")
+                        } else if (days12173509 > 89 && days12173509 < 120) {
+                            for (const ele of document.getElementsByClassName("cntdwn-12173509")) {
+                                ele.innerHTML = "3 Meses";
                             }
-                        } else if (days12173509 == 0){
-                            for (const ele of document.getElementsByClassName("cntdwn-12173509")){
-                                ele.innerHTML = (hours12173509 + "h " + minutes12173509 + "m " + seconds12173509 + "s")
+                        } else if (days12173509 == 0) {
+                            for (const ele of document.getElementsByClassName("cntdwn-12173509")) {
+                                ele.innerHTML = hours12173509 + "h " + minutes12173509 + "m " + seconds12173509 + "s";
                             }
-                        } else if (hours12173509 == 0 && days12173509 == 0){
-                            for (const ele of document.getElementsByClassName("cntdwn-12173509")){
-                                ele.innerHTML = (minutes12173509 + "m " + seconds12173509 + "s")
+                        } else if (hours12173509 == 0 && days12173509 == 0) {
+                            for (const ele of document.getElementsByClassName("cntdwn-12173509")) {
+                                ele.innerHTML = minutes12173509 + "m " + seconds12173509 + "s";
                             }
-                        } else if (hours12173509 == 0 && minutes12173509 == 0){
-                            for (const ele of document.getElementsByClassName("cntdwn-12173509")){
-                                ele.innerHTML = (seconds12173509 + "s")
+                        } else if (hours12173509 == 0 && minutes12173509 == 0) {
+                            for (const ele of document.getElementsByClassName("cntdwn-12173509")) {
+                                ele.innerHTML = seconds12173509 + "s";
                             }
                         } else {
-                            for (const ele of document.getElementsByClassName("cntdwn-12173509")){
-                                ele.innerHTML = (days12173509 + "d " + hours12173509 + "h "
-                                + minutes12173509 + "m " + seconds12173509 + "s")
+                            for (const ele of document.getElementsByClassName("cntdwn-12173509")) {
+                                ele.innerHTML = days12173509 + "d " + hours12173509 + "h " + minutes12173509 + "m " + seconds12173509 + "s";
                             }
                         }
                         // If the count down is over, write some text
@@ -130,13 +125,13 @@
                 </script>
                 <!-- Elemento -->
                 <div class="col-12 mycard">
-                    <a data-bs-toggle="collapse" href="#juego12173509" role="button" aria-expanded="false" aria-controls="juego12173509">
+                    <a href="?p=eventos&tipo=football&liga=7">
                         <div class="card product-card">
                             <div class="main-event">
                                 <div class="league">
-                                    <img src="assets/img/ligas/sf/7.png" alt="League" />
+                                    <img class="league-img" src="assets/img/ligas/sf/7.png" alt="League" />
                                     <!-- <p class="12173509"></p> -->
-                                    <p class="fs-sm text-body mb-0 cntdwn-12173509">3d 23h</p>
+                                    <p class="fs-sm text-body mb-0 cntdwn-12173509"></p>
                                 </div>
                                 <div class="match">
                                     <div class="team">
@@ -161,22 +156,8 @@
                             </div>
                         </div>
                     </a>
-                    <div class="collapse" id="juego12173509">
-                        <div class="card card-body">
-                            <div class="list-group text-center">
-                                <a class="justify-content-center list-group-item list-group-item-action" href="?p=star">
-                                    <i class="flag ar"></i>
-                                    Star +
-                                </a>
-
-                                <a class="justify-content-center list-group-item list-group-item-action" href="?p=vix">
-                                    <i class="flag mx"></i>
-                                    Vix +
-                                </a>
-                            </div>
-                        </div>
-                    </div>
                 </div>
+                <hr />
                 <!-- End Elemento -->
             </div>
         </div>
