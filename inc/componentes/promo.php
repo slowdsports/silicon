@@ -3,7 +3,7 @@
     <div class="row align-items-lg-center pb-5 mb-2 mb-lg-4 mb-xl-5">
         <div class="col-md-6 mb-4 mb-md-0">
             <iframe
-                style="border-radius: 15px;"
+                style="display: none; border-radius: 15px;"
                 width="100%"
                 height="315"
                 src="https://www.youtube.com/embed/wljsbPQR-gQ?si=bR8IXIbiG5BI_2aC&autoplay=1&mute=1&loop=1"
@@ -175,7 +175,7 @@
                     Finalmente Real Madrid hizo oficial la contratación del delantero francés Kylian Mbappé, quien llega a los Merengues procedente del Paris Saint-Germain.
                     La llegada de Kylian Mbappé a 'Los Blancos’ es uno de los fichajes más esperados del Real Madrid en los últimos años.
                 </p>
-                <ul class="list-unstyled mb-0">
+                <ul style="display: none" class="list-unstyled mb-0">
                     <li class="d-flex mb-2">
                         <i class="bx bx-check text-primary lead me-2"></i>
                         Quis euismod lacus, at consectetur porta
