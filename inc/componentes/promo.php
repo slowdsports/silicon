@@ -14,7 +14,7 @@
                 allowfullscreen
             ></iframe>
         </div>
-        <div class="col-md-6">
+        <div style="display: none;" class="col-md-6">
             <div class="ps-xl-5 ms-md-2 ms-lg-4">
                 <h2 class="h1 mb-3 mb-sm-4">Final de UEFA Champions League</h2>
                 <p class="mb-4 mb-lg-5">Borussia Dortmund y Real Madrid se enfrentan para disputar la final de la Liga de Campeones. Míralo en vivo y completamente gratis en iRaffle TV.</p>
@@ -164,16 +164,16 @@
     </div>
 
     <!-- Row 2 -->
-    <div style="display: none;" class="row align-items-lg-center pt-md-3 pb-5 mb-2 mb-lg-4 mb-xl-5">
+    <div class="row align-items-lg-center pt-md-3 pb-5 mb-2 mb-lg-4 mb-xl-5">
         <div class="col-md-6 order-md-2 mb-4 mb-md-0">
-            <img src="assets/img/services/single/image02.jpg" class="rounded-3" alt="Image" />
+            <img src="https://phantom-marca.unidadeditorial.es/31b84a6f5469c6fab5d08d2e64b2d97f/resize/828/f/jpg/assets/multimedia/imagenes/2024/06/02/17173479630254.jpg" class="rounded-3" alt="Image" />
         </div>
         <div class="col-md-6 order-md-1">
             <div class="pe-xl-5 me-md-2 me-lg-4">
-                <h2 class="h1 mb-3 mb-sm-4">Product development with the best experience</h2>
+                <h2 class="h1 mb-3 mb-sm-4">Mbappé ya es nuevo jugador de Real Madrid</h2>
                 <p class="mb-3 mb-sm-4">
-                    We create diverse, complex, web and mobile solutions for any business need. With us you get quality software and perfect service every time. Quisque integer eget velit facilisis enim malesuada metus, risus amet
-                    ultricies.
+                    Finalmente Real Madrid hizo oficial la contratación del delantero francés Kylian Mbappé, quien llega a los Merengues procedente del Paris Saint-Germain.
+                    La llegada de Kylian Mbappé a 'Los Blancos’ es uno de los fichajes más esperados del Real Madrid en los últimos años.
                 </p>
                 <ul class="list-unstyled mb-0">
                     <li class="d-flex mb-2">
