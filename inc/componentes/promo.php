@@ -1,9 +1,9 @@
 <section class="container pb-sm-1 pb-md-3">
     <!-- Row 1 -->
-    <div class="row align-items-lg-center pb-5 mb-2 mb-lg-4 mb-xl-5">
+    <div style="display: none;" class="row align-items-lg-center pb-5 mb-2 mb-lg-4 mb-xl-5">
         <div class="col-md-6 mb-4 mb-md-0">
             <iframe
-                style="display: none; border-radius: 15px;"
+                style="border-radius: 15px;"
                 width="100%"
                 height="315"
                 src="https://www.youtube.com/embed/wljsbPQR-gQ?si=bR8IXIbiG5BI_2aC&autoplay=1&mute=1&loop=1"
@@ -14,7 +14,7 @@
                 allowfullscreen
             ></iframe>
         </div>
-        <div style="display: none;" class="col-md-6">
+        <div class="col-md-6">
             <div class="ps-xl-5 ms-md-2 ms-lg-4">
                 <h2 class="h1 mb-3 mb-sm-4">Final de UEFA Champions League</h2>
                 <p class="mb-4 mb-lg-5">Borussia Dortmund y Real Madrid se enfrentan para disputar la final de la Liga de Campeones. Míralo en vivo y completamente gratis en iRaffle TV.</p>
