@@ -1,6 +1,6 @@
 <section class="container pb-sm-1 pb-md-3">
     <!-- Row 1 -->
-    <div style="display: block;" class="row align-items-lg-center pb-5 mb-2 mb-lg-4 mb-xl-5">
+    <div style="" class="row align-items-lg-center pb-5 mb-2 mb-lg-4 mb-xl-5">
         <div class="col-md-6 mb-4 mb-md-0">
             <iframe
                 style="border-radius: 15px;"
@@ -164,8 +164,8 @@
     </div>
 
     <!-- Row 2 -->
-    <div style="display: none;" class="row align-items-lg-center pt-md-3 pb-5 mb-2 mb-lg-4 mb-xl-5">
-        <div class="col-md-6 order-md-2 mb-4 mb-md-0">
+    <div class="row align-items-lg-center pt-md-3 pb-5 mb-2 mb-lg-4 mb-xl-5">
+        <div style="display: none;" class="col-md-6 order-md-2 mb-4 mb-md-0">
             <img src="https://phantom-marca.unidadeditorial.es/31b84a6f5469c6fab5d08d2e64b2d97f/resize/828/f/jpg/assets/multimedia/imagenes/2024/06/02/17173479630254.jpg" class="rounded-3" alt="Image" />
         </div>
         <div class="col-md-6 order-md-1">
