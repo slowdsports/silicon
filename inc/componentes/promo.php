@@ -1,12 +1,12 @@
 <section class="container pb-sm-1 pb-md-3">
     <!-- Row 1 -->
-    <div style="display: none;" class="row align-items-lg-center pb-5 mb-2 mb-lg-4 mb-xl-5">
+    <div style="display: block;" class="row align-items-lg-center pb-5 mb-2 mb-lg-4 mb-xl-5">
         <div class="col-md-6 mb-4 mb-md-0">
             <iframe
                 style="border-radius: 15px;"
                 width="100%"
                 height="315"
-                src="https://www.youtube.com/embed/wljsbPQR-gQ?si=bR8IXIbiG5BI_2aC&autoplay=1&mute=1&loop=1"
+                src="https://www.youtube.com/embed/BpY3QPBt5HE?si=_Ltn9gOR9qIFRJgz&autoplay=1&mute=1&loop=1"
                 title="YouTube video player"
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -16,8 +16,8 @@
         </div>
         <div class="col-md-6">
             <div class="ps-xl-5 ms-md-2 ms-lg-4">
-                <h2 class="h1 mb-3 mb-sm-4">Final de UEFA Champions League</h2>
-                <p class="mb-4 mb-lg-5">Borussia Dortmund y Real Madrid se enfrentan para disputar la final de la Liga de Campeones. Míralo en vivo y completamente gratis en iRaffle TV.</p>
+                <h2 class="h1 mb-3 mb-sm-4">Infobae: Entrevista a Messi</h2>
+                <p class="mb-4 mb-lg-5">Conoce la intimidad de Messi antes de comenzar la Copa América 2024</p>
                 <script>
                     var yyyy = 2024;
                     var mm = "5";
@@ -124,7 +124,7 @@
                     }, 1000);
                 </script>
                 <!-- Elemento -->
-                <div class="col-12 mycard">
+                <div style="display: none" class="col-12 mycard">
                     <a href="?p=eventos&tipo=football&liga=7">
                         <div class="card product-card">
                             <div class="main-event">
@@ -164,7 +164,7 @@
     </div>
 
     <!-- Row 2 -->
-    <div class="row align-items-lg-center pt-md-3 pb-5 mb-2 mb-lg-4 mb-xl-5">
+    <div style="display: none;" class="row align-items-lg-center pt-md-3 pb-5 mb-2 mb-lg-4 mb-xl-5">
         <div class="col-md-6 order-md-2 mb-4 mb-md-0">
             <img src="https://phantom-marca.unidadeditorial.es/31b84a6f5469c6fab5d08d2e64b2d97f/resize/828/f/jpg/assets/multimedia/imagenes/2024/06/02/17173479630254.jpg" class="rounded-3" alt="Image" />
         </div>
