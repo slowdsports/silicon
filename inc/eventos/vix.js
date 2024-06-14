@@ -57,7 +57,8 @@ function eventos() {
                 // Integrar lógicas aquí
                 var url = obj["url"];
                 var title = obj["title"];
-                console.log(url);
+                var img = obj["img"];
+                console.log("img:" + img);
 
                 if (url !== "#") {
                     url = url.replace("/embed/eventos/?r=", "");
@@ -71,19 +72,10 @@ function eventos() {
                     // Ordenar las partes
                     //var m3u8 = proxy + urlParts[0];
                     var m3u8 = urlParts[0];
-                    m3u8 = m3u8.replace(/^https:\/\/node\.240025\.xyz\//, '');
+                    m3u8 = m3u8.replace(/.*\?id=/, '');
                     console.log("m3u8: " + m3u8)
-                    // Encriptar la imagen a MD5
-                    var imagen = urlParts[1] + "&" + urlParts[2] + "&" + urlParts[3];
-                    imagen = imagen.replace("img=", "");
-                    var key1 = urlParts[1].replace("key=", "");
-                    var key2 = urlParts[2].replace("key2=", "");
-                    console.log(key1 + ":" + key2)
-                    // Convertir las claves a base64 URL-safe
-                    var keys = convertKeysToBase64UrlSafe(key1, key2);
-                    console.log(keys);
                     // Reemplazar la URL
-                    url = "chrome-extension://opmeopcambhfimffbomjgemehjkbbmji/pages/player.html#" + m3u8 + "?ck=" + keys;
+                    url = m3u8 + "&img=" + img;
                     console.log(url);
                 }
 
@@ -105,7 +97,7 @@ function eventos() {
                                 <a href="javascript:void(0);" onclick="cargarReproductor('${url}')" data-title="${title}">${obj["title"]}
                                 </a>
                             </h3>
-                            <p class="fs-sm mb-2">${obj["description"]}</p>
+                            <p class="fs-sm mb-2">${obj["league"]}</p>
                         </div>
                         <div class="card-footer d-flex align-items-center fs-sm text-muted py-4">
                             <div class="d-flex align-items-center me-4">
@@ -134,7 +126,7 @@ function eventos() {
                                 <a href="javascript:void(0);" onclick="cargarReproductor('${url}')" data-title="${title}">${obj["title"]}
                                 </a>
                             </h3>
-                            <p class="fs-sm mb-2">${obj["description"]}</p>
+                            <p class="fs-sm mb-2">${obj["league"]}</p>
                         </div>
                         <div class="card-footer d-flex align-items-center fs-sm text-muted py-4">
                             <div class="d-flex align-items-center me-4">
@@ -163,7 +155,7 @@ function eventos() {
                                 <a href="javascript:void(0);" onclick="cargarReproductor('${url}')" data-title="${title}">${obj["title"]}
                                 </a>
                             </h3>
-                            <p class="fs-sm mb-2">${obj["description"]}</p>
+                            <p class="fs-sm mb-2">${obj["league"]}</p>
                         </div>
                         <div class="card-footer d-flex align-items-center fs-sm text-muted py-4">
                             <div class="d-flex align-items-center me-4">
@@ -194,7 +186,7 @@ function cargarReproductor(url) {
     var title = eventElement.getAttribute("data-title");
     // Actualiza el src del iframe con la URL del evento
     seccionPlayer.classList.remove("hidden");
-    iframe.src = "inc/reproductor/starn.php?r=" + url;
+    iframe.src = "inc/reproductor/vix.php?id=" + url;
     // Actualiza el título del evento
     tituloElemento.innerText = title;
     // Mostrar el iframe
