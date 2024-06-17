@@ -41,7 +41,7 @@ if (isset($_GET['f']) && $_GET['f'] !== null) {
 
 // Especiales
 $sandbox;
-if (strpos($canalUrl, "bletcheanta") || strpos($canalUrl, "now.net")) {
+if (strpos($canalUrl, "bletcheanta") || strpos($canalUrl, "now.net") || strpos($canalUrl, "tele")) {
     $sandbox = "sandbox='allow-same-origin allow-scripts'";
 }
 ?>
