@@ -39,9 +39,8 @@ if ($json_content !== false) {
                         <img class="img-fluid" src="assets/img/player_img.png" alt="">
                     </a>
                     <div class="embed-responsive embed-responsive-16by9" id="playerContainer">
-                        <iframe id='embed-player' class='embed-responsive-item' width='100%' height='100%'
-                            frameborder='0' scrolling='no' allowfullscreen allow-encrypted-media></iframe>
-                    </div>
+                        <iframe allow="encrypted-media" allowfullscreen id='embed-player' class='embed-responsive-item' width='100%' height='100%'
+                            frameborder='0' scrolling='no'></iframe>
                 </div>
             </div>
         </div>
