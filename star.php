@@ -40,7 +40,7 @@ if ($json_content !== false) {
                     </a>
                     <div class="embed-responsive embed-responsive-16by9" id="playerContainer">
                         <iframe id='embed-player' class='embed-responsive-item' width='100%' height='100%'
-                            frameborder='0' scrolling='no' allowfullscreen allow-encrypted-media></iframe>
+                            frameborder='0' scrolling='no' allow="encrypted-media" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>
