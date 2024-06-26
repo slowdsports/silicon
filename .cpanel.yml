@@ -1,7 +1,7 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/u4396178/campeoens
+    - export DEPLOYPATH=/home/u4396178/campeones/
     #- export DEPLOYPATH=/home/megaaxmg/teombley.asia/iraffle/
     - /bin/cp -R * $DEPLOYPATH
     #- /bin/rsync -a --exclude 'conn.php' public/ $DEPLOYPATH
