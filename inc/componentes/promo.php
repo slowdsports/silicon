@@ -1,6 +1,6 @@
 <section class="container pb-sm-1 pb-md-3">
     <!-- Row 1 -->
-    <div style="" class="row align-items-lg-center pb-5 mb-2 mb-lg-4 mb-xl-5">
+    <div style="display: none" class="row align-items-lg-center pb-5 mb-2 mb-lg-4 mb-xl-5">
         <div class="col-md-6 mb-4 mb-md-0">
             <iframe
                 style="border-radius: 15px;"
