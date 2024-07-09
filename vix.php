@@ -1,6 +1,6 @@
 <?php
 // Generar
-$json_url = 'https://irtvhn.online/json/vix.json';
+$json_url = 'https://anceprov.best/json/vix.json';
 // Obtener el contenido del JSON desde la URL
 $json_content = file_get_contents($json_url);
 // Verificar si la solicitud fue exitosa
