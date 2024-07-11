@@ -5,7 +5,7 @@ if ($_GET['p'] !== "login") {
     $_SESSION['redirect_url'] = $_SERVER['REQUEST_URI'];
 }
 $titulo = "Televisión y Partidos de Fútbol Gratis por Internet";
-$descripcion = "En iRaffle TV puedes mirar el deporte con la mejor calidad y estabilidad. Todo el Fútbol está disponible acá, con canales como DAZN, ESPN, Movistar y muchos más"
+$descripcion = "En Fútbol Honduras 24 puedes mirar el deporte con la mejor calidad y estabilidad. Todo el Fútbol está disponible acá, con canales como DAZN, ESPN, Movistar y muchos más"
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -16,10 +16,10 @@ $descripcion = "En iRaffle TV puedes mirar el deporte con la mejor calidad y est
 
     <!-- SEO Meta Tags -->
     <meta name="description"
-        content="iRaffle TV - Eventos deportivos y canales de televisión en vivo completamente gratis">
+        content="Fútbol Honduras 24 - Eventos deportivos y canales de televisión en vivo completamente gratis">
     <meta name="keywords"
         content="Canales de TV gratis, ver tele gratis, television gratis, partidos gratis, iRaffle TV.">
-    <meta name="author" content="iRaffle TV">
+    <meta name="author" content="Fútbol Honduras 24">
 
     <!-- Viewport -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
