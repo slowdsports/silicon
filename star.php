@@ -60,7 +60,7 @@ if ($json_content !== false) {
 <section class="container mb-5 pt-4 pb-2 py-mg-4">
     <!-- Page title + Filters -->
     <div class="d-lg-flex align-items-center justify-content-between py-4 mt-lg-2">
-        <h1 class="me-3">Star+</h1>
+        <h1 class="me-3">Disney+</h1>
         <div class="d-md-flex mb-3">
             <div class="position-relative" style="min-width: 300px;">
                 <input id="filtroInput" type="text" class="form-control pe-5" placeholder="Buscar evento">
