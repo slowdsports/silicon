@@ -99,6 +99,11 @@ elseif (isset($_GET['id'])) {
                         </div>
                     </div>
                 </div>
+                <?php if (strpos($canalUrl, "ww.aiv-cdn") !== false): ?>
+                <div class="alert alert-danger text-center" role="alert">
+                  Este canal tardará un poco en comenzar a reproducir, por favor ten un poco de paciencia.
+                </div>
+                <?php endif; ?>
                 <?php
                 if (!isset($_GET['c']) && $_GET['c'] == 337) {
                 ?>
