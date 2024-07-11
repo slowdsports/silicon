@@ -34,7 +34,7 @@ if (isset($_GET['c'])) {
         $canalImg = $result['canalImg'];
         $canalNombre = $result['canalNombre'];
         $titulo = "Ver " . $canalNombre . " En Vivo";
-        $descripcion = "Ver " . $canalNombre . " completamente gratis y en alta definición por iRaffle TV.";
+        $descripcion = "Ver " . $canalNombre . " completamente gratis y en alta definición por Fútbol Honduras 24.";
         $canalCategoria = $result['categoriaNombre'];
         $categoria = $result['categoriaId'];
         $canalUrl = $result['canalUrl'];
