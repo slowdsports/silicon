@@ -5,7 +5,7 @@ WHERE ligaId = '$getLiga'");
 $result = mysqli_fetch_array($ligas);
 $ligaNombre = $result['ligaNombre'];
 $titulo = "Ver partidos de " . $ligaNombre . " En Vivo";
-$descripcion = "Ver en vivo partidos de " . $ligaNombre . " completamente gratis y en alta definición por iRaffle TV.";
+$descripcion = "Ver en vivo partidos de " . $ligaNombre . " completamente gratis y en alta definición por Fútbol Honduras 24.";
 
 ?>
 <section class="container pb-2 pb-md-4 pb-lg-5 mb-3">
