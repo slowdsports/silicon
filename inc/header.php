@@ -12,7 +12,7 @@ $descripcion = "En iRaffle TV puedes mirar el deporte con la mejor calidad y est
 
 <head>
     <meta charset="utf-8">
-    <title>iRaffle TV | <?= isset($_SESSION['tituloPagina']) ? $_SESSION['tituloPagina'] : "Televisión Gratis por Internet"; ?></title>
+    <title>Fútbol Honduras 24 | <?= isset($_SESSION['tituloPagina']) ? $_SESSION['tituloPagina'] : "Televisión Gratis por Internet"; ?></title>
 
     <!-- SEO Meta Tags -->
     <meta name="description"
@@ -327,7 +327,7 @@ if (isset($_GET['login']) && $_GET['login'] == "success") { ?>
                                     aria-current="page">Exclusivos</a>
                                 <ul class="dropdown-menu">
                                     <li><a href="?p=star" class="dropdown-item
-                                    <?= ($_GET['p'] == 'star') ? 'active' : ''; ?>">Star+</a></li>
+                                    <?= ($_GET['p'] == 'star') ? 'active' : ''; ?>">Disney+</a></li>
                                     <li><a href="?p=vix" class="dropdown-item
                                     <?= ($_GET['p'] == 'vix') ? 'active' : ''; ?>">Vix+</a></li>
                                 </ul>
