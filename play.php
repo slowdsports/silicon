@@ -230,7 +230,7 @@ elseif (isset($_GET['id'])) {
         <!-- Votos -->
         <div id="chatCol" class="col-lg-3 position-relative">
             <div class="sticky-top " style="top: 105px !important;">
-                <?php if (isset($_GET['c'])): ?>
+                <?php if (isset($_GET['c']) && isset($_COOKIE['usuario_id'])): ?>
                     <div class="row text-center">
                         <div class="col-6">
                             <?php
