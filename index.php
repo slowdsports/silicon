@@ -52,3 +52,23 @@ if(isset($_GET['p'])) {
 }
 // Footer
 include('inc/footer.php');
+
+// Mensaje
+$message = "Este es el sitio temporal de Mega Deportes. Por favor apoyemos a Kahsad como sea posible.";
+$messageColor = "#4044ee";
+if (isset($message) { ?>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    Toastify({
+        text: "<?= $message; ?>",
+        duration: 9000,
+        close: true,
+        gravity: "bottom",
+        position: "left",
+        backgroundColor: "<?= $messageColor; ?>",
+        stopOnFocus: true
+        }).showToast();
+    });
+</script>
+<?php }
+unset($_SESSION['message']); ?>
