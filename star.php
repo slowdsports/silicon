@@ -4,12 +4,12 @@
 // Obtener el contenido del JSON desde la URL
 //$json_content = file_get_contents($json_url);
 // Verificar si la solicitud fue exitosa
-if ($json_content !== false) {
+//if ($json_content !== false) {
     // Guardar el contenido en un archivo llamado "starbr.json"
-    file_put_contents('datos.json', $json_content);
-} else {
-    echo 'Error al obtener el contenido del JSON, por favor comuníquelo al admin';
-}
+    //file_put_contents('datos.json', $json_content);
+//} else {
+    //echo 'Error al obtener el contenido del JSON, por favor comuníquelo al admin';
+//}
 ?>
 <section id="repro" class="container mb-5 pt-4 pb-2 py-mg-4 hidden">
     <div class="row gy-4">
