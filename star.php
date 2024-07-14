@@ -1,8 +1,8 @@
 <?php
 // Generar
-$json_url = 'https://irtvhn.online/json/star.json';
+//$json_url = 'https://irtvhn.online/json/star.json';
 // Obtener el contenido del JSON desde la URL
-$json_content = file_get_contents($json_url);
+//$json_content = file_get_contents($json_url);
 // Verificar si la solicitud fue exitosa
 if ($json_content !== false) {
     // Guardar el contenido en un archivo llamado "starbr.json"
