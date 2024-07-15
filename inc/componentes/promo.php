@@ -1,6 +1,16 @@
-<div class"container text-center pt-5 mt-2 mt-md-4 mt-lg-5">
-    <div style="margin: 0 20% 0;" class"h1 pt-2 pt-lg-0">
-        <blockquote class="twitter-tweet"><p lang="es" dir="ltr">[AHORA] Liberaron al creador de Fútbol Libre: la Justicia lo excarceló por &quot;colaborar con la investigación contra los sitios de piratería&quot;. <a href="https://t.co/W4ekowk5y9">https://t.co/W4ekowk5y9</a> <a href="https://t.co/f8GOGujT6v">pic.twitter.com/f8GOGujT6v</a></p>&mdash; ElCanciller.com (@elcancillercom) <a href="https://twitter.com/elcancillercom/status/1812944836556910754?ref_src=twsrc%5Etfw">July 15, 2024</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+            <blockquote class="twitter-tweet">
+                <p lang="es" dir="ltr">
+                    [AHORA] Liberaron al creador de Fútbol Libre: la Justicia lo excarceló por "colaborar con la investigación contra los sitios de piratería".
+                    <a href="https://t.co/W4ekowk5y9">https://t.co/W4ekowk5y9</a> 
+                    <a href="https://t.co/f8GOGujT6v">pic.twitter.com/f8GOGujT6v</a>
+                </p>&mdash; ElCanciller.com (@elcancillercom) 
+                <a href="https://twitter.com/elcancillercom/status/1812944836556910754?ref_src=twsrc%5Etfw">July 15, 2024</a>
+            </blockquote>
+            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </div>
     </div>
 </div>
 
