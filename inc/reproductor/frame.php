@@ -46,7 +46,7 @@ if (strpos($canalUrl, "bletcheanta") || strpos($canalUrl, "now.net") || strpos($
 }
 ?>
 <script> ConsoleBan.init({ redirect: '../../?p=401' }); </script>
-<?php if (strpos($canalUrl, "tvfutbol") !== true: ?>
+<?php if (!strpos($canalUrl, "tvfutbol")): ?>
 <script src="../../inc/ads/popunder.php"></script>
 <?php endif ?>
 <style>
