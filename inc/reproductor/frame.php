@@ -41,12 +41,14 @@ if (isset($_GET['f']) && $_GET['f'] !== null) {
 
 // Especiales
 $sandbox;
-if (strpos($canalUrl, "bletcheanta") || strpos($canalUrl, "now.net") || strpos($canalUrl, "dlhd") || strpos($canalUrl, "betzta") || strpos($canalUrl, "tvfutbol")) {
+if (strpos($canalUrl, "bletcheanta") || strpos($canalUrl, "now.net") || strpos($canalUrl, "dlhd") || strpos($canalUrl, "betzta")) {
     $sandbox = "sandbox='allow-same-origin allow-scripts'";
 }
 ?>
 <script> ConsoleBan.init({ redirect: '../../?p=401' }); </script>
+<?php if (strpos($canalUrl, "tvfutbol") === false: ?>
 <script src="../../inc/ads/popunder.php"></script>
+<?php endif ?>
 <style>
     body {
         background: #000;
