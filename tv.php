@@ -1,5 +1,7 @@
-<div class="alert alert-danger text-center" role="alert">
-  La mayoría de los canales están en MANTENIMIENTO y se está trabajando para hacerlos funcionar cuanto antes.
+<div class="container">
+  <div class="alert alert-danger text-center" role="alert">
+    La mayoría de los canales están en MANTENIMIENTO y se está trabajando para hacerlos funcionar cuanto antes.
+  </div>
 </div>
 <?php
 $titulo = "Ver canales de televisión en vivo y en directo";
