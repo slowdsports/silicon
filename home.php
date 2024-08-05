@@ -1,7 +1,4 @@
 <section class="container text-center pt-5 mt-2 mt-md-4 mt-lg-5">
-    <div class="alert alert-info text-center" role="alert">
-      #FREEMEGA - Este es el sitio temporal de megadeportestv.
-    </div>
     <?php include('inc/componentes/promo.php'); ?>
     <h2 class="h1 d-md-inline-block position-relative mb-md-5 mb-sm-4 text-sm-start text-center">
         Agenda
