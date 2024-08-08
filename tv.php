@@ -1,7 +1,8 @@
 <div class="container">
-  <div class="alert alert-danger text-center" role="alert">
-    La mayoría de los canales están en MANTENIMIENTO y se está trabajando para hacerlos funcionar cuanto antes.
-  </div>
+  <div class="card card-body border-0 shadow-sm position-relative overflow-hidden ps-sm-5 mb-5">
+      <div class="position-absolute top-0 start-0 w-3 h-100 bg-danger"></div>
+        <h2 class="h4 fw-normal lh-base"><span class="fw-semibold">Los canales están en Mantenimiento.</span> La mayoría no funcionarán hasta concluir con el mantenimiento: <a href="https://t.me/+oi-QsjZMJqFhMTFh" target="_blank">Haga clic para mantenerse informado en nuestro grupo de Telegram</a>.</p>
+        </div>
 </div>
 <?php
 $titulo = "Ver canales de televisión en vivo y en directo";
