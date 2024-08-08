@@ -70,6 +70,6 @@
     </div>
     <!-- Events grid -->
     <div id="eventos" class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 gx-3 gx-md-4 mt-n2 mt-sm-0">
-        <script src="inc/eventos/starr.js"></script>
+        <script src="inc/eventos/disney.js"></script>
     </div>
 </section>
