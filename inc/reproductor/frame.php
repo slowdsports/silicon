@@ -47,7 +47,8 @@ if (strpos($canalUrl, "streamtp") && isset($_GET['id'])) {
     $sandbox = "sandbox='allow-same-origin allow-scripts'";
 }
 ?>
-<script> ConsoleBan.init({ redirect: '../../?p=401' }); </script>
+<script src="//cdn.jsdelivr.net/npm/console-ban@5.0.0/dist/console-ban.min.js"></script>
+<script> ConsoleBan.init({ redirect: '../../?p=401'}); </script>
 <?php if (!strpos($canalUrl, "tvfutbol")): ?>
 <script src="../../inc/ads/popunder.php"></script>
 <?php endif ?>
