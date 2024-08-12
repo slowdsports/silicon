@@ -21,7 +21,7 @@ if (isset($_GET['f']) && !isset($_GET['id'])):
 $reportQty = mysqli_query($conn, "SELECT * FROM reportes WHERE fuente='$fuente'");
 $totalReports = mysqli_num_rows($reportQty);
 ?>
-<a id="reporteBtn" class="btn btn-outline-danger btn-lg px-3 py-2">
+<a id="reporteBtn" class="btn btn-outline-danger btn-lg px-3 py-2" data-toggle="tooltip" data-placement="top" title="Envía un reporte a los administradores para comunicarles que el canal no funciona">
     <i class="bx bx-error-circle fs-5 lh-1 me-1"></i>
     Reportar Canal
 </a>
