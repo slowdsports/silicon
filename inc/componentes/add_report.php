@@ -1,5 +1,5 @@
 <?php
-include('inc/conn.php');
+include('../conn.php');
 // Obtener el parámetro GET "f"
 $fuente = isset($_GET['f']) ? $_GET['f'] : null;
 
@@ -9,7 +9,7 @@ if ($fuente !== null) {
     $fuente = $conn->real_escape_string($fuente);
     
     // Insertar el nuevo registro en la tabla "reports"
-    $sql = "INSERT INTO reports (fuente, fecha) VALUES ('$fuente', NOW())";
+    $sql = "INSERT INTO reportes (fuente, fecha) VALUES ('$fuente', NOW())";
 
     if ($conn->query($sql) === TRUE) {
         echo "Nueva fila agregada correctamente.";
