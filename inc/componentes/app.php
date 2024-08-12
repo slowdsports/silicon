@@ -16,16 +16,22 @@ if (strpos($dispositivo, "iOS") || strpos($dispositivo, "iPhone")) {
 -->
 <?php }
 // Reporte
+$fuente = $_GET['f'];
 if (isset($_GET['f']) && !isset($_GET['id'])):
+$reportQty = mysqli_query($conn, "SELECT * FROM reportes WHERE fuente='$fuente'");
+$totalReports = mysqli_num_rows($reportQty);
 ?>
 <a id="reporteBtn" class="btn btn-outline-danger btn-lg px-3 py-2">
     <i class="bx bx-error-circle fs-5 lh-1 me-1"></i>
     Reportar Canal
 </a>
+<p><small><em>Se han recibido <span id="feedbackReportText"><?=$totalReports?></span> reportes para este canal.</em></small></p>
 <script>
 document.getElementById('reporteBtn').addEventListener('click', function() {
 // Obtener el ID del reporte
-var fuenteID = "<?=$_GET['f']?>";
+var fuenteID = "<?=$fuente?>";
+// Obtener el contador
+var feedbackReportText = document.getElementById('feedbackReportText');
 // Crear una instancia de XMLHttpRequest
 var xhr = new XMLHttpRequest();
 // Configurar la solicitud GET al archivo PHP con el parámetro "f"
@@ -39,6 +45,8 @@ xhr.onreadystatechange = function() {
     <a class="btn btn-outline-success btn-lg px-3 py-2">
         <i class="bx bx-check fs-5 lh-1 me-1"></i>Se Reportó el Canal
     </a>`;
+    var totalReports = parseInt(feedbackReportText.innerText);
+    feedbackReportText.innerText = totalReports + 1;
     }
 };
 // Enviar la solicitud
