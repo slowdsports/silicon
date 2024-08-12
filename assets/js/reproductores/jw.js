@@ -64,6 +64,19 @@ if (getTYPE == 1) {
             position: "top-left"
         }
     });
+    playerInstance.on('ready', function() {
+    playerInstance.on('audioTracks', function() {
+        const tracks = playerInstance.getAudioTracks();
+        //console.log('Available audio tracks:', tracks);
+        for (let i = 0; i < tracks.length; i++) {
+            if (tracks[i].language === 'es') {
+                playerInstance.setCurrentAudioTrack(i);
+                //console.log('Selected Spanish audio track:', tracks[i]);
+                break;
+            }
+        }
+    });
+});
 }
 // Preview Hack
 jwplayer().play();
