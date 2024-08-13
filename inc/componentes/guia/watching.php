@@ -1,32 +1,30 @@
-<div id="contenedor-card" class="container mt-4"></div>
+<div class="container" id="contenedor-card">
+</div>
 <script>
 // ID del canal cuyo JSON deseas consumir
-const canalId = 'hbo_argentina'; // Puedes cambiarlo por el ID del canal que desees
+//const canalId = 'hbo_argentina';
+const canalId = '<?=$epg?>';
 
 // Contenedor donde se insertará la tarjeta
 const contenedorCard = document.getElementById('contenedor-card');
 
 // Función para cargar y mostrar la programación en vivo del canal específico
 function cargarProgramacion() {
-    fetch(`test/json/${canalId}.json`)
+    fetch(`inc/componentes/guia/json/${canalId}.json`)
         .then(response => response.json())
         .then(data => {
             const programaEnVivo = data.programas.find(programa => programa.en_vivo);
 
             if (programaEnVivo) {
                 const card = document.createElement('div');
-                card.className = 'card overflow-hidden mb-4';
-                const imgUrl = programaEnVivo.imagen.replace("miniatura", "posters");
-                const canalUrl = "";
+                card.className = 'row row-cols-1 row-cols-12 g-0';
 
                 card.innerHTML = `
-                    <div class="row g-0">
-                        <div class="col-sm-4 bg-repeat-0 bg-size-contain" style="background-image: url(${imgUrl}); min-height: 12rem;"></div>
-                        <div class="col-sm-8">
-                            <div class="card-body">
-                                <h5 class="card-title">Estás viendo: ${programaEnVivo.titulo}</h5>
-                                <a class="btn btn-sm btn-primary disabled" href="${canalUrl}" target="_blank">Ver Programación (En desarrollo)</a>
-                            </div>
+                    <div class="col d-flex align-items-center border-end-sm border-bottom p-3" style="max-width: 18rem; border-radius: 15px">
+                        <img src="${programaEnVivo.imagen}" width="48" alt="Icon">
+                        <div class="ps-2 ms-1">
+                            <h3 class="h6 mb-0">${programaEnVivo.titulo}</h3>
+                            <p class="fs-xs mb-0">Estás viendo</p>
                         </div>
                     </div>
                 `;
