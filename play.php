@@ -42,6 +42,7 @@ if (isset($_GET['c'])) {
         $canalTipo = $result['tipo'];
         $canalComentario = $result['comentario'];
         $canalFechaComentario = $result['fechaComentario'];
+        $epg = $result['epgCanal'];
         // Verificar que "c" coincida en BD
         if ($canal !== $result['canal']) {
             $canal = $result['canal'];
@@ -227,9 +228,12 @@ elseif (isset($_GET['id'])) {
                 <div class="col-4">
                     <?php (isset($_GET['c']) ? include('inc/componentes/fuentes.php') : ''); ?>
                 </div>
-                <div style="text-align: end;" class="col-8">
+                <div class="col-4">
+                    <?php include('inc/componentes/guia/watching.php'); ?>
+                </div>
+                <div style="text-align: end;" class="col-4">
                     <?php include('inc/componentes/app.php'); ?>
-                    <script src="inc/ads/related-ad.php"></script>
+                    <!--script src="inc/ads/related-ad.php"></script>-->
                 </div>
             </div>
         </div>
@@ -293,7 +297,6 @@ elseif (isset($_GET['id'])) {
                     <script src="inc/componentes/like.js"></script>
                 <?php endif ?>
                 <br>
-                <!-- Chat & Post -->
                 <!-- Chat -->
                 <div class="rounded-3">
                     <iframe id="twitch-chat-embed" class="rounded-3" src height="560" width="100%"></iframe>
