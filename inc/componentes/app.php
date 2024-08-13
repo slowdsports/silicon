@@ -25,7 +25,18 @@ $totalReports = mysqli_num_rows($reportQty);
     <i class="bx bx-error-circle fs-5 lh-1 me-1"></i>
     Reportar Canal
 </a>
-<p><small><em>Se han recibido <span id="feedbackReportText"><?=$totalReports?></span> reportes para este canal.</em></small></p>
+<p>
+    <small>
+        <em>
+            Se han recibido <span id="feedbackReportText"><?=$totalReports?></span> reportes para este canal.
+            <?php if ($canalComentario !== null || $canalComentario !== ""): ?>
+            <br>
+            <?=$canalComentario?> (<?=date($canalFechaComentario)?>)
+            <?php endif; ?>
+        </em>
+    </small>
+</p>
+
 <script>
 document.getElementById('reporteBtn').addEventListener('click', function() {
 // Obtener el ID del reporte
