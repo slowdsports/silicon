@@ -40,6 +40,8 @@ if (isset($_GET['c'])) {
         $canalUrl = $result['canalUrl'];
         $canalPais = $result['pais'];
         $canalTipo = $result['tipo'];
+        $canalComentario = $result['comentario'];
+        $canalFechaComentario = $result['fechaComentario'];
         // Verificar que "c" coincida en BD
         if ($canal !== $result['canal']) {
             $canal = $result['canal'];
