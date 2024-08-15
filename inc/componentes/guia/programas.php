@@ -14,10 +14,10 @@ if ($data === null) {
 <div class="position-relative px-xl-5">
 
   <!-- Slider prev/next buttons -->
-  <button type="button" id="prev-news" class="btn btn-prev btn-icon btn-sm position-absolute top-50 start-0 translate-middle-y d-none d-xl-inline-flex" aria-label="Previous">
+  <button type="button" id="prev-programs" class="btn btn-prev btn-icon btn-sm position-absolute top-50 start-0 translate-middle-y d-none d-xl-inline-flex" aria-label="Previous">
     <i class="bx bx-chevron-left"></i>
   </button>
-  <button type="button" id="next-news" class="btn btn-next btn-icon btn-sm position-absolute top-50 end-0 translate-middle-y d-none d-xl-inline-flex" aria-label="Next">
+  <button type="button" id="next-programs" class="btn btn-next btn-icon btn-sm position-absolute top-50 end-0 translate-middle-y d-none d-xl-inline-flex" aria-label="Next">
     <i class="bx bx-chevron-right"></i>
   </button>
 
@@ -31,8 +31,8 @@ if ($data === null) {
         "clickable": true
       },
       "navigation": {
-        "prevEl": "#prev-news",
-        "nextEl": "#next-news"
+        "prevEl": "#prev-programs",
+        "nextEl": "#next-programs"
       },
       "breakpoints": {
         "500": {
@@ -71,7 +71,9 @@ if ($data === null) {
                     <img src="assets/img/canales/<?= $programa['logo']?>.png" class="rounded-circle" width="48" alt="Avatar">
                     <div class="ps-3">
                       <h6 class="fs-base fw-semibold mb-0"><?= htmlspecialchars($programa['nombre']); ?></h6>
-                      <span class="fs-sm text-muted"><?= htmlspecialchars($programa['pais']); ?></span>
+                      <span class="fs-sm text-muted">
+                          <i class="flag <?= htmlspecialchars($programa['flag']); ?>"></i>
+                          <?= strtoupper(htmlspecialchars($programa['pais'])); ?></span>
                     </div>
                   </a>
                 </div>
@@ -88,8 +90,6 @@ if ($data === null) {
   </div>
 </div>
 
-<!-- Incluye los scripts necesarios para Swiper -->
-<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 <script>
   // Inicializar Swiper
   var swiper = new Swiper('.swiper', JSON.parse(document.querySelector('.swiper').getAttribute('data-swiper-options')));
