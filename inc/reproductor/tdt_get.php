@@ -1,9 +1,4 @@
 <?php
-// Lógica para evitar carga directa
-if (!isset($_SERVER['HTTP_REFERER']) || empty($_SERVER['HTTP_REFERER'])) {
-    include('../../401.php');
-    exit();
-}
 // Obtener el epg_id desde el parámetro GET
 $epg_id = isset($_GET['epg_id']) ? $_GET['epg_id'] : '';
 $option_index = isset($_GET['index']) ? (int)$_GET['index'] : 0;
