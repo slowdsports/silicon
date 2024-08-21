@@ -4,8 +4,8 @@ ini_set('display_errors', '0');
 $api_key = 'AIzaSyBbCLCMwGQ4YA-_B3YWDiKxDAY8dwAhCdc';
 // Lógica para evitar carga directa
 if (!isset($_SERVER['HTTP_REFERER']) || empty($_SERVER['HTTP_REFERER'])) {
-    include('../../401.php');
-    exit();
+    //include('../../401.php');
+    //exit();
 }
 $canal = $_GET['c'];
 // ADS
@@ -42,7 +42,13 @@ if (isset($_GET['f']) && $_GET['f'] !== null) {
     $canalTipo = $result['canalTipo'];
 }
 //$channel_id = 'UCIs6fmAXOI1K2jgkoBdWveg';
-$channel_id = $canalUrl;
+
+if (isset($_GET['tdt'])) {
+    $channel_id = $_GET['tdt'];
+} else {
+    $channel_id = $canalUrl;
+}
+
 $url = "https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=$channel_id&type=video&eventType=live&key=$api_key";
 
 $response = file_get_contents($url);

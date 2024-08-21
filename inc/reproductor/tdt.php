@@ -1,8 +1,8 @@
 <?php
 // Lógica para evitar carga directa
 if (!isset($_SERVER['HTTP_REFERER']) || empty($_SERVER['HTTP_REFERER'])) {
-    include('../../401.php');
-    exit();
+    //include('../../401.php');
+    //exit();
 }
 ?>
 <!DOCTYPE html>
@@ -29,7 +29,7 @@ if (!isset($_SERVER['HTTP_REFERER']) || empty($_SERVER['HTTP_REFERER'])) {
     <script src="//ssl.p.jwpcdn.com/player/v/8.24.0/jwplayer.js"></script>
     <script>jwplayer.key = 'XSuP4qMl+9tK17QNb+4+th2Pm9AWgMO/cYH8CI0HGGr7bdjo';</script>
     <script src="//cdn.jsdelivr.net/npm/console-ban@5.0.0/dist/console-ban.min.js"></script>
-    <script> ConsoleBan.init({ redirect: '../../?p=401'}); </script>
+    <script> //ConsoleBan.init({ redirect: '../../?p=401'}); </script>
     <style>
     body {
         background-color: #000;
@@ -89,18 +89,22 @@ if (!isset($_SERVER['HTTP_REFERER']) || empty($_SERVER['HTTP_REFERER'])) {
     include('../../inc/ads/intersticial.php');
     // Share
     include('share.php');
+
     $getId = $_GET['f'];
-    $source = mysqli_query($conn, "SELECT canalUrl FROM fuentes
-    WHERE fuenteId = $getId");
+    // Protección contra inyecciones SQL
+    $getId = mysqli_real_escape_string($conn, $getId);
+
+    // Obtener la URL del canal desde la base de datos
+    $source = mysqli_query($conn, "SELECT canalUrl FROM fuentes WHERE fuenteId = '$getId'");
     $result = mysqli_fetch_assoc($source);
-    $getId = $result['canalUrl'];
+    $canalUrl = $result['canalUrl'];
     ?>
     <div id="player"></div>
 
     <script>
         // URL del API JSON
-        var param = "<?=$getId?>";
-        var apiUrl = "https://futbolhonduras24.com/inc/reproductor/tdt_get.php?epg_id=" + param;
+        var param = "<?=$canalUrl?>";
+        var apiUrl = "tdt_get.php" + param;
 
         // Función para realizar la solicitud AJAX
         function fetchJSON(url, callback) {
@@ -120,7 +124,7 @@ if (!isset($_SERVER['HTTP_REFERER']) || empty($_SERVER['HTTP_REFERER'])) {
             xhr.send();
         }
 
-        // Obtener el JSON y configurar JW Player
+        // Obtener el JSON y configurar el reproductor
         fetchJSON(apiUrl, function(error, data) {
             if (error) {
                 console.error(error.message);
@@ -129,39 +133,53 @@ if (!isset($_SERVER['HTTP_REFERER']) || empty($_SERVER['HTTP_REFERER'])) {
 
             // Obtener la URL codificada en Base64
             var encodedUrl = data.url;
+            console.log(encodedUrl);
 
-            // Descodificar la URL
-            //var decodedUrl = atob(encodedUrl);
-
-            // Configurar JW Player
-            var playerInstance = jwplayer("player");
-            playerInstance.setup({
-                playlist: [
-                    {
-                        sources: [
-                            {
-                                default: false,
-                                type: "hls",
-                                file: encodedUrl,
-                                label: "0",
-                            },
-                        ],
-                    },
-                ],
-                height: "100vh",
-                width: "100%",
-                aspectratio: "16:9",
-                stretching: "bestfit",
-                mediaid: "player",
-                mute: false,
-                autostart: false,
-                language: "es",
-                logo: {
-                    file: "https://eduveel1.github.io/baleada/img/iRTVW_PLAYER.png",
-                    hide: "false",
-                    position: "top-left"
+            // Verificar si la URL contiene "youtube.com"
+            if (encodedUrl.indexOf("youtube.com") !== -1) {
+                console.log("Video de YouTube detectado");
+                var regex = /youtube\.com\/channel\/([a-zA-Z0-9_-]+)/;
+                var match = encodedUrl.match(regex);
+                if (match && match[1]) {
+                    var channelId = match[1];
+                    console.log(channelId);
+                } else {
+                    console.log("No se encontró un ID de canal de YouTube.");
                 }
-            });
+
+                var player = document.getElementById("player");
+                player.innerHTML = "<iframe width='100%' height='100%' src='yt.php?f=<?=$getId?>&tdt=" + channelId + "' frameborder='0' allowfullscreen></iframe>";
+            } else {
+                // Configurar JW Player para otras URLs
+                var playerInstance = jwplayer("player");
+                playerInstance.setup({
+                    playlist: [
+                        {
+                            sources: [
+                                {
+                                    default: false,
+                                    type: "hls",
+                                    file: encodedUrl,
+                                    label: "0",
+                                },
+                            ],
+                        },
+                    ],
+                    height: "100vh",
+                    width: "100%",
+                    aspectratio: "16:9",
+                    stretching: "bestfit",
+                    mediaid: "player",
+                    mute: false,
+                    autostart: false,
+                    language: "es",
+                    logo: {
+                        file: "https://eduveel1.github.io/baleada/img/iRTVW_PLAYER.png",
+                        hide: "false",
+                        position: "top-left"
+                    }
+                });
+            }
         });
     </script>
 </body>
