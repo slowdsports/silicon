@@ -100,7 +100,7 @@ if (!isset($_SERVER['HTTP_REFERER']) || empty($_SERVER['HTTP_REFERER'])) {
     <script>
         // URL del API JSON
         var param = "<?=$getId?>";
-        var apiUrl = "https://futbolhonduras24.com/inc/reproductor/tdt_get.php?epg_id=" + param;
+        var apiUrl = "https://futbolhonduras24.com/inc/reproductor/tdt_get.php" + param;
 
         // Función para realizar la solicitud AJAX
         function fetchJSON(url, callback) {
