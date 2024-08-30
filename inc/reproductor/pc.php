@@ -66,7 +66,7 @@ if (!isset($_SERVER['HTTP_REFERER']) || empty($_SERVER['HTTP_REFERER'])) {
     }
     ?>
         <div class="container">
-            <div id="player"><em>Cargando...</em></div>
+            <div id="player"><h3>Cargando...</h3></div>
         </div>
         <script>
             // TPO DE DISPOSITIVO
