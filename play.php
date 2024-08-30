@@ -149,6 +149,7 @@ elseif (isset($_GET['id'])) {
                         '5' => ["tdt.php", ['c', 'f']],
                         '1' => ["hls.php", ['c', 'f']],
                         '3' => ["yt.php", ['c', 'f']],
+                        '4' => ["pc.php", ['c', 'f']],
                         '2' => ["frame.php", ['c', 'f']] // For $canalTipo == 2, handle $canalUrl separately
                     ];
 
