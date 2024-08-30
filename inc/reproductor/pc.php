@@ -3,8 +3,8 @@
 if (!isset($_SERVER['HTTP_REFERER']) || empty($_SERVER['HTTP_REFERER'])) {
     // Evitar en caso específico
     if (!isset($_GET['pirri'])) {
-        //include('../../401.php');
-        //exit();
+        include('../../401.php');
+        exit();
     }
 }
 ?>
@@ -51,7 +51,7 @@ if (!isset($_SERVER['HTTP_REFERER']) || empty($_SERVER['HTTP_REFERER'])) {
     <?php
     // ADS
     if (!isset($_GET['pirri'])) {
-        //include('../../inc/ads/intersticial.php');
+        include('../../inc/ads/intersticial.php');
     }
     // Share
     include('share.php');
