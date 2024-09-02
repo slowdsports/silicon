@@ -107,6 +107,11 @@ elseif (isset($_GET['id'])) {
                   Este canal tardará un poco en comenzar a reproducir, por favor ten un poco de paciencia.
                 </div>
                 <?php endif; ?>
+                <?php if (strpos($canalUrl, "cvattv") !== false): ?>
+                <div class="alert alert-danger text-center" role="alert">
+                  Este canal está geobloqueado para funcionar en Argentina, Uruguay y Paraguay. Si no estás en uno de esos países, descarga un VPN.
+                </div>
+                <?php endif; ?>
                 <?php
                 if (isset($canalTipo) && $canalTipo == 4 || $canalTipo == 8) {
                 ?>
