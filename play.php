@@ -108,16 +108,9 @@ elseif (isset($_GET['id'])) {
                 </div>
                 <?php endif; ?>
                 <?php
-                if (!isset($_GET['c']) && $_GET['c'] == 337) {
+                if (isset($canalTipo) && $canalTipo == 4 || $canalTipo == 8) {
                 ?>
-                <div class="col-12">
-                    <div id="alertaPlayerVip" class="alert d-flex alert-secondary" role="alert">
-                        <i class="bx bx-bug lead me-3"></i>
-                        <div>
-                            <i class="flag <?=$result['paisNombre']?>"></i>
-                            ¿El canal no funciona? <a href="#" class="alert-link">Contáctanos</a> para obtener acceso sin VPN y convertirte en VIP.
-                        </div>
-                    </div>
+                <div id="alerta-extension" class="alert alert-primary text-center" role="alert">Para visualizar el contenido, debes instalar la extensión: <a href="https://chrome.google.com/webstore/detail/videoplayer-mpdm3u8m3uepg/opmeopcambhfimffbomjgemehjkbbmji/reviews" target="_blank">Reproductor MPD/M3U8/M3U/EPG.</a>
                 </div>
                 <?php }?>
             </div>
