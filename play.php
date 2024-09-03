@@ -139,16 +139,17 @@ elseif (isset($_GET['id'])) {
                         'mlb' => ["", ['ifr']],
                         'evento' => ["", ['ifr']],
                         'hls' => ["hls.php", ['c']],
-                        '10' => ["twitch.php", ['c', 'f']],
-                        '11' => ["ckm.php", ['c', 'f']],
                         '12' => ["mplus.php", ['c', 'f']],
+                        '11' => ["ckm.php", ['c', 'f']],
+                        '10' => ["twitch.php", ['c', 'f']],
                         '9' => ["ck.php", ['c', 'f']],
+                        '8' => ["pluto.php", ['c', 'f']],
                         '6' => ["bm.php", ['c', 'f']],
                         '5' => ["tdt.php", ['c', 'f']],
-                        '1' => ["hls.php", ['c', 'f']],
-                        '3' => ["yt.php", ['c', 'f']],
                         '4' => ["pc.php", ['c', 'f']],
-                        '2' => ["frame.php", ['c', 'f']] // For $canalTipo == 2, handle $canalUrl separately
+                        '3' => ["yt.php", ['c', 'f']],
+                        '2' => ["frame.php", ['c', 'f']],
+                        '1' => ["hls.php", ['c', 'f']]
                     ];
 
                     // Obtener el tipo de configuración
