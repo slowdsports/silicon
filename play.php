@@ -242,60 +242,15 @@ elseif (isset($_GET['id'])) {
         <!-- Votos -->
         <div id="chatCol" class="col-lg-3 position-relative">
             <div class="sticky-top " style="top: 105px !important;">
-                <?php if (isset($_GET['c']) && isset($_COOKIE['usuario_id'])): ?>
-                    <div class="row text-center">
-                        <div class="col-6">
-                            <?php
-                            // Consulta SQL para obtener el recuento de votos para cada canal
-                            $sql = "SELECT canal_id, 
-                            SUM(CASE WHEN voto = 'like' THEN 1 ELSE 0 END) as like_count,
-                            SUM(CASE WHEN voto = 'dislike' THEN 1 ELSE 0 END) as dislike_count
-                            FROM votos WHERE canal_id = $canalAlt
-                            GROUP BY canal_id";
-
-                            $result = $conn->query($sql);
-                            $row = $result->fetch_assoc();
-                            if ($result->num_rows > 0) {
-                                $likeCount = $row['like_count'];
-                                $dislikeCount = $row['dislike_count'];
-                            } else {
-                                $likeCount = 0;
-                                $dislikeCount = 0;
-                            }
-                            // Verificar si el usuario ha dado "like" para este canal
-                            $sqlCheckLike = "SELECT * FROM votos WHERE usuario_id = $_SESSION[usuario_id] AND canal_id = $canalAlt AND voto = 'like'";
-                            $resultCheckLike = $conn->query($sqlCheckLike);
-                            $userHasLiked = ($resultCheckLike->num_rows > 0);
-                            // Verificar si el usuario ya ha dado like
-                            $likeClass = ($userHasLiked) ? 'active' : '';
-                            // Verificar si el usuario ha dado "dislike" para este canal
-                            $sqlCheckDislike = "SELECT * FROM votos WHERE usuario_id = $_SESSION[usuario_id] AND canal_id = $canalAlt AND voto = 'dislike'";
-                            $resultCheckDislike = $conn->query($sqlCheckDislike);
-                            $userHasDisliked = ($resultCheckDislike->num_rows > 0);
-                            // Verificar si el usuario ya ha dado dislike
-                            $dislikeClass = ($userHasDisliked) ? 'active' : '';
-                            ?>
-                            <button data-canal-id="<?= $canalAlt ?>" type="button"
-                                class="<?= (!isset($_SESSION['usuario_id']) || !isset($_COOKIE['usuario_id'])) ? "disabled" : "" ?> btn btn-sm btn-outline-success like-btn <?= $likeClass ?>">
-                                <i class="bx bx-like me-2 lead"></i>
-                                <span id="like-count-<?= $canalAlt ?>" class="badge bg-primary shadow-primary mt-n1 ms-3">
-                                    <?= $likeCount ?>
-                                </span>
-                            </button>
-                        </div>
-                        <div class="col-6">
-                            <button data-canal-id="<?= $canalAlt ?>" type="button"
-                                class="<?= (!isset($_SESSION['usuario_id']) || !isset($_COOKIE['usuario_id'])) ? "disabled" : "" ?> btn btn-sm btn-outline-danger dislike-btn <?= $dislikeClass ?>">
-                                <i class="bx bx-dislike me-2 lead"></i>
-                                <span id="dislike-count-<?= $canalAlt ?>" class="badge bg-danger shadow-primary mt-n1 ms-3">
-                                    <?= $dislikeCount ?>
-                                </span>
-                            </button>
+                <?php if (isset($canalTipo) && $canalTipo == 8):?>
+                <a style="text-decoration:none" href="?p=tv&playlist=PlutoTV_tv_ES">
+                    <div class="card border-primary card-hover">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">¡Mira todos los canales de Pluto TV!</h5>
+                            <p class="card-text fs-sm">(Sección en desarrollo).</p>
                         </div>
                     </div>
-                    <!-- AJAX -->
-                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-                    <script src="inc/componentes/like.js"></script>
+                </a>
                 <?php endif ?>
                 <br>
                 <!-- Chat -->

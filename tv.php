@@ -6,6 +6,8 @@ if (isset($_GET['c']) || isset($_GET['r'] )|| isset($_GET['s'] )|| isset($_GET['
     include('play.php');
 } elseif (isset($_GET['adultos'])) {
     include('inc/reproductor/adultos.php');
+} elseif (isset($_GET['playlist'])) {
+    include('inc/componentes/playlist.php');
 } else { ?>
     <section class="container text-center pt-5 mt-2 mt-md-4 mt-lg-5">
         <h2 class="h1 d-md-inline-block position-relative mb-md-5 mb-sm-4 text-sm-start text-center">

@@ -48,21 +48,26 @@ if (!isset($_SERVER['HTTP_REFERER']) || empty($_SERVER['HTTP_REFERER'])) {
         </style>
     </head>
     <body>
-        <?php
+    <?php
     // ADS
     if (!isset($_GET['pirri'])) {
         include('../../inc/ads/intersticial.php');
     }
     // Share
     include('share.php');
-    $canal = $_GET['c'];
-    include('../../inc/conn.php');
-    // Fuente Alterna
-    if (isset($_GET['f']) && $_GET['f'] !== null) {
-        $canal = ($_GET['f']);
-        $canales = mysqli_query($conn, "SELECT canalUrl FROM fuentes WHERE fuenteId = '$canal'");
-        $result = mysqli_fetch_array($canales);
-        $canalUrl = $result['canalUrl'];
+    
+    if (isset($_GET['c'])) {
+        $canal = $_GET['c'];
+        include('../../inc/conn.php');
+        // Fuente Alterna
+        if (isset($_GET['f']) && $_GET['f'] !== null) {
+            $canal = ($_GET['f']);
+            $canales = mysqli_query($conn, "SELECT canalUrl FROM fuentes WHERE fuenteId = '$canal'");
+            $result = mysqli_fetch_array($canales);
+            $canalUrl = $result['canalUrl'];
+        }
+    } else {
+        $canalUrl = base64_decode($_GET['hls']);
     }
     ?>
         <div class="container">
@@ -76,7 +81,7 @@ if (!isset($_SERVER['HTTP_REFERER']) || empty($_SERVER['HTTP_REFERER'])) {
 
             // Configurar JW Player
 
-            // Validación de dispositivo
+            // Validaci贸n de dispositivo
             if (dispositivo.includes("iPhone") || dispositivo.includes("iPod") || dispositivo.includes("Android")) {
                 // Configurar JW Player
                 var playerInstance = jwplayer("player");
