@@ -81,7 +81,7 @@ if (!isset($_SERVER['HTTP_REFERER']) || empty($_SERVER['HTTP_REFERER'])) {
 
             // Configurar JW Player
 
-            // Validaci贸n de dispositivo
+            // Validación de dispositivo
             if (dispositivo.includes("iPhone") || dispositivo.includes("iPod") || dispositivo.includes("Android")) {
                 // Configurar JW Player
                 var playerInstance = jwplayer("player");
