@@ -260,6 +260,15 @@ elseif (isset($_GET['id'])) {
                     </div>
                 </a>
                 <?php endif ?>
+                <?php if (isset($canalUrl) && strpos($canalUrl, "ottera")):?>
+                <a style="text-decoration:none" href="?p=tv&playlist=CanelaTV_tv">
+                    <div class="card border-primary card-hover">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">¡Mira todos los canales de Canela TV!</h5>
+                        </div>
+                    </div>
+                </a>
+                <?php endif ?>
                 <br>
                 <!-- Chat -->
                 <div class="rounded-3">
