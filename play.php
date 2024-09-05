@@ -247,7 +247,6 @@ elseif (isset($_GET['id'])) {
                     <div class="card border-primary card-hover">
                         <div class="card-body text-center">
                             <h5 class="card-title">¡Mira todos los canales de Pluto TV!</h5>
-                            <p class="card-text fs-sm">(Sección en desarrollo).</p>
                         </div>
                     </div>
                 </a>
