@@ -242,33 +242,22 @@ elseif (isset($_GET['id'])) {
         <!-- Votos -->
         <div id="chatCol" class="col-lg-3 position-relative">
             <div class="sticky-top " style="top: 105px !important;">
-                <?php if (isset($canalTipo) && $canalTipo == 8):?>
-                <a style="text-decoration:none" href="?p=tv&playlist=PlutoTV_tv_ES">
-                    <div class="card border-primary card-hover">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">¡Mira todos los canales de Pluto TV!</h5>
-                        </div>
-                    </div>
-                </a>
-                <?php endif ?>
-                <?php if (isset($canalUrl) && strpos($canalUrl, "RakutenTV")):?>
-                <a style="text-decoration:none" href="?p=tv&playlist=RakutenTV_tv">
-                    <div class="card border-primary card-hover">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">¡Mira todos los canales de Rakuten TV!</h5>
-                        </div>
-                    </div>
-                </a>
-                <?php endif ?>
-                <?php if (isset($canalUrl) && strpos($canalUrl, "ottera")):?>
-                <a style="text-decoration:none" href="?p=tv&playlist=CanelaTV_tv">
-                    <div class="card border-primary card-hover">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">¡Mira todos los canales de Canela TV!</h5>
-                        </div>
-                    </div>
-                </a>
-                <?php endif ?>
+                <?php
+                $playlists = [
+                    ['condition' => isset($canalTipo) && $canalTipo == 8, 'url' => "?p=tv&playlist=PlutoTV_tv_ES", 'title' => '¡Mira todos los canales de Pluto TV!'],
+                    ['condition' => isset($canalUrl) && strpos($canalUrl, "RakutenTV") !== false, 'url' => "?p=tv&playlist=RakutenTV_tv", 'title' => '¡Mira todos los canales de Rakuten TV!'],
+                    ['condition' => isset($canalUrl) && strpos($canalUrl, "ottera") !== false, 'url' => "?p=tv&playlist=CanelaTV_tv", 'title' => '¡Mira todos los canales de Canela TV!']
+                ];                
+                foreach ($playlists as $playlist) {
+                    if ($playlist['condition']) {?>
+                        <a style="text-decoration:none" href="<?= $playlist['url'] ?>">
+                            <div class="card border-primary card-hover">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title"><?= $playlist['title'] ?></h5>
+                                </div>
+                            </div>
+                        </a>
+                <?php break; }} ?>
                 <br>
                 <!-- Chat -->
                 <div class="rounded-3">
