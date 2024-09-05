@@ -83,7 +83,7 @@ if (!isset($_SERVER['HTTP_REFERER']) || empty($_SERVER['HTTP_REFERER'])) {
             // Configurar JW Player
 
             // Validación de dispositivo
-            if (dispositivo.includes("iPhone") || dispositivo.includes("iPod") || dispositivo.includes("Android") || decodedUrl.indexOf("RakutenTV") !== -1) {
+            if ((dispositivo.includes("iPhone") || dispositivo.includes("iPod") || dispositivo.includes("Android") || decodedUrl.indexOf("RakutenTV") !== -1 || decodedUrl.indexOf("ottera") !== -1)) {
                 // Configurar JW Player
                 var playerInstance = jwplayer("player");
                 playerInstance.setup({
