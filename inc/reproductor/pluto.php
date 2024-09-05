@@ -3,8 +3,8 @@
 if (!isset($_SERVER['HTTP_REFERER']) || empty($_SERVER['HTTP_REFERER'])) {
     // Evitar en caso específico
     if (!isset($_GET['pirri'])) {
-        include('../../401.php');
-        exit();
+        //include('../../401.php');
+        //exit();
     }
 }
 ?>
@@ -19,7 +19,7 @@ if (!isset($_SERVER['HTTP_REFERER']) || empty($_SERVER['HTTP_REFERER'])) {
         </script>
         <script src="//cdn.jsdelivr.net/npm/console-ban@5.0.0/dist/console-ban.min.js"></script>
         <script>
-            ConsoleBan.init({ redirect: '../../?p=401'});
+            //ConsoleBan.init({ redirect: '../../?p=401'});
         </script>
         <style>
             body {
@@ -76,13 +76,14 @@ if (!isset($_SERVER['HTTP_REFERER']) || empty($_SERVER['HTTP_REFERER'])) {
         <script>
             // URL
             var decodedUrl = "<?=$canalUrl?>";
+            console.log(decodedUrl)
             // TIPO DE DISPOSITIVO
             var dispositivo = navigator.userAgent;
 
             // Configurar JW Player
 
             // Validación de dispositivo
-            if (dispositivo.includes("iPhone") || dispositivo.includes("iPod") || dispositivo.includes("Android")) {
+            if (dispositivo.includes("iPhone") || dispositivo.includes("iPod") || dispositivo.includes("Android") || decodedUrl.indexOf("RakutenTV") !== -1) {
                 // Configurar JW Player
                 var playerInstance = jwplayer("player");
                 playerInstance.setup({
