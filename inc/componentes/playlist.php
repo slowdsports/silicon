@@ -119,11 +119,26 @@ $lines = explode("\n", $m3u_content);
                 "nextEl": "#next-news"
               },
               "breakpoints": {
+                "200": {
+                  "slidesPerView": 2
+                },
+                "300": {
+                  "slidesPerView": 4
+                },
+                "400": {
+                  "slidesPerView": 5
+                },
                 "500": {
                   "slidesPerView": 6
                 },
-                "1000": {
+                "600": {
                   "slidesPerView": 8
+                },
+                "800": {
+                  "slidesPerView": 10
+                },
+                "1000": {
+                  "slidesPerView": 12
                 }
               }
             }'>
