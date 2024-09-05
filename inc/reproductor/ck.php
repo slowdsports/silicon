@@ -124,7 +124,7 @@ if (isset($_GET['f']) && $_GET['f'] !== null) {
 // Si el tipo es CK
 if ($canalTipo == 9) {
     // Canales DTV
-    if (strpos($canalUrl, "//dtvott-") !== false || strpos($canalUrl, ".dtvott") !== false) {
+    if (strpos($canalUrl, "//dtvott-") !== false || strpos($canalUrl, ".dtvott") !== false || strpos($canalUrl, "peacocktv") !== false) {
         // JW o Bit
         if (strpos($canalUrl, "-vos") !== false || $canalId == 59) {
             $ext = "irjw";
