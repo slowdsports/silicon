@@ -1,6 +1,12 @@
 <?php
+// GET Param
+$getParam = $_GET['playlist'];
 // URL del archivo M3U
-$m3u_url = "https://raw.githubusercontent.com/HelmerLuzo/PlutoTV_HL/main/tv/m3u/" . $_GET['playlist'] . ".m3u";
+if (strpos("Pluto", $getParam)) {
+    $m3u_url = "https://raw.githubusercontent.com/HelmerLuzo/PlutoTV_HL/main/tv/m3u/" . $getParam . ".m3u";   
+} else {
+    $m3u_url = "https://raw.githubusercontent.com/HelmerLuzo/RakutenTV_HL/main/tv/m3u/" . $getParam . ".m3u";
+}
 
 // Descargar el contenido del archivo M3U
 $m3u_content = file_get_contents($m3u_url);
@@ -81,6 +87,8 @@ $lines = explode("\n", $m3u_content);
                 <?php endif; endwhile; ?>
             </div>
         </form>
+        <?php
+        if (strpos("Pluto", $getParam)) { ?>
         <!-- Elementos seleccionables por País -->
         <!-- Multiple slides responsive slider with external Prev / Next buttons and bullets outside -->
         <div class="position-relative px-xl-5">
@@ -256,6 +264,7 @@ $lines = explode("\n", $m3u_content);
             </div>
           </div>
         </div>
+        <?php } ?>
         <?php
         foreach ($lines as $key => $line) {
         $line = trim($line);
