@@ -5,9 +5,15 @@ $getParam = $_GET['playlist'];
 if (strpos($getParam, "PlutoTV") !== false) {
     $m3u_url = "https://raw.githubusercontent.com/HelmerLuzo/PlutoTV_HL/main/tv/m3u/" . $getParam . ".m3u";
     $company = "Pluto";
-} else {
+} elseif (strpos($getParam, "RakutenTV") !== false) {
     $m3u_url = "https://raw.githubusercontent.com/HelmerLuzo/RakutenTV_HL/main/tv/m3u/" . $getParam . ".m3u";
     $company = "Rakuten";
+} elseif (strpos($getParam, "CanelaTV") !== false) {
+    $m3u_url = "https://raw.githubusercontent.com/HelmerLuzo/CanelaTV_HL/main/tv/m3u/" . $getParam . ".m3u";
+    $company = "Canela";
+} elseif (strpos($getParam, "RunTimeTV") !== false) {
+    $m3u_url = "https://raw.githubusercontent.com/HelmerLuzo/RuntimeTV_HL/main/tv/m3u/" . $getParam . ".m3u";
+    $company = "Runtime";
 }
 
 // Descargar el contenido del archivo M3U
