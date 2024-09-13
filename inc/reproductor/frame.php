@@ -49,7 +49,7 @@ if (strpos($canalUrl, "streamtp") && isset($_GET['id'])) {
 ?>
 <script src="//cdn.jsdelivr.net/npm/console-ban@5.0.0/dist/console-ban.min.js"></script>
 <script> ConsoleBan.init({ redirect: '../../?p=401'}); </script>
-<?php if (!strpos($canalUrl, "tvfutbol")): ?>
+<?php if (strpos($canalUrl, "tvfutbol") === false || strpos($canalUrl, "dlhd") === false): ?>
 <script src="../../inc/ads/popunder.php"></script>
 <?php endif ?>
 <style>
