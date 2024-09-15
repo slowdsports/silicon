@@ -3,8 +3,8 @@
 if (!isset($_SERVER['HTTP_REFERER']) || empty($_SERVER['HTTP_REFERER'])) {
     // Evitar en caso específico
     if (!isset($_GET['pirri'])) {
-        //include('../../401.php');
-        //exit();
+        include('../../401.php');
+        exit();
     }
 }
 ?>
@@ -40,6 +40,7 @@ if (!isset($_SERVER['HTTP_REFERER']) || empty($_SERVER['HTTP_REFERER'])) {
 
             #player,
             #iframe,
+            video,
             iframe {
                 height: 100% !important;
                 width: 100% !important;
@@ -83,7 +84,10 @@ if (!isset($_SERVER['HTTP_REFERER']) || empty($_SERVER['HTTP_REFERER'])) {
             // Configurar JW Player
 
             // Validación de dispositivo
-            if ((dispositivo.includes("iPhone") || dispositivo.includes("iPod") || dispositivo.includes("Android") || decodedUrl.indexOf("RakutenTV") !== -1 || decodedUrl.indexOf("ottera") !== -1)) {
+            if (dispositivo.includes("Android")){
+                var iframeHTML = '<video autoplay controls src="' + decodedUrl + '" width="100%" height="100vh"></video>';
+                document.getElementById("player").innerHTML = iframeHTML;
+            } else if ((dispositivo.includes("iPhone") || dispositivo.includes("iPod") || dispositivo.includes("Android") || decodedUrl.indexOf("RakutenTV") !== -1 || decodedUrl.indexOf("ottera") !== -1)) {
                 // Configurar JW Player
                 var playerInstance = jwplayer("player");
                 playerInstance.setup({
