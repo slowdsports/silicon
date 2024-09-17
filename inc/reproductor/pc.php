@@ -143,7 +143,7 @@ if (!isset($_SERVER['HTTP_REFERER']) || empty($_SERVER['HTTP_REFERER'])) {
                         },
                     });
                 } else {
-                    var iframeHTML = '<iframe id="iframe" allow="encrypted-media *; autoplay" src="chrome-extension://opmeopcambhfimffbomjgemehjkbbmji/pages/player.html#' + decodedUrl + '" width="100%" height="100vh"></iframe>';
+                    var iframeHTML = '<iframe id="iframe" allow="encrypted-media *; autoplay; fullscreen" src="chrome-extension://opmeopcambhfimffbomjgemehjkbbmji/pages/player.html#' + decodedUrl + '" width="100%" height="100vh"></iframe>';
                     document.getElementById('player').innerHTML = iframeHTML;
                 }
             });
