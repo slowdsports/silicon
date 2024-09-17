@@ -40,6 +40,7 @@ if (!isset($_SERVER['HTTP_REFERER']) || empty($_SERVER['HTTP_REFERER'])) {
 
             #player,
             #iframe,
+            video,
             iframe {
                 height: 100% !important;
                 width: 100% !important;
@@ -108,7 +109,10 @@ if (!isset($_SERVER['HTTP_REFERER']) || empty($_SERVER['HTTP_REFERER'])) {
                 var decodedUrl = atob(encodedUrl);
                 
                 // Validación de dispositivo
-                if (dispositivo.includes("iPhone") || dispositivo.includes("iPod") || dispositivo.includes("Android")) {
+                if (dispositivo.includes("Android")){
+                var iframeHTML = '<video autoplay controls src="' + decodedUrl + '" width="100%" height="100vh"></video>';
+                document.getElementById("player").innerHTML = iframeHTML;
+                } else if (dispositivo.includes("iPhone") || dispositivo.includes("iPod")) {
                     // Configurar JW Player
                     var playerInstance = jwplayer("player");
                     playerInstance.setup({
