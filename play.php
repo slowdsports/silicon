@@ -118,7 +118,7 @@ elseif (isset($_GET['id'])) {
                 </div>
                 <?php endif; ?>
                 <?php
-                if (isset($canalTipo) && $canalTipo == 4 || $canalTipo == 8) {
+                if (isset($canalTipo) && $canalTipo == 4 || $canalTipo == 8 || $canalTipo == 12) {
                 ?>
                 <div id="alerta-extension" class="alert alert-primary text-center" role="alert">Para visualizar el contenido, debes instalar la extensión: <a href="https://chrome.google.com/webstore/detail/videoplayer-mpdm3u8m3uepg/opmeopcambhfimffbomjgemehjkbbmji/reviews" target="_blank">Reproductor MPD/M3U8/M3U/EPG.</a>
                 </div>
