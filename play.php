@@ -112,6 +112,11 @@ elseif (isset($_GET['id'])) {
                   Este canal está geobloqueado para funcionar en Argentina, Uruguay y Paraguay. Si no estás en uno de esos países, descarga un VPN.
                 </div>
                 <?php endif; ?>
+                <?php if (strpos($canalUrl, "izzi") !== false): ?>
+                <div class="alert alert-danger text-center" role="alert">
+                  Este canal está geobloqueado para funcionar en México. Si no te funciona, descarga un VPN.
+                </div>
+                <?php endif; ?>
                 <?php
                 if (isset($canalTipo) && $canalTipo == 4 || $canalTipo == 8) {
                 ?>
