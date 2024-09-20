@@ -139,7 +139,7 @@ elseif (isset($_GET['id'])) {
                         'mlb' => ["", ['ifr']],
                         'evento' => ["", ['ifr']],
                         'hls' => ["hls.php", ['c']],
-                        '12' => ["mplus.php", ['c', 'f']],
+                        '12' => ["izzi.php", ['c', 'f']],
                         '11' => ["ckm.php", ['c', 'f']],
                         '10' => ["twitch.php", ['c', 'f']],
                         '9' => ["ck.php", ['c', 'f']],
