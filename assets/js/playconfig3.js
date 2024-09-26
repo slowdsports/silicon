@@ -39,6 +39,7 @@ expandirCheckbox.addEventListener("change", expandirColumnas);
 
 
 // CHAT //
+const getMode = window.localStorage.getItem('mode');
 const twitchChat = document.getElementById('twitch-chat-embed');
 const telegramPost = document.getElementById('telegram-post');
 const themeSwitch = document.querySelector('[data-bs-toggle="mode"]');
@@ -59,10 +60,8 @@ function toggleChatMode() {
 themeSwitch.addEventListener('click', toggleChatMode);
 
 // Cargar el chat con la preferencia del usuario desde localStorage
-const savedChatMode = window.localStorage.getItem('chatMode');
-if (savedChatMode) {
-    twitchChat.src = `https://www.twitch.tv/embed/iraffletv/chat?parent=127.0.0.1&parent=${hostName}&${savedChatMode}`;
-    checkbox.checked = savedChatMode === 'darkpopout';
+if (getMode == "dark") {
+    twitchChat.src = `https://www.twitch.tv/embed/iraffletv/chat?parent=127.0.0.1&parent=${hostName}&darkpopout`;
 } else {
     // Si no hay preferencia guardada, cargar el chat con el modo predeterminado
     toggleChatMode();
