@@ -229,6 +229,12 @@ elseif (isset($_GET['id'])) {
 
                 </div>
             </div>
+            <?php if (isset($_GET['c']) && $_GET['c'] == 800 || $_GET['c'] == 801 || $_GET['c'] == 79): ?>
+            <p class="fs-sm">
+                <span class="badge bg-danger ms-1 faa-tada animated">Aviso</span>
+                Este canal es eventual y se activa algunos minutos antes del comienzo del evento.
+            </p>
+            <?php endif; ?>
             <hr class="mb-4">
             <div class="row">
                 <div class="col-4">
