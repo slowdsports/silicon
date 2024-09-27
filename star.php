@@ -8,7 +8,7 @@
     // Guardar el contenido en un archivo llamado "starbr.json"
     //file_put_contents('datos.json', $json_content);
 //} else {
-    //echo 'Error al obtener el contenido del JSON, por favor comuníquelo al admin';
+    //echo 'Error al obtener el contenido del JSON, por favor comun铆quelo al admin';
 //}
 ?>
 <section id="repro" class="container mb-5 pt-4 pb-2 py-mg-4 hidden">
@@ -29,7 +29,7 @@
                         </div>
                     </div>
                 </div>
-                <div id="alerta-extension" class="alert alert-primary text-center" role="alert">Para visualizar el contenido, debes instalar la extensión: <a href="https://chrome.google.com/webstore/detail/videoplayer-mpdm3u8m3uepg/opmeopcambhfimffbomjgemehjkbbmji/reviews" target="_blank">Reproductor MPD/M3U8/M3U/EPG.</a>
+                <div id="alerta-extension" class="alert alert-primary text-center" role="alert">Para visualizar el contenido, debes instalar la extensi贸n: <a href="https://chrome.google.com/webstore/detail/videoplayer-mpdm3u8m3uepg/opmeopcambhfimffbomjgemehjkbbmji/reviews" target="_blank">Reproductor MPD/M3U8/M3U/EPG.</a>
                 </div>
                 <!-- Reproductor -->
                 <div class="gallery mb-4 pb-2">
@@ -53,7 +53,7 @@
                     <iframe id="twitch-chat-embed" class="rounded-3" src height="560" width="100%"></iframe>
                 </div>
             </div>
-            <script src="assets/js/playconfig3.js"></script>
+            <script src="assets/js/playconfig2.js"></script>
         </div>
     </div>
 </section>
