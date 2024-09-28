@@ -3,7 +3,7 @@ header("Content-Type: application/json");
 
 if(isset($_GET['id'])){
 	
-	$url = "https://deporte.lat/849182/{$_GET['id']}";
+	$url = "https://deporte.lat/v8rh/{$_GET['id']}";
 
 	$curl = curl_init($url);
 	curl_setopt($curl, CURLOPT_URL, $url);
