@@ -29,7 +29,7 @@
                         </div>
                     </div>
                 </div>
-                <div id="alerta-extension" class="alert alert-primary text-center" role="alert">Para visualizar el contenido, debes instalar la extensi贸n: <a href="https://chrome.google.com/webstore/detail/videoplayer-mpdm3u8m3uepg/opmeopcambhfimffbomjgemehjkbbmji/reviews" target="_blank">Reproductor MPD/M3U8/M3U/EPG.</a>
+                <div id="alerta-extension" class="alert alert-primary text-center" role="alert">Para visualizar el contenido, debes instalar la extensión: <a href="https://chrome.google.com/webstore/detail/videoplayer-mpdm3u8m3uepg/opmeopcambhfimffbomjgemehjkbbmji/reviews" target="_blank">Reproductor MPD/M3U8/M3U/EPG.</a>
                 </div>
                 <!-- Reproductor -->
                 <div class="gallery mb-4 pb-2">
