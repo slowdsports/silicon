@@ -1,97 +1,75 @@
 <?php
-// Lógica para evitar carga directa
-if (!isset($_SERVER['HTTP_REFERER']) || empty($_SERVER['HTTP_REFERER'])) {
-    include('../../401.php');
-    exit();
-}
+// Generar
+//$json_url = 'https://irtvhn.online/json/star.json';
+// Obtener el contenido del JSON desde la URL
+//$json_content = file_get_contents($json_url);
+// Verificar si la solicitud fue exitosa
+//if ($json_content !== false) {
+    // Guardar el contenido en un archivo llamado "starbr.json"
+    //file_put_contents('datos.json', $json_content);
+//} else {
+    //echo 'Error al obtener el contenido del JSON, por favor comun铆quelo al admin';
+//}
 ?>
-<style>
-    body {
-        background: #000;
-        margin: 0;
-        padding: 0;
-    }
-    .container {
-        width: 100%!important;
-        height: 100vh!important;
-    }
-    #player {
-        height: 100%!important;
-        width: 100%!important;
-    }
-    .media-control.live[data-media-control] .media-control-layer[data-controls] .bar-container[data-seekbar] .bar-background[data-seekbar] .bar-fill-2[data-seekbar] , .spinner-three-bounce[data-spinner]>div {
-    background-color: #6366f1!important;
-    }
-    .media-control-center-panel , .level_selector[data-level-selector] button , .dvr-controls[data-dvr-controls] {
-        color: #6366f1!important;
-        cursor: pointer;
-    }
-    .media-control[data-media-control] .media-control-layer[data-controls] .drawer-container[data-volume] .drawer-icon-container[data-volume] .drawer-icon[data-volume] svg path {
-        fill: #6366f1!important;
-    }
-
-</style>
-<script src="//cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"></script>
-<script src="//cdn.jsdelivr.net/npm/level-selector@latest/dist/level-selector.min.js"></script>
-<script src="//cdn.jsdelivr.net/npm/clappr-pip@latest/dist/clappr-pip.min.js"></script>
-<script src="//cdn.jsdelivr.net/gh/clappr/dash-shaka-playback@latest/dist/dash-shaka-playback.min.js"></script>
-<script src='//cdn.jsdelivr.net/npm/clappr-chromecast-plugin@latest/dist/clappr-chromecast-plugin.min.js'></script>
-<script src='//cdn.jsdelivr.net/npm/clappr-pip@latest/dist/clappr-pip.min.js'></script>
-<script src="//ewwink.github.io/clappr-youtube-plugin/clappr-youtube-plugin.js"></script>
-<script src="//cdn.jsdelivr.net/npm/console-ban@5.0.0/dist/console-ban.min.js"></script>
-<script> ConsoleBan.init({ redirect: '../../?p=401'}); </script>
-<script src="../../inc/ads/push.php"></script>
-<div class="container">
-    <div id="player"></div>
-</div>
-<?php
-// ADS
-include('../../inc/ads/intersticial.php');
-// Share
-include('share.php');
-$source = $_GET['source'];
-$clearKeys = $_GET['ck'];
-
-echo '
-    <script>
-    let source = "' . $source . '";
-    var player = new Clappr.Player({
-        source: source,
-        parentId: "#player",
-        watermark: "https://eduveel1.github.io/baleada/img/iRTVW_PLAYER.png",
-        position: "top-left",
-        plugins: [LevelSelector, ClapprPip.PipButton, ClapprPip.PipPlugin, DashShakaPlayback, ChromecastPlugin, ClapprPip.PipButton, ClapprPip.PipPlugin],
-        events: {
-            onReady: function () {
-                console.log("El evento onReady se ha disparado.");
-                var plugin = this.getPlugin("click_to_pause");
-                plugin && plugin.disable();
-            },
-            onPlay: function () {
-                console.log("El evento onPlay se ha disparado.");
-            },
-        },
-        chromecast: {
-            appId: "9DFB77C0",
-            contentType: "video/mp4",
-        },
-        gaAccount: "G-Z7958KV9CY",
-        gaTrackerName: "MyPlayerInstance",
-        height: "100%",
-        width: "100%",
-        autoPlay: false,
-        muted: false,
-        shakaConfiguration: {
-            preferredAudioLanguage: "es-MX",
-            drm: {
-                clearKeys: ' . $clearKeys . ',
-            },
-        },
-    });
-    player.play();
-    // Pausar después de 2 segundos (2000 milisegundos)
-    setTimeout(() => {
-        //player.pause();
-    }, 2000);
-    </script>
-    ';
+<section id="repro" class="container mb-5 pt-4 pb-2 py-mg-4 hidden">
+    <div class="row gy-4">
+        <div id="playerCol" class="col-lg-9">
+            <div class="row">
+                <div class="col-9">
+                    <h2 id="titulo-evento" class="h4">Nombre del evento</h2>
+                </div>
+                <div class="col-3">
+                    <!-- Toggle Size Player -->
+                    <div class="d-flex justify-content-end">
+                        <div id="mode-switch" class="form-check form-switch mode-switch pe-lg-1 ms-auto me-4">
+                            <input type="checkbox" class="form-check-input" id="expandirBtn" data-bs-toggle="tooltip"
+                                data-bs-placement="top" title="Cambiar modo teatro">
+                            <label class="form-check-label d-none d-sm-block" for="expandirBtn">Normal</label>
+                            <label class="form-check-label d-none d-sm-block" for="expandirBtn">Teatro</label>
+                        </div>
+                    </div>
+                </div>
+                <div id="alerta-extension" class="alert alert-primary text-center" role="alert">Para visualizar el contenido, debes instalar la extensi贸n: <a href="https://chrome.google.com/webstore/detail/videoplayer-mpdm3u8m3uepg/opmeopcambhfimffbomjgemehjkbbmji/reviews" target="_blank">Reproductor MPD/M3U8/M3U/EPG.</a>
+                </div>
+                <!-- Reproductor -->
+                <div class="gallery mb-4 pb-2">
+                    <a id="playerFake" style="display: none"
+                        href="https://www.highcpmrevenuegate.com/mkd1fhhe?key=81193c57b7f58377107604b71a3e49aa"
+                        target="_blank">
+                        <img class="img-fluid" src="assets/img/player_img.png" alt="">
+                    </a>
+                    <div class="embed-responsive embed-responsive-16by9" id="playerContainer">
+                        <iframe id='embed-player' class='embed-responsive-item' width='100%' height='100%'
+                            frameborder='0' scrolling='no' allow="encrypted-media" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Votos -->
+        <div id="chatCol" class="col-lg-3 position-relative">
+            <div class="sticky-top " style="top: 105px !important;">
+                <!-- Chat -->
+                <div class="rounded-3">
+                    <iframe id="twitch-chat-embed" class="rounded-3" src height="560" width="100%"></iframe>
+                </div>
+            </div>
+            <script src="assets/js/playconfig2.js"></script>
+        </div>
+    </div>
+</section>
+<section class="container mb-5 pt-4 pb-2 py-mg-4">
+    <!-- Page title + Filters -->
+    <div class="d-lg-flex align-items-center justify-content-between py-4 mt-lg-2">
+        <h1 class="me-3">MAX</h1>
+        <div class="d-md-flex mb-3">
+            <div class="position-relative" style="min-width: 300px;">
+                <input id="filtroInput" type="text" class="form-control pe-5" placeholder="Buscar evento">
+                <i class="bx bx-search text-nav fs-lg position-absolute top-50 end-0 translate-middle-y me-3"></i>
+            </div>
+        </div>
+    </div>
+    <!-- Events grid -->
+    <div id="eventos" class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 gx-3 gx-md-4 mt-n2 mt-sm-0">
+        <script src="inc/eventos/max.js"></script>
+    </div>
+</section>
