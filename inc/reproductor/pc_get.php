@@ -38,7 +38,7 @@ if(isset($_GET['id'])){
 }
 
 if(isset($_GET['all'])){
-	$datos = file_get_contents("https://deporte.lat/849182/");
+	$datos = file_get_contents("https://deporte.lat/v8rh/");
 	
 	preg_match_all('(href="(.*?)".*?>(.*?)<)', $datos, $data, PREG_SET_ORDER);
 	
