@@ -43,7 +43,7 @@ $descripcion = "En Fútbol Honduras 24 puedes mirar el deporte con la mejor cali
 
         gtag('config', 'G-L0M9BFKRR9');
     </script>
-    <?php if (isset($_GET['p']) && $_GET["p"] == "star" || $_GET["p"] == "starn" || $_GET["p"] == "vix" || $_GET["p"] == "nbalp"): ?>
+    <?php if (isset($_GET['p']) && $_GET["p"] == "star" || $_GET["p"] == "starn" || $_GET["p"] == "vix" || $_GET["p"] == "nbalp" || $_GET["p"] == "max"): ?>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="assets/js/huso.js"></script>
     <?php endif; ?>
@@ -323,13 +323,13 @@ if (isset($_GET['login']) && $_GET['login'] == "success") { ?>
                             <li class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle
                                 <?= ($_GET['p'] == 'star') ? 'active' : ''; ?>
-                                <?= ($_GET['p'] == 'vix') ? 'active' : ''; ?>" data-bs-toggle="dropdown"
+                                <?= ($_GET['p'] == 'max') ? 'active' : ''; ?>" data-bs-toggle="dropdown"
                                     aria-current="page">Exclusivos</a>
                                 <ul class="dropdown-menu">
                                     <li><a href="?p=star" class="dropdown-item
                                     <?= ($_GET['p'] == 'star') ? 'active' : ''; ?>">Disney+</a></li>
-                                    <li><a href="?p=vix" class="dropdown-item
-                                    <?= ($_GET['p'] == 'vix') ? 'active' : ''; ?>">Vix+</a></li>
+                                    <li><a href="?p=max" class="dropdown-item
+                                    <?= ($_GET['p'] == 'max') ? 'active' : ''; ?>">Max</a></li>
                                 </ul>
                             </li>
                         </ul>
