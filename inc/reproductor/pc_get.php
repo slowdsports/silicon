@@ -3,7 +3,7 @@ header("Content-Type: application/json");
 
 if(isset($_GET['id'])){
 	
-	$url = "https://deporte.lat/v8rh/{$_GET['id']}";
+	$url = "https://deporte.lat/970634/{$_GET['id']}";
 
 	$curl = curl_init($url);
 	curl_setopt($curl, CURLOPT_URL, $url);
@@ -38,7 +38,7 @@ if(isset($_GET['id'])){
 }
 
 if(isset($_GET['all'])){
-	$datos = file_get_contents("https://deporte.lat/v8rh/");
+	$datos = file_get_contents("https://deporte.lat/970634/");
 	
 	preg_match_all('(href="(.*?)".*?>(.*?)<)', $datos, $data, PREG_SET_ORDER);
 	
