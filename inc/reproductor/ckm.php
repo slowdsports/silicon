@@ -31,6 +31,7 @@ if (!isset($_SERVER['HTTP_REFERER']) || empty($_SERVER['HTTP_REFERER'])) {
     }
 
 </style>
+<link rel="stylesheet" media="screen" href="../../../assets/css/jw.css">
 <script src="//cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"></script>
 <script src="//cdn.jsdelivr.net/npm/level-selector@latest/dist/level-selector.min.js"></script>
 <script src="//cdn.jsdelivr.net/npm/clappr-pip@latest/dist/clappr-pip.min.js"></script>
