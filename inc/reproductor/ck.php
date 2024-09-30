@@ -152,10 +152,18 @@ if ($canalTipo == 9) {
         <?php
     } else {
         // Requieren JW
-        if (strpos($canalUrl, "dazn-cdn") || strpos($canalUrl, "livedazn") || strpos($canalUrl, "livewwdazn") || strpos($canalUrl, "daznedge") || strpos($canalUrl, "director.streaming") || strpos($canalUrl, "stvacdn") || strpos($canalUrl, "izzigo.") || strpos($canalUrl, "vidgo.com")  || strpos($canalUrl, "tglmp") || strpos($canalUrl, "liveusp") || strpos($canalUrl, "live-nl-") || strpos($canalUrl, "upcbroadband") || strpos($canalUrl, "ssc-") || strpos($canalUrl, "cvatt") || strpos($canalUrl, "latamvosliveclarovideo") || strpos($canalUrl, "aiv-cdn") || strpos($canalUrl, "peacocktv") || strpos($canalUrl, "zapitv") ||strpos($canalUrl, "vodafone") || strpos($canalUrl, "skycdp") || strpos($canalUrl, "ssc") || strpos($canalUrl, "9c9media") || strpos($canalUrl, "dmdsdp") || strpos($canalUrl, "warnermediacdn") || strpos($canalUrl, "nlziet") || strpos($canalUrl, "6cloud")  || strpos($canalUrl, "dpgmedia") || strpos($canalUrl, "dfwlive")) {
-            // Vidgo Requiere Proxy
-            if (strpos($canalUrl, "vidgo.com")) {
-                //$canalUrl = "https://slowdus.herokuapp.com/" . $canalUrl;
+        $jwPatterns = ["dazn", "director", "stvacdn", "zigo.", "idgo", "tglmp", "liveusp", "-nl-", "broadband", "ssc-", "cvatt", "ivecla", "aiv-cdn", "peaco", "zapitv", "vodafo", "skycdp", "ssc", "9c9media", "dmdsdp", "warnerme", "nlziet", "6cloud", "dpgmedia", "dfwlive"];
+        $requiresJW = false;
+        foreach ($jwPatterns as $pattern) {
+            if (strpos($canalUrl, $pattern) !== false) {
+                $requiresJW = true;
+                break;
+            }
+        }
+        if ($requiresJW) {
+            // Vidgo requiere proxy
+            if (strpos($canalUrl, "vidgo.com") !== false) {
+                // $canalUrl = "https://slowdus.herokuapp.com/" . $canalUrl;
                 $canalUrl = "https://cors-proxy.elfsight.com/" . $canalUrl;
             }
             // Encriptamos la URL
