@@ -13,6 +13,7 @@ if (!isset($_SERVER['HTTP_REFERER']) || empty($_SERVER['HTTP_REFERER'])) {
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" media="screen" href="../../../assets/css/jw.css">
         <script src="//ssl.p.jwpcdn.com/player/v/8.24.0/jwplayer.js"></script>
         <script>
             jwplayer.key = "XSuP4qMl+9tK17QNb+4+th2Pm9AWgMO/cYH8CI0HGGr7bdjo";
