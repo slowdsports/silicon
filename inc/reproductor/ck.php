@@ -20,6 +20,7 @@ if (!isset($_SERVER['HTTP_REFERER']) || empty($_SERVER['HTTP_REFERER'])) {
 <meta http-equiv="pragma" content="no-cache" />
 <meta name="robots" content="noindex" />
 <meta name="referrer" content="none">
+<link rel="stylesheet" media="screen" href="../../../assets/css/jw.css">
 <script src="//cdn.bitmovin.com/player/web/8/bitmovinplayer.js"></script>
 <script src="//cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"></script>
 <script src="//cdn.jsdelivr.net/npm/level-selector@latest/dist/level-selector.min.js"></script>
