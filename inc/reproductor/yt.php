@@ -4,8 +4,8 @@ ini_set('display_errors', '0');
 $api_key = 'AIzaSyBbCLCMwGQ4YA-_B3YWDiKxDAY8dwAhCdc';
 // Lógica para evitar carga directa
 if (!isset($_SERVER['HTTP_REFERER']) || empty($_SERVER['HTTP_REFERER'])) {
-    //include('../../401.php');
-    //exit();
+    include('../../401.php');
+    exit();
 }
 $canal = $_GET['c'];
 // ADS
