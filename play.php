@@ -235,6 +235,12 @@ elseif (isset($_GET['id'])) {
                 Este canal es eventual y se activa algunos minutos antes del comienzo del evento.
             </p>
             <?php endif; ?>
+            <?php if (strpos($canalUrl, "ESPDHD-8083") == true): ?>
+            <p class="fs-sm">
+                <span class="badge bg-danger ms-1 faa-tada animated">Aviso</span>
+                Este canal es para miembros VIP. Actualmente puedes verlo por cortesía.
+            </p>
+            <?php endif; ?>
             <hr class="mb-4">
             <div class="row">
                 <div class="col-4">
