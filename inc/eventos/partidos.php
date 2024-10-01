@@ -332,7 +332,7 @@ $descripcion = "Ver en vivo partidos de " . $ligaNombre . " completamente gratis
 
                                     <a class="justify-content-center list-group-item list-group-item-action" href="?p=star">
                                         <i class="flag ar"></i>
-                                        Star +
+                                        Disney +
                                     </a>
 
                                 <?php } ?>
@@ -344,9 +344,9 @@ $descripcion = "Ver en vivo partidos de " . $ligaNombre . " completamente gratis
                                 } else {
                                     ?>
 
-                                    <a class="justify-content-center list-group-item list-group-item-action" href="?p=vix">
+                                    <a class="justify-content-center list-group-item list-group-item-action" href="?p=max">
                                         <i class="flag mx"></i>
-                                        Vix +
+                                        MAX
                                     </a>
 
                                 <?php } ?>
