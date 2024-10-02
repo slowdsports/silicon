@@ -144,6 +144,7 @@ elseif (isset($_GET['id'])) {
                         'mlb' => ["", ['ifr']],
                         'evento' => ["", ['ifr']],
                         'hls' => ["hls.php", ['c']],
+                        '13' => ["v1x.php", ['c', 'f']],
                         '12' => ["izzi.php", ['c', 'f']],
                         '11' => ["ckm.php", ['c', 'f']],
                         '10' => ["twitch.php", ['c', 'f']],
