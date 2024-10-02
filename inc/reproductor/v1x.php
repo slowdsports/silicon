@@ -9,29 +9,29 @@ if (!isset($_SERVER['HTTP_REFERER']) || empty($_SERVER['HTTP_REFERER'])) {
     <head>
         <style>
             body {
-                background: #000;
+                background-color: #000;
+                color: #fff;
                 margin: 0;
                 padding: 0;
             }
+
+            h1 {
+                text-align: center;
+            }
+
             .container {
-                width: 100%!important;
-                height: 100vh!important;
+                width: 100% !important;
+                height: 100vh !important;
             }
-            #player {
-                height: 100%!important;
-                width: 100%!important;
+
+            #player,
+            #iframe,
+            video,
+            iframe {
+                height: 100% !important;
+                width: 100% !important;
+                border: none;
             }
-            .media-control.live[data-media-control] .media-control-layer[data-controls] .bar-container[data-seekbar] .bar-background[data-seekbar] .bar-fill-2[data-seekbar] , .spinner-three-bounce[data-spinner]>div {
-            background-color: #6366f1!important;
-            }
-            .media-control-center-panel , .level_selector[data-level-selector] button , .dvr-controls[data-dvr-controls] {
-                color: #6366f1!important;
-                cursor: pointer;
-            }
-            .media-control[data-media-control] .media-control-layer[data-controls] .drawer-container[data-volume] .drawer-icon-container[data-volume] .drawer-icon[data-volume] svg path {
-                fill: #6366f1!important;
-            }
-        
         </style>
         <script src="https://cdn.jsdelivr.net/gh/clappr/clappr@latest/dist/clappr.min.js"></script>
         <script src="https://cdn.jsdelivr.net/gh/clappr/dash-shaka-playback@latest/dist/dash-shaka-playback.js"></script>
@@ -189,24 +189,70 @@ if (!isset($_SERVER['HTTP_REFERER']) || empty($_SERVER['HTTP_REFERER'])) {
       ?>
         <div id="player"></div>
         <script>
-            const urlParams = new URLSearchParams(window.location.search),
-                source = "<?=$source?>";
-
-            $.getJSON("../../json/v1x/" + source + ".json", function (_0x559afa) {
-                const _0x56c7b9 = _0x559afa.img,
-                    _0x267104 = _0x559afa.embed_url,
-                    _0x252e78 = _0x559afa.license_url,
-                    _0xeb7ef2 = _0x559afa.proxy,
-                    _0xfd2082 = {};
-
-                _0xfd2082["com.widevine.alpha"] = _0x252e78;
-
-                const _0x24b195 = { servers: _0xfd2082 };
-                const _0x2e4ab7 = { drm: _0x24b195 };
-
-                const _0x1dc57a = new Clappr.Player({
-                    source: _0x267104,
-                    poster: _0x56c7b9,
+        const urlParams = new URLSearchParams(window.location.search),
+            source = "<?=$source?>";
+    
+        $.getJSON("../../json/v1x/" + source + ".json", function (_0x559afa) {
+            const posterImage = _0x559afa.img,
+                embedUrl = _0x559afa.embed_url,
+                licenseUrl = _0x559afa.license_url,
+                proxyUrl = _0x559afa.proxy,
+                drmConfig = {};
+    
+            // Verifica si es un archivo .m3u8
+            if (embedUrl.includes(".m3u8")) {
+                // TPO DE DISPOSITIVO
+                var dispositivo = navigator.userAgent;
+                console.log("Es un m3u8");
+                if (dispositivo.includes("Android")){
+                var iframeHTML = '<video autoplay controls src="' + embedUrl + '" width="100%" height="100vh"></video>';
+                document.getElementById("player").innerHTML = iframeHTML;
+                } else if (dispositivo.includes("iPhone") || dispositivo.includes("iPod")) {
+                    // Configurar JW Player
+                    var playerInstance = jwplayer("player");
+                    playerInstance.setup({
+                        playlist: [
+                            {
+                                sources: [
+                                    {
+                                        default: false,
+                                        type: "hls",
+                                        file: embedUrl,
+                                        label: "0",
+                                    },
+                                ],
+                            },
+                        ],
+                        height: "100vh",
+                        width: "100%",
+                        aspectratio: "16:9",
+                        stretching: "bestfit",
+                        mediaid: "player",
+                        mute: false,
+                        autostart: false,
+                        language: "es",
+                        logo: {
+                            file: "https://eduveel1.github.io/baleada/img/iRTVW_PLAYER.png",
+                            hide: "false",
+                            position: "top-left",
+                        },
+                    });
+                } else {
+                    var iframeHTML = '<iframe id="iframe" allow="encrypted-media *; autoplay; fullscreen" src="chrome-extension://opmeopcambhfimffbomjgemehjkbbmji/pages/player.html#' + embedUrl + '" width="100%" height="100vh"></iframe>';
+                    document.getElementById('player').innerHTML = iframeHTML;
+                }
+            } else {
+                // Configuración DRM para Dash (.mpd)
+                drmConfig["com.widevine.alpha"] = licenseUrl;
+    
+                const shakaConfig = { servers: drmConfig };
+                const dashConfig = { drm: shakaConfig };
+    
+                const dashPlayer = new Clappr.Player({
+                    source: embedUrl,
+                    poster: posterImage,
+                    watermark: "https://eduveel1.github.io/baleada/img/iRTVW_PLAYER.png",
+                    position: "top-left",
                     mimeType: "application/dash+xml",
                     height: "100%",
                     width: "100%",
@@ -215,47 +261,51 @@ if (!isset($_SERVER['HTTP_REFERER']) || empty($_SERVER['HTTP_REFERER'])) {
                         appId: "9DFB77C0",
                         contentType: "video/mp4",
                     },
-                    shakaConfiguration: _0x2e4ab7,
-                    shakaOnBeforeLoad: function (_0x39da2e) {
-                        _0x39da2e.getNetworkingEngine().registerRequestFilter((_0x376eed, _0x31d272) => {
-                            if (_0x376eed === 1) {
-                                _0x31d272.uris = _0x31d272.uris.map((_0xad8cd8) => _0xeb7ef2 + _0xad8cd8);
+                    autoPlay: false,
+                    muted: false,
+                    shakaConfiguration: dashConfig,
+                    shakaOnBeforeLoad: function (shakaPlayerInstance) {
+                        shakaPlayerInstance.getNetworkingEngine().registerRequestFilter((requestType, request) => {
+                            if (requestType === 1) {
+                                request.uris = request.uris.map((uri) => proxyUrl + uri); // Aplica el proxy
                             }
                         });
                     },
                     parentId: "#player",
                 });
-            });
-
-            function _0x154168(_0x5e6a00) {
-                function _0x394eea(_0x126361) {
-                    if (typeof _0x126361 === "string") {
-                        return function (_0x126f1e) {}.constructor("while (true) {}").apply("counter");
-                    } else {
-                        if (("" + _0x126361 / _0x126361).length !== 1 || _0x126361 % 20 === 0) {
-                            (function () {
-                                return true;
-                            }
-                                .constructor("debugger")
-                                .call("action"));
-                        } else {
-                            (function () {
-                                return false;
-                            }
-                                .constructor("debugger")
-                                .apply("stateObject"));
-                        }
-                    }
-                    _0x394eea(++_0x126361);
-                }
-                try {
-                    if (_0x5e6a00) {
-                        return _0x394eea;
-                    } else {
-                        _0x394eea(0);
-                    }
-                } catch (_0x442923) {}
+                dashPlayer.play();
             }
-        </script>
+        });
+        function _0x154168(_0x5e6a00) {
+            function _0x394eea(_0x126361) {
+                if (typeof _0x126361 === "string") {
+                    return function (_0x126f1e) {}.constructor("while (true) {}").apply("counter");
+                } else {
+                    if (("" + _0x126361 / _0x126361).length !== 1 || _0x126361 % 20 === 0) {
+                        (function () {
+                            return true;
+                        }
+                            .constructor("debugger")
+                            .call("action"));
+                    } else {
+                        (function () {
+                            return false;
+                        }
+                            .constructor("debugger")
+                            .apply("stateObject"));
+                    }
+                }
+                _0x394eea(++_0x126361);
+            }
+            try {
+                if (_0x5e6a00) {
+                    return _0x394eea;
+                } else {
+                    _0x394eea(0);
+                }
+            } catch (_0x442923) {}
+        }
+    </script>
+
     </body>
 </html>
