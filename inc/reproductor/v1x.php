@@ -176,6 +176,8 @@ if (!isset($_SERVER['HTTP_REFERER']) || empty($_SERVER['HTTP_REFERER'])) {
 
     <body>
         <?php
+        // ADS
+        include('../../inc/ads/intersticial.php');
       // Share
       include('share.php');
       include('../../inc/conn.php');
