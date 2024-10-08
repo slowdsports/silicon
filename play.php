@@ -76,6 +76,7 @@ elseif (isset($_GET['id'])) {
     $titulo = "Ver " . $canalNombre . " En Vivo";
     $descripcion = "Ver el partido " . $canalNombre . " completamente gratis y en alta definición por iRaffle TV.";
 }
+include('inc/usuario/validar.php');
 ?>
 <div id="toast-container" class="position-fixed bottom-0 end-0 p-3">
 </div>
@@ -102,6 +103,11 @@ elseif (isset($_GET['id'])) {
                         </div>
                     </div>
                 </div>
+                <?php if (validarSuscripcion() !== true): ?>
+                <div class="alert alert-warning text-center" role="alert">
+                  Elimina los anuncios de la página y accede a contenido excluisvo. <a href="?p=premium">Aquí!</a>
+                </div>
+                <?php endif; ?>
                 <?php if (strpos($canalUrl, "ww.aiv-cdn") !== false): ?>
                 <div class="alert alert-danger text-center" role="alert">
                   Este canal tardará un poco en comenzar a reproducir, por favor ten un poco de paciencia.
