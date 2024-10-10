@@ -342,9 +342,9 @@ if (isset($_GET['login']) && $_GET['login'] == "success") { ?>
                     <label class="form-check-label d-none d-sm-block" for="theme-mode"><i
                             class="bx bx-moon fs-5 lh-1 me-1"></i></label>
                 </div>
-                <a href="<?= (isset($_SESSION['usuario_id'])) ? '?p=cuenta' : '?p=login'; ?>"
-                    class="btn btn-primary btn-sm fs-sm rounded d-none d-lg-inline-flex" rel="noopener">
-                    <i class="bx bx-user fs-5 lh-1 me-1"></i>
+                <a href="<?= (isset($_SESSION['usuario_id'])) ? '?p=cuenta' : '?p=login'; ?>" class="btn btn-outline-primary btn-sm fs-sm rounded order-lg-3 d-none d-lg-inline-flex">
+                  <i class="bx bx-<?= (isset($_SESSION['usuario_id'])) ? 'user' : 'log-in'; ?> fs-lg me-2"></i>
+                  <?= (isset($_SESSION['usuario_id'])) ? 'Cuenta' : 'Entrar'; ?>
                 </a>
                 <button type="button" class="navbar-toggler" data-bs-toggle="offcanvas" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
