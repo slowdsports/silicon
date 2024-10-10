@@ -23,9 +23,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION['usuario_rol'] = $usuario['rol_id'];
 
                 // Crear una cookie para mantener la sesión del usuario durante 7 días (86400 segundos por día * 7 días)
-                setcookie("usuario_id", $usuario['id'], time() + (86400 * 7), "/");
-                setcookie("usuario_nombre", $usuario['nombre'], time() + (86400 * 7), "/");
-                setcookie("usuario_rol", $usuario['rol_id'], time() + (86400 * 7), "/");
+                setcookie("usuario_id", $usuario['id'], time() + (86400 * 7), "/", ".futbolhonduras24.com", true, true);
+                setcookie("usuario_nombre", $usuario['nombre'], time() + (86400 * 7), "/", ".futbolhonduras24.com", true, true);
+                setcookie("usuario_rol", $usuario['rol_id'], time() + (86400 * 7), "/", ".futbolhonduras24.com", true, true);
 
                 // Redirigir al usuario a otra página después del inicio de sesión
                 //header("Location: ../../?p=home&login=success");
