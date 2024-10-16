@@ -342,10 +342,40 @@ if (isset($_GET['login']) && $_GET['login'] == "success") { ?>
                     <label class="form-check-label d-none d-sm-block" for="theme-mode"><i
                             class="bx bx-moon fs-5 lh-1 me-1"></i></label>
                 </div>
-                <a href="<?= (isset($_SESSION['usuario_id'])) ? '?p=cuenta' : '?p=login'; ?>" class="btn btn-outline-primary btn-sm fs-sm rounded order-lg-3 d-none d-lg-inline-flex">
-                  <i class="bx bx-<?= (isset($_SESSION['usuario_id'])) ? 'user' : 'log-in'; ?> fs-lg me-2"></i>
-                  <?= (isset($_SESSION['usuario_id'])) ? 'Cuenta' : 'Entrar'; ?>
+                <?php if (isset($_COOKIE['usuario_id'])): ?>
+                <div class="nav dropdown d-block order-lg-3 ms-4">
+                    <a href="#" class="d-flex nav-link p-0" data-bs-toggle="dropdown">
+                        <img src="../assets/img/avatar/9.jpg" class="rounded-circle" width="48" alt="Avatar" />
+                        <div class="d-none d-sm-block ps-2">
+                            <div class="fs-xs lh-1 opacity-60">Hola,</div>
+                            <div class="fs-sm dropdown-toggle"><?=ucfirst($_COOKIE['usuario_nombre'] )?></div>
+                        </div>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end my-1" style="width: 14rem;">
+                        <li>
+                            <a href="?p=cuenta" class="dropdown-item d-flex align-items-center">
+                                <i class="bx bx-shopping-bag fs-base opacity-60 me-2"></i>
+                                Cuenta
+                                <span class="bg-success rounded-circle mt-n2 ms-1" style="width: 5px; height: 5px;"></span>
+                                <span class="ms-auto fs-xs text-muted">2</span>
+                            </a>
+                        </li>
+                        <li class="dropdown-divider"></li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center" href="?p=login&do=logout">
+                                <i class="bx bx-log-out fs-base opacity-60 me-2"></i>
+                                Salir
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <?php endif; ?>
+                <?php if (!isset($_COOKIE['usuario_id'])):?>
+                <a href="?p=login" class="btn btn-outline-primary btn-sm fs-sm rounded order-lg-3 d-none d-lg-inline-flex">
+                  <i class="bx bx-log-in fs-lg me-2"></i>
+                  Entrar
                 </a>
+                <?php endif; ?>
                 <button type="button" class="navbar-toggler" data-bs-toggle="offcanvas" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
