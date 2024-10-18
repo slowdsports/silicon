@@ -1,14 +1,11 @@
 <?php
-if(isset($_GET['p']) && $_GET['p'] == 401){ require_once('401.php'); exit();}
-// error_reporting(E_ALL);
-// ini_set('display_errors', '1');
-// BD
+if(isset($_GET['p']) && $_GET['p'] == 401){ require_once('error.php'); exit();}
+//error_reporting(E_ALL);
+//ini_set('display_errors', '1');
 include('inc/conn.php');
-// Header
 include('inc/header.php');
 echo '<div id="notificacion"></div>';
-// Navegación
-// Parámetro "p" del método GET
+// Nav
 if(isset($_GET['p'])) {
     // Escapar caracteres peligrosos
     $paginaSolicitada = basename($_GET['p']);
@@ -45,16 +42,13 @@ if(isset($_GET['p'])) {
     while ($row = $result->fetch_assoc()) {
         $canalId = (string) $row['canal'];  // Forzar $canalId a string
 
-        // Debug: Imprimir el valor de $canalId y $row
+        // Debug
         echo "Procesando canal ID: " . $canalId . "<br>";
         print_r($row);
-
-        // Añadir al array de canales si no está ya presente
         if (!array_key_exists($canalId, $canales)) {
             $canales[$canalId] = array_map('utf8_encode', $row);
         }
-
-        // Filtrar por tipo para el archivo iOS
+        // iOS
         if ($row['tipo'] != 9 && $row['tipo'] != 11) {
             $canales_ios[$canalId] = array_map('utf8_encode', $row);
         }
@@ -78,7 +72,7 @@ if(isset($_GET['p'])) {
     }
 }
  else {
-    // Si no se proporciona ningún parámetro, carga la página predeterminada (index.php)
+    // Default
     include("home.php");
 }
 // Footer
