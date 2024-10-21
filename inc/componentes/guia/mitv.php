@@ -1,8 +1,8 @@
 <?php
 error_reporting(E_ALL);
 ini_set("display_errors", 1);
-require 'scraper.php'; // Ruta al archivo simple_html_dom.php
-require '../inc/conn.php';
+require '/home/u5233116/web/inc/componentes/guia/scraper.php';
+require '/home/u5233116/web/inc/conn.php';
 
 // Array de IDs de canales
 $query = "SELECT fuentes.fuenteId, fuentes.fuenteNombre, fuentes.epgCanal, fuentes.pais, paises.paisId, canales.canalId, canales.canalImg, paises.paisNombre, paises.paisCodigo, categorias.categoriaId, categorias.categoriaNombre FROM fuentes
@@ -92,6 +92,6 @@ foreach ($canales as $canal) {
 }
 
 // Guardar los datos en un archivo JSON único
-file_put_contents('../inc/componentes/guia/json/programacion.json', json_encode($canales_data, JSON_PRETTY_PRINT));
+file_put_contents('/home/u5233116/web/inc/componentes/guia/json/latam.json', json_encode($canales_data, JSON_PRETTY_PRINT));
 
-echo "Datos guardados en programacion.json\n";
+echo "Datos guardados en latam.json\n";
