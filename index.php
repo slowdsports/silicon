@@ -22,14 +22,12 @@ if(isset($_GET['p'])) {
     }
 } elseif (isset($_GET['updateChannels'])) {
     // Consulta SQL para obtener los datos
-    $sql = "SELECT f.`fuenteId`, f.`fuenteNombre`, f.`canal`, f.`pais`, f.`status`, f.`tipo`, 
-                   c.`canalImg`, c.`canalCategoria`, c2.`categoriaNombre`, p.`paisNombre`
+    $sql = "SELECT f.`fuenteId`, f.`fuenteNombre`, f.`canal`, f.`pais`, f.`status`, f.`tipo`, c.`canalImg`, c.`canalCategoria`, c2.`categoriaNombre`, p.`paisNombre`
             FROM `fuentes` f
             JOIN `canales` c ON f.`canal` = c.`canalId`
             JOIN `categorias` c2 ON c.`canalCategoria` = c2.`categoriaId`
             JOIN `paises` p ON f.`pais` = p.`paisId`
             WHERE f.`status` = 1";
-    
     $result = $conn->query($sql);
 
     if (!$result) {
