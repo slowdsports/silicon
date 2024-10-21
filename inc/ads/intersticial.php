@@ -15,7 +15,7 @@ if (validarSuscripcion() !== true) {
         echo $ad_script_a;
     }
 } else {
-    echo "Estás logueado y además eres VIP";
+    //echo "Estás logueado y además eres VIP";
     // Lógica adicional para usuarios con suscripción activa
 }
 ?>
