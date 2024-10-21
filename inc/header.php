@@ -5,25 +5,22 @@ if ($_GET['p'] !== "login") {
     $_SESSION['redirect_url'] = $_SERVER['REQUEST_URI'];
 }
 $titulo = "Televisión y Partidos de Fútbol Gratis por Internet";
-$descripcion = "En Fútbol Honduras 24 puedes mirar el deporte con la mejor calidad y estabilidad. Todo el Fútbol está disponible acá, con canales como DAZN, ESPN, Movistar y muchos más"
+$descripcion = "En Fútbol Honduras 24 puedes mirar el deporte con la mejor calidad y estabilidad. Todo el Fútbol está disponible acá, con canales como DAZN, ESPN, Movistar y muchos más";
+$nombre_array = explode(" ", $_COOKIE['usuario_nombre']);
 ?>
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="utf-8">
     <title>Fútbol Honduras 24 | <?= isset($_SESSION['tituloPagina']) ? $_SESSION['tituloPagina'] : "Televisión Gratis por Internet"; ?></title>
-
     <!-- SEO Meta Tags -->
     <meta name="description"
         content="Fútbol Honduras 24 - Eventos deportivos y canales de televisión en vivo completamente gratis">
     <meta name="keywords"
         content="Canales de TV gratis, ver tele gratis, television gratis, partidos gratis, iRaffle TV.">
     <meta name="author" content="Fútbol Honduras 24">
-
     <!-- Viewport -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <!-- Favicon and Touch Icons -->
     <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon.png">
@@ -47,22 +44,17 @@ $descripcion = "En Fútbol Honduras 24 puedes mirar el deporte con la mejor cali
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="assets/js/huso.js"></script>
     <?php endif; ?>
-
     <!-- ADS -->
     <meta name="monetag" content="5c244da740fc640e73b25803496381db">
-
     <!-- Vendor Styles -->
     <link rel="stylesheet" media="screen" href="assets/vendor/boxicons/css/boxicons.min.css" />
     <link rel="stylesheet" media="screen" href="assets/vendor/swiper/swiper-bundle.min.css">
     <link rel="stylesheet" type="text/css" href="assets/vendor/toastify/toastify.min.css">
-
     <!-- Main Theme Styles + Bootstrap -->
     <link rel="stylesheet" media="screen" href="assets/css/theme.css">
-
     <!-- Events Styles -->
     <link rel="stylesheet" media="screen" href="assets/css/events.css">
     <link rel="stylesheet" media="screen" href="assets/css/flags.css">
-
     <!-- Page loading styles -->
     <style>
         .page-loading {
@@ -163,8 +155,7 @@ $descripcion = "En Fútbol Honduras 24 puedes mirar el deporte con la mejor cali
                 transform: rotate(360deg);
             }
         }
-    </style>
-    
+    </style>    
 
     <!-- Theme mode -->
     <script>
@@ -185,23 +176,32 @@ $descripcion = "En Fútbol Honduras 24 puedes mirar el deporte con la mejor cali
         });
     }
     </script>
-
-
     <!-- Page loading scripts -->
     <script>
         (function () {
-            window.onload = function () {
-                const preloader = document.querySelector('.page-loading');
+        // Se ejecuta cuando toda la página ha cargado
+        window.onload = function () {
+            const preloader = document.querySelector('.page-loading');
+            if (preloader) {
+                preloader.classList.remove('active');
+                setTimeout(function () {
+                    preloader.remove();
+                }, 1000); // Desaparece un segundo después de cargar
+            }
+        };
+        // Desaparecer Loader
+        setTimeout(function () {
+            const preloader = document.querySelector('.page-loading');
+            if (preloader) {
                 preloader.classList.remove('active');
                 setTimeout(function () {
                     preloader.remove();
                 }, 1000);
-            };
-        })();
+            }
+        }, 5000);
+    })();
     </script>
 </head>
-
-
 <!-- Body -->
 <?php
 session_start();
@@ -223,22 +223,16 @@ if (isset($_GET['login']) && $_GET['login'] == "success") { ?>
     unset($_SESSION['message']); unset($_SESSION['messageColor']);
 }
 ?>
-
 <body>
-
     <!-- Page loading spinner -->
     <div class="page-loading active">
         <div class="page-loading-inner">
             <div class="page-spinner"></div><span>Cargando...</span>
         </div>
     </div>
-
-
     <!-- Page wrapper for sticky footer -->
     <!-- Wraps everything except footer to push footer to the bottom of the page if there is little content -->
     <main class="page-wrapper">
-
-
         <!-- Navbar -->
         <header class="header navbar navbar-expand-lg bg-light navbar-sticky">
             <div class="container px-3">
@@ -348,7 +342,7 @@ if (isset($_GET['login']) && $_GET['login'] == "success") { ?>
                         <img src="../assets/img/avatar/9.jpg" class="rounded-circle" width="48" alt="Avatar" />
                         <div class="d-none d-sm-block ps-2">
                             <div class="fs-xs lh-1 opacity-60">Hola,</div>
-                            <div class="fs-sm dropdown-toggle"><?=ucfirst($_COOKIE['usuario_nombre'] )?></div>
+                            <div class="fs-sm dropdown-toggle"><?=ucfirst($nombre_array[0])?></div>
                         </div>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end my-1" style="width: 14rem;">
