@@ -54,7 +54,7 @@ if ($data === null) {
                   <a href="javascript:void(0)" class="btn btn-icon btn-light bg-white border-white btn-sm rounded-circle position-absolute top-0 end-0 zindex-5 me-3 mt-3" data-bs-toggle="tooltip" data-bs-placement="left" title="Guardar (No Disponible)" aria-label="Guardar (No Disponible)">
                     <i class="bx bx-bookmark"></i>
                   </a>
-                  <img src="<?= $programa['imagen']; ?>" class="card-img-top" alt="Image">
+                  <img style="width:<?= ($programa['pais'] == "spain" ? "46%" : "100%" ) ?>; height: auto;" src="<?= $programa['imagen']; ?>" class="card-img-top" alt="Image">
                 </div>
                 <div class="card-body pb-4">
                   <div class="d-flex align-items-center justify-content-between mb-3">
