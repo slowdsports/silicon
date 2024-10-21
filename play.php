@@ -156,6 +156,7 @@ include('inc/usuario/validar.php');
                         '10' => ["twitch.php", ['c', 'f']],
                         '9' => ["ck.php", ['c', 'f']],
                         '8' => ["pluto.php", ['c', 'f']],
+                        '7' => ["sl2.php", ['c', 'f']],
                         '6' => ["bm.php", ['c', 'f']],
                         '5' => ["tdt.php", ['c', 'f']],
                         '4' => ["pc.php", ['c', 'f']],
