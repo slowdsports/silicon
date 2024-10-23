@@ -16,7 +16,7 @@
                 <?php
                 $fuentes = mysqli_query($conn, "SELECT * FROM fuentes
                 INNER JOIN paises ON fuentes.pais = paises.paisId
-                WHERE canal = $canal");
+                WHERE canal = $canal AND status = 1");
                 while ($result = mysqli_fetch_assoc($fuentes)):
                     $fuenteId = $result['fuenteId'];
                     $fuenteNombre = $result['fuenteNombre'];
