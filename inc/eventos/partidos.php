@@ -192,7 +192,7 @@ $descripcion = "Ver en vivo partidos de " . $ligaNombre . " completamente gratis
                                     <a class="justify-content-center list-group-item list-group-item-action"
                                         href="?p=tv&<?= $tipo ?>&id=<?= $index ?>&c=<?= $result['canal_canal1'] ?>&f=<?= $result['id_canal1'] ?>">
                                         <i class="flag <?= $result['pais_canal1'] ?>"></i>
-                                        <?= $result['nombre_canal1'] ?>
+                                        <?= ($result['canal_canal1'] == 802) ? "NBA League Pass" : $result['nombre_canal1'] ?>
                                     </a>
 
                                 <?php } ?>
