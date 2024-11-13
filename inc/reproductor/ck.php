@@ -126,15 +126,18 @@ if (isset($_GET['f']) && $_GET['f'] !== null) {
 }
 
 // Mostrar alerta
-if (strpos($canalUrl, "ww.aiv-cdn") !== false){
-    $alertMessage = "El Canal tardará un poco en comenzar a reproducir. <br> Por favor ten un poco de paciencia";
-} elseif (strpos($canalUrl, "cvattv") !== false){
-    $alertMessage = "Este canal está geobloqueado para funcionar en Argentina, Uruguay y Paraguay. Si no estás en uno de esos países, descarga un VPN.";
-} elseif (strpos($canalUrl, "izzi") !== false){
-    $alertMessage = "Este canal está geobloqueado para funcionar en México. Si no te funciona, descarga un VPN.";
-}
-if (isset($alertMessage)) {
-    include('alert.php');
+$alertMessages = [
+    "ww.aiv-cdn" => "El Canal tardará un poco en comenzar a reproducir. <br> Por favor ten un poco de paciencia",
+    "cvattv" => "Este canal está geobloqueado para funcionar en Argentina, Uruguay y Paraguay. Si no estás en uno de esos países, descarga un VPN.",
+    "izzi" => "Este canal está geobloqueado para funcionar en México. Si no te funciona, descarga un VPN."
+];
+
+foreach ($alertMessages as $keyword => $message) {
+    if (strpos($canalUrl, $keyword) !== false) {
+        $alertMessage = $message;
+        include('alert.php');
+        break;
+    }
 }
 
 // Si el tipo es CK
