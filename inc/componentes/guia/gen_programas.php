@@ -18,5 +18,5 @@ $programacionJson = json_encode($combinedData, JSON_PRETTY_PRINT);
 // Guardar el nuevo JSON en un archivo
 file_put_contents('/home/u5233116/web/inc/componentes/guia/json/programacion.json', $programacionJson);
 
-echo "La programación ha sido guardada en json/programacion.json.";
+echo "La programacion ha sido guardada en json/programacion.json.";
 ?>

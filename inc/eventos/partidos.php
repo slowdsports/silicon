@@ -206,7 +206,7 @@ $descripcion = "Ver en vivo partidos de " . $ligaNombre . " completamente gratis
                                     <a class="justify-content-center list-group-item list-group-item-action"
                                         href="?p=tv&<?= $tipo ?>&id=<?= $index ?>&c=<?= $result['canal_canal2'] ?>&f=<?= $result['id_canal2'] ?>">
                                         <i class="flag <?= $result['pais_canal2'] ?>"></i>
-                                        <?= $result['nombre_canal2'] ?>
+                                        <?= ($result['canal_canal2'] == 802) ? "NBA League Pass" : $result['nombre_canal2'] ?>
                                     </a>
 
                                 <?php } ?>
@@ -220,7 +220,7 @@ $descripcion = "Ver en vivo partidos de " . $ligaNombre . " completamente gratis
                                     <a class="justify-content-center list-group-item list-group-item-action"
                                         href="?p=tv&<?= $tipo ?>&id=<?= $index ?>&c=<?= $result['canal_canal3'] ?>&f=<?= $result['id_canal3'] ?>">
                                         <i class="flag <?= $result['pais_canal3'] ?>"></i>
-                                        <?= $result['nombre_canal3'] ?>
+                                        <?= ($result['canal_canal3'] == 802) ? "NBA League Pass" : $result['nombre_canal3'] ?>
                                     </a>
 
                                 <?php } ?>

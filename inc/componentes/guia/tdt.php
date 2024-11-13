@@ -76,7 +76,7 @@ while ($row = mysqli_fetch_assoc($result)) {
                         'pais' => $paisNombre,
                         'flag' => $paisFlag,
                         'titulo' => $programasEnVivo[0]['titulo'],
-                        'descripcion' => $programasEnVivo[0]['descripcion'],
+                        'descripcion' => implode(' ', array_slice(explode(' ', $programasEnVivo[0]['descripcion']), 0, 45)),
                         'imagen' => $programasEnVivo[0]['imagen']
                     ];
                 } else {

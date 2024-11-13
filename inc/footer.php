@@ -32,32 +32,38 @@
 <script type="module" src="assets/js/img-mode-switch.js"></script>
 <!-- Title + Meta Mgmnt -->
 <script>
-const titulo = "<?= $titulo; ?>";
-const descripcion = "<?= $descripcion; ?>";
-document.title = "iRaffle TV | " + titulo;
-// Eliminar la etiqueta meta description si la descripción no está vacía
-if (descripcion !== '') {
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-        metaDescription.remove();
+    const titulo = "<?= $titulo; ?>";
+    const descripcion = "<?= $descripcion; ?>";
+    document.title = "iRaffle TV | " + titulo;
+    // Eliminar la etiqueta meta description si la descripción no está vacía
+    if (descripcion !== '') {
+        const metaDescription = document.querySelector('meta[name="description"]');
+        if (metaDescription) {
+            metaDescription.remove();
         }
     }
-// Imprimir la etiqueta meta description nuevamente con el nuevo contenido
-if (descripcion !== '') {
-    const head = document.querySelector('head');
-    const newMetaDescription = document.createElement('meta');
-    newMetaDescription.setAttribute('name', 'description');
-    newMetaDescription.setAttribute('content', descripcion);
-    head.appendChild(newMetaDescription);
+    // Imprimir la etiqueta meta description nuevamente con el nuevo contenido
+    if (descripcion !== '') {
+        const head = document.querySelector('head');
+        const newMetaDescription = document.createElement('meta');
+        newMetaDescription.setAttribute('name', 'description');
+        newMetaDescription.setAttribute('content', descripcion);
+        head.appendChild(newMetaDescription);
     }
 </script>
 <!-- Filtro de tarjetas -->
 <?php if (isset($_GET['p']) && $_GET['p'] == "iptv" || $_GET['p'] == "star") {
-    // No mostramos
-} else {
-?>
-<script src="assets/js/filter.js"></script>
+        // No mostramos
+    } else {
+        ?>
+    <script src="assets/js/filter.js"></script>
 <?php } ?>
+<!-- Adcsh -->
+<script type="text/javascript">
+    aclib.runAutoTag({
+        zoneId: 'bs6lusnthe',
+    });
+</script>
 </body>
 
 </html>

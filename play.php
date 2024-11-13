@@ -104,36 +104,48 @@ include('inc/usuario/validar.php');
                     </div>
                 </div>
                 <?php if (validarSuscripcion() !== true): ?>
-                <div class="alert alert-warning text-center" role="alert">
-                  Elimina los anuncios de la página y accede a contenido excluisvo. <a href="?p=premium">Aquí!</a>
-                </div>
+                    <div class="alert alert-warning text-center" role="alert">
+                        Elimina los anuncios de la página y accede a contenido excluisvo. <a href="?p=premium">Aquí!</a>
+                    </div>
                 <?php endif; ?>
                 <?php if (strpos($canalUrl, "ww.aiv-cdn") !== false): ?>
-                <div class="alert alert-danger text-center" role="alert">
-                  Este canal tardará un poco en comenzar a reproducir, por favor ten un poco de paciencia.
-                </div>
+                    <div class="alert alert-danger text-center" role="alert">
+                        Este canal tardará un poco en comenzar a reproducir, por favor ten un poco de paciencia.
+                    </div>
                 <?php endif; ?>
                 <?php if (strpos($canalUrl, "cvattv") !== false): ?>
-                <div class="alert alert-danger text-center" role="alert">
-                  Este canal está geobloqueado para funcionar en Argentina, Uruguay y Paraguay. Si no estás en uno de esos países, descarga un VPN.
-                </div>
+                    <div class="alert alert-danger text-center" role="alert">
+                        Este canal está geobloqueado para funcionar en Argentina, Uruguay y Paraguay. Si no estás en uno de
+                        esos países, descarga un VPN.
+                    </div>
                 <?php endif; ?>
                 <?php if (strpos($canalUrl, "izzi") !== false): ?>
-                <div class="alert alert-danger text-center" role="alert">
-                  Este canal está geobloqueado para funcionar en México. Si no te funciona, descarga un VPN.
-                </div>
+                    <div class="alert alert-danger text-center" role="alert">
+                        Este canal está geobloqueado para funcionar en México. Si no te funciona, descarga un VPN.
+                    </div>
                 <?php endif; ?>
                 <?php
                 if (isset($canalTipo) && $canalTipo == 4 || $canalTipo == 8) {
-                ?>
-                <div id="alerta-extension" class="alert alert-primary text-center" role="alert">Para visualizar el contenido, debes instalar la extensión: <a href="https://chrome.google.com/webstore/detail/videoplayer-mpdm3u8m3uepg/opmeopcambhfimffbomjgemehjkbbmji/reviews" target="_blank">Reproductor MPD/M3U8/M3U/EPG.</a>
-                </div>
-                <?php }?>
+                    ?>
+                    <div id="alerta-extension" class="alert alert-primary text-center" role="alert">Para visualizar el
+                        contenido, debes instalar la extensión: <a
+                            href="https://chrome.google.com/webstore/detail/videoplayer-mpdm3u8m3uepg/opmeopcambhfimffbomjgemehjkbbmji/reviews"
+                            target="_blank">Reproductor MPD/M3U8/M3U/EPG.</a>
+                    </div>
+                <?php } ?>
+                <?php
+                if (validarSuscripcion() !== true && isset($canalTipo) && $canalTipo == 7 || validarSuscripcion() !== true && strpos($canalUrl, "vustreams") !== false) {
+                    ?>
+                    <div id="alerta-extension" class="alert alert-primary text-center" role="alert">
+                        <span class="badge bg-danger ms-1 faa-tada animated">Aviso</span>
+                        Este canal es <a href="?p=premium" target="_blank">exclusivo para miembros.</a> Por favor <a
+                            href="?p=login" target="_blank">inicia sesión</a> si ya lo eres.
+                    </div>
+                <?php } ?>
             </div>
             <!-- Reproductor -->
             <div class="gallery mb-4 pb-2">
-                <a id="playerFake"
-                    style="display: none"
+                <a id="playerFake" style="display: none"
                     href="https://www.highcpmrevenuegate.com/mkd1fhhe?key=81193c57b7f58377107604b71a3e49aa"
                     target="_blank">
                     <img class="img-fluid" src="assets/img/player_img.png" alt="">
@@ -238,16 +250,16 @@ include('inc/usuario/validar.php');
                 </div>
             </div>
             <?php if (isset($_GET['c']) && $_GET['c'] == 800 || $_GET['c'] == 801 || $_GET['c'] == 79): ?>
-            <p class="fs-sm">
-                <span class="badge bg-danger ms-1 faa-tada animated">Aviso</span>
-                Este canal es eventual y se activa algunos minutos antes del comienzo del evento.
-            </p>
+                <p class="fs-sm">
+                    <span class="badge bg-danger ms-1 faa-tada animated">Aviso</span>
+                    Este canal es eventual y se activa algunos minutos antes del comienzo del evento.
+                </p>
             <?php endif; ?>
             <?php if (strpos($canalUrl, "ESPDHD-8083") == true): ?>
-            <p class="fs-sm">
-                <span class="badge bg-danger ms-1 faa-tada animated">Aviso</span>
-                Este canal es para miembros VIP. Actualmente puedes verlo por cortesía.
-            </p>
+                <p class="fs-sm">
+                    <span class="badge bg-danger ms-1 faa-tada animated">Aviso</span>
+                    Este canal es para miembros VIP.
+                </p>
             <?php endif; ?>
             <hr class="mb-4">
             <div class="row">
@@ -266,15 +278,19 @@ include('inc/usuario/validar.php');
 
         <!-- Votos -->
         <div id="chatCol" class="col-lg-3 position-relative">
-            <div class="sticky-top " style="top: 105px !important;">
+            <div class="sticky-top " style="top: 15px !important;">
                 <?php
+                // Banner
+                if (isset($_GET['id'])):
+                    include('inc/ads/banner.php');
+                endif;
                 $playlists = [
                     ['condition' => isset($canalTipo) && $canalTipo == 8, 'url' => "?p=tv&playlist=PlutoTV_tv_ES", 'title' => '¡Mira todos los canales de Pluto TV!'],
                     ['condition' => isset($canalUrl) && strpos($canalUrl, "RakutenTV") !== false, 'url' => "?p=tv&playlist=RakutenTV_tv", 'title' => '¡Mira todos los canales de Rakuten TV!'],
                     ['condition' => isset($canalUrl) && strpos($canalUrl, "ottera") !== false, 'url' => "?p=tv&playlist=CanelaTV_tv", 'title' => '¡Mira todos los canales de Canela TV!']
-                ];                
+                ];
                 foreach ($playlists as $playlist) {
-                    if ($playlist['condition']) {?>
+                    if ($playlist['condition']) { ?>
                         <a style="text-decoration:none" href="<?= $playlist['url'] ?>">
                             <div class="card border-primary card-hover">
                                 <div class="card-body text-center">
@@ -282,11 +298,37 @@ include('inc/usuario/validar.php');
                                 </div>
                             </div>
                         </a>
-                <?php break; }} ?>
+                        <?php break;
+                    }
+                } ?>
                 <br>
                 <!-- Chat -->
                 <div class="rounded-3">
-                    <iframe id="twitch-chat-embed" class="rounded-3" src height="560" width="100%"></iframe>
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                            <a href="#chat" class="nav-link active" data-bs-toggle="tab" role="tab">
+                                <i class="bx bx-message-detail opacity-70 me-2"></i>
+                                Chat
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#tgpost" class="nav-link" data-bs-toggle="tab" role="tab">
+                                <i class="bx bxl-telegram opacity-70 me-2"></i>
+                                TG
+                            </a>
+                        </li>
+                    </ul>
+
+                    <!-- Tabs content -->
+                    <div class="tab-content">
+                        <div class="tab-pane fade" id="tgpost" role="tabpanel">
+                            <?php include('inc/componentes/tgpost.php'); ?>
+                        </div>
+                        <div class="tab-pane fade show active" id="chat" role="tabpanel">
+                            <iframe id="twitch-chat-embed" class="rounded-3" src height="560" width="100%"></iframe>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

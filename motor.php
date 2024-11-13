@@ -64,17 +64,27 @@
                                 <?php
                                 if ($typeId == 40) { //F1 ?>
                                     <a class="justify-content-center list-group-item list-group-item-action"
-                                        href="?p=tv&c=1&f=3">
+                                        href="?p=tv&c=5&f=5">
                                         <i class="flag es"></i>
                                         DAZN F1
                                     </a>
                                     <a class="justify-content-center list-group-item list-group-item-action"
-                                        href="?p=tv&c=314&f=191">
-                                        <i class="flag mx"></i>
-                                        Fox Sports
+                                        href="?p=tv&c=49&f=90">
+                                        <i class="flag ar"></i>
+                                        Fox Sports Premium
                                     </a>
                                     <a class="justify-content-center list-group-item list-group-item-action"
-                                        href="?p=tv&c=316&f=193">
+                                        href="?p=tv&c=49&f=91">
+                                        <i class="flag mx"></i>
+                                        Fox Sports Premium
+                                    </a>
+                                    <a class="justify-content-center list-group-item list-group-item-action"
+                                        href="?p=tv&c=42&f=76">
+                                        <i class="flag us"></i>
+                                        ESPN Deportes
+                                    </a>
+                                    <a class="justify-content-center list-group-item list-group-item-action"
+                                        href="?p=tv&c=45&f=89">
                                         <i class="flag mx"></i>
                                         Fox Sports 3
                                     </a>
@@ -94,21 +104,16 @@
                                         DAZN 2
                                     </a>
                                     <a class="justify-content-center list-group-item list-group-item-action"
-                                        href="?p=tv&c=39&f=219">
-                                        <i class="flag us"></i>
+                                        href="?p=tv&c=25&f=37">
+                                        <i class="flag england"></i>
                                         TNT Sports 2
-                                    </a>
-                                    <a class="justify-content-center list-group-item list-group-item-action"
-                                        href="?p=tv&c=7&f=30">
-                                        <i class="flag nl"></i>
-                                        Ziggo Select
                                     </a>
                                 <?php } ?>
                             </div>
                         </div>
                     </div>
                     <script>
-                        var yyyy = 2023;
+                        var yyyy = 2024;
                         var mm = '<?= $mm_0 - 1 ?>';
                         var dd = '<?= $dd_0 ?>';
                         var hh = '<?= $hh_0 ?>';

@@ -10,9 +10,11 @@ $nombre_array = explode(" ", $_COOKIE['usuario_nombre']);
 ?>
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="utf-8">
-    <title>Fútbol Honduras 24 | <?= isset($_SESSION['tituloPagina']) ? $_SESSION['tituloPagina'] : "Televisión Gratis por Internet"; ?></title>
+    <title>Fútbol Honduras 24 |
+        <?= isset($_SESSION['tituloPagina']) ? $_SESSION['tituloPagina'] : "Televisión Gratis por Internet"; ?></title>
     <!-- SEO Meta Tags -->
     <meta name="description"
         content="Fútbol Honduras 24 - Eventos deportivos y canales de televisión en vivo completamente gratis">
@@ -41,8 +43,8 @@ $nombre_array = explode(" ", $_COOKIE['usuario_nombre']);
         gtag('config', 'G-L0M9BFKRR9');
     </script>
     <?php if (isset($_GET['p']) && $_GET["p"] == "star" || $_GET["p"] == "starn" || $_GET["p"] == "vix" || $_GET["p"] == "nbalp" || $_GET["p"] == "max"): ?>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="assets/js/huso.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="assets/js/huso.js"></script>
     <?php endif; ?>
     <!-- ADS -->
     <meta name="monetag" content="5c244da740fc640e73b25803496381db">
@@ -83,16 +85,16 @@ $nombre_array = explode(" ", $_COOKIE['usuario_nombre']);
         }
 
         ::-webkit-scrollbar {
-        width: 10px;
+            width: 10px;
         }
 
         ::-webkit-scrollbar:horizontal {
-        height: 10px;
+            height: 10px;
         }
 
         ::-webkit-scrollbar-thumb {
-        background-color: #6366f1;
-        border-radius: 6px;
+            background-color: #6366f1;
+            border-radius: 6px;
         }
 
         .page-loading-inner {
@@ -155,51 +157,51 @@ $nombre_array = explode(" ", $_COOKIE['usuario_nombre']);
                 transform: rotate(360deg);
             }
         }
-    </style>    
+    </style>
 
     <!-- Theme mode -->
     <script>
-    let leagueImages = document.querySelectorAll('.league-img');
-    let mode = window.localStorage.getItem('mode'),
-    root = document.getElementsByTagName('html')[0];
-    if (mode !== null && mode === 'dark') {
-        root.classList.add('dark-mode');
-        leagueImages.forEach(img => {
-            let currentSrc = img.src;
-            img.src = currentSrc.replace('assets/img/ligas/sf/', 'assets/img/ligas/sf/dark/');
-        });
-    } else {
-        root.classList.remove('dark-mode');
-        leagueImages.forEach(img => {
-            let currentSrc = img.src;
-            img.src = currentSrc.replace('assets/img/ligas/sf/dark/', 'assets/img/ligas/sf/');
-        });
-    }
+        let leagueImages = document.querySelectorAll('.league-img');
+        let mode = window.localStorage.getItem('mode'),
+            root = document.getElementsByTagName('html')[0];
+        if (mode !== null && mode === 'dark') {
+            root.classList.add('dark-mode');
+            leagueImages.forEach(img => {
+                let currentSrc = img.src;
+                img.src = currentSrc.replace('assets/img/ligas/sf/', 'assets/img/ligas/sf/dark/');
+            });
+        } else {
+            root.classList.remove('dark-mode');
+            leagueImages.forEach(img => {
+                let currentSrc = img.src;
+                img.src = currentSrc.replace('assets/img/ligas/sf/dark/', 'assets/img/ligas/sf/');
+            });
+        }
     </script>
     <!-- Page loading scripts -->
     <script>
         (function () {
-        // Se ejecuta cuando toda la página ha cargado
-        window.onload = function () {
-            const preloader = document.querySelector('.page-loading');
-            if (preloader) {
-                preloader.classList.remove('active');
-                setTimeout(function () {
-                    preloader.remove();
-                }, 1000); // Desaparece un segundo después de cargar
-            }
-        };
-        // Desaparecer Loader
-        setTimeout(function () {
-            const preloader = document.querySelector('.page-loading');
-            if (preloader) {
-                preloader.classList.remove('active');
-                setTimeout(function () {
-                    preloader.remove();
-                }, 1000);
-            }
-        }, 5000);
-    })();
+            // Se ejecuta cuando toda la página ha cargado
+            window.onload = function () {
+                const preloader = document.querySelector('.page-loading');
+                if (preloader) {
+                    preloader.classList.remove('active');
+                    setTimeout(function () {
+                        preloader.remove();
+                    }, 1000); // Desaparece un segundo después de cargar
+                }
+            };
+            // Desaparecer Loader
+            setTimeout(function () {
+                const preloader = document.querySelector('.page-loading');
+                if (preloader) {
+                    preloader.classList.remove('active');
+                    setTimeout(function () {
+                        preloader.remove();
+                    }, 1000);
+                }
+            }, 5000);
+        })();
     </script>
 </head>
 <!-- Body -->
@@ -220,9 +222,11 @@ if (isset($_GET['login']) && $_GET['login'] == "success") { ?>
         });
     </script>
     <?php
-    unset($_SESSION['message']); unset($_SESSION['messageColor']);
+    unset($_SESSION['message']);
+    unset($_SESSION['messageColor']);
 }
 ?>
+
 <body>
     <!-- Page loading spinner -->
     <div class="page-loading active">
@@ -337,38 +341,40 @@ if (isset($_GET['login']) && $_GET['login'] == "success") { ?>
                             class="bx bx-moon fs-5 lh-1 me-1"></i></label>
                 </div>
                 <?php if (isset($_COOKIE['usuario_id'])): ?>
-                <div class="nav dropdown d-block order-lg-3 ms-4">
-                    <a href="#" class="d-flex nav-link p-0" data-bs-toggle="dropdown">
-                        <img src="../assets/img/avatar/9.jpg" class="rounded-circle" width="48" alt="Avatar" />
-                        <div class="d-none d-sm-block ps-2">
-                            <div class="fs-xs lh-1 opacity-60">Hola,</div>
-                            <div class="fs-sm dropdown-toggle"><?=ucfirst($nombre_array[0])?></div>
-                        </div>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end my-1" style="width: 14rem;">
-                        <li>
-                            <a href="?p=cuenta" class="dropdown-item d-flex align-items-center">
-                                <i class="bx bx-shopping-bag fs-base opacity-60 me-2"></i>
-                                Cuenta
-                                <span class="bg-success rounded-circle mt-n2 ms-1" style="width: 5px; height: 5px;"></span>
-                                <span class="ms-auto fs-xs text-muted">2</span>
-                            </a>
-                        </li>
-                        <li class="dropdown-divider"></li>
-                        <li>
-                            <a class="dropdown-item d-flex align-items-center" href="?p=login&do=logout">
-                                <i class="bx bx-log-out fs-base opacity-60 me-2"></i>
-                                Salir
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+                    <div class="nav dropdown d-block order-lg-3 ms-4">
+                        <a href="#" class="d-flex nav-link p-0" data-bs-toggle="dropdown">
+                            <img src="../assets/img/avatar/9.jpg" class="rounded-circle" width="48" alt="Avatar" />
+                            <div class="d-none d-sm-block ps-2">
+                                <div class="fs-xs lh-1 opacity-60">Hola,</div>
+                                <div class="fs-sm dropdown-toggle"><?= ucfirst($nombre_array[0]) ?></div>
+                            </div>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end my-1" style="width: 14rem;">
+                            <li>
+                                <a href="?p=cuenta" class="dropdown-item d-flex align-items-center">
+                                    <i class="bx bx-shopping-bag fs-base opacity-60 me-2"></i>
+                                    Cuenta
+                                    <span class="bg-success rounded-circle mt-n2 ms-1"
+                                        style="width: 5px; height: 5px;"></span>
+                                    <span class="ms-auto fs-xs text-muted">2</span>
+                                </a>
+                            </li>
+                            <li class="dropdown-divider"></li>
+                            <li>
+                                <a class="dropdown-item d-flex align-items-center" href="?p=login&do=logout">
+                                    <i class="bx bx-log-out fs-base opacity-60 me-2"></i>
+                                    Salir
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 <?php endif; ?>
-                <?php if (!isset($_COOKIE['usuario_id'])):?>
-                <a href="?p=login" class="btn btn-outline-primary btn-sm fs-sm rounded order-lg-3 d-none d-lg-inline-flex">
-                  <i class="bx bx-log-in fs-lg me-2"></i>
-                  Entrar
-                </a>
+                <?php if (!isset($_COOKIE['usuario_id'])): ?>
+                    <a href="?p=login"
+                        class="btn btn-outline-primary btn-sm fs-sm rounded order-lg-3 d-none d-lg-inline-flex">
+                        <i class="bx bx-log-in fs-lg me-2"></i>
+                        Entrar
+                    </a>
                 <?php endif; ?>
                 <button type="button" class="navbar-toggler" data-bs-toggle="offcanvas" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

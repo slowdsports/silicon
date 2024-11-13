@@ -153,7 +153,7 @@ if ($canalTipo == 9) {
         <?php
     } else {
         // Requieren JW
-        $jwPatterns = ["dazn", "director", "stvacdn", "zigo.", "idgo", "tglmp", "liveusp", "-nl-", "broadband", "ssc-", "cvatt", "ivecla", "aiv-cdn", "peaco", "zapitv", "vodafo", "skycdp", "ssc", "9c9media", "dmdsdp", "warnerme", "nlziet", "6cloud", "dpgmedia", "dfwlive"];
+        $jwPatterns = ["dazn", "director", "stvacdn", "zigo.", "idgo", "tglmp", "liveusp", "-nl-", "broadband", "ssc-", "cvatt", "ivecla", "aiv-cdn", "peaco", "zapitv", "vodafo", "skycdp", "ssc", "9c9media", "dmdsdp", "warnerme", "nlziet", "6cloud", "dpgmedia", "dfwlive", "bpk", "vustreams", "trimi"];
         $requiresJW = false;
         foreach ($jwPatterns as $pattern) {
             if (strpos($canalUrl, $pattern) !== false) {
@@ -163,9 +163,9 @@ if ($canalTipo == 9) {
         }
         if ($requiresJW) {
             // Vidgo requiere proxy
-            if (strpos($canalUrl, "vidgo.com") !== false) {
+            if (strpos($canalUrl, "dfwlive") !== false) {
                 // $canalUrl = "https://slowdus.herokuapp.com/" . $canalUrl;
-                $canalUrl = "https://cors-proxy.elfsight.com/" . $canalUrl;
+                $canalUrl = "https://andi-cors-proxy-service-k8s.andisearch.com/" . $canalUrl;
             }
             // Encriptamos la URL
             $canalUrl = base64_encode($canalUrl); ?>
@@ -209,7 +209,6 @@ if ($canalTipo == 9) {
         <div id="player"></div>
     </div>
     <script src="../../assets/js/reproductores/bit.js"></script>
-    <script src="../../inc/ads/push.php"></script>
 
 <?php }
 ?>
