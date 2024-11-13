@@ -169,7 +169,7 @@ if ($canalTipo == 9) {
         <?php
     } else {
         // Requieren JW
-        $jwPatterns = ["dazn", "director", "stvacdn", "zigo.", "idgo", "tglmp", "liveusp", "-nl-", "broadband", "ssc-", "cvatt", "ivecla", "aiv-cdn", "peaco", "zapitv", "vodafo", "skycdp", "ssc", "9c9media", "dmdsdp", "warnerme", "nlziet", "6cloud", "dpgmedia", "dfwlive", "bpk", "vustreams", "trimi"];
+        $jwPatterns = ["dazn", "director", "stvacdn", "zigo.", "idgo", "tglmp", "liveusp", "-nl-", "broadband", "ssc-", "cvatt", "ivecla", "aiv-cdn", "peaco", "zapitv", "vodafo", "skycdp", "ssc", "9c9media", "dmdsdp", "warnerme", "nlziet", "6cloud", "dpgmedia", "dfwlive", "bpk", "vustreams", "trimi", "entel"];
         $requiresJW = false;
         foreach ($jwPatterns as $pattern) {
             if (strpos($canalUrl, $pattern) !== false) {
