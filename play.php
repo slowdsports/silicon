@@ -108,22 +108,6 @@ include('inc/usuario/validar.php');
                         Elimina los anuncios de la página y accede a contenido excluisvo. <a href="?p=premium">Aquí!</a>
                     </div>
                 <?php endif; ?>
-                <?php if (strpos($canalUrl, "ww.aiv-cdn") !== false): ?>
-                    <div class="alert alert-danger text-center" role="alert">
-                        Este canal tardará un poco en comenzar a reproducir, por favor ten un poco de paciencia.
-                    </div>
-                <?php endif; ?>
-                <?php if (strpos($canalUrl, "cvattv") !== false): ?>
-                    <div class="alert alert-danger text-center" role="alert">
-                        Este canal está geobloqueado para funcionar en Argentina, Uruguay y Paraguay. Si no estás en uno de
-                        esos países, descarga un VPN.
-                    </div>
-                <?php endif; ?>
-                <?php if (strpos($canalUrl, "izzi") !== false): ?>
-                    <div class="alert alert-danger text-center" role="alert">
-                        Este canal está geobloqueado para funcionar en México. Si no te funciona, descarga un VPN.
-                    </div>
-                <?php endif; ?>
                 <?php
                 if (isset($canalTipo) && $canalTipo == 4 || $canalTipo == 8) {
                     ?>

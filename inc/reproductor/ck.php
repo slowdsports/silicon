@@ -124,6 +124,19 @@ if (isset($_GET['f']) && $_GET['f'] !== null) {
     $canalTipo = $result['canalTipo'];
     (strpos($canalUrl, "masmediatv") !== false) ? ($key1 = $key2 = "01010101010101010101010101010101") : "";
 }
+
+// Mostrar alerta
+if (strpos($canalUrl, "ww.aiv-cdn") !== false){
+    $alertMessage = "El Canal tardará un poco en comenzar a reproducir. <br> Por favor ten un poco de paciencia";
+} elseif (strpos($canalUrl, "cvattv") !== false){
+    $alertMessage = "Este canal está geobloqueado para funcionar en Argentina, Uruguay y Paraguay. Si no estás en uno de esos países, descarga un VPN.";
+} elseif (strpos($canalUrl, "izzi") !== false){
+    $alertMessage = "Este canal está geobloqueado para funcionar en México. Si no te funciona, descarga un VPN.";
+}
+if (isset($alertMessage)) {
+    include('alert.php');
+}
+
 // Si el tipo es CK
 if ($canalTipo == 9) {
     // Canales DTV
