@@ -8,13 +8,22 @@
         border-radius: 10px;
         box-shadow: 2px 2px 8px 2px #6366f1;
     }
+    .toast-close {
+         position: absolute;
+         top: 8px;
+         right: 8px;
+         font-size: 16px;
+         color: #fff;
+         cursor: pointer;
+    }
 </style>
 
 <script>
     window.addEventListener('load', function() {
         Toastify({
-          duration: 30000,
           close: true,
+          text: "<?=$alertMessage?>",
+          duration: 30000,
           gravity: "bottom",
           position: "right",
           stopOnFocus: true,
@@ -23,8 +32,5 @@
           },
           onClick: function(){} // Callback después del clic
         }).showToast();
-
-        // Aplicamos HTML en el texto
-        document.querySelector(".toastify").innerHTML = "<?=$alertMessage?>";
     });
 </script>
