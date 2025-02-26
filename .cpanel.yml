@@ -1,7 +1,8 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/u5233116/web/
+  - export DEPLOYPATH=/futbolhonduras24.com/web/gh/
+    #- export DEPLOYPATH=/home/u5233116/web/
     #- export DEPLOYPATH=/home/megaaxmg/teombley.asia/iraffle/
     - /bin/cp -R * $DEPLOYPATH
     #- /bin/rsync -a --exclude 'conn.php' public/ $DEPLOYPATH
