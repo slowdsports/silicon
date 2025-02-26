@@ -1,5 +1,5 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/u5609877/test/
+    - export DEPLOYPATH=/home/u5609877/futbolhonduras24.com/web/gh/
     - /usr/bin/rsync -av --exclude='.git' . $DEPLOYPATH
