@@ -3,7 +3,8 @@ function validarSuscripcion() {
     if (!isset($_COOKIE['usuario_id']) || !isset($_COOKIE['usuario_rol'])) {
         return false;  // No está logueado o no es VIP
     } else {
-        include('/home/u5233116/web/inc/conn.php');
+        //include($_SERVER['DOCUMENT_ROOT']. '/inc/conn.php');
+        include(__DIR__ . '/../conn.php');
         $usId = $_COOKIE['usuario_id'];
         $usQuery = mysqli_query($conn, "SELECT id, rol_id, suscripcion FROM usuarios WHERE id = '$usId'");
         $result = mysqli_fetch_array($usQuery);
