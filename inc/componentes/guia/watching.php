@@ -9,7 +9,8 @@ const contenedorCard = document.getElementById('contenedor-card');
 
 // Función para cargar y mostrar la programación en vivo del canal específico
 function cargarProgramacion() {
-    fetch('inc/componentes/guia/json/programacion.json')
+    const token = Math.random().toString(36).substring(2, 15);
+    fetch('inc/componentes/guia/json/programacion.json?upd=${token}')
         .then(response => response.json())
         .then(data => {
             // Obtener la programación del canal específico
