@@ -318,18 +318,6 @@ if (isset($_GET['login']) && $_GET['login'] == "success") { ?>
                                 <a href="?p=radio" class="nav-link
                                 <?= ($_GET['p'] == 'radio') ? 'active' : ''; ?>">Radio</a>
                             </li>
-                            <li class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle
-                                <?= ($_GET['p'] == 'star') ? 'active' : ''; ?>
-                                <?= ($_GET['p'] == 'max') ? 'active' : ''; ?>" data-bs-toggle="dropdown"
-                                    aria-current="page">Exclusivos</a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="?p=star" class="dropdown-item
-                                    <?= ($_GET['p'] == 'star') ? 'active' : ''; ?>">Disney+</a></li>
-                                    <li><a href="?p=max" class="dropdown-item
-                                    <?= ($_GET['p'] == 'max') ? 'active' : ''; ?>">Max</a></li>
-                                </ul>
-                            </li>
                         </ul>
                     </div>
                 </div>

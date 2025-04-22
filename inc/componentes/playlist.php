@@ -156,7 +156,7 @@ $lines = explode("\n", $m3u_content);
                         <div class="card border-primary card-hover" style="max-width: 20rem;">
                           <div class="card-body">
                             <h5 class="card-title">
-                                <img width="25px" src="https://futbolhonduras24.com/assets/img/equipos/sf/4819.png"></img>
+                                <img width="25px" src="assets/img/equipos/sf/4819.png"></img>
                             </h5>
                           </div>
                         </div>
@@ -168,7 +168,7 @@ $lines = explode("\n", $m3u_content);
                         <div class="card border-primary card-hover" style="max-width: 20rem;">
                           <div class="card-body">
                             <h5 class="card-title">
-                                <img width="25px" src="https://futbolhonduras24.com/assets/img/equipos/sf/4698.png"></img>
+                                <img width="25px" src="assets/img/equipos/sf/4698.png"></img>
                             </h5>
                           </div>
                         </div>
@@ -180,7 +180,7 @@ $lines = explode("\n", $m3u_content);
                         <div class="card border-primary card-hover" style="max-width: 20rem;">
                           <div class="card-body">
                             <h5 class="card-title">
-                                <img width="25px" src="https://futbolhonduras24.com/assets/img/equipos/sf/4748.png"></img>
+                                <img width="25px" src="assets/img/equipos/sf/4748.png"></img>
                             </h5>
                           </div>
                         </div>
@@ -192,7 +192,7 @@ $lines = explode("\n", $m3u_content);
                         <div class="card border-primary card-hover" style="max-width: 20rem;">
                           <div class="card-body">
                             <h5 class="card-title">
-                                <img width="25px" src="https://futbolhonduras24.com/assets/img/equipos/sf/4754.png"></img>
+                                <img width="25px" src="assets/img/equipos/sf/4754.png"></img>
                             </h5>
                           </div>
                         </div>
@@ -204,7 +204,7 @@ $lines = explode("\n", $m3u_content);
                         <div class="card border-primary card-hover" style="max-width: 20rem;">
                           <div class="card-body">
                             <h5 class="card-title">
-                                <img width="25px" src="https://futbolhonduras24.com/assets/img/equipos/sf/4781.png"></img>
+                                <img width="25px" src="assets/img/equipos/sf/4781.png"></img>
                             </h5>
                           </div>
                         </div>
@@ -216,7 +216,7 @@ $lines = explode("\n", $m3u_content);
                         <div class="card border-primary card-hover" style="max-width: 20rem;">
                           <div class="card-body">
                             <h5 class="card-title">
-                                <img width="25px" src="https://futbolhonduras24.com/assets/img/equipos/sf/4724.png"></img>
+                                <img width="25px" src="assets/img/equipos/sf/4724.png"></img>
                             </h5>
                           </div>
                         </div>
@@ -228,7 +228,7 @@ $lines = explode("\n", $m3u_content);
                         <div class="card border-primary card-hover" style="max-width: 20rem;">
                           <div class="card-body">
                             <h5 class="card-title">
-                                <img width="25px" src="https://futbolhonduras24.com/assets/img/equipos/sf/4752.png"></img>
+                                <img width="25px" src="assets/img/equipos/sf/4752.png"></img>
                             </h5>
                           </div>
                         </div>
@@ -240,7 +240,7 @@ $lines = explode("\n", $m3u_content);
                         <div class="card border-primary card-hover" style="max-width: 20rem;">
                           <div class="card-body">
                             <h5 class="card-title">
-                                <img width="25px" src="https://futbolhonduras24.com/assets/img/equipos/sf/4713.png"></img>
+                                <img width="25px" src="assets/img/equipos/sf/4713.png"></img>
                             </h5>
                           </div>
                         </div>
@@ -252,7 +252,7 @@ $lines = explode("\n", $m3u_content);
                         <div class="card border-primary card-hover" style="max-width: 20rem;">
                           <div class="card-body">
                             <h5 class="card-title">
-                                <img width="25px" src="https://futbolhonduras24.com/assets/img/equipos/sf/4711.png"></img>
+                                <img width="25px" src="assets/img/equipos/sf/4711.png"></img>
                             </h5>
                           </div>
                         </div>
@@ -264,7 +264,7 @@ $lines = explode("\n", $m3u_content);
                         <div class="card border-primary card-hover" style="max-width: 20rem;">
                           <div class="card-body">
                             <h5 class="card-title">
-                                <img width="25px" src="https://futbolhonduras24.com/assets/img/equipos/sf/4481.png"></img>
+                                <img width="25px" src="assets/img/equipos/sf/4481.png"></img>
                             </h5>
                           </div>
                         </div>
@@ -276,7 +276,7 @@ $lines = explode("\n", $m3u_content);
                         <div class="card border-primary card-hover" style="max-width: 20rem;">
                           <div class="card-body">
                             <h5 class="card-title">
-                                <img width="25px" src="https://futbolhonduras24.com/assets/img/equipos/sf/4707.png"></img>
+                                <img width="25px" src="assets/img/equipos/sf/4707.png"></img>
                             </h5>
                           </div>
                         </div>

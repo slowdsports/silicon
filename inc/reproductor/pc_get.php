@@ -1,60 +1,59 @@
 <?php
 header("Content-Type: application/json");
 
-if(isset($_GET['id'])){
-	
-	$url = "https://deporte.lat/970634/{$_GET['id']}";
-
-	$curl = curl_init($url);
-	curl_setopt($curl, CURLOPT_URL, $url);
-	curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-
-	$headers = array(	
-	   "Host: deporte.lat",
-	   "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:100.0) Gecko/20100101 Firefox/100.0",
-	   "Referer: https://deporte.lat/",
-	);
-	curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-	curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
-	curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-
-	$resp = curl_exec($curl);
-	curl_close($curl);
-	
-	if ($resp) {
-		// Usar una expresión regular para extraer la URL del .m3u8 dentro de <script>
-		if (preg_match('/location\.href\s*=\s*"([^"]+\.m3u8[^"]*)"/', $resp, $matches)) {
-			$m3u8_url = $matches[1];
-			// Devolver la URL del archivo .m3u8 en formato JSON
-			echo json_encode(["hls" => base64_encode($m3u8_url)]);
-		} else {
-			echo json_encode(["error" => "No se encontró la URL del archivo M3U8."]);
-		}
-	} else {
-		echo json_encode(["error" => "No se pudo obtener el contenido de la página."]);
-	}
-	
-	exit();
+// Paso 1: Verifica que se reciba el parámetro 'id'
+if (!isset($_GET['id']) || empty($_GET['id'])) {
+    echo json_encode(["error" => "El parámetro 'id' no está definido o está vacío."]);
+    exit();
 }
 
-if(isset($_GET['all'])){
-	$datos = file_get_contents("https://deporte.lat/970634/");
-	
-	preg_match_all('(href="(.*?)".*?>(.*?)<)', $datos, $data, PREG_SET_ORDER);
-	
-	$channels = [];
-	foreach($data as $dato){
-		$link = $dato[1]; // Este es el "href" de cada enlace
-		$name = $dato[2]; // Este es el texto del enlace, es decir, el nombre del canal
-		$server = "https://{$_SERVER['HTTP_HOST']}{$_SERVER['PHP_SELF']}";
-		
-		$channels[] = [
-			"name" => $name,
-			"url" => "{$server}?id={$link}"
-		];
-	}
+$id = $_GET['id'];
+$url = "https://deporte.website/4jf0fg/{$id}";
 
-	echo json_encode($channels);
-	exit();
+// Paso 2: Inicializa cURL y realiza la solicitud
+$curl = curl_init($url);
+curl_setopt($curl, CURLOPT_URL, $url);
+curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+
+// Establece los encabezados
+$headers = array(   
+   "Host: deporte.website",
+   "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:100.0) Gecko/20100101 Firefox/100.0",
+   "Referer: https://deporte.website/",
+);
+curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
+curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+curl_setopt($curl, CURLOPT_HEADER, true);
+
+// Ejecuta la solicitud
+$resp = curl_exec($curl);
+
+if ($resp === false) {
+    echo json_encode(["error" => "Error en cURL: " . curl_error($curl)]);
+} else {
+    $header_size = curl_getinfo($curl, CURLINFO_HEADER_SIZE);
+    $headers = substr($resp, 0, $header_size);
+    $body = substr($resp, $header_size);
+
+    // Guarda los encabezados para depuración
+    file_put_contents("debug_headers.txt", $headers);
+    file_put_contents("debug_body.html", $body);
+
+    // Verifica si hay una redirección
+    if (preg_match("/location: (https?.*)\r\n/", $headers, $matches)) {
+        $redirect_url = trim($matches[1]);
+        // Guarda la URL de redirección para depuración
+        file_put_contents("debug_redirect_url.txt", $redirect_url);
+
+        // Devuelve la URL redirigida
+        echo json_encode(["hls" => base64_encode($redirect_url)]);
+    } else {
+        echo json_encode(["error" => "No se encontró redirección."]);
+    }
 }
+
+curl_close($curl);
+exit();
 ?>
+
