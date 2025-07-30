@@ -1,8 +1,7 @@
 <?php
 if(isset($_GET['p']) && $_GET['p'] == 401){ require_once('error.php'); exit();}
 //error_reporting(E_ALL);
-//ini_set('display_errors', '1');
-ini_set('display_errors', '1');
+ini_set('display_errors', '0');
 include('inc/conn.php');
 include('inc/header.php');
 echo '<div id="notificacion"></div>';
