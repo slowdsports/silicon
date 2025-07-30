@@ -3,7 +3,7 @@ error_reporting(E_ALL);
 ini_set("display_errors", 1);
 
 // Conexión a la base de datos
-require '/home/u5233116/web/inc/conn.php';
+require '/home/u5855787/web/inc/conn.php';
 
 // URL del archivo JSON externo de programación en vivo
 $programacionUrl = "https://www.tdtchannels.com/epg/TV.json";
@@ -90,7 +90,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 // Guardar el resultado en un archivo JSON
 if (!empty($canales)) {
     $canalesJson = json_encode($canales, JSON_PRETTY_PRINT);
-    file_put_contents('/home/u5233116/web/inc/componentes/guia/json/spain.json', $canalesJson);
+    file_put_contents('/home/u5855787/web/inc/componentes/guia/json/spain.json', $canalesJson);
     echo "Se ha guardado la información de los canales con su programación en vivo en el archivo inc/componentes/guia/json/spain.json.";
 } else {
     echo "No se encontraron canales con programación en vivo.\n";
